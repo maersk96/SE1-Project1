@@ -9,10 +9,10 @@ import java.util.stream.Collectors;
  * @author Hubert
  *
  */
-public class LibraryApp {
+public class ProjectManagerApp {
 
 	private boolean loggedIn = false;
-	private List<Book> books = new ArrayList<>();
+	private List<Employee> books = new ArrayList<>();
 
 	/**
 	 * @return true if the administrator is logged in, false otherwise.
@@ -37,7 +37,7 @@ public class LibraryApp {
 	 * @param book, the book to be added
 	 * @throws OperationNotAllowedException if the administrator is not logged in
 	 */
-	public void addBook(Book book) throws OperationNotAllowedException {
+	public void addBook(Employee book) throws OperationNotAllowedException {
 		if (!adminLoggedIn()) {
 			throw new OperationNotAllowedException("Administrator login required");
 		}
@@ -47,7 +47,7 @@ public class LibraryApp {
 	/**
 	 * @return the list of books currently known by the library.
 	 */
-	public List<Book> getBooks() {
+	public List<Employee> getBooks() {
 		return books;
 	}
 
@@ -57,7 +57,7 @@ public class LibraryApp {
 	 * @param searchText
 	 * @return a list of books containing the searchText in either title, author, and signature
 	 */
-	public List<Book> search(String searchText) {
+	public List<Employee> search(String searchText) {
 //		/* Simple version */
 //		List<Book> found = new ArrayList<>();
 //		for (Book book : books) {

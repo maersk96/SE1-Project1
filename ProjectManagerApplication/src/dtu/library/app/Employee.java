@@ -7,12 +7,12 @@ package dtu.library.app;
  * @author Hubert
  *
  */
-public class Book {
+public class Employee {
 	private String title;
 	private String author;
 	private String signature;
 
-	public Book(String title, String author, String signature) {
+	public Employee(String title, String author, String signature) {
 		this.title = title;
 		this.author = author;
 		this.signature = signature;

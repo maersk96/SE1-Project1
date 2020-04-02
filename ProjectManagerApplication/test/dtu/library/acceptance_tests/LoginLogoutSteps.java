@@ -3,14 +3,14 @@ package dtu.library.acceptance_tests;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import dtu.library.app.LibraryApp;
+import dtu.library.app.ProjectManagerApp;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class LoginLogoutSteps {
 
-	private LibraryApp libraryApp;
+	private ProjectManagerApp libraryApp;
 	private String password;
 
 	/*
@@ -28,7 +28,7 @@ public class LoginLogoutSteps {
 	 * be found in "The Cucumber for Java Book" available online from the DTU Library.
 	 * (search using findit.dtu.dk).
 	 */
-	public LoginLogoutSteps(LibraryApp libraryApp) {
+	public LoginLogoutSteps(ProjectManagerApp libraryApp) {
 		this.libraryApp = libraryApp;
 	}
 
