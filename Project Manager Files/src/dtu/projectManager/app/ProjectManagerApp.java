@@ -13,11 +13,7 @@ public class ProjectManagerApp {
 	public void logout() {
 		currentUser = null;
 	}
-	public boolean isAdmin() {
-		return currentUser.getInitials().equals("ADMIN");
-	}
-
 	public boolean adminLoggedIn() {
-		return false;
+		return currentUser.getInitials().equals("ADMIN");
 	}
 }
