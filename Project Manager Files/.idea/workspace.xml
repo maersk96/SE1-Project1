@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c54818f2-4fca-46b6-b404-fee38d02f80e" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1a1lNWhq4OFqo4GPxubVZuEsF3E" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunManager">
+    <configuration name="AcceptanceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project Manager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dtu.projectManager.acceptance_tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dtu.projectManager.acceptance_tests" />
+      <option name="MAIN_CLASS_NAME" value="dtu.projectManager.acceptance_tests.AcceptanceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.AcceptanceTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c54818f2-4fca-46b6-b404-fee38d02f80e" name="Default Changelist" comment="" />
+      <created>1585911014514</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585911014514</updated>
+      <workItem from="1585911015757" duration="1258000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="940" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1585911209647">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state x="940" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585911209647" />
+    <state x="1010" y="288" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585911096396">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state x="1010" y="288" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585911096396" />
+    <state width="2517" height="295" key="GridCell.Tab.0.bottom" timestamp="1585911620366">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state width="2517" height="295" key="GridCell.Tab.0.bottom/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585911620366" />
+    <state width="2517" height="295" key="GridCell.Tab.0.center" timestamp="1585911620365">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state width="2517" height="295" key="GridCell.Tab.0.center/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585911620365" />
+    <state width="2517" height="295" key="GridCell.Tab.0.left" timestamp="1585911620365">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state width="2517" height="295" key="GridCell.Tab.0.left/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585911620365" />
+    <state width="2517" height="295" key="GridCell.Tab.0.right" timestamp="1585911620365">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state width="2517" height="295" key="GridCell.Tab.0.right/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585911620365" />
+    <state x="760" y="115" key="SettingsEditor" timestamp="1585911054995">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state x="760" y="115" key="SettingsEditor/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585911054995" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/LoginLogoutSteps.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
