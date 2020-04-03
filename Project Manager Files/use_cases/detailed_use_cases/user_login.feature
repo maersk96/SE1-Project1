@@ -3,25 +3,23 @@ Feature: User Login
 	Actor: Employee
 
 Scenario: User logs in as administrator
-# 	Given there is a user with signature "ADMIN"
-#	When the user logs in
-#	Then the user is administrator
-	
+	Given there exists an employee with initials "ADMIN"
+	When the user logs in with initials "ADMIN"
+	Then the user is logged in as admin
+
 Scenario: User logs in as existing employee
-#	Given there is a user with signature "HBO"
-# 	And there is an employee with signature "HBO"
+#	Given there is a user with initials "HBO"
+# 	And there is an employee with initials "HBO"
 # 	When the user logs in
-# 	Then the user is not administrator
-#	And the user is logged in
+#	Then the user is logged in
 
 Scenario: User logs in as non-existing employee
-#	Given there is a user with signature "XXX"
-# 	And there is not an employee with signature "XXX"
+#	Given there is a user with initials "XXX"
+# 	And there is not an employee with initials "XXX"
 # 	When the user logs in
-# 	Then the user is not administrator
-# 	And the user is not logged in
+# 	Then the user is not logged in
 
 Scenario: User logs out
-#   Given there is a current user
+#   Given the user is logged in
 #   When the user logs out
-#   Then there is no current user
+#   Then the user is not logged in

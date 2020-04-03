@@ -3,6 +3,7 @@ package dtu.projectManager.acceptance_tests;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import dtu.projectManager.app.Employee;
 import dtu.projectManager.app.ProjectManagerApp;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -11,6 +12,7 @@ import io.cucumber.java.en.When;
 public class LoginLogoutSteps {
 
 	private ProjectManagerApp projectManagerApp;
+	private Employee user;
 
 	/*
 	 * Note that the constructor is apparently never called, but there are no null
@@ -31,14 +33,29 @@ public class LoginLogoutSteps {
 		this.projectManagerApp = projectManagerApp;
 	}
 
-	@Given("that the user is not logged in as admin")
-	public void thatTheAdministratorIsNotLoggedIn() throws Exception {
+	@Given("the user is not logged in as admin")
+	public void theUserIsNotLoggedInAsAdmin() throws Exception {
 		assertFalse(projectManagerApp.adminLoggedIn());
 	}
 
-	@Given("that the user is logged in as admin")
-	public void thatTheUserIsLoggedInAsAdmin() throws Exception {
+	@Given("the user is logged in as admin")
+	public void theUserIsLoggedInAsAdmin() throws Exception {
 		assertTrue(projectManagerApp.adminLoggedIn());
+	}
+
+	@Given("there is a user with initials {string}")
+	public void thereIsAUserWithInitials(String initials) throws Exception {
+		user = new Employee(initials);
+	}
+
+	@When("the user logs in with initials {string}")
+	public void theUserLogsInWithInitials(String initials) throws Exception {
+		projectManagerApp.login(initials);
+	}
+
+	@Given("there exists an employee with initials {string}")
+	public void thereExistsAnEmployeeWithInitials(String initials) throws Exception {
+		projectManagerApp.containsEmployeeWithInitials(initials);
 	}
 
 }
