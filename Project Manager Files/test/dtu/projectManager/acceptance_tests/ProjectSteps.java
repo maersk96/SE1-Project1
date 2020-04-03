@@ -4,6 +4,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import dtu.projectManager.app.Employee;
+import dtu.projectManager.app.Project;
 import dtu.projectManager.app.ProjectManagerApp;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -12,7 +13,10 @@ import io.cucumber.java.en.When;
 public class ProjectSteps {
 
 	private ProjectManagerApp projectManagerApp;
-	private Employee employee;
+	private ErrorMessageHolder errorMessageHolder;
+
+	private Project project;
+
 	/*
 	 * Note that the constructor is apparently never called, but there are no null
 	 * pointer exceptions regarding that libraryApp is not set. When creating the
@@ -28,9 +32,14 @@ public class ProjectSteps {
 	 * be found in "The Cucumber for Java Book" available online from the DTU Library.
 	 * (search using findit.dtu.dk).
 	 */
-	public ProjectSteps(ProjectManagerApp projectManagerApp, Employee e) {
+	public ProjectSteps(ProjectManagerApp projectManagerApp, ErrorMessageHolder errorMessageHolder) {
 		this.projectManagerApp = projectManagerApp;
-		this.employee = e;
+		this.errorMessageHolder = errorMessageHolder;
+	}
+
+	@Given("there is no project with ID {string} and name {string}")
+	public void thereIsAProjectWithID(String ID, String name) throws Exception {
+		project = new Project(ID, name);
 	}
 
 
