@@ -4,6 +4,7 @@ Feature: Create project
 
 Scenario: Add a project successfully
 	Given that the user is logged in as admin
-	And there is no project with ID "2020-0001" and name ""
+	And there is a project with ID {string} and name {string}
+	And the project is not already in the manager
 #	When the user adds a project with the ID "2020-0001" and name "Project 1"
 #	Then a project with the ID "2020-0001" and name "Project 1" is added

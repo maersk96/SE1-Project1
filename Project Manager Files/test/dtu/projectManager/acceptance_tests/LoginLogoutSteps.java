@@ -11,7 +11,6 @@ import io.cucumber.java.en.When;
 public class LoginLogoutSteps {
 
 	private ProjectManagerApp projectManagerApp;
-	private String password;
 
 	/*
 	 * Note that the constructor is apparently never called, but there are no null
@@ -32,7 +31,7 @@ public class LoginLogoutSteps {
 		this.projectManagerApp = projectManagerApp;
 	}
 
-	@Given("that the administrator is not logged in")
+	@Given("that the user is not logged in as admin")
 	public void thatTheAdministratorIsNotLoggedIn() throws Exception {
 		assertFalse(projectManagerApp.adminLoggedIn());
 	}

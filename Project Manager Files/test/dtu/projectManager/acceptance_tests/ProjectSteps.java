@@ -37,7 +37,7 @@ public class ProjectSteps {
 		this.errorMessageHolder = errorMessageHolder;
 	}
 
-	@Given("there is no project with ID {string} and name {string}")
+	@Given("there is no project with ID {string} and name {string} in the manager")
 	public void thereIsAProjectWithID(String ID, String name) throws Exception {
 		project = new Project(ID, name);
 	}
