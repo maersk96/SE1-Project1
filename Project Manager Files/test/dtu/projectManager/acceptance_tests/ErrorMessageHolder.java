@@ -9,5 +9,6 @@ public class ErrorMessageHolder {
 
 	public void setErrorMessage(String errorMessage) {
 		this.errorMessage = errorMessage;
+		System.out.println("Caught error: " + errorMessage);
 	}
 }

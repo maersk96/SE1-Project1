@@ -19,7 +19,7 @@ public class ProjectManagerApp {
 	public void login(String initials) throws OperationNotAllowedException {
 		Employee newUser = getEmployeeWithInitials(initials);
 		if (newUser == null) {
-			throw new OperationNotAllowedException("Employee does not exist");
+			throw new OperationNotAllowedException("Employee with initials " + initials + " does not exist");
 		}
 		currentUser = newUser;
 	}
@@ -27,8 +27,12 @@ public class ProjectManagerApp {
 		currentUser = null;
 	}
 	public boolean adminLoggedIn() {
-		return currentUser.getInitials().equals("ADMIN");
+		if (currentUser != null) {
+			return currentUser.getInitials().equals("ADMIN");
+		}
+		return false;
 	}
+
 
 	public void addEmployee(Employee e) throws OperationNotAllowedException {
 		if (!adminLoggedIn()) {
@@ -60,5 +64,9 @@ public class ProjectManagerApp {
 				.filter(employee -> initials.equals(employee.getInitials()))
 				.findFirst()
 				.orElse(null);
+	}
+
+	public Employee getCurrentUser() {
+		return currentUser;
 	}
 }
