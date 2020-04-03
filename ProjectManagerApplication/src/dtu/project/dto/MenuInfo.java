@@ -1,4 +1,4 @@
-package user_interface;
+package dtu.project.dto;
 
 import java.util.ArrayList;
 import java.util.List;
