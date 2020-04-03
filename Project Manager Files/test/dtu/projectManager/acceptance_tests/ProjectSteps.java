@@ -12,7 +12,9 @@ import io.cucumber.java.en.When;
 public class ProjectSteps {
 
 	private ProjectManagerApp projectManagerApp;
+
 	private Employee employee;
+
 	/*
 	 * Note that the constructor is apparently never called, but there are no null
 	 * pointer exceptions regarding that libraryApp is not set. When creating the
@@ -28,9 +30,8 @@ public class ProjectSteps {
 	 * be found in "The Cucumber for Java Book" available online from the DTU Library.
 	 * (search using findit.dtu.dk).
 	 */
-	public ProjectSteps(ProjectManagerApp projectManagerApp, Employee e) {
+	public ProjectSteps(ProjectManagerApp projectManagerApp) {
 		this.projectManagerApp = projectManagerApp;
-		this.employee = e;
 	}
 
 
