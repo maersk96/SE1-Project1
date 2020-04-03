@@ -8,4 +8,7 @@ public class Employee {
         this.initials = initials;
     }
 
+    public String getInitials() {
+        return initials;
+    }
 }

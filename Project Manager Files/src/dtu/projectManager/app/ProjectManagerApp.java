@@ -14,8 +14,7 @@ public class ProjectManagerApp {
 		currentUser = null;
 	}
 	public boolean isAdmin() {
-		// currentUser.initials...
-		return currentUser.equals("ADMIN");
+		return currentUser.getInitials().equals("ADMIN");
 	}
 
 	public boolean adminLoggedIn() {
