@@ -3,11 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c54818f2-4fca-46b6-b404-fee38d02f80e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/app/ProjectManagerApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/app/ProjectManagerApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dtu/projectManager/app/ProjectManagerApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dtu/projectManager/app/ProjectManagerApp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cucumber/wikipedia.html/report.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/cucumber/wikipedia.html/report.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/dtu/projectManager/acceptance_tests/LoginLogoutSteps.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/dtu/projectManager/acceptance_tests/LoginLogoutSteps.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/app/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/app/Project.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/ProjectSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/ProjectSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/use_cases/detailed_use_cases/AddProject.feature" beforeDir="false" afterPath="$PROJECT_DIR$/use_cases/detailed_use_cases/AddProject.feature" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +72,7 @@
       <option name="presentableId" value="Default" />
       <updated>1585911014514</updated>
       <workItem from="1585911015757" duration="1258000" />
-      <workItem from="1585912486132" duration="3821000" />
+      <workItem from="1585912486132" duration="4537000" />
     </task>
     <task id="LOCAL-00001" summary="added 3 classes">
       <created>1585913047457</created>
@@ -104,7 +102,21 @@
       <option name="project" value="LOCAL" />
       <updated>1585915632315</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added project constructor">
+      <created>1585916318579</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1585916318579</updated>
+    </task>
+    <task id="LOCAL-00006" summary="added project constructor">
+      <created>1585916365167</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1585916365167</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,10 +138,10 @@
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
     <state x="1010" y="288" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585911096396" />
-    <state x="801" y="135" key="CommitChangelistDialog2" timestamp="1585916326098">
+    <state x="801" y="135" key="CommitChangelistDialog2" timestamp="1585916364681">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state x="801" y="135" key="CommitChangelistDialog2/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585916326098" />
+    <state x="801" y="135" key="CommitChangelistDialog2/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585916364681" />
     <state x="916" y="383" key="FileChooserDialogImpl" timestamp="1585913728379">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
@@ -154,10 +166,10 @@
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
     <state x="760" y="115" key="SettingsEditor/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585911054995" />
-    <state x="1089" y="458" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585916353884">
+    <state x="1089" y="458" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585917027741">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state x="1089" y="458" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585916353884" />
+    <state x="1089" y="458" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585917027741" />
     <state x="936" y="250" key="run.anything.popup" timestamp="1585912507525">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>

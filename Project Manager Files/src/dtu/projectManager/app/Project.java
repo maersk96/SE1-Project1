@@ -9,6 +9,4 @@ public class Project {
         this.ID = ID;
         this.name = name;
     }
-
-
 }
