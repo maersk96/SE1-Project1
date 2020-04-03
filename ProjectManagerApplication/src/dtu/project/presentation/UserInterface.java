@@ -1,4 +1,6 @@
-package user_interface;
+package dtu.project.presentation;
+import dtu.project.dto.MenuInfo;
+
 import java.util.ArrayList;
 import java.util.List;
 

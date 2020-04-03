@@ -1,11 +1,10 @@
 package ui_tests;
 
-import user_interface.UserInterface;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import user_interface.MenuInfo;
+import dtu.project.app.UserInterface;
+import dtu.project.dto.MenuInfo;
 
 public class MenuTest {
 
