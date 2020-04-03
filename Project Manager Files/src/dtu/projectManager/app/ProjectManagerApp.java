@@ -5,19 +5,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ProjectManagerApp {
-	String currentUser = "";
+	Employee currentUser = null;
 
-	public void login(String initials) {
-		currentUser = initials;
+	public void login(Employee e) {
+		currentUser = e;
 	}
 	public void logout() {
-		currentUser = "";
+		currentUser = null;
 	}
-	public boolean isAdmin() {
-		return currentUser.equals("ADMIN");
-	}
-
 	public boolean adminLoggedIn() {
-		return false;
+		return currentUser.getInitials().equals("ADMIN");
 	}
 }
