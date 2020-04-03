@@ -37,4 +37,9 @@ public class LoginLogoutSteps {
 		assertFalse(projectManagerApp.adminLoggedIn());
 	}
 
+	@Given("that the user is logged in as admin")
+	public void thatTheUserIsLoggedInAsAdmin() throws Exception {
+		assertTrue(projectManagerApp.adminLoggedIn());
+	}
+
 }
