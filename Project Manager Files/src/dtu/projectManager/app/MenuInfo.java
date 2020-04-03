@@ -1,3 +1,4 @@
+package dtu.projectManager.app;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +7,6 @@ public class MenuInfo {
 		
 	private List<String> options;
 	private String user_name;
-		
-		
 		
 		public MenuInfo(List<String> Options, String user_name) {
 			this.options = new ArrayList<String>();
