@@ -2,19 +2,23 @@ package dtu.projectManager.app;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ProjectManagerApp {
 
 	private List<Project> projects = new ArrayList<>();
 	private List<Employee> employees = new ArrayList<>();
+	private Integer year = 2020;
+	private Integer projectNumber = 1;
+	Employee currentUser = null;
+
+	public void increaseProjectNumber() {
+		projectNumber ++;
+	}
 
 	public ProjectManagerApp () {
 		Employee admin = new Employee("ADMIN");
 		employees.add(admin);
 	}
-
-	Employee currentUser = null;
 
 	public void login(String initials) throws OperationNotAllowedException {
 		Employee newUser = getEmployeeWithInitials(initials);
@@ -23,16 +27,17 @@ public class ProjectManagerApp {
 		}
 		currentUser = newUser;
 	}
+
 	public void logout() {
 		currentUser = null;
 	}
+
 	public boolean adminLoggedIn() {
 		if (currentUser != null) {
 			return currentUser.getInitials().equals("ADMIN");
 		}
 		return false;
 	}
-
 
 	public void addEmployee(Employee e) throws OperationNotAllowedException {
 		if (!adminLoggedIn()) {
@@ -41,17 +46,16 @@ public class ProjectManagerApp {
 		employees.add(e);
 	}
 
-	/**
-	 * Adds a project to the manager.
-	 * Only the administrator can do this. Thus, the administrator has to be logged in.
-	 * @param project, the project to be added
-	 * @throws OperationNotAllowedException if the administrator is not logged in
-	 */
-	public void addProject(Project project) throws OperationNotAllowedException {
+	// Adds a project to the project manager, only the admin kan do this
+	public void addProject() throws OperationNotAllowedException {
 		if (!adminLoggedIn()) {
 			throw new OperationNotAllowedException("Administrator login required");
 		}
-		projects.add(project);
+		String projectID = String.valueOf(year) + "-" + String.valueOf(projectNumber);
+		String projectName = "Unnamed";
+		Project p = new Project(projectID, projectName);
+		projects.add(p);
+		increaseProjectNumber();
 	}
 
 	public boolean containsEmployeeWithInitials(String initials) {
@@ -68,5 +72,13 @@ public class ProjectManagerApp {
 
 	public Employee getCurrentUser() {
 		return currentUser;
+	}
+
+	public int amountOfProjects() {
+		return projects.size();
+	}
+
+	public boolean containsProjectWithID(String projectID) {
+		return projects.stream().anyMatch(m -> m.getID().contentEquals(projectID));
 	}
 }

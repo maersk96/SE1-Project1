@@ -1,14 +1,14 @@
 package dtu.projectManager.acceptance_tests;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
 import dtu.projectManager.app.Employee;
+import dtu.projectManager.app.OperationNotAllowedException;
 import dtu.projectManager.app.Project;
 import dtu.projectManager.app.ProjectManagerApp;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
+import static org.junit.Assert.*;
 
 public class ProjectSteps {
 
@@ -37,10 +37,28 @@ public class ProjectSteps {
 		this.errorMessageHolder = errorMessageHolder;
 	}
 
-	@Given("there is no project with ID {string} and name {string} in the manager")
-	public void thereIsAProjectWithID(String ID, String name) throws Exception {
-		project = new Project(ID, name);
+	@Given("there are no projects in the project manager")
+	public void thereAreNoProjectsInTheManager() throws Exception {
+		assertTrue(projectManagerApp.amountOfProjects() == 0);
 	}
 
+	@When("the user adds a project")
+	public void theUserAddsAProject() {
+		try {
+			projectManagerApp.addProject();
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+	}
+
+	@Then("a project with the ID {string} exists in the project manager")
+	public void aProjectWithIDExists(String projectID) throws Exception {
+		assertTrue(projectManagerApp.containsProjectWithID(projectID));
+	}
+
+	@Then("the error message {string} is given")
+	public void theErrorMessageIsGiven(String errorMessage) throws Exception {
+		assertEquals(errorMessage, this.errorMessageHolder.getErrorMessage());
+	}
 
 }

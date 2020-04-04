@@ -2,20 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c54818f2-4fca-46b6-b404-fee38d02f80e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/app/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/app/Project.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/app/ProjectManagerApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/app/ProjectManagerApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/dtu/projectManager/app/ProjectManagerApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dtu/projectManager/app/ProjectManagerApp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/cucumber/wikipedia.html/report.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/cucumber/wikipedia.html/report.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/dtu/projectManager/acceptance_tests/LoginLogoutSteps.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/dtu/projectManager/acceptance_tests/LoginLogoutSteps.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/LoginLogoutSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/LoginLogoutSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/ProjectSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/ProjectSteps.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/use_cases/detailed_use_cases/add_project.feature" beforeDir="false" afterPath="$PROJECT_DIR$/use_cases/detailed_use_cases/add_project.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/use_cases/detailed_use_cases/user_login.feature" beforeDir="false" afterPath="$PROJECT_DIR$/use_cases/detailed_use_cases/user_login.feature" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="293" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -97,6 +98,7 @@
       <updated>1585911014514</updated>
       <workItem from="1585911015757" duration="1258000" />
       <workItem from="1585912486132" duration="4959000" />
+      <workItem from="1585992760881" duration="4882000" />
     </task>
     <task id="LOCAL-00001" summary="added 3 classes">
       <created>1585913047457</created>
@@ -161,6 +163,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="added project constructor" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="877" y="208" key="#AcceptanceTest" timestamp="1585923059199">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state x="877" y="208" key="#AcceptanceTest/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585923059199" />
     <state x="940" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1585911209647">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
@@ -177,26 +183,30 @@
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
     <state x="916" y="383" key="FileChooserDialogImpl/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585913728379" />
-    <state width="1398" height="209" key="GridCell.Tab.0.bottom" timestamp="1585922039180">
-      <screen x="0" y="23" width="1440" height="813" />
+    <state width="2517" height="295" key="GridCell.Tab.0.bottom" timestamp="1585997647902">
+      <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state width="2517" height="295" key="GridCell.Tab.0.bottom/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585915952902" />
+    <state width="2517" height="295" key="GridCell.Tab.0.bottom/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585997647902" />
     <state width="1398" height="209" key="GridCell.Tab.0.bottom/0.23.1440.813@0.23.1440.813" timestamp="1585922039180" />
-    <state width="1398" height="209" key="GridCell.Tab.0.center" timestamp="1585922039178">
-      <screen x="0" y="23" width="1440" height="813" />
+    <state width="2517" height="295" key="GridCell.Tab.0.center" timestamp="1585997647902">
+      <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state width="2517" height="295" key="GridCell.Tab.0.center/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585915952902" />
+    <state width="2517" height="295" key="GridCell.Tab.0.center/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585997647902" />
     <state width="1398" height="209" key="GridCell.Tab.0.center/0.23.1440.813@0.23.1440.813" timestamp="1585922039178" />
-    <state width="1398" height="209" key="GridCell.Tab.0.left" timestamp="1585922039177">
-      <screen x="0" y="23" width="1440" height="813" />
+    <state width="2517" height="295" key="GridCell.Tab.0.left" timestamp="1585997647902">
+      <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state width="2517" height="295" key="GridCell.Tab.0.left/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585915952901" />
+    <state width="2517" height="295" key="GridCell.Tab.0.left/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585997647902" />
     <state width="1398" height="209" key="GridCell.Tab.0.left/0.23.1440.813@0.23.1440.813" timestamp="1585922039177" />
-    <state width="1398" height="209" key="GridCell.Tab.0.right" timestamp="1585922039179">
-      <screen x="0" y="23" width="1440" height="813" />
+    <state width="2517" height="295" key="GridCell.Tab.0.right" timestamp="1585997647902">
+      <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state width="2517" height="295" key="GridCell.Tab.0.right/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585915952902" />
+    <state width="2517" height="295" key="GridCell.Tab.0.right/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585997647902" />
     <state width="1398" height="209" key="GridCell.Tab.0.right/0.23.1440.813@0.23.1440.813" timestamp="1585922039179" />
+    <state x="992" y="257" key="MultipleFileMergeDialog" timestamp="1585992785230">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state x="992" y="257" key="MultipleFileMergeDialog/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585992785230" />
     <state x="760" y="115" key="SettingsEditor" timestamp="1585911054995">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
@@ -205,13 +215,22 @@
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
     <state x="872" y="274" key="Vcs.Push.Dialog.v2/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585917056414" />
-    <state x="1089" y="458" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585917518394">
+    <state x="1089" y="458" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585992775965">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state x="1089" y="458" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585917518394" />
+    <state x="1089" y="458" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585992775965" />
+    <state x="662" y="161" key="new project wizard" timestamp="1585994676686">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state x="662" y="161" key="new project wizard/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585994676686" />
     <state x="936" y="250" key="run.anything.popup" timestamp="1585912507525">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
     <state x="936" y="250" key="run.anything.popup/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585912507525" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Project_Manager$AcceptanceTest.ic" NAME="AcceptanceTest Coverage Results" MODIFIED="1585992909836" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>dtu.projectManager.acceptance_tests.*</FILTER>
+    </SUITE>
   </component>
 </project>
