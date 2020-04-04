@@ -26,18 +26,11 @@ public class EmployeeSteps {
 
 	@Given("the employee with initials {string} is registered")
 	public void theEmployeeWithInitialsIsRegistered(String initials) throws OperationNotAllowedException {
-		Employee currentUser = projectManagerApp.getCurrentUser();
-		
 		projectManagerApp.login("ADMIN");
 		Employee employee = new Employee(initials);
 		projectManagerApp.addEmployee(employee);
-		if (currentUser != null)
-			projectManagerApp.login(currentUser.getInitials());
-		else
-			projectManagerApp.logout();
+		projectManagerApp.logout();
 	}
-
-
 
 	@Given("there does not exist an employee with initials {string}")	
 	public void thereDoesNotExistAnEmployeeWithInitials(String initials) throws Exception {
@@ -54,7 +47,5 @@ public class EmployeeSteps {
 		}
 
 	}
-
-
 
 }

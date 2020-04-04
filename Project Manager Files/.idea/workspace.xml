@@ -3,12 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="c54818f2-4fca-46b6-b404-fee38d02f80e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/app/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/app/Project.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/app/ProjectManagerApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/app/ProjectManagerApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/dtu/projectManager/app/ProjectManagerApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dtu/projectManager/app/ProjectManagerApp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/cucumber/wikipedia.html/report.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/cucumber/wikipedia.html/report.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/ProjectSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/ProjectSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/use_cases/detailed_use_cases/add_project.feature" beforeDir="false" afterPath="$PROJECT_DIR$/use_cases/detailed_use_cases/add_project.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/EmployeeSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/EmployeeSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/LoginLogoutSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/LoginLogoutSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/use_cases/detailed_use_cases/add_employee.feature" beforeDir="false" afterPath="$PROJECT_DIR$/use_cases/detailed_use_cases/add_employee.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/use_cases/detailed_use_cases/user_login.feature" beforeDir="false" afterPath="$PROJECT_DIR$/use_cases/detailed_use_cases/user_login.feature" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,6 +99,7 @@
       <workItem from="1585911015757" duration="1258000" />
       <workItem from="1585912486132" duration="4959000" />
       <workItem from="1585992760881" duration="4882000" />
+      <workItem from="1586013386507" duration="3430000" />
     </task>
     <task id="LOCAL-00001" summary="added 3 classes">
       <created>1585913047457</created>
@@ -167,6 +168,10 @@
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
     <state x="877" y="208" key="#AcceptanceTest/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585923059199" />
+    <state x="100" y="123" width="1240" height="613" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1586015685803">
+      <screen x="0" y="23" width="1440" height="813" />
+    </state>
+    <state x="100" y="123" width="1240" height="613" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.23.1440.813@0.23.1440.813" timestamp="1586015685803" />
     <state x="940" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1585911209647">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
@@ -183,26 +188,26 @@
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
     <state x="916" y="383" key="FileChooserDialogImpl/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585913728379" />
-    <state width="2517" height="295" key="GridCell.Tab.0.bottom" timestamp="1585997730240">
-      <screen x="0" y="0" width="2560" height="1080" />
+    <state width="1398" height="209" key="GridCell.Tab.0.bottom" timestamp="1586016907207">
+      <screen x="0" y="23" width="1440" height="813" />
     </state>
     <state width="2517" height="295" key="GridCell.Tab.0.bottom/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585997730240" />
-    <state width="1398" height="209" key="GridCell.Tab.0.bottom/0.23.1440.813@0.23.1440.813" timestamp="1585922039180" />
-    <state width="2517" height="295" key="GridCell.Tab.0.center" timestamp="1585997730240">
-      <screen x="0" y="0" width="2560" height="1080" />
+    <state width="1398" height="209" key="GridCell.Tab.0.bottom/0.23.1440.813@0.23.1440.813" timestamp="1586016907207" />
+    <state width="1398" height="209" key="GridCell.Tab.0.center" timestamp="1586016907205">
+      <screen x="0" y="23" width="1440" height="813" />
     </state>
     <state width="2517" height="295" key="GridCell.Tab.0.center/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585997730240" />
-    <state width="1398" height="209" key="GridCell.Tab.0.center/0.23.1440.813@0.23.1440.813" timestamp="1585922039178" />
-    <state width="2517" height="295" key="GridCell.Tab.0.left" timestamp="1585997730240">
-      <screen x="0" y="0" width="2560" height="1080" />
+    <state width="1398" height="209" key="GridCell.Tab.0.center/0.23.1440.813@0.23.1440.813" timestamp="1586016907205" />
+    <state width="1398" height="209" key="GridCell.Tab.0.left" timestamp="1586016907205">
+      <screen x="0" y="23" width="1440" height="813" />
     </state>
     <state width="2517" height="295" key="GridCell.Tab.0.left/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585997730240" />
-    <state width="1398" height="209" key="GridCell.Tab.0.left/0.23.1440.813@0.23.1440.813" timestamp="1585922039177" />
-    <state width="2517" height="295" key="GridCell.Tab.0.right" timestamp="1585997730240">
-      <screen x="0" y="0" width="2560" height="1080" />
+    <state width="1398" height="209" key="GridCell.Tab.0.left/0.23.1440.813@0.23.1440.813" timestamp="1586016907205" />
+    <state width="1398" height="209" key="GridCell.Tab.0.right" timestamp="1586016907206">
+      <screen x="0" y="23" width="1440" height="813" />
     </state>
     <state width="2517" height="295" key="GridCell.Tab.0.right/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585997730240" />
-    <state width="1398" height="209" key="GridCell.Tab.0.right/0.23.1440.813@0.23.1440.813" timestamp="1585922039179" />
+    <state width="1398" height="209" key="GridCell.Tab.0.right/0.23.1440.813@0.23.1440.813" timestamp="1586016907206" />
     <state x="992" y="257" key="MultipleFileMergeDialog" timestamp="1585992785230">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>

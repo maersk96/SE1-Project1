@@ -4,7 +4,7 @@ Feature: User Login
 
 Scenario: User logs in as administrator
 	When the user logs in with initials "ADMIN"
-	Then the user is logged in as admin
+	Then the user is now logged in as admin
 
 Scenario: User logs in as existing employee
  	Given the employee with initials "HBO" is registered

@@ -10,11 +10,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "the user logs in with initials \"ADMIN\"",
+  "name": "the user is logged in as admin",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserLogsInWithInitials(java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserIsAlreadyLoggedInAsAdmin()"
 });
 formatter.result({
   "status": "passed"
@@ -110,21 +110,21 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "the user logs in with initials \"ADMIN\"",
+  "name": "the employee with initials \"ABC\" is registered",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserLogsInWithInitials(java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeWithInitialsIsRegistered(java.lang.String)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the employee with initials \"ABC\" is registered",
+  "name": "the user is logged in as admin",
   "keyword": "And "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeWithInitialsIsRegistered(java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserIsAlreadyLoggedInAsAdmin()"
 });
 formatter.result({
   "status": "passed"
@@ -161,11 +161,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "the user logs in with initials \"ADMIN\"",
+  "name": "the user is logged in as admin",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserLogsInWithInitials(java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserIsAlreadyLoggedInAsAdmin()"
 });
 formatter.result({
   "status": "passed"
@@ -251,21 +251,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "the user logs in with initials \"ADMIN\"",
+  "name": "the user is logged in as admin",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserLogsInWithInitials(java.lang.String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the user is logged in as admin",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserIsLoggedInAsAdmin()"
+  "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserIsAlreadyLoggedInAsAdmin()"
 });
 formatter.result({
   "status": "passed"
@@ -332,7 +322,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user is logged in as admin",
+  "name": "the user is now logged in as admin",
   "keyword": "Then "
 });
 formatter.match({

@@ -41,12 +41,13 @@ public class LoginLogoutSteps {
 		assertFalse(projectManagerApp.adminLoggedIn());
 	}
 
-	@Given("the user is already logged in as admin")
+	@Given("the user is logged in as admin")
 	public void theUserIsAlreadyLoggedInAsAdmin() throws Exception {
 		projectManagerApp.login("ADMIN");
+		assertTrue(projectManagerApp.adminLoggedIn());
 	}
 
-	@Then("the user is logged in as admin")
+	@Then("the user is now logged in as admin")
 	public void theUserIsLoggedInAsAdmin() throws Exception {
 		assertTrue(projectManagerApp.adminLoggedIn());
 	}
