@@ -1,4 +1,155 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("file:use_cases/detailed_use_cases/add_project.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("file:use_cases/detailed_use_cases/add_employee.feature");
+formatter.feature({
+  "name": "Create employee",
+  "description": "\tDescription: An employee is created by the Admin\n\tActors: Admin",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "Add an employee successfully when logged in as admin",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "the user logs in with initials \"ADMIN\"",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserLogsInWithInitials(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there does not exist an employee with initials \"ABC\"",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.thereDoesNotExistAnEmployeeWithInitials(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user adds an employee with initials \"ABC\"",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theUserAddsAnEmployeeWithInitials(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there exists an employee with initials \"ABC\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.thereExistsAnEmployeeWithInitials(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Add an employee when not admin",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "the employee with initials \"HBO\" is registered",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeWithInitialsIsRegistered(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user logs in with initials \"HBO\"",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserLogsInWithInitials(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user adds an employee with initials \"ABC\"",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theUserAddsAnEmployeeWithInitials(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there does not exist an employee with initials \"ABC\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.thereDoesNotExistAnEmployeeWithInitials(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the error message \"Administrator login required\" is given",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theErrorMessageIsGiven(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Add existing employee",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "the user logs in with initials \"ADMIN\"",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserLogsInWithInitials(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee with initials \"ABC\" is registered",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeWithInitialsIsRegistered(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user adds an employee with initials \"ABC\"",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theUserAddsAnEmployeeWithInitials(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the error message \"Employee already exists\" is given",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theErrorMessageIsGiven(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.uri("file:use_cases/detailed_use_cases/add_project.feature");
 formatter.feature({
   "name": "Create project",
   "description": "\tDescription: A project is created by the Admin\n\tActors: Admin",
@@ -59,7 +210,7 @@ formatter.step({
   "keyword": "Given "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.UserSteps.theEmployeeWithInitialsIsAlreadyRegistered(java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeWithInitialsIsRegistered(java.lang.String)"
 });
 formatter.result({
   "status": "passed"
@@ -200,7 +351,7 @@ formatter.step({
   "keyword": "Given "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.UserSteps.theEmployeeWithInitialsIsAlreadyRegistered(java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeWithInitialsIsRegistered(java.lang.String)"
 });
 formatter.result({
   "status": "passed"
@@ -231,11 +382,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "the employee with initials \"XXX\" is not registered",
+  "name": "there does not exist an employee with initials \"XXX\"",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.UserSteps.theEmployeeWithInitialsIsNotRegistered(java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.thereDoesNotExistAnEmployeeWithInitials(java.lang.String)"
 });
 formatter.result({
   "status": "passed"
@@ -260,6 +411,16 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.step({
+  "name": "the error message \"Employee with initials XXX does not exist\" is given",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theErrorMessageIsGiven(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "User logs out",
   "description": "",
@@ -270,7 +431,7 @@ formatter.step({
   "keyword": "Given "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.UserSteps.theEmployeeWithInitialsIsAlreadyRegistered(java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeWithInitialsIsRegistered(java.lang.String)"
 });
 formatter.result({
   "status": "passed"

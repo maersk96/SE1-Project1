@@ -12,9 +12,11 @@ Scenario: User logs in as existing employee
 	Then the user is logged in with initials "HBO"
 
 Scenario: User logs in as non-existing employee
-	Given the employee with initials "XXX" is not registered
+	Given there does not exist an employee with initials "XXX"
  	When the user logs in with initials "XXX"
  	Then the user is not logged in
+	And the error message "Employee with initials XXX does not exist" is given
+
 
 Scenario: User logs out
 	Given the employee with initials "JFK" is registered

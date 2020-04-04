@@ -9,7 +9,7 @@ public class ProjectManagerApp {
 	private List<Employee> employees = new ArrayList<>();
 	private Integer year = 2020;
 	private Integer projectNumber = 1;
-	Employee currentUser = null;
+	private Employee currentUser = null;
 
 	public void increaseProjectNumber() {
 		projectNumber ++;
@@ -40,13 +40,18 @@ public class ProjectManagerApp {
 	}
 
 	public void addEmployee(Employee e) throws OperationNotAllowedException {
+
 		if (!adminLoggedIn()) {
 			throw new OperationNotAllowedException("Administrator login required");
 		}
+		if (containsEmployeeWithInitials(e.getInitials())) {
+			throw new OperationNotAllowedException("Employee already exists");			
+		}
+
 		employees.add(e);
 	}
 
-	// Adds a project to the project manager, only the admin kan do this
+	// Adds a project to the project manager, only the admin can do this
 	public void addProject() throws OperationNotAllowedException {
 		if (!adminLoggedIn()) {
 			throw new OperationNotAllowedException("Administrator login required");

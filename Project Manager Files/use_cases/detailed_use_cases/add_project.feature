@@ -1,7 +1,7 @@
 Feature: Create project
 	Description: A project is created by the Admin
 	Actors: Admin
-
+#
 Scenario: Add a project successfully when logged in as admin
 	Given the user logs in with initials "ADMIN"
 	And there are no projects in the project manager
