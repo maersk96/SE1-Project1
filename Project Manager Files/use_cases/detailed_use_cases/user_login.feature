@@ -17,7 +17,6 @@ Scenario: User logs in as non-existing employee
  	Then the user is not logged in
 	And the error message "Employee with initials XXX does not exist" is given
 
-
 Scenario: User logs out
 	Given the employee with initials "JFK" is registered
 	And the user logs in with initials "JFK"
