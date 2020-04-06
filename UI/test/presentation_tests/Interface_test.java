@@ -2,6 +2,7 @@ package presentation_tests;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import presentation.MenuInfo;
 import presentation.UserInterface;
@@ -12,6 +13,9 @@ public class Interface_test {
 
 	public static void main(String[] args) {
 
+		
+		
+		Scanner sc = new Scanner(System.in);
 		String currentUser=null;
 		List<String> employeeOptions = new ArrayList<String>();
 		List<String> adminOptions = new ArrayList<String>();
@@ -41,16 +45,16 @@ public class Interface_test {
 		for (String s : leaderOptions)
 			adminOptions.add(s);
 		
-		UserInterface UI = new UserInterface();
+		UserInterface UI = new UserInterface(sc);
 		
 		// Test admin menu
 		currentUser = "ADMIN";
 		MenuInfo adminMenu = new MenuInfo(adminOptions,currentUser);
-		UI.PrintMenu(adminMenu);
 		
-		UI.getOption(adminMenu);
+		UI.test(adminMenu);;
 		
-		UI.getInput()
+		
+		sc.close();
 	}
 
 }

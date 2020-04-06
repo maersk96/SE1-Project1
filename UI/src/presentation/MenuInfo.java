@@ -5,31 +5,31 @@ import java.util.List;
 	
 public class MenuInfo {
 		
-	private List<Option> options;
+	private List<String> options;
 	private String user_name;
 		
-		public MenuInfo(List<Option> Options, String user_name) {
-			this.options = new ArrayList<Option>();
-			for (Option o : Options)
+		public MenuInfo(List<String> Options, String user_name) {
+			this.options = new ArrayList<String>();
+			for (String s : Options)
 			{
-				this.options.add(o.Copy());
+				this.options.add(s);
 			}
 			this.user_name = user_name;
 		}
 		
-		public void SetOptions(List<Option> Options){
+		public void SetOptions(List<String> Options){
 			this.options.clear();
-			for (Option o : Options)
+			for (String s : Options)
 			{
-				this.options.add(o.Copy());
+				this.options.add(s);
 			}
 		}
 
-		public List<Option> GetOptions(){
-			List<Option> Options = new ArrayList<Option>();
-			for (Option o : this.options)
+		public List<String> GetOptions(){
+			List<String> Options = new ArrayList<String>();
+			for (String s : this.options)
 			{
-				Options.add(o.Copy());
+				Options.add(s);
 			}
 			return Options;
 		}
