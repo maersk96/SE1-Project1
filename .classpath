@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Project Manager Files/src"/>
+	<classpathentry kind="src" path="Project Manager Files/test"/>
+	<classpathentry kind="lib" path="Project Manager Files/lib/apiguardian-api-1.1.0.jar"/>
+	<classpathentry kind="lib" path="Project Manager Files/lib/byte-buddy-1.10.5.jar"/>
+	<classpathentry kind="lib" path="Project Manager Files/lib/byte-buddy-agent-1.10.5.jar"/>
+	<classpathentry kind="lib" path="Project Manager Files/lib/cucumber-core-5.1.0.jar"/>
+	<classpathentry kind="lib" path="Project Manager Files/lib/cucumber-expressions-8.3.1.jar"/>
+	<classpathentry kind="lib" path="Project Manager Files/lib/cucumber-gherkin-5.1.0.jar"/>
+	<classpathentry kind="lib" path="Project Manager Files/lib/cucumber-gherkin-vintage-5.1.0.jar"/>
+	<classpathentry kind="lib" path="Project Manager Files/lib/cucumber-java-5.1.0.jar"/>
+	<classpathentry kind="lib" path="Project Manager Files/lib/cucumber-junit-5.1.0.jar"/>
+	<classpathentry kind="lib" path="Project Manager Files/lib/cucumber-picocontainer-5.1.0.jar"/>
+	<classpathentry kind="lib" path="Project Manager Files/lib/cucumber-plugin-5.1.0.jar"/>
+	<classpathentry kind="lib" path="Project Manager Files/lib/datatable-3.2.1.jar"/>
+	<classpathentry kind="lib" path="Project Manager Files/lib/docstring-5.1.0.jar"/>
+	<classpathentry kind="lib" path="Project Manager Files/lib/hamcrest-core-1.3.jar"/>
+	<classpathentry kind="lib" path="Project Manager Files/lib/junit-4.13.jar"/>
+	<classpathentry kind="lib" path="Project Manager Files/lib/mockito-core-3.2.4.jar"/>
+	<classpathentry kind="lib" path="Project Manager Files/lib/objenesis-2.6.jar"/>
+	<classpathentry kind="lib" path="Project Manager Files/lib/picocontainer-2.15.jar"/>
+	<classpathentry kind="lib" path="Project Manager Files/lib/tag-expressions-2.0.4.jar"/>
+	<classpathentry kind="output" path="Project Manager Files/target/classes"/>
+</classpath>
