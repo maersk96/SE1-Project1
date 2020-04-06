@@ -13,10 +13,14 @@ public class EmployeeSteps {
 
 	private ProjectManagerApp projectManagerApp;
 	private ErrorMessageHolder errorMessageHolder;
-	
-	public EmployeeSteps(ProjectManagerApp projectManagerApp, ErrorMessageHolder errorMessageHolder) {
+	private AdminSession adminSession;
+
+	public EmployeeSteps(ProjectManagerApp projectManagerApp,
+						 ErrorMessageHolder errorMessageHolder,
+						 AdminSession adminSession) {
 		this.projectManagerApp = projectManagerApp;
 		this.errorMessageHolder = errorMessageHolder;
+		this.adminSession = adminSession;
 	}
 
 	@Given("there exists an employee with initials {string}")
@@ -26,10 +30,10 @@ public class EmployeeSteps {
 
 	@Given("the employee with initials {string} is registered")
 	public void theEmployeeWithInitialsIsRegistered(String initials) throws OperationNotAllowedException {
-		projectManagerApp.login("ADMIN");
+		adminSession.start();
 		Employee employee = new Employee(initials);
 		projectManagerApp.addEmployee(employee);
-		projectManagerApp.logout();
+		adminSession.end();
 	}
 
 	@Given("there does not exist an employee with initials {string}")	
