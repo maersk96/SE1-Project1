@@ -52,7 +52,7 @@ public class ProjectManagerApp {
 	}
 
 	// Adds a project to the project manager, only the admin can do this
-	public void addProject() throws OperationNotAllowedException {
+	public String addProject() throws OperationNotAllowedException {
 		if (!adminLoggedIn()) {
 			throw new OperationNotAllowedException("Administrator login required");
 		}
@@ -61,6 +61,7 @@ public class ProjectManagerApp {
 		Project p = new Project(projectID, projectName);
 		projects.add(p);
 		increaseProjectNumber();
+		return p.getID();
 	}
 
 	public boolean containsEmployeeWithInitials(String initials) {
@@ -85,5 +86,26 @@ public class ProjectManagerApp {
 
 	public boolean containsProjectWithID(String projectID) {
 		return projects.stream().anyMatch(m -> m.getID().contentEquals(projectID));
+	}
+	
+	public Project getProjectWithID(String projectID) {
+		return projects.stream()
+				.filter(project -> projectID.equals(project.getID()))
+				.findFirst()
+				.orElse(null);
+	}
+
+	
+	public void assignEmployeeProjectLeader(String eInit, String projectID) throws OperationNotAllowedException {
+		if (!adminLoggedIn()) {
+			throw new OperationNotAllowedException("Administrator login required");
+		}
+		Project p=getProjectWithID(projectID);
+		Employee e=getEmployeeWithInitials(eInit);
+		if (p!=null && e!=null) {
+			p.setProjectleader(e);;
+		}else {
+			throw new OperationNotAllowedException("Project or employee does not exist");
+		}
 	}
 }
