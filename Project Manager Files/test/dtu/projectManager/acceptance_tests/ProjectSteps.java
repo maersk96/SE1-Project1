@@ -74,5 +74,42 @@ public class ProjectSteps {
 	public void employeeIsNotProjectLeader(String projectID, String eInit) throws Exception {
 		assertFalse(projectManagerApp.getEmployeeWithInitials(eInit).equals(projectManagerApp.getProjectWithID(projectID).getProjectleader()));
 	}
+	
+	@Given("the employee with initials {string} is project leader for the project with the ID {string}")
+	public void givenEmployeeIsProjectLeader(String eInit, String projectID) throws Exception {
+		projectManagerApp.login("ADMIN");
+		projectManagerApp.assignEmployeeProjectLeader(eInit,projectID);
+		projectManagerApp.logout();
+	}
+	
+	@Given("the employee with initials {string} is not project leader for the project with the ID {string}")
+	public void givenEmployeeIsNotProjectLeader(String eInit, String projectID) throws Exception {
+		Project p=projectManagerApp.getProjectWithID(projectID);
+		if(p.getProjectleader()!=null) {
+		if(p.getProjectleader().getInitials()==eInit) {
+			projectManagerApp.login("ADMIN");
+			projectManagerApp.assignEmployeeProjectLeader("Unassigned",projectID);
+			projectManagerApp.logout();
+		}
+		}
+	}
+	
+	@When("the user adds an activity with the ID {string} to the project with the ID {string}")
+	public void userAddsActivityToProject(String activityID, String projectID) throws Exception {
+		try {
+			projectManagerApp.addActivityToProject(projectID, activityID);
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+	}
 
+	@Then("an activity with the ID {string} is added to the project with the ID {string}")
+	public void activityExists(String activityID, String projectID) throws Exception {
+		assertTrue(projectManagerApp.projectContainsActivityWithID(projectID, activityID));
+	}
+	
+	@Then("an activity with the ID {string} is not added to the project with the ID {string}")
+	public void activityExistsNot(String activityID, String projectID) throws Exception {
+		assertFalse(projectManagerApp.projectContainsActivityWithID(projectID, activityID));
+	}
 }

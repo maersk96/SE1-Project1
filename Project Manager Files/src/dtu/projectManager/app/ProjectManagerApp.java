@@ -108,4 +108,22 @@ public class ProjectManagerApp {
 			throw new OperationNotAllowedException("Project or employee does not exist");
 		}
 	}
+	
+	public void addActivityToProject(String projectID, String activityID) throws OperationNotAllowedException {
+		Project p=getProjectWithID(projectID);
+		if (p.getProjectleader()==null) {
+			throw new OperationNotAllowedException("Project Leader login required");
+		}
+		if (!p.getProjectleader().equals(currentUser)) {
+			throw new OperationNotAllowedException("Project Leader login required");
+		}
+		String activityName = "Unnamed";
+		Activity a = new Activity(activityID, activityName);
+		p.getActivities().add(a);
+	}
+	
+	public boolean projectContainsActivityWithID(String projectID, String activityID) {
+		Project p=getProjectWithID(projectID);
+		return p.getActivities().stream().anyMatch(m -> m.getID().contentEquals(activityID));
+	}
 }

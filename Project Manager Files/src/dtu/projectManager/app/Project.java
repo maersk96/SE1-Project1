@@ -1,10 +1,14 @@
 package dtu.projectManager.app;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Project {
 
     private String ID;
     private String name;
     private Employee projectleader;
+    private List<Activity> activities = new ArrayList<>();
 
     public Project(String ID, String name) {
         this.ID = ID;
@@ -30,6 +34,14 @@ public class Project {
 
 	public void setProjectleader(Employee projectleader) {
 		this.projectleader = projectleader;
+	}
+
+	public List<Activity> getActivities() {
+		return activities;
+	}
+
+	public void setActivities(List<Activity> activities) {
+		this.activities = activities;
 	}
 
 }
