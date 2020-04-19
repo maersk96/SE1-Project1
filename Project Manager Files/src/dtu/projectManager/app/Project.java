@@ -7,13 +7,13 @@ public class Project {
 
     private String ID;
     private String name;
-    private Employee projectleader;
+    private Employee projectLeader;
     private List<Activity> activities = new ArrayList<>();
 
-    public Project(String ID, String name) {
+    public Project(String ID) {
         this.ID = ID;
-        this.name = name;
-        setProjectleader(null);
+        this.name = "Unnamed";
+        setProjectLeader(null);
     }
 
     public String getID() {
@@ -28,17 +28,29 @@ public class Project {
         return name;
     }
 
-	public Employee getProjectleader() {
-		return projectleader;
+	public Employee getProjectLeader() {
+		return projectLeader;
 	}
 
-	public void setProjectleader(Employee projectleader) {
-		this.projectleader = projectleader;
+	public boolean hasProjectLeader() {
+        return projectLeader != null;
+    }
+
+	public boolean isProjectLeader(Employee employee) {
+        return employee.getInitials().equals(projectLeader.getInitials());
+    }
+
+	public void setProjectLeader(Employee projectLeader) {
+		this.projectLeader = projectLeader;
 	}
 
 	public List<Activity> getActivities() {
 		return activities;
 	}
+
+	public void addActivity(Activity activity) {
+        activities.add(activity);
+    }
 
 	public Activity getActivityWithID(String activityID) {
         return activities.stream()
@@ -51,4 +63,7 @@ public class Project {
 		this.activities = activities;
 	}
 
+    public boolean containsActivityWithID(String activityID) {
+        return getActivityWithID(activityID) != null;
+    }
 }

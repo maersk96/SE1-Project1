@@ -15,11 +15,9 @@ public class Activity {
     }
 
 	public void addAssignedEmployee(Employee e) throws OperationNotAllowedException {
-
 		if (containsEmployeeWithInitials(e.getInitials())) {
 			throw new OperationNotAllowedException("Employee is already assigned this activity");
 		}
-
 		assignedEmployees.add(e);
 	}
 

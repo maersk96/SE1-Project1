@@ -18,8 +18,8 @@ public class Employee {
         assignedActivities.add(a);
     }
 
-    public boolean containsActivityWithID(String ID) {
-        return assignedActivities.stream().anyMatch(m -> m.getID().contentEquals(ID));
+    public boolean containsActivityWithID(String activityID) {
+        return assignedActivities.stream().anyMatch(m -> m.getID().contentEquals(activityID));
     }
 
     public Employee(String initials) {
