@@ -40,6 +40,13 @@ public class Project {
 		return activities;
 	}
 
+	public Activity getActivityWithID(String activityID) {
+        return activities.stream()
+                .filter(activity -> activityID.equals(activity.getID()))
+                .findFirst()
+                .orElse(null);
+    }
+
 	public void setActivities(List<Activity> activities) {
 		this.activities = activities;
 	}

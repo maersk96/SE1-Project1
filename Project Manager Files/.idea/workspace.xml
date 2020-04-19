@@ -2,13 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c54818f2-4fca-46b6-b404-fee38d02f80e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/use_cases/detailed_use_cases/assign_employee_to_activity.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/app/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/app/Activity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/app/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/app/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/app/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/app/Project.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/app/ProjectManagerApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/app/ProjectManagerApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/dtu/projectManager/app/ProjectManagerApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dtu/projectManager/app/ProjectManagerApp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/cucumber/wikipedia.html/report.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/cucumber/wikipedia.html/report.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/EmployeeSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/EmployeeSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/LoginLogoutSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/LoginLogoutSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/use_cases/detailed_use_cases/add_employee.feature" beforeDir="false" afterPath="$PROJECT_DIR$/use_cases/detailed_use_cases/add_employee.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/use_cases/detailed_use_cases/user_login.feature" beforeDir="false" afterPath="$PROJECT_DIR$/use_cases/detailed_use_cases/user_login.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/dtu/projectManager/acceptance_tests/LoginLogoutSteps.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/dtu/projectManager/acceptance_tests/LoginLogoutSteps.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/ProjectSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/ProjectSteps.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,10 +43,15 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/library01_solution" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/use_cases/detailed_use_cases" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Lukas Andreasen\Documents\GitHub\SE1-Project1\Project Manager Files\use_cases\detailed_use_cases" />
+    </key>
   </component>
   <component name="RunManager" selected="JUnit.AcceptanceTest">
     <configuration name="Feature: add_project" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
@@ -188,25 +196,25 @@
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
     <state x="916" y="383" key="FileChooserDialogImpl/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585913728379" />
-    <state width="1398" height="209" key="GridCell.Tab.0.bottom" timestamp="1586016907207">
-      <screen x="0" y="23" width="1440" height="813" />
+    <state width="2517" height="295" key="GridCell.Tab.0.bottom" timestamp="1587310749912">
+      <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state width="2517" height="295" key="GridCell.Tab.0.bottom/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585997730240" />
+    <state width="2517" height="295" key="GridCell.Tab.0.bottom/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1587310749912" />
     <state width="1398" height="209" key="GridCell.Tab.0.bottom/0.23.1440.813@0.23.1440.813" timestamp="1586016907207" />
-    <state width="1398" height="209" key="GridCell.Tab.0.center" timestamp="1586016907205">
-      <screen x="0" y="23" width="1440" height="813" />
+    <state width="2517" height="295" key="GridCell.Tab.0.center" timestamp="1587310749912">
+      <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state width="2517" height="295" key="GridCell.Tab.0.center/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585997730240" />
+    <state width="2517" height="295" key="GridCell.Tab.0.center/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1587310749912" />
     <state width="1398" height="209" key="GridCell.Tab.0.center/0.23.1440.813@0.23.1440.813" timestamp="1586016907205" />
-    <state width="1398" height="209" key="GridCell.Tab.0.left" timestamp="1586016907205">
-      <screen x="0" y="23" width="1440" height="813" />
+    <state width="2517" height="295" key="GridCell.Tab.0.left" timestamp="1587310749912">
+      <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state width="2517" height="295" key="GridCell.Tab.0.left/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585997730240" />
+    <state width="2517" height="295" key="GridCell.Tab.0.left/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1587310749912" />
     <state width="1398" height="209" key="GridCell.Tab.0.left/0.23.1440.813@0.23.1440.813" timestamp="1586016907205" />
-    <state width="1398" height="209" key="GridCell.Tab.0.right" timestamp="1586016907206">
-      <screen x="0" y="23" width="1440" height="813" />
+    <state width="2517" height="295" key="GridCell.Tab.0.right" timestamp="1587310749912">
+      <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state width="2517" height="295" key="GridCell.Tab.0.right/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585997730240" />
+    <state width="2517" height="295" key="GridCell.Tab.0.right/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1587310749912" />
     <state width="1398" height="209" key="GridCell.Tab.0.right/0.23.1440.813@0.23.1440.813" timestamp="1586016907206" />
     <state x="992" y="257" key="MultipleFileMergeDialog" timestamp="1585992785230">
       <screen x="0" y="0" width="2560" height="1080" />

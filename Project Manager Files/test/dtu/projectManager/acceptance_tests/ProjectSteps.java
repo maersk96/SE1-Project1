@@ -112,4 +112,35 @@ public class ProjectSteps {
 	public void activityExistsNot(String activityID, String projectID) throws Exception {
 		assertFalse(projectManagerApp.projectContainsActivityWithID(projectID, activityID));
 	}
+
+	@Given("an activity with the ID {string} exists on the project with ID {string}")
+	public void activityExistsOnProject(String activityID, String projectID) throws Exception {
+		try {
+			projectManagerApp.addActivityToProject(projectID, activityID);
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+	}
+
+	@When("the user assigns the employee with initials {string} to the activity with ID {string} on the project with ID {string}")
+	public void userAssignsEmployeeToActivity(String employeeInitials, String activityID, String projectID) throws Exception {
+		try {
+			projectManagerApp.assignEmployeeToActivity(projectID, employeeInitials, activityID);
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+
+	}
+
+	@Then("the employee with initials {string} is assigned to the activity with ID {string} on the project with ID {string}")
+	public void employeeIsAssignedToActivity(String employeeInitials, String activityID, String projectID) throws Exception {
+		assertTrue(projectManagerApp.projectContainsActivityWithAssignedEmployee(projectID, activityID, employeeInitials));
+	}
+
+	@Then("the activity with ID {string} is assigned to the employee with initials {string}")
+	public void employeeIsAssignedToActivity(String activityID, String employeeInitials) throws Exception {
+		assertTrue(projectManagerApp.employeeContainsAssignedActivity(activityID, employeeInitials));
+	}
+
+
 }

@@ -95,7 +95,6 @@ public class ProjectManagerApp {
 				.orElse(null);
 	}
 
-	
 	public void assignEmployeeProjectLeader(String eInit, String projectID) throws OperationNotAllowedException {
 		if (!adminLoggedIn()) {
 			throw new OperationNotAllowedException("Administrator login required");
@@ -110,7 +109,7 @@ public class ProjectManagerApp {
 	}
 	
 	public void addActivityToProject(String projectID, String activityID) throws OperationNotAllowedException {
-		Project p=getProjectWithID(projectID);
+		Project p = getProjectWithID(projectID);
 		if (p.getProjectleader()==null) {
 			throw new OperationNotAllowedException("Project Leader login required");
 		}
@@ -125,5 +124,29 @@ public class ProjectManagerApp {
 	public boolean projectContainsActivityWithID(String projectID, String activityID) {
 		Project p=getProjectWithID(projectID);
 		return p.getActivities().stream().anyMatch(m -> m.getID().contentEquals(activityID));
+	}
+
+	public void assignEmployeeToActivity(String projectID, String employeeInitials, String activityID) throws OperationNotAllowedException {
+		Project p = getProjectWithID(projectID);
+		if (p.getProjectleader()==null) {
+			throw new OperationNotAllowedException("Project Leader login required");
+		}
+		if (!p.getProjectleader().equals(currentUser)) {
+			throw new OperationNotAllowedException("Project Leader login required");
+		}
+
+		getEmployeeWithInitials(employeeInitials).addAssignedActivity(p.getActivityWithID(activityID));
+		p.getActivityWithID(activityID).addAssignedEmployee(getEmployeeWithInitials(employeeInitials));
+	}
+
+	public boolean projectContainsActivityWithAssignedEmployee(String projectID, String activityID, String employeeInitials) {
+		Project p = getProjectWithID(projectID);
+		Activity a = p.getActivityWithID(activityID);
+		return a.getAssignedEmployees().stream().anyMatch(m -> m.getInitials().contentEquals(employeeInitials));
+	}
+
+	public boolean employeeContainsAssignedActivity(String activityID, String employeeInitials) {
+		Employee e = getEmployeeWithInitials(employeeInitials);
+		return e.getAssignedActivities().stream().anyMatch(m -> m.getID().contentEquals(activityID));
 	}
 }

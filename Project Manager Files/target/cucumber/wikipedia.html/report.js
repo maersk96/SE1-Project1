@@ -436,6 +436,107 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.uri("file:use_cases/detailed_use_cases/assign_employee_to_activity.feature");
+formatter.feature({
+  "name": "Assign employee to activity",
+  "description": "  Description: An employee is assigned to an activity\n  Actors: Project leader",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "Successfully assign an employee to an activity",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "a project with the ID \"2020-1\" exists",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.aProjectWithIDGiven(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee with initials \"HBO\" is registered",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeWithInitialsIsRegistered(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee with initials \"ABC\" is registered",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeWithInitialsIsRegistered(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee with initials \"ABC\" is project leader for the project with the ID \"2020-1\"",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.givenEmployeeIsProjectLeader(java.lang.String,java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user logs in with initials \"ABC\"",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserLogsInWithInitials(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "an activity with the ID \"0001\" exists on the project with ID \"2020-1\"",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.activityExistsOnProject(java.lang.String,java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user assigns the employee with initials \"HBO\" to the activity with ID \"0001\" on the project with ID \"2020-1\"",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.userAssignsEmployeeToActivity(java.lang.String,java.lang.String,java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee with initials \"HBO\" is assigned to the activity with ID \"0001\" on the project with ID \"2020-1\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.employeeIsAssignedToActivity(java.lang.String,java.lang.String,java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the activity with ID \"0001\" is assigned to the employee with initials \"HBO\"",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.employeeIsAssignedToActivity(java.lang.String,java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.uri("file:use_cases/detailed_use_cases/assign_project_leader.feature");
 formatter.feature({
   "name": "Assign Project Leader",
