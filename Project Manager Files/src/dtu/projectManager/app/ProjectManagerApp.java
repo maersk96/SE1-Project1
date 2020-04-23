@@ -48,15 +48,19 @@ public class ProjectManagerApp {
 	}
 
 	// Adds a project to the project manager, only the admin can do this
-	public String addProject() throws OperationNotAllowedException {
+	public String addProject(Project project) throws OperationNotAllowedException {
 		if (!adminLoggedIn()) {
 			throw new OperationNotAllowedException("Administrator login required");
 		}
-		String projectID = year + "-" + projectNumber;
-		Project p = new Project(projectID);
-		projects.add(p);
-		projectNumber ++;
-		return p.getID();
+		String projectID = generateProjectId();
+		project.setID(projectID);
+		projects.add(project);
+		projectNumber++;
+		return projectID;
+	}
+
+	public String generateProjectId() {
+		return year + "-" + String.format("%0" + 4 + "d", projectNumber);
 	}
 
 	public Employee getEmployeeWithInitials(String initials) {
@@ -96,27 +100,20 @@ public class ProjectManagerApp {
 		Project p = getProjectWithID(projectID);
 		Employee e = getEmployeeWithInitials(eInit);
 		if (p == null) {
-			throw new OperationNotAllowedException("Project" + projectID + "does not exist");
+			throw new OperationNotAllowedException("Project " + projectID + " does not exist");
 		}
 		if (e == null) {
-			throw new OperationNotAllowedException("Employee" + eInit + "does not exist");
+			throw new OperationNotAllowedException("Employee " + eInit + " does not exist");
 		}
 		p.setProjectLeader(e);
 	}
 	
-	public void addActivityToProject(String projectID, String activityID) throws OperationNotAllowedException {
+	public String addActivityToProject(String projectID, Activity activity) throws OperationNotAllowedException {
 		Project p = getProjectWithID(projectID);
-		if (!p.hasProjectLeader() || !p.isProjectLeader(currentUser)) {
-			throw new OperationNotAllowedException("Project Leader login required");
+		if ((p.hasProjectLeader() && p.isProjectLeader(currentUser)) || adminLoggedIn()) {
+			return p.addActivity(activity);
 		}
-		String activityName = "Unnamed";
-		Activity a = new Activity(activityID, activityName);
-		p.addActivity(a);
-	}
-	
-	public boolean projectContainsActivityWithID(String projectID, String activityID) {
-		Project p = getProjectWithID(projectID);
-		return p.containsActivityWithID(activityID);
+		throw new OperationNotAllowedException("Project Leader login required");
 	}
 
 	public void assignEmployeeToActivity(String projectID, String employeeInitials, String activityID) throws OperationNotAllowedException {
@@ -128,18 +125,5 @@ public class ProjectManagerApp {
 		Activity a = p.getActivityWithID(activityID);
 		e.addAssignedActivity(a);
 		a.addAssignedEmployee(e);
-	}
-
-	public boolean projectContainsActivityWithAssignedEmployee(String projectID, String activityID, String employeeInitials) {
-		Project p = getProjectWithID(projectID);
-		Activity a = p.getActivityWithID(activityID);
-		return a.containsEmployeeWithInitials(employeeInitials);
-	}
-
-	// funktioner som denne burde tage imod Employee og Activity som inputs og ikke ID's i thinkk :)
-	public boolean employeeContainsAssignedActivity(String employeeInitials, String activityID) {
-		Employee e = getEmployeeWithInitials(employeeInitials);
-		e.containsActivityWithID(activityID);
-		return e.containsActivityWithID(activityID);
 	}
 }

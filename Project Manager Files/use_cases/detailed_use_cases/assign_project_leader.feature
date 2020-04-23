@@ -3,17 +3,17 @@ Feature: Assign Project Leader
 	Actors: Admin
 
 Scenario: Assign a project leader successfully when logged in as admin
-	Given the employee with initials "ABC" is registered 
-	And a project with the ID "2020-1" exists
+	Given the employee with initials "ABC" is registered
+	And there is a project in the Project Manager
 	And the user is logged in as admin
-	When the employee with initials "ABC" is assigned as project leader for the project with the ID "2020-1"
-	Then the project with the ID "2020-1" has project leader with initials "ABC"
+	When the user assigns the employee with initials "ABC" as Project Leader of the project
+	Then the Project Leader of the project has the initials "ABC"
 
 Scenario: Assign a project leader when not admin
-	Given the employee with initials "HBO" is registered
-	And a project with the ID "2020-1" exists
+	Given there is a project in the Project Manager
+	And the employee with initials "HBO" is registered
 	And the employee with initials "ABC" is registered
 	And the user logs in with initials "HBO"
-	When the employee with initials "ABC" is assigned as project leader for the project with the ID "2020-1"
-	Then the project with the ID "2020-1" does not have a project leader with initials "ABC"
+	When the user assigns the employee with initials "ABC" as Project Leader of the project
+	Then the Project Leader of the project does not have the initials "ABC"
 	And the error message "Administrator login required" is given

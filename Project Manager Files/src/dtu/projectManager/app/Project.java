@@ -9,11 +9,16 @@ public class Project {
     private String name;
     private Employee projectLeader;
     private List<Activity> activities = new ArrayList<>();
+    private int activityNumber = 0;
 
-    public Project(String ID) {
-        this.ID = ID;
-        this.name = "Unnamed";
+    public Project(String name) {
+        this.ID = "";
+        this.name = name.equals("") ? "Untitled Project" : name;
         setProjectLeader(null);
+    }
+
+    public String generateActivityID() {
+        return ID + "_" + String.format("%0" + 4 + "d", activityNumber);
     }
 
     public String getID() {
@@ -37,7 +42,10 @@ public class Project {
     }
 
 	public boolean isProjectLeader(Employee employee) {
-        return employee.getInitials().equals(projectLeader.getInitials());
+        if (projectLeader != null) {
+            return employee.getInitials().equals(projectLeader.getInitials());
+        }
+        return false;
     }
 
 	public void setProjectLeader(Employee projectLeader) {
@@ -48,8 +56,12 @@ public class Project {
 		return activities;
 	}
 
-	public void addActivity(Activity activity) {
+	public String addActivity(Activity activity) {
+        String activityId = generateActivityID();
+        activity.setID(activityId);
         activities.add(activity);
+        activityNumber++;
+        return activityId;
     }
 
 	public Activity getActivityWithID(String activityID) {

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import dtu.projectManager.app.OperationNotAllowedException;
+import dtu.projectManager.app.Project;
 import dtu.projectManager.app.ProjectManagerApp;
 
 //import dtu.projectManager.app.OperationNotAllowedException;
@@ -111,7 +112,8 @@ public class UserInterface {
 		try {
 			switch(a.GetOption()) {
 			case "Make project":
-				this.p.addProject();
+				Project project = new Project("");
+				this.p.addProject(project);
 				break;
 			case "Assign project leader to a project":
 				this.p.assignEmployeeProjectLeader(a.GetArg()[0].toString(), a.GetArg()[1].toString());

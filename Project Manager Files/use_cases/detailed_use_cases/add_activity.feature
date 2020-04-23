@@ -3,17 +3,28 @@ Feature: Add activity
   Actors: Project leader
 
   Scenario: Add an activity successfully when project leader
-    Given a project with the ID "2020-1" exists
+    Given there is a project in the Project Manager
+    And there is an activity
     And the employee with initials "ABC" is registered
-    And the employee with initials "ABC" is project leader for the project with the ID "2020-1"
+    And the employee with initials "ABC" is Project Leader for the project
     And the user logs in with initials "ABC"
-    When the user adds an activity with the ID "0001" to the project with the ID "2020-1"
-    Then an activity with the ID "0001" is added to the project with the ID "2020-1"
+    When the user adds the activity to the project
+    Then the activity exists on the project
 
   Scenario: Add an activity when not project leader
-    Given a project with the ID "2020-1" exists
+    Given there is a project in the Project Manager
+    And there is an activity
     And the employee with initials "ABC" is registered
-    And the employee with initials "ABC" is not project leader for the project with the ID "2020-1"
     And the user logs in with initials "ABC"
-    When the user adds an activity with the ID "0001" to the project with the ID "2020-1"
-    Then an activity with the ID "0001" is not added to the project with the ID "2020-1"
+    When the user adds the activity to the project
+    Then the activity does not exist on the project
+    And the error message "Project Leader login required" is given
+
+  Scenario: Creating activity with start time and duration
+    Given there is an activity called "SE1" starting week 2 lasting for 13 weeks
+    Then the activity ends in week 14
+
+  Scenario: Creating activity around New Year
+    Given there is an activity called "New Year release" starting week 52 lasting for 2 weeks
+    Then the activity ends in week 1
+

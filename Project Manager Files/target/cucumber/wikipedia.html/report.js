@@ -10,11 +10,21 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "a project with the ID \"2020-1\" exists",
+  "name": "there is a project in the Project Manager",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.aProjectWithIDGiven(java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.thereIsAProjectInTheManager()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is an activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.thereIsAnActivity()"
 });
 formatter.result({
   "status": "passed"
@@ -30,11 +40,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the employee with initials \"ABC\" is project leader for the project with the ID \"2020-1\"",
+  "name": "the employee with initials \"ABC\" is Project Leader for the project",
   "keyword": "And "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.givenEmployeeIsProjectLeader(java.lang.String,java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.givenTheEmployeeWithInitialsIsProjectLeader(java.lang.String)"
 });
 formatter.result({
   "status": "passed"
@@ -50,21 +60,21 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user adds an activity with the ID \"0001\" to the project with the ID \"2020-1\"",
+  "name": "the user adds the activity to the project",
   "keyword": "When "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.userAddsActivityToProject(java.lang.String,java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserAddsTheActivityToTheProject()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "an activity with the ID \"0001\" is added to the project with the ID \"2020-1\"",
+  "name": "the activity exists on the project",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.activityExists(java.lang.String,java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theActivityExistsOnTheProject()"
 });
 formatter.result({
   "status": "passed"
@@ -75,11 +85,21 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "a project with the ID \"2020-1\" exists",
+  "name": "there is a project in the Project Manager",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.aProjectWithIDGiven(java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.thereIsAProjectInTheManager()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is an activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.thereIsAnActivity()"
 });
 formatter.result({
   "status": "passed"
@@ -95,16 +115,6 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the employee with initials \"ABC\" is not project leader for the project with the ID \"2020-1\"",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.givenEmployeeIsNotProjectLeader(java.lang.String,java.lang.String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
   "name": "the user logs in with initials \"ABC\"",
   "keyword": "And "
 });
@@ -115,21 +125,81 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user adds an activity with the ID \"0001\" to the project with the ID \"2020-1\"",
+  "name": "the user adds the activity to the project",
   "keyword": "When "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.userAddsActivityToProject(java.lang.String,java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserAddsTheActivityToTheProject()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "an activity with the ID \"0001\" is not added to the project with the ID \"2020-1\"",
+  "name": "the activity does not exist on the project",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.activityExistsNot(java.lang.String,java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theActivityDoesNotExistsOnTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the error message \"Project Leader login required\" is given",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theErrorMessageIsGiven(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Creating activity with start time and duration",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "there is an activity called \"SE1\" starting week 2 lasting for 13 weeks",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.thereIsADetailedActivity(java.lang.String,int,int)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the activity ends in week 14",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theActivityEndsInWeek(int)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Creating activity around New Year",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "there is an activity called \"New Year release\" starting week 52 lasting for 2 weeks",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.thereIsADetailedActivity(java.lang.String,int,int)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the activity ends in week 1",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theActivityEndsInWeek(int)"
 });
 formatter.result({
   "status": "passed"
@@ -297,8 +367,18 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "the user is logged in as admin",
+  "name": "there is a project named \"Sample project\"",
   "keyword": "Given "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.thereIsAProjectWithName(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user is logged in as admin",
+  "keyword": "And "
 });
 formatter.match({
   "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserIsAlreadyLoggedInAsAdmin()"
@@ -307,31 +387,21 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "there are no projects in the project manager",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.thereAreNoProjectsInTheManager()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the user adds a project",
+  "name": "the user adds the project to the project manager",
   "keyword": "When "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserAddsAProject()"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserAddsTheProject()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "a project with the ID \"2020-1\" exists in the project manager",
+  "name": "the project exists in the project manager",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.aProjectWithIDExists(java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theProjectExistsInTheProjectManager()"
 });
 formatter.result({
   "status": "passed"
@@ -342,8 +412,18 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "the employee with initials \"HBO\" is registered",
+  "name": "there is a project named \"Sample project\"",
   "keyword": "Given "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.thereIsAProjectWithName(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee with initials \"HBO\" is registered",
+  "keyword": "And "
 });
 formatter.match({
   "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeWithInitialsIsRegistered(java.lang.String)"
@@ -362,11 +442,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user adds a project",
+  "name": "the user adds the project to the project manager",
   "keyword": "When "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserAddsAProject()"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserAddsTheProject()"
 });
 formatter.result({
   "status": "passed"
@@ -397,21 +477,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user adds a project",
+  "name": "there are no projects in the project manager",
   "keyword": "And "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserAddsAProject()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "a project with the ID \"2020-1\" exists in the project manager",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.aProjectWithIDExists(java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.thereAreNoProjectsInTheManager()"
 });
 formatter.result({
   "status": "passed"
@@ -427,7 +497,27 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "a project with the ID \"2020-2\" exists in the project manager",
+  "name": "a project with the ID \"2020-0001\" exists in the Project Manager",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.aProjectWithIDExists(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user adds another project",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserAddsAnotherProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "a project with the ID \"2020-0002\" exists in the Project Manager",
   "keyword": "Then "
 });
 formatter.match({
@@ -448,11 +538,21 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "a project with the ID \"2020-1\" exists",
+  "name": "there is a project in the Project Manager",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.aProjectWithIDGiven(java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.thereIsAProjectInTheManager()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is an activity on the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theProjectHasAnActivity()"
 });
 formatter.result({
   "status": "passed"
@@ -478,11 +578,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the employee with initials \"ABC\" is project leader for the project with the ID \"2020-1\"",
+  "name": "the employee with initials \"ABC\" is Project Leader for the project",
   "keyword": "And "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.givenEmployeeIsProjectLeader(java.lang.String,java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.givenTheEmployeeWithInitialsIsProjectLeader(java.lang.String)"
 });
 formatter.result({
   "status": "passed"
@@ -498,41 +598,31 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "an activity with the ID \"0001\" exists on the project with ID \"2020-1\"",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.activityExistsOnProject(java.lang.String,java.lang.String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the user assigns the employee with initials \"HBO\" to the activity with ID \"0001\" on the project with ID \"2020-1\"",
+  "name": "the user assigns the employee with initials \"HBO\" to the activity",
   "keyword": "When "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.userAssignsEmployeeToActivity(java.lang.String,java.lang.String,java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserAssignsEmployeeToTheActivity(java.lang.String)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the employee with initials \"HBO\" is assigned to the activity with ID \"0001\" on the project with ID \"2020-1\"",
+  "name": "the employee with the initials \"HBO\" is assigned to the activity",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.employeeIsAssignedToActivity(java.lang.String,java.lang.String,java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theEmployeeWithInitialsIsAssignedToTheActivity(java.lang.String)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the activity with ID \"0001\" is assigned to the employee with initials \"HBO\"",
+  "name": "the activity is assigned to the employee with initials \"HBO\"",
   "keyword": "And "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.employeeIsAssignedToActivity(java.lang.String,java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theActivityIsAssignedToTheEmployeeWithInitials(java.lang.String)"
 });
 formatter.result({
   "status": "passed"
@@ -559,11 +649,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "a project with the ID \"2020-1\" exists",
+  "name": "there is a project in the Project Manager",
   "keyword": "And "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.aProjectWithIDGiven(java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.thereIsAProjectInTheManager()"
 });
 formatter.result({
   "status": "passed"
@@ -579,21 +669,21 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the employee with initials \"ABC\" is assigned as project leader for the project with the ID \"2020-1\"",
+  "name": "the user assigns the employee with initials \"ABC\" as Project Leader of the project",
   "keyword": "When "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.employeeAssignedProjectLeader(java.lang.String,java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserAssignsEmployeeWithInitialsAsProjectLeader(java.lang.String)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the project with the ID \"2020-1\" has project leader with initials \"ABC\"",
+  "name": "the Project Leader of the project has the initials \"ABC\"",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.employeeIsProjectLeader(java.lang.String,java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theProjectLeaderOfTheProjectHasTheInitials(java.lang.String)"
 });
 formatter.result({
   "status": "passed"
@@ -604,21 +694,21 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "the employee with initials \"HBO\" is registered",
+  "name": "there is a project in the Project Manager",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeWithInitialsIsRegistered(java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.thereIsAProjectInTheManager()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "a project with the ID \"2020-1\" exists",
+  "name": "the employee with initials \"HBO\" is registered",
   "keyword": "And "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.aProjectWithIDGiven(java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeWithInitialsIsRegistered(java.lang.String)"
 });
 formatter.result({
   "status": "passed"
@@ -644,21 +734,21 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the employee with initials \"ABC\" is assigned as project leader for the project with the ID \"2020-1\"",
+  "name": "the user assigns the employee with initials \"ABC\" as Project Leader of the project",
   "keyword": "When "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.employeeAssignedProjectLeader(java.lang.String,java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserAssignsEmployeeWithInitialsAsProjectLeader(java.lang.String)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the project with the ID \"2020-1\" does not have a project leader with initials \"ABC\"",
+  "name": "the Project Leader of the project does not have the initials \"ABC\"",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.employeeIsNotProjectLeader(java.lang.String,java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theProjectLeaderOfTheProjectDoesNotHaveTheInitials(java.lang.String)"
 });
 formatter.result({
   "status": "passed"

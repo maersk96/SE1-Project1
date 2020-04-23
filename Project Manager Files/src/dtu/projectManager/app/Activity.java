@@ -7,12 +7,17 @@ import java.util.List;
 public class Activity {
 	private String ID;
 	private String name;
+	private int startWeek;
+	private int endWeek;
 	private List<Employee> assignedEmployees = new ArrayList<>();
 
-	public Activity(String ID, String name) {
-        this.setID(ID);
-        this.setName(name);
-    }
+	public Activity(String name, int startWeek, int weeks) {
+		this.setStartWeek(startWeek);
+		this.setDuration(weeks);
+		this.ID = ID;
+		this.name = name;
+	}
+
 
 	public void addAssignedEmployee(Employee e) throws OperationNotAllowedException {
 		if (containsEmployeeWithInitials(e.getInitials())) {
@@ -45,4 +50,18 @@ public class Activity {
 		return assignedEmployees;
 	}
 
+	public int adjustWeek(int week) {
+		if (week < 1) return 1;
+		if (week > 52) return week - 52;
+		return week;
+	}
+	public void setStartWeek(int startWeek) { this.startWeek = adjustWeek(startWeek); }
+	public void setEndWeek(int endWeek) {
+		this.endWeek = adjustWeek(endWeek);
+	}
+	public void setDuration(int weeks) { setEndWeek(this.startWeek + weeks - 1); }
+
+	public int getEndWeek() {
+		return this.endWeek;
+	}
 }
