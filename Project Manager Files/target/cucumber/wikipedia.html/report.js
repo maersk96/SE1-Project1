@@ -763,6 +763,67 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.uri("file:use_cases/detailed_use_cases/see_available_employees.feature");
+formatter.feature({
+  "name": "See available employees",
+  "description": "\tDescription: See employees that do not exceed their active activities limit\n\tActors: Anyone",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "An employee is available, then adds one more activity and becomes unavailable",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "an employee registered in the Project Manager",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.anEmployeeRegisteredInTheProjectManager()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee is assigned to 19 active activities",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeIsAssignedToActivities(int)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee is available",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeIsAvailable()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee is assigned to 1 more active activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeIsAssignedToActivities(int)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee is unavailable",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeIsUnavailable()"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.uri("file:use_cases/detailed_use_cases/user_login.feature");
 formatter.feature({
   "name": "User Login",

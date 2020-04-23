@@ -112,18 +112,21 @@ public class ProjectManagerApp {
 		Project p = getProjectWithID(projectID);
 		if ((p.hasProjectLeader() && p.isProjectLeader(currentUser)) || adminLoggedIn()) {
 			return p.addActivity(activity);
+		} else {
+			throw new OperationNotAllowedException("Project Leader login required");
 		}
-		throw new OperationNotAllowedException("Project Leader login required");
 	}
 
 	public void assignEmployeeToActivity(String projectID, String employeeInitials, String activityID) throws OperationNotAllowedException {
 		Project p = getProjectWithID(projectID);
-		if (!p.hasProjectLeader() || !p.isProjectLeader(currentUser)) {
+		if ((p.hasProjectLeader() && p.isProjectLeader(currentUser)) || adminLoggedIn()) {
+			Employee e = getEmployeeWithInitials(employeeInitials);
+			Activity a = p.getActivityWithID(activityID);
+			e.addAssignedActivity(a);
+			a.addAssignedEmployee(e);
+		} else {
 			throw new OperationNotAllowedException("Project Leader login required");
 		}
-		Employee e = getEmployeeWithInitials(employeeInitials);
-		Activity a = p.getActivityWithID(activityID);
-		e.addAssignedActivity(a);
-		a.addAssignedEmployee(e);
 	}
+
 }

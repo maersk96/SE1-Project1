@@ -34,4 +34,7 @@ public class Employee {
         return assignedActivities;
     }
 
+    public boolean isAvailable() {
+        return assignedActivities.size() < 20;
+    }
 }
