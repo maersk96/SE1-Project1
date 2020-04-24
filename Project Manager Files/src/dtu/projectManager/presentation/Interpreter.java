@@ -55,8 +55,20 @@ public class Interpreter {
 //			case "rename project":
 				
 
-//			case "archive project":
+//			case "delete project":
 
+				
+//			case "list all activities":
+				
+				
+//			case "find projects where employee is leader":
+				
+			
+//			case "ask for assistance":
+			
+				
+//			case "register hours":
+				
 				
 			default: 
 				throw new OperationNotAllowedException("Not implemented yet");
