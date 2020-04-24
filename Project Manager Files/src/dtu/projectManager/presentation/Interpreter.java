@@ -43,11 +43,11 @@ public class Interpreter {
 				
 //			case "create employee":
 				
-			case "create project":
-				result = new Object[1];
-				result[0] = application.addProject();
-				this.printFeedback = false;
-				return result;
+//			case "create project":
+//				result = new Object[1];
+//				result[0] = application.addProject();
+//				this.printFeedback = false;
+//				return result;
 			
 //			case "assign project leader":
 				
