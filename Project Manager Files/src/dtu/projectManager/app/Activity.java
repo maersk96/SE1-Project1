@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Activity {
-	private String ID;
+	private String ID = "";
 	private String name;
 	private int startWeek;
 	private int endWeek;
@@ -14,7 +14,6 @@ public class Activity {
 	public Activity(String name, int startWeek, int weeks) {
 		this.setStartWeek(startWeek);
 		this.setDuration(weeks);
-		this.ID = ID;
 		this.name = name;
 	}
 
@@ -63,5 +62,8 @@ public class Activity {
 
 	public int getEndWeek() {
 		return this.endWeek;
+	}
+	public int getStartWeek() {
+		return this.startWeek;
 	}
 }

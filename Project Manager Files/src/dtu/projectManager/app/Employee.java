@@ -1,11 +1,14 @@
 package dtu.projectManager.app;
 
+import io.cucumber.java.en_old.Ac;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Employee {
 
+    private int ACTIVE_ACTIVITIES_LIMIT = 20;
     private String initials;
     private List<Activity> assignedActivities = new ArrayList<>();
 
@@ -37,4 +40,26 @@ public class Employee {
     public boolean isAvailable() {
         return assignedActivities.size() < 20;
     }
+
+    public List<Activity> getActivitiesInWeekInterval(int weekFrom, int weekTo) {
+        List<Activity> activities = new ArrayList<Activity>();
+        for (Activity a : assignedActivities) {
+            if (weekTo >= a.getStartWeek() && weekFrom <= a.getEndWeek()) {
+                activities.add(a);
+            }
+        }
+        return activities;
+    }
+    public List<Activity> getActivitiesInWeek(int week) {
+        return getActivitiesInWeekInterval(week, week);
+    }
+
+    public boolean canBeAssignedToActivity(Activity activity) {
+        return getActivitiesInWeekInterval(activity.getStartWeek(), activity.getEndWeek()).size() < ACTIVE_ACTIVITIES_LIMIT;
+    }
+
+    public boolean isAvailableInWeek(int week) {
+        return getActivitiesInWeek(week).size() < ACTIVE_ACTIVITIES_LIMIT;
+    }
+
 }
