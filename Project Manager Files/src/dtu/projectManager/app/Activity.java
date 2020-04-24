@@ -10,6 +10,7 @@ public class Activity {
 	private int startWeek;
 	private int endWeek;
 	private List<Employee> assignedEmployees = new ArrayList<>();
+	private int budgetHours=0;
 
 	public Activity(String name, int startWeek, int weeks) {
 		this.setStartWeek(startWeek);
@@ -63,5 +64,15 @@ public class Activity {
 
 	public int getEndWeek() {
 		return this.endWeek;
+	}
+
+
+	public int getBudgetHours() {
+		return budgetHours;
+	}
+
+
+	public void setBudgetHours(int budgetHours) {
+		this.budgetHours = budgetHours;
 	}
 }
