@@ -128,5 +128,13 @@ public class ProjectManagerApp {
 			throw new OperationNotAllowedException("Project Leader login required");
 		}
 	}
-
+	
+	public void budgetHoursInActivity(Project project, Activity activity, double bHours) throws OperationNotAllowedException {
+		if (project.hasProjectLeader() && project.isProjectLeader(currentUser) && project.getActivities().contains(activity)) {
+			activity.setBudgetHours(bHours);
+		} else {
+			throw new OperationNotAllowedException("Project Leader login required");
+		}
+	}
+	
 }

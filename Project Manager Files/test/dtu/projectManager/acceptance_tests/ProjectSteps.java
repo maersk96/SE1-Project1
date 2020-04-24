@@ -90,7 +90,7 @@ public class ProjectSteps {
 	@Given("there is an activity on the project")
 	public void theProjectHasAnActivity() throws Exception {
 		adminSession.start();
-		Activity activity = new Activity("Sample activity", 2, 13);
+		activity = new Activity("Sample activity", 2, 13);
 		activityId = projectManagerApp.addActivityToProject(projectId, activity);
 		adminSession.end();
 	}
@@ -211,8 +211,25 @@ public class ProjectSteps {
 		}
 		}
 	}
+	
+	@When("the budget {double} hours to the activity")
+	public void budgetHoursToActivity(double bHours) throws Exception {
+		try {
+			projectManagerApp.budgetHoursInActivity(project, activity, bHours);
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+	}
 
+	@Then("the activity has a budget of {double} hours")
+	public void activityHasBudgetHours(double bHours) throws Exception {
+		assertTrue(activity.getBudgetHours()+0.001>=bHours&&activity.getBudgetHours()-0.001<=bHours);
+	}
 
+	@Then("the activity has no budget hours")
+	public void activityHasNoBudgetHours() throws Exception {
+		assertTrue(activity.getBudgetHours()+0.001>=0.0&&activity.getBudgetHours()-0.001<=0.0);
+	}
 
 
 
