@@ -1,203 +1,85 @@
 package dtu.projectManager.presentation;
 
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import dtu.projectManager.app.OperationNotAllowedException;
-import dtu.projectManager.app.Project;
 import dtu.projectManager.app.ProjectManagerApp;
+import dtu.projectManager.presentation.menus.LoginMenu;
 
-//import dtu.projectManager.app.OperationNotAllowedException;
 
 public class UserInterface {
 
-	private Scanner sc;
-	ProjectManagerApp p;
+	private Menu State;
+	private Interpreter inputInterpreter;
+	private UIPrinter printer;
+	private UIScanner scanner;
 	
-	public UserInterface(Scanner sc) {
-		this.sc = sc;
-		this.p = new ProjectManagerApp();
-
+	public UserInterface(Scanner sc, ProjectManagerApp App) {
+		this.scanner = new UIScanner(sc);
+		this.printer = new UIPrinter();
+		this.inputInterpreter = new Interpreter(App);
+		this.State = new LoginMenu();
 	}
+
 	
-	public void test(MenuInfo menu) throws Exception {
-
-		try {
-			this.p.login("ADMIN");
-		} catch(OperationNotAllowedException e) {
-			e.printStackTrace();
-		}
-
+	public void AppSession() throws Exception {
+		
+		String input;
 		while (true)
 		{
+			this.printer.Print(this.State.GetMenuText());
+			input = this.scanner.GetUserInput();
 			
-//			MenuInfo menu = P.GetMenuInfo();
-			PrintMenu(menu);
-
-			Action a = new Action(GetUserAction(menu));
-			PrintTextBox(a.GetInfo());
-
-			Object[] v = GetUserArguments(a);		
-			a.SetArg(v);
+			if (input.equals("exit")) {
+				break;
+			}
 			
-			ExecuteAction(a);
+			if (input.equals("logout"))
+			{
+				ResetState();
+				continue;
+			}
+				
+			if (!this.State.ValidateInput(input)) {
+				PrintInputError();
+				continue;
+			}
 			
-			PrintTextBox(a.GetFeedback());
-
-			this.sc.nextLine();
-
-		}
+			this.State.SetInput(input);
 			
-	}
-		
-		
-	public String GetUserAction(MenuInfo menu) {
-		
-		String line;
-		int n;
-		int nOptions = menu.GetOptions().size();
- 		while (true)
- 		{
- 	 		line = this.sc.nextLine();
- 	 		try {
- 	 			n = Integer.parseInt(line.trim());
- 	 	 		if (n > 0 && n < nOptions)
- 		 		{
- 		 			String action = menu.GetOptions().get(n-1);
- 		 			return action;
- 		 		}
- 		 		else
- 		 			System.out.println("Please enter a number between "+ (nOptions>0 ? 1 : 0) + " and "+nOptions); 	 		
- 	 		}
- 	 		catch (NumberFormatException nfe)
- 	 	    {
- 	 			System.out.println("Please enter a number between "+ (nOptions>0 ? 1 : 0) + " and "+nOptions); 	 	    }
- 		}
- 		
-	}
-	
-	public Object[] GetUserArguments(Action a) {
-		
-		Object[] v = new Object[a.GetArgLength()];
-		while(true) {
-			String inputLine = this.sc.nextLine();
-			String[] arg = inputLine.split(" ");
-			if (arg.length == v.length) {
-				for (int i=0; i<v.length; i++) {
-					if (a.GetArgIsInt()[i]==true) {
-						try {
-							v[i]=Integer.parseInt(arg[i]);
-						} catch (NumberFormatException nfe) {
-			 	 			System.out.println("Input "+(i+1)+" has to be a number");
-			 			}
-					}
-					else
-					{
-						v[i]=arg[i];						
-					}
+			Object[] result = null;
+			if  (this.State.NeedsExecution()) {
+				String[] methodArguments = this.State.GetApplicationRequest();
+				result = this.inputInterpreter.CallMethod(methodArguments);
+				if (this.inputInterpreter.PrintFeedback()) {
+					this.printer.Print(this.inputInterpreter.GetFeedback());
+					this.scanner.WaitForUserConfirmation();					
 				}
-				return v;
 			}
-			else
-				System.out.println("Please enter "+v.length+" different arguments, seperated by space");
+			UpdateState(result);
 		}
 	}
 	
-		
 	
-	public void ExecuteAction(Action a) throws Exception {
-		
-		try {
-			switch(a.GetOption()) {
-			case "Make project":
-				Project project = new Project("");
-				this.p.addProject(project);
-				break;
-			case "Assign project leader to a project":
-				this.p.assignEmployeeProjectLeader(a.GetArg()[0].toString(), a.GetArg()[1].toString());
-				break;
-			case "Register hours to an activity":  //this.p.registerHours(a.GetArg()[0],a.GetArg()[1]);
-				break;
-				
-				
-			default: throw new Exception("Action "+a.GetOption()+" not recognized");
-			}
-			
-			a.AddSuccessFeedback();
-		} catch (OperationNotAllowedException e) {
-			a.AddErrorFeedback(e);
+	private void PrintInputError() {
+		List<String> errorMessage = this.State.GetInputSpecification();
+		this.printer.Print(errorMessage);
+		this.scanner.WaitForUserConfirmation();
+	}
+	
+	
+	private void UpdateState(Object[] result) throws Exception {
+		if (this.inputInterpreter.HadError()) {
+			this.State = this.State.RewindState();
+		}
+		else {
+			this.State = this.State.GetNextState(result);
 		}
 	}
 	
-	public void PrintMenu(MenuInfo Menu) {
-		
-			List<String> Options = Menu.GetOptions();
-			
-			List<String> Menutext = new ArrayList<String>();
-			
-			Menutext.add("Welcome "+Menu.GetUserName()+".");
-			Menutext.add("");
-			
-			Menutext.add("These are your options:");
-			
-			int i=1;
-			for (String s : Options)
-			{
-				Menutext.add(i+". "+s);
-				i++;
-			}
-			
-			Menutext.add("");
-			Menutext.add("Press a number to proceed.");
-			
-			PrintTextBox(Menutext);
-		}
-		
-		
-		public void PrintQuery() {
-			
-		}
-		
-		
-		
-		private void PrintTextBox(List<String> S) {
-			
-			int lines = S.size();
-			if (lines<1)
-				return;
-			
-			int i,j;
-			int l[] = new int[lines];
-			int l_max=0;
-			for (i=0; i< lines; i++)
-			{
-				l[i] = S.get(i).length();
-				if (l[i]>l_max)
-					l_max = l[i];
-	 		}
-			
-			PrintBoxLine(l_max);
-			
-			for (i=0; i<lines; i++)
-			{
-				System.out.print("| "+S.get(i));
-				for (j=0; j< (l_max-l[i]); j++)
-					System.out.print(" ");
-				System.out.print(" |\n");
-			}
-			
-			PrintBoxLine(l_max);
-					
-
-		}
-
-		private void PrintBoxLine(int length) {
-			System.out.print("+");
-			int i;
-			for (i=0; i<length+2; i++)
-				System.out.print("-");
-			System.out.print("+\n");		
-		}
+	private void ResetState() {
+		this.State = new LoginMenu();
 	}
+	
+}
