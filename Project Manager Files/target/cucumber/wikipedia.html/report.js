@@ -825,21 +825,21 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the budget 10 hours to the activity",
+  "name": "the budget 10.0 hours to the activity",
   "keyword": "When "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.budgetHoursToActivity(int)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.budgetHoursToActivity(double)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the activity has a budget of 10 hours",
+  "name": "the activity has a budget of 10.0 hours",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.activityHasBudgetHours(int)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.activityHasBudgetHours(double)"
 });
 formatter.result({
   "status": "passed"
@@ -914,7 +914,7 @@ formatter.step({
   "keyword": "When "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.budgetHoursToActivity(int)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.budgetHoursToActivity(double)"
 });
 formatter.result({
   "status": "passed"

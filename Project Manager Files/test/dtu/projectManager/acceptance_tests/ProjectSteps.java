@@ -212,8 +212,8 @@ public class ProjectSteps {
 		}
 	}
 	
-	@When("the budget {int} hours to the activity")
-	public void budgetHoursToActivity(int bHours) throws Exception {
+	@When("the budget {double} hours to the activity")
+	public void budgetHoursToActivity(double bHours) throws Exception {
 		try {
 			projectManagerApp.budgetHoursInActivity(project, activity, bHours);
 		} catch (OperationNotAllowedException e) {
@@ -221,14 +221,14 @@ public class ProjectSteps {
 		}
 	}
 
-	@Then("the activity has a budget of {int} hours")
-	public void activityHasBudgetHours(int bHours) throws Exception {
-		assertEquals(activity.getBudgetHours(),bHours);
+	@Then("the activity has a budget of {double} hours")
+	public void activityHasBudgetHours(double bHours) throws Exception {
+		assertTrue(activity.getBudgetHours()+0.001>=bHours&&activity.getBudgetHours()-0.001<=bHours);
 	}
 
 	@Then("the activity has no budget hours")
 	public void activityHasNoBudgetHours() throws Exception {
-		assertEquals(activity.getBudgetHours(),0);
+		assertTrue(activity.getBudgetHours()+0.001>=0.0&&activity.getBudgetHours()-0.001<=0.0);
 	}
 
 

@@ -129,7 +129,7 @@ public class ProjectManagerApp {
 		}
 	}
 	
-	public void budgetHoursInActivity(Project project, Activity activity, int bHours) throws OperationNotAllowedException {
+	public void budgetHoursInActivity(Project project, Activity activity, double bHours) throws OperationNotAllowedException {
 		if (project.hasProjectLeader() && project.isProjectLeader(currentUser) && project.getActivities().contains(activity)) {
 			activity.setBudgetHours(bHours);
 		} else {

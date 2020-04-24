@@ -8,8 +8,8 @@ Feature: Budget hours to an activity
     And the employee with initials "ABC" is registered
     And the employee with initials "ABC" is Project Leader for the project
     And the user logs in with initials "ABC"
-    When the budget 10 hours to the activity
-    Then the activity has a budget of 10 hours
+    When the budget 10.0 hours to the activity
+    Then the activity has a budget of 10.0 hours
 
   Scenario: Budget hours to an activity when not project leader
     Given there is a project in the Project Manager
