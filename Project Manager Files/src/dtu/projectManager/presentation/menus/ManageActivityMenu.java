@@ -5,36 +5,35 @@ import java.util.List;
 
 import dtu.projectManager.presentation.Menu;
 
-public class ManageProjectMenu extends Menu {
+public class ManageActivityMenu extends Menu {
 
 	private String username;
-	private String project;
+	private String activity;
 	private int choice;
 	
-	public ManageProjectMenu(String username, String project) {
+	public ManageActivityMenu(String username, String activity) {
 		this.username = username;
-		this.project = project;
+		this.activity = activity;
 	}
-
+	
 	@Override
 	protected List<String> GetStartText() {
 		List<String> startText = new ArrayList<String>();
 		
-		startText.add("You have selected the project: "+this.project);
+		startText.add("You have chosen activity "+this.activity);
 		startText.add("These are your options");
 		startText.add("");
 		return startText;
-
 	}
 
 	@Override
 	protected List<String> GetOptions() {
 		List<String> options = new ArrayList<String>();
 		
-		options.add("Assign project leader");
-		options.add("Rename project");
-		options.add("Delete project");
+		options.add("Assign hours");
+		options.add("Ask for assistance");
 		options.add("Return to main menu");
+
 		return options;
 	}
 
@@ -64,10 +63,7 @@ public class ManageProjectMenu extends Menu {
 
 	@Override
 	protected String GetMethodName() {
-		if (this.choice == 3)
-			return "delete project";
-		else
-			return null;
+		return null;
 	}
 
 	@Override
@@ -84,16 +80,16 @@ public class ManageProjectMenu extends Menu {
 
 	@Override
 	public Menu GetNextState(Object[] result) throws Exception {
+
 		if (this.choice == 1)
-			return new AssignLeaderMenu(this.username,this.project);
+			return new RegisterHoursMenu(this.username, this.activity);
 		if (this.choice == 2)
-			return new RenameProjectMenu(this.username,this.project);
+			return new AssistanceMenu(this.username, this.activity);
 		if (this.choice == 3)
-			return this;
-		if (this.choice == 4)
-			return new AdminMenu(this.username);
+			return new EmployeeMenu(this.username);
 		else
-			throw new Exception("Choice was not valid");	}
+			throw new Exception("Choice was not valid");
+	}
 
 	@Override
 	public Menu RewindState() {
@@ -102,10 +98,7 @@ public class ManageProjectMenu extends Menu {
 
 	@Override
 	public boolean NeedsExecution() {
-		if (this.choice == 3)
-			return true;
-		else 
-			return false;
+		return false;
 	}
 
 }

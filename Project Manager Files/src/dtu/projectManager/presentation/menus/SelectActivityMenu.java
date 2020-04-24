@@ -5,36 +5,36 @@ import java.util.List;
 
 import dtu.projectManager.presentation.Menu;
 
-public class ManageProjectMenu extends Menu {
+public class SelectActivityMenu extends Menu {
 
 	private String username;
-	private String project;
 	private int choice;
+	private String[] activities;
 	
-	public ManageProjectMenu(String username, String project) {
+	public SelectActivityMenu(String username, Object[] activities) {
 		this.username = username;
-		this.project = project;
-	}
+		this.activities = new String[activities.length];
+		for (int i=0; i<activities.length; i++)
+			this.activities[i]= activities[i].toString();
 
+	}
+	
 	@Override
 	protected List<String> GetStartText() {
 		List<String> startText = new ArrayList<String>();
 		
-		startText.add("You have selected the project: "+this.project);
-		startText.add("These are your options");
+		startText.add("These are all your activities");
 		startText.add("");
 		return startText;
-
 	}
 
 	@Override
 	protected List<String> GetOptions() {
 		List<String> options = new ArrayList<String>();
 		
-		options.add("Assign project leader");
-		options.add("Rename project");
-		options.add("Delete project");
-		options.add("Return to main menu");
+		for (int i=0; i<this.activities.length; i++) {
+			options.add(this.activities[i]);
+		}
 		return options;
 	}
 
@@ -42,7 +42,7 @@ public class ManageProjectMenu extends Menu {
 	protected List<String> GetEndText() {
 		List<String> endText = new ArrayList<String>();
 		endText.add("");
-		endText.add("Enter the number for what you want to do.");
+		endText.add("Enter the number for the activity you want to manage.");
 		return endText;
 	}
 
@@ -56,7 +56,7 @@ public class ManageProjectMenu extends Menu {
 		String[] emptyInput = new String[0];
 		return emptyInput;
 	}
-
+	
 	@Override
 	protected void SetInput(String choice) {
 		this.choice = Integer.parseInt(choice);
@@ -64,11 +64,9 @@ public class ManageProjectMenu extends Menu {
 
 	@Override
 	protected String GetMethodName() {
-		if (this.choice == 3)
-			return "delete project";
-		else
-			return null;
+		return null;
 	}
+	
 
 	@Override
 	public List<String> GetInputSpecification() {
@@ -84,16 +82,8 @@ public class ManageProjectMenu extends Menu {
 
 	@Override
 	public Menu GetNextState(Object[] result) throws Exception {
-		if (this.choice == 1)
-			return new AssignLeaderMenu(this.username,this.project);
-		if (this.choice == 2)
-			return new RenameProjectMenu(this.username,this.project);
-		if (this.choice == 3)
-			return this;
-		if (this.choice == 4)
-			return new AdminMenu(this.username);
-		else
-			throw new Exception("Choice was not valid");	}
+		return new ManageActivityMenu(this.username,this.activities[this.choice-1]);
+	}
 
 	@Override
 	public Menu RewindState() {
@@ -102,10 +92,7 @@ public class ManageProjectMenu extends Menu {
 
 	@Override
 	public boolean NeedsExecution() {
-		if (this.choice == 3)
-			return true;
-		else 
-			return false;
-	}
+		return false;
+		}
 
 }
