@@ -130,10 +130,10 @@ public class ProjectManagerApp {
 		Project p = getProjectWithID(projectID);
 		Employee e = getEmployeeWithInitials(eInit);
 		if (p == null) {
-			throw new OperationNotAllowedException("Project " + projectID + " does not exist");
+			throw new OperationNotAllowedException("Project does not exist");
 		}
 		if (e == null) {
-			throw new OperationNotAllowedException("Employee " + eInit + " does not exist");
+			throw new OperationNotAllowedException("Employee does not exist");
 		}
 		p.setProjectLeader(e);
 	}

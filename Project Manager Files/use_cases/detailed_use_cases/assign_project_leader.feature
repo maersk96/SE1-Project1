@@ -17,3 +17,20 @@ Scenario: Assign a project leader when not admin
 	When the user assigns the employee with initials "ABC" as Project Leader of the project
 	Then the Project Leader of the project does not have the initials "ABC"
 	And the error message "Administrator login required" is given
+
+Scenario: Assign a project leader to unexisting project
+	Given the user is logged in as admin
+	And the employee with initials "ABC" is registered
+	And there is a project named "Sample project"
+	And the project does not exist in the Project Manager
+	When the user assigns the employee with initials "ABC" as Project Leader of the project
+	Then the error message "Project does not exist" is given
+	
+Scenario: Assign an unexisting employee as project leader
+	Given the user is logged in as admin
+	And there does not exist an employee with initials "ABC"
+	And there is a project in the Project Manager
+	When the user assigns the employee with initials "ABC" as Project Leader of the project
+	Then the error message "Employee does not exist" is given
+	
+	

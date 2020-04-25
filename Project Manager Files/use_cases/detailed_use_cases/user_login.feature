@@ -23,3 +23,7 @@ Scenario: User logs out
 	And the user is logged in with initials "JFK"
 	When the user logs out
 	Then the user is not logged in
+	
+Scenario: If no one is logged in, the admin is not logged in
+	When the user is not logged in
+	Then the user is not logged in as admin

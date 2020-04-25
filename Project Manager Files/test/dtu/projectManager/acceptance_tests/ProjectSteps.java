@@ -43,14 +43,12 @@ public class ProjectSteps {
 	}
 	@Then("the project (exists)(is still) in the Project Manager")
 	public void theProjectExistsInTheProjectManager() throws Exception {
-		Project existingProject = projectManagerApp.getProjectWithID(projectId);
-		assertEquals(project.getName(), existingProject.getName());
+		assertTrue(projectManagerApp.containsProjectWithID(projectId));
 	}
 	
 	@Given("the project (does not exist in)(is removed from) the Project Manager")
 	public void theProjectDoesNotExistInTheProjectManager() {
-		Project existingProject = projectManagerApp.getProjectWithID(projectId);
-		assertNull(existingProject);
+		assertFalse(projectManagerApp.containsProjectWithID(projectId));
 	}
 	
 	@Given("there is a project in the Project Manager")
