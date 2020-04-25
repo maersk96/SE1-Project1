@@ -19,6 +19,8 @@ public class ProjectSteps {
 	private String projectId;
 	private Activity activity;
 	private String activityId;
+	private String oldProjectName;
+	private String newProjectName;
 
 	public ProjectSteps(ProjectManagerApp projectManagerApp, ErrorMessageHolder errorMessageHolder, AdminSession adminSession) {
 		this.projectManagerApp = projectManagerApp;
@@ -44,6 +46,13 @@ public class ProjectSteps {
 		Project existingProject = projectManagerApp.getProjectWithID(projectId);
 		assertEquals(project.getName(), existingProject.getName());
 	}
+	
+	@Given("the project does not exist in the Project manager")
+	public void theProjectDoesNotExistInTheProjectManager() {
+		Project existingProject = projectManagerApp.getProjectWithID(projectId);
+		assertNull(existingProject);
+	}
+	
 	@Given("there is a project in the Project Manager")
 	public void thereIsAProjectInTheManager() throws Exception {
 		adminSession.start();
@@ -51,6 +60,30 @@ public class ProjectSteps {
 		projectId = projectManagerApp.addProject(project);
 		adminSession.end();
 	}
+	
+	@When("the user renames the project")
+	public void theUserRenamesTheProject() {
+	    this.oldProjectName = this.project.getName();
+	    this.newProjectName = "New Name";
+		try {
+			projectManagerApp.renameProject(this.project.getID(),this.newProjectName);
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+
+	}
+
+	@Then("the projects name is changed")
+	public void theProjectsNameIsChanged() {
+	    assertEquals(projectManagerApp.getProjectWithID(this.project.getID()).getName(),this.newProjectName);
+	}
+	
+	@Then("the projects name is unchanged")
+	public void theProjectsNameIsUnchanged() {
+		assertEquals(projectManagerApp.getProjectWithID(this.project.getID()).getName(),this.oldProjectName);
+	}
+
+
 	@Given("there is an activity")
 	public void thereIsAnActivity() throws Exception {
 		activity = new Activity("Sample activity", 2, 13);

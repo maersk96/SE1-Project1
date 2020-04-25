@@ -58,6 +58,22 @@ public class ProjectManagerApp {
 		projectNumber++;
 		return projectID;
 	}
+	
+	public void renameProject(String projectID, String newProjectName) throws OperationNotAllowedException {
+		if (!adminLoggedIn()) {
+			throw new OperationNotAllowedException("Administrator login required");
+		}
+		
+		Project p = getProjectWithID(projectID);
+		if (p == null) {
+			throw new OperationNotAllowedException("Project does not exist");
+		}
+		
+		p.setName(newProjectName);
+	}
+
+	
+	
 
 	public String generateProjectId() {
 		return year + "-" + String.format("%0" + 4 + "d", projectNumber);
@@ -146,5 +162,6 @@ public class ProjectManagerApp {
 				.findAny()
 				.orElse(null);
 	}
+
 	
 }
