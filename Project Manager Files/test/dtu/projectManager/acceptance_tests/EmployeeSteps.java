@@ -6,8 +6,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class EmployeeSteps {
 
@@ -60,26 +59,37 @@ public class EmployeeSteps {
 	public void anEmployeeRegisteredInTheProjectManager() throws OperationNotAllowedException {
 		theEmployeeWithInitialsIsRegistered("XYZ");
 	}
-	@Given("the employee is assigned to {int} (more )active activit(y)(ies)")
-	public void theEmployeeIsAssignedToActivities(int activitiesAmount) throws OperationNotAllowedException {
+	@Given("the employee is assigned to {int} (more )activit(y )(ies )in week {int}")
+	public void theEmployeeIsAssignedToActivities(int activities, int week) throws OperationNotAllowedException {
 		adminSession.start();
 		Project project = new Project("Sample project");
 		String projectId = projectManagerApp.addProject(project);
-		for(int i=1; i <= activitiesAmount; i++){
-			Activity activity = new Activity("Sample activity " + i, 1,52);
+		for(int i=1; i <= activities; i++){
+			Activity activity = new Activity("Sample activity " + i, week, 1);
 			String activityId = projectManagerApp.addActivityToProject(projectId, activity);
-			projectManagerApp.assignEmployeeToActivity(projectId, employee.getInitials(), activityId);
+			try {
+				projectManagerApp.assignEmployeeToActivity(projectId, employee.getInitials(), activityId);
+			} catch (OperationNotAllowedException e) {
+				errorMessageHolder.setErrorMessage(e.getMessage());
+			}
 		}
 		adminSession.end();
 	}
-	@Then("the employee is available")
-	public void theEmployeeIsAvailable() {
+	@Then("the employee is (still)(now) assigned to {int} activities in week {int}")
+	public void theEmployeeIsNowAssignedToActivities(int activities, int week) {
 		Employee e = projectManagerApp.getEmployeeWithInitials(employee.getInitials());
-		assertTrue(e.isAvailable());
+		int actualActivities = e.getActivitiesInWeek(week).size();
+		assertEquals(activities, actualActivities);
 	}
-	@Then("the employee is unavailable")
-	public void theEmployeeIsUnavailable() {
+
+	@Then("the employee is available in week {int}")
+	public void theEmployeeIsAvailable(int week) {
 		Employee e = projectManagerApp.getEmployeeWithInitials(employee.getInitials());
-		assertFalse(e.isAvailable());
+		assertTrue(e.isAvailableInWeek(week));
+	}
+	@Then("the employee is unavailable in week {int}")
+	public void theEmployeeIsUnavailable(int week) {
+		Employee e = projectManagerApp.getEmployeeWithInitials(employee.getInitials());
+		assertFalse(e.isAvailableInWeek(week));
 	}
 }

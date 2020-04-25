@@ -122,6 +122,9 @@ public class ProjectManagerApp {
 		if ((p.hasProjectLeader() && p.isProjectLeader(currentUser)) || adminLoggedIn()) {
 			Employee e = getEmployeeWithInitials(employeeInitials);
 			Activity a = p.getActivityWithID(activityID);
+			if (!e.isAvailableForActivity(a)) {
+				throw new OperationNotAllowedException("The employee is not available in this period");
+			}
 			e.addAssignedActivity(a);
 			a.addAssignedEmployee(e);
 		} else {
@@ -135,6 +138,13 @@ public class ProjectManagerApp {
 		} else {
 			throw new OperationNotAllowedException("Project Leader login required");
 		}
+	}
+
+	public List<Employee> getAvailableEmployees(int week) {
+		return (List<Employee>) employees.stream()
+				.filter(employee -> employee.isAvailableInWeek(week))
+				.findAny()
+				.orElse(null);
 	}
 	
 }

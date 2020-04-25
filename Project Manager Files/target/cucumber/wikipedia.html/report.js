@@ -951,41 +951,96 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the employee is assigned to 19 active activities",
+  "name": "the employee is assigned to 19 activities in week 3",
   "keyword": "And "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeIsAssignedToActivities(int)"
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeIsAssignedToActivities(int,int)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the employee is available",
+  "name": "the employee is available in week 3",
   "keyword": "And "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeIsAvailable()"
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeIsAvailable(int)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the employee is assigned to 1 more active activity",
+  "name": "the employee is assigned to 1 more activity in week 3",
   "keyword": "When "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeIsAssignedToActivities(int)"
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeIsAssignedToActivities(int,int)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the employee is unavailable",
+  "name": "the employee is unavailable in week 3",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeIsUnavailable()"
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeIsUnavailable(int)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "An employee is assigned while unavailable",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "an employee registered in the Project Manager",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.anEmployeeRegisteredInTheProjectManager()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee is assigned to 20 activities in week 10",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeIsAssignedToActivities(int,int)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee is assigned to 1 more activity in week 10",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeIsAssignedToActivities(int,int)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee is still assigned to 20 activities in week 10",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeIsNowAssignedToActivities(int,int)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the error message \"The employee is not available in this period\" is given",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theErrorMessageIsGiven(java.lang.String)"
 });
 formatter.result({
   "status": "passed"

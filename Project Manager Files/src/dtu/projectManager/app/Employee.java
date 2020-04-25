@@ -54,7 +54,7 @@ public class Employee {
         return getActivitiesInWeekInterval(week, week);
     }
 
-    public boolean canBeAssignedToActivity(Activity activity) {
+    public boolean isAvailableForActivity(Activity activity) {
         return getActivitiesInWeekInterval(activity.getStartWeek(), activity.getEndWeek()).size() < ACTIVE_ACTIVITIES_LIMIT;
     }
 
