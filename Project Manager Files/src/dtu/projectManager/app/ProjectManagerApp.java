@@ -72,7 +72,21 @@ public class ProjectManagerApp {
 		p.setName(newProjectName);
 	}
 
-	
+	public void deleteProject(String projectID) throws OperationNotAllowedException {
+		if (!adminLoggedIn()) {
+			throw new OperationNotAllowedException("Administrator login required");
+		}
+		
+		Project p = getProjectWithID(projectID);
+		if (p == null) {
+			throw new OperationNotAllowedException("Project does not exist");
+		}
+		
+		projects.removeIf(project -> projectID.equals(project.getID()));
+			
+		
+	}
+
 	
 
 	public String generateProjectId() {
@@ -162,6 +176,7 @@ public class ProjectManagerApp {
 				.findAny()
 				.orElse(null);
 	}
+
 
 	
 }

@@ -33,7 +33,7 @@ public class ProjectSteps {
 	public void thereIsAProjectWithName(String name) throws Exception {
 		project = new Project(name);
 	}
-	@When("the user adds the project to the project manager")
+	@When("the user adds the project to the Project Manager")
 	public void theUserAddsTheProject() throws Exception {
 		try {
 			projectId = projectManagerApp.addProject(project);
@@ -41,13 +41,13 @@ public class ProjectSteps {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		}
 	}
-	@Then("the project exists in the project manager")
+	@Then("the project (exists)(is still) in the Project Manager")
 	public void theProjectExistsInTheProjectManager() throws Exception {
 		Project existingProject = projectManagerApp.getProjectWithID(projectId);
 		assertEquals(project.getName(), existingProject.getName());
 	}
 	
-	@Given("the project does not exist in the Project manager")
+	@Given("the project (does not exist in)(is removed from) the Project Manager")
 	public void theProjectDoesNotExistInTheProjectManager() {
 		Project existingProject = projectManagerApp.getProjectWithID(projectId);
 		assertNull(existingProject);
@@ -82,6 +82,16 @@ public class ProjectSteps {
 	public void theProjectsNameIsUnchanged() {
 		assertEquals(projectManagerApp.getProjectWithID(this.project.getID()).getName(),this.oldProjectName);
 	}
+	
+	@When("the user deletes the project")
+	public void theUserDeletesTheProject() {
+		try {
+			projectManagerApp.deleteProject(this.project.getID());
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+	}
+
 
 
 	@Given("there is an activity")
@@ -166,7 +176,7 @@ public class ProjectSteps {
 		assertFalse(project.isProjectLeader(employee));
 	}
 
-	@Given("there are no projects in the project manager")
+	@Given("there are no projects in the Project Manager")
 	public void thereAreNoProjectsInTheManager() throws Exception {
 		assertEquals(0, projectManagerApp.amountOfProjects());
 	}
