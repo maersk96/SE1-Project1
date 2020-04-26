@@ -1,7 +1,7 @@
 package dtu.projectManager.app;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class Activity {
@@ -9,7 +9,7 @@ public class Activity {
 	private String name;
 	private int startWeek;
 	private int endWeek;
-	private List<Employee> assignedEmployees = new ArrayList<>();
+	private HashMap<Employee, Integer> employeesAndRegisteredHours = new HashMap<Employee, Integer>();
 	private double budgetHours=0;
 
 	public Activity(String name, int startWeek, int weeks) {
@@ -18,16 +18,15 @@ public class Activity {
 		this.name = name;
 	}
 
-
 	public void addAssignedEmployee(Employee e) throws OperationNotAllowedException {
 		if (containsEmployeeWithInitials(e.getInitials())) {
 			throw new OperationNotAllowedException("Employee is already assigned this activity");
 		}
-		assignedEmployees.add(e);
+		employeesAndRegisteredHours.put(e,0);
 	}
 
 	public boolean containsEmployeeWithInitials(String initials) {
-		return assignedEmployees.stream().anyMatch(m -> m.getInitials().contentEquals(initials));
+		return getAssignedEmployees().stream().anyMatch(m -> m.getInitials().contentEquals(initials));
 	}
 
 	public String getID() {
@@ -47,7 +46,8 @@ public class Activity {
 	}
 
 	public List<Employee> getAssignedEmployees() {
-		return assignedEmployees;
+		List<Employee> employeeList = new ArrayList<>(employeesAndRegisteredHours.keySet());
+		return employeeList;
 	}
 
 	public int adjustWeek(int week) {
@@ -73,8 +73,20 @@ public class Activity {
 		return budgetHours;
 	}
 
-
 	public void setBudgetHours(double bHours) {
 		this.budgetHours = bHours;
 	}
+
+	public void registerHours(Employee e, int hours) throws OperationNotAllowedException {
+		if (!containsEmployeeWithInitials(e.getInitials())) {
+			throw new OperationNotAllowedException("Employee is not assigned this activity");
+		}
+		int newHours = employeesAndRegisteredHours.get(e) + hours;
+		employeesAndRegisteredHours.replace(e,newHours);
+	}
+
+	public boolean containsEmployeeWithRegisteredHours(Employee e, int hours) {
+		return !(!containsEmployeeWithInitials(e.getInitials()) | employeesAndRegisteredHours.get(e) != hours);
+	}
+
 }

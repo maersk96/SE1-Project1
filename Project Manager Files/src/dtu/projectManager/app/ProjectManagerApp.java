@@ -177,6 +177,10 @@ public class ProjectManagerApp {
 				.orElse(null);
 	}
 
+	public void registerHours(Activity activity, Employee currentUser, int hours) throws OperationNotAllowedException {
+		activity.registerHours(currentUser, hours);
+	}
 
-	
+
+
 }
