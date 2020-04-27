@@ -89,4 +89,12 @@ public class Activity {
 		return !(!containsEmployeeWithInitials(e.getInitials()) | employeesAndRegisteredHours.get(e) != hours);
 	}
 
+	public int getTotalRegisteredHours() {
+		int sum = 0;
+		for (int hours : employeesAndRegisteredHours.values()) {
+			sum += hours;
+		}
+		return sum;
+	}
+
 }

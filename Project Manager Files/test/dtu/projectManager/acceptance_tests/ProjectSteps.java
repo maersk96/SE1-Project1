@@ -1,11 +1,9 @@
 package dtu.projectManager.acceptance_tests;
 
 import dtu.projectManager.app.*;
-import io.cucumber.java.an.E;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.en_old.Ac;
 
 import static org.junit.Assert.*;
 
@@ -305,6 +303,25 @@ public class ProjectSteps {
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		}
+	}
+
+	@Then("the activity is not assigned to the employee with initials {string}")
+	public void theActivityIsNotAssignedTheEmployeeWithInitials(String employeeInitials) {
+		assertFalse(projectManagerApp.getEmployeeWithInitials(employeeInitials).containsActivityWithID(activityId));
+	}
+
+	@When("the user requests the total hours registered to the activity")
+	public void userRequestsTotalRegisteredHoursFromActivity() throws Exception {
+		try {
+			projectManagerApp.totalRegisteredHoursToActivity(project, activity);
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+	}
+
+	@Then("the total hours registered to the activity should b {int}")
+	public void theTotalHoursRegisteredToTheActivityShouldBe(int hours) throws OperationNotAllowedException {
+		assertEquals(projectManagerApp.totalRegisteredHoursToActivity(project, activity), hours);
 	}
 
 }

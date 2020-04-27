@@ -34,6 +34,7 @@ public class LoginLogoutSteps {
 
 	@Given("the user is already logged in with initials {string}")
 	public void theUserIsAlreadyLoggedInWithInitials(String initials) throws OperationNotAllowedException {
+		projectManagerApp.logout();
 		projectManagerApp.login(initials);
 		assertEquals(projectManagerApp.getCurrentUser().getInitials(), initials);
 	}

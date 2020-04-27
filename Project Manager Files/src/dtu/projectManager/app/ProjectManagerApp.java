@@ -162,7 +162,7 @@ public class ProjectManagerApp {
 
 	public void assignEmployeeToActivity(String projectID, String employeeInitials, String activityID) throws OperationNotAllowedException {
 		Project p = getProjectWithID(projectID);
-		if ((p.hasProjectLeader() && p.isProjectLeader(currentUser)) || adminLoggedIn()) {
+		if ((p.hasProjectLeader() && p.isProjectLeader(currentUser)) || adminLoggedIn() || p.getActivityWithID(activityID).containsEmployeeWithInitials(currentUser.getInitials())) {
 			Employee e = getEmployeeWithInitials(employeeInitials);
 			Activity a = p.getActivityWithID(activityID);
 			if (!e.isAvailableForActivity(a)) {
@@ -171,7 +171,7 @@ public class ProjectManagerApp {
 			e.addAssignedActivity(a);
 			a.addAssignedEmployee(e);
 		} else {
-			throw new OperationNotAllowedException("Project Leader login required");
+			throw new OperationNotAllowedException("Project leader og assigned employee login required");
 		}
 	}
 	
@@ -195,6 +195,14 @@ public class ProjectManagerApp {
 		activity.registerHours(currentUser, hours);
 	}
 
-
+	public int totalRegisteredHoursToActivity(Project project, Activity activity) throws OperationNotAllowedException {
+		int hours = 0;
+		if (project.hasProjectLeader() && project.isProjectLeader(currentUser) && project.getActivities().contains(activity)) {
+			hours += activity.getTotalRegisteredHours();
+		} else {
+			throw new OperationNotAllowedException("Project Leader login required");
+		}
+		return hours;
+	}
 
 }
