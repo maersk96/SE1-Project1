@@ -18,7 +18,7 @@ public class CreateProjectMenu extends Menu {
 	}
 	
 	@Override
-	protected List<String> GetStartText() {
+	protected List<String> getStartText() {
 		List<String> startText = new ArrayList<String>();
 		
 		startText.add("A new project with ID "+this.projectID+" has been created.");
@@ -28,22 +28,22 @@ public class CreateProjectMenu extends Menu {
 	}
 
 	@Override
-	protected List<String> GetOptions() {
+	protected List<String> getOptions() {
 		return null;
 	}
 
 	@Override
-	protected List<String> GetEndText() {
+	protected List<String> getEndText() {
 		return null;
 	}
 
 	@Override
-	protected boolean HasOptions() {
+	protected boolean hasOptions() {
 		return false;
 	}
 
 	@Override
-	protected String[] GetMethodInput() {
+	protected String[] getMethodInput() {
 		String[] MethodInput = new String[2];
 		MethodInput[0] = this.projectID;
 		MethodInput[1] = this.projectname;
@@ -51,18 +51,18 @@ public class CreateProjectMenu extends Menu {
 	}
 	
 	@Override
-	protected void SetInput(String name) {
+	protected void setInput(String name) {
 		this.projectname = name;
 	}
 
 	@Override
-	protected String GetMethodName() {
+	protected String getMethodName() {
 		return "set project name";
 	}
 	
 
 	@Override
-	public List<String> GetInputSpecification() {
+	public List<String> getInputSpecification() {
 		List<String> inputSpecification = new ArrayList<String>();
 		inputSpecification.add("The input should be a string of letters specifying");
 		inputSpecification.add("the name of the new project.");
@@ -70,22 +70,22 @@ public class CreateProjectMenu extends Menu {
 	}
 
 	@Override
-	protected boolean IsInt() {
+	protected boolean isInt() {
 		return false;
 	}
 
 	@Override
-	public Menu GetNextState(Object[] result) throws Exception {
+	public Menu getNextState(Object[] result) throws Exception {
 		return new AdminMenu(this.username);
 	}
 
 	@Override
-	public Menu RewindState() {
+	public Menu rewindState() {
 		return this;
 	}
 
 	@Override
-	public boolean NeedsExecution() {
+	public boolean needsExecution() {
 		return true;
 	}
 

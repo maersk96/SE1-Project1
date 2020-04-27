@@ -19,7 +19,7 @@ public class RegisterHoursMenu extends Menu {
 	
 	// Special check for double
 	@Override
-	public boolean ValidateInput(String input) {
+	public boolean validateInput(String input) {
 
 		double x;
 		try {
@@ -37,7 +37,7 @@ public class RegisterHoursMenu extends Menu {
 	
 	
 	@Override
-	protected List<String> GetStartText() {
+	protected List<String> getStartText() {
 		List<String> startText = new ArrayList<String>();
 		
 		startText.add("Activity: "+this.activity);
@@ -48,22 +48,22 @@ public class RegisterHoursMenu extends Menu {
 	}
 
 	@Override
-	protected List<String> GetOptions() {
+	protected List<String> getOptions() {
 		return null;
 	}
 
 	@Override
-	protected List<String> GetEndText() {
+	protected List<String> getEndText() {
 		return null;
 	}
 
 	@Override
-	protected boolean HasOptions() {
+	protected boolean hasOptions() {
 		return false;
 	}
 
 	@Override
-	protected String[] GetMethodInput() {		
+	protected String[] getMethodInput() {		
 	String[] input = new String[3];
 	input[0] = this.username;
 	input[1] = this.activity;
@@ -73,17 +73,17 @@ public class RegisterHoursMenu extends Menu {
 	}
 
 	@Override
-	protected void SetInput(String hours) {
+	protected void setInput(String hours) {
 		this.hours = Double.parseDouble(hours);
 	}
 
 	@Override
-	protected String GetMethodName() {
+	protected String getMethodName() {
 		return "Register hours";
 	}
 
 	@Override
-	public List<String> GetInputSpecification() {
+	public List<String> getInputSpecification() {
 		List<String> inputSpecification = new ArrayList<String>();
 		inputSpecification.add("The input should be a positive number. If there is a fraction,");
 		inputSpecification.add("use a dot to seperate the decimals.");
@@ -91,22 +91,22 @@ public class RegisterHoursMenu extends Menu {
 	}
 
 	@Override
-	protected boolean IsInt() {
+	protected boolean isInt() {
 		return false;
 	}
 
 	@Override
-	public Menu GetNextState(Object[] result) throws Exception {
+	public Menu getNextState(Object[] result) throws Exception {
 		return new ManageActivityMenu(this.username,this.activity);
 	}
 
 	@Override
-	public Menu RewindState() {
+	public Menu rewindState() {
 		return new ManageActivityMenu(this.username,this.activity);
 	}
 
 	@Override
-	public boolean NeedsExecution() {
+	public boolean needsExecution() {
 		return true;
 	}
 }

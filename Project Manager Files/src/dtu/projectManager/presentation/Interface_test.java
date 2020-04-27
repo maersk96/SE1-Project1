@@ -22,7 +22,7 @@ public class Interface_test {
 		
 
 		try {
-			UI.AppSession();
+			UI.appSession();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

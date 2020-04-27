@@ -9,11 +9,11 @@ public class UIPrinter {
 		
 	}
 	
-	public void Print(List<String> Text) {
-		PrintTextBox(Text);
+	public void print(List<String> Text) {
+		printTextBox(Text);
 	}
 	
-	private void PrintTextBox(List<String> S) {
+	private void printTextBox(List<String> S) {
 		
 		int lines = S.size();
 		if (lines<1)
@@ -29,7 +29,7 @@ public class UIPrinter {
 				l_max = l[i];
  		}
 		
-		PrintBoxLine(l_max);
+		printBoxLine(l_max);
 		
 		for (i=0; i<lines; i++)
 		{
@@ -39,12 +39,12 @@ public class UIPrinter {
 			System.out.print(" |\n");
 		}
 		
-		PrintBoxLine(l_max);
+		printBoxLine(l_max);
 				
 
 	}
 	
-	private void PrintBoxLine(int length) {
+	private void printBoxLine(int length) {
 		System.out.print("+");
 		int i;
 		for (i=0; i<length+2; i++)

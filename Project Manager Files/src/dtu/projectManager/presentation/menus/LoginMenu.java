@@ -13,7 +13,7 @@ public class LoginMenu extends Menu {
 		
 	}
 	@Override
-	protected List<String> GetStartText() {
+	protected List<String> getStartText() {
 		List<String> startText = new ArrayList<String>();
 		
 		startText.add("Welcome to the login menu");
@@ -22,40 +22,40 @@ public class LoginMenu extends Menu {
 	}
 
 	@Override
-	protected List<String> GetOptions() {
+	protected List<String> getOptions() {
 		return null;
 	}
 
 	@Override
-	protected List<String> GetEndText() {
+	protected List<String> getEndText() {
 		return null;
 	}
 
 	@Override
-	protected boolean HasOptions() {
+	protected boolean hasOptions() {
 		return false;
 	}
 
 	@Override
-	protected String[] GetMethodInput() {
+	protected String[] getMethodInput() {
 		String[] input = new String[1];
 		input[0] = this.username;
 		return input;
 	}
 	
 	@Override
-	protected void SetInput(String username) {
+	protected void setInput(String username) {
 		this.username = username;
 	}
 
 	@Override
-	protected String GetMethodName() {
+	protected String getMethodName() {
 		return "login";
 	}
 	
 
 	@Override
-	public List<String> GetInputSpecification() {
+	public List<String> getInputSpecification() {
 		List<String> inputSpecification = new ArrayList<String>();
 		inputSpecification.add("The username should be a single string of letters,");
 		inputSpecification.add("for example your employee initials");
@@ -63,12 +63,12 @@ public class LoginMenu extends Menu {
 	}
 
 	@Override
-	protected boolean IsInt() {
+	protected boolean isInt() {
 		return false;
 	}
 
 	@Override
-	public Menu GetNextState(Object[] input) throws Exception {
+	public Menu getNextState(Object[] input) throws Exception {
 		boolean isAdmin = Boolean.valueOf(input[0].toString());
 		if (isAdmin)
 			return new AdminMenu(this.username);
@@ -77,12 +77,12 @@ public class LoginMenu extends Menu {
 	}
 
 	@Override
-	public Menu RewindState() {
+	public Menu rewindState() {
 		return this;
 	}
 
 	@Override
-	public boolean NeedsExecution() {
+	public boolean needsExecution() {
 		return true;
 	}
 

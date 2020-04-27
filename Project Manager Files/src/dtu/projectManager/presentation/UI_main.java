@@ -13,7 +13,7 @@ public class UI_main {
 		UserInterface UI = new UserInterface(sc,App);
 		
 		try {
-			UI.AppSession();
+			UI.appSession();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
