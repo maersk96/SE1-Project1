@@ -93,7 +93,10 @@ public class AdminMenu extends Menu {
 			String ProjectID = result[0].toString();
 			return new CreateProjectMenu(this.username, ProjectID);			
 		}
-		if (this.choice == 3 && result.length != 0) {
+		if (this.choice == 3) {
+			if (result.length == 0) {
+				return this;
+			}
 			String[] Projects = new String[result.length];
 			for (int i=0; i<result.length; i++) {
 				Projects[i] = result[i].toString();
