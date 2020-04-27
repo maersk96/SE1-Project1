@@ -14,7 +14,7 @@ public class ProjectManagerApp {
 	private Employee currentUser = null;
 
 	public ProjectManagerApp () {
-		Employee admin = new Employee("ADMIN");
+		Employee admin = new Employee("ADMIN", "Administrator");
 		employees.add(admin);
 		year = Calendar.getInstance().get(Calendar.YEAR);
 	}
@@ -186,8 +186,7 @@ public class ProjectManagerApp {
 	public List<Employee> getAvailableEmployees(int week) {
 		return (List<Employee>) employees.stream()
 				.filter(employee -> employee.isAvailableInWeek(week))
-				.findAny()
-				.orElse(null);
+				.collect(Collectors.toList());
 	}
 
 	

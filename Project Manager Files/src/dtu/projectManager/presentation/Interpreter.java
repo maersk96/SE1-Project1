@@ -54,7 +54,7 @@ public class Interpreter {
 				
 			case "create employee":
 				initials = methodArguments[1];
-				employee = new Employee(initials);
+				employee = new Employee(initials, "NAME");
 				result = new Object[0];
 				this.application.addEmployee(employee);
 				this.printFeedback = true;
