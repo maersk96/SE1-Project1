@@ -49,7 +49,13 @@ public class Interpreter {
 			case "list all projects":
 				projectList = this.application.getProjects();
 				result = projectList.toArray(new Object[0]);
-				this.printFeedback = false;
+				if (result.length == 0) {
+					this.printFeedback = true;
+					this.feedback.add("There are no existing projects to manage.");
+					this.feedback.add("Click enter to contonue.");
+				}
+				else
+					this.printFeedback = false;
 				return result;
 				
 			case "create employee":

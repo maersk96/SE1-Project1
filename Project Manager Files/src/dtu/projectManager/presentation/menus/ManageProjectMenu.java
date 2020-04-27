@@ -95,9 +95,7 @@ public class ManageProjectMenu extends Menu {
 			return new AssignLeaderMenu(this.username,this.project);
 		if (this.choice == 2)
 			return new RenameProjectMenu(this.username,this.project);
-		if (this.choice == 3)
-			return this;
-		if (this.choice == 4)
+		if (this.choice == 3 || this.choice == 4)
 			return new AdminMenu(this.username);
 		else
 			throw new Exception("Choice was not valid");	}
