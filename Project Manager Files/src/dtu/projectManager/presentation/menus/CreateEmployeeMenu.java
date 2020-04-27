@@ -15,7 +15,7 @@ public class CreateEmployeeMenu extends Menu {
 	}
 	
 	@Override
-	protected List<String> GetStartText() {
+	protected List<String> getStartText() {
 		List<String> startText = new ArrayList<String>();
 		
 		startText.add("Please enter the ID/initials of the new employee");
@@ -24,62 +24,62 @@ public class CreateEmployeeMenu extends Menu {
 	}
 
 	@Override
-	protected List<String> GetOptions() {
+	protected List<String> getOptions() {
 		return null;
 	}
 
 	@Override
-	protected List<String> GetEndText() {
+	protected List<String> getEndText() {
 		return null;
 	}
 
 	@Override
-	protected boolean HasOptions() {
+	protected boolean hasOptions() {
 		return false;
 	}
 
 	@Override
-	protected String[] GetMethodInput() {
+	protected String[] getMethodInput() {
 		String[] MethodInput = new String[1];
 		MethodInput[0] = this.EmployeeID;
 		return MethodInput;
 	}
 	
 	@Override
-	protected void SetInput(String id) {
+	protected void setInput(String id) {
 		this.EmployeeID = id;
 	}
 
 	@Override
-	protected String GetMethodName() {
-		return "create Employee";
+	protected String getMethodName() {
+		return "create employee";
 	}
 	
 
 	@Override
-	public List<String> GetInputSpecification() {
+	public List<String> getInputSpecification() {
 		List<String> inputSpecification = new ArrayList<String>();
 		inputSpecification.add("The input should be a string of letters identifying the new employee");
 		return inputSpecification;
 	}
 
 	@Override
-	protected boolean IsInt() {
+	protected boolean isInt() {
 		return false;
 	}
 
 	@Override
-	public Menu GetNextState(Object[] result) throws Exception {
+	public Menu getNextState(Object[] result) throws Exception {
 		return new AdminMenu(this.username);
 	}
 
 	@Override
-	public Menu RewindState() {
+	public Menu rewindState() {
 		return new AdminMenu(this.username);
 	}
 
 	@Override
-	public boolean NeedsExecution() {
+	public boolean needsExecution() {
 		return true;
 	}
 

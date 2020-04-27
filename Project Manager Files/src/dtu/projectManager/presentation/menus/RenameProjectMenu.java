@@ -20,7 +20,7 @@ public class RenameProjectMenu extends Menu {
 	}
 
 	@Override
-	protected List<String> GetStartText() {
+	protected List<String> getStartText() {
 		List<String> startText = new ArrayList<String>();
 		
 		startText.add("Enter the new name for the project:");
@@ -30,22 +30,22 @@ public class RenameProjectMenu extends Menu {
 	}
 
 	@Override
-	protected List<String> GetOptions() {
+	protected List<String> getOptions() {
 		return null;
 	}
 
 	@Override
-	protected List<String> GetEndText() {
+	protected List<String> getEndText() {
 		return null;
 	}
 
 	@Override
-	protected boolean HasOptions() {
+	protected boolean hasOptions() {
 		return false;
 	}
 
 	@Override
-	protected String[] GetMethodInput() {
+	protected String[] getMethodInput() {
 		String[] input = new String[2];
 		input[0] = this.project;
 		input[1] = this.projectName;
@@ -53,39 +53,39 @@ public class RenameProjectMenu extends Menu {
 	}
 
 	@Override
-	protected void SetInput(String input) {
+	protected void setInput(String input) {
 		this.projectName = input;
 	}
 
 	@Override
-	protected String GetMethodName() {
-		return "rename project";
+	protected String getMethodName() {
+		return "set project name";
 	}
 
 	@Override
-	public List<String> GetInputSpecification() {
+	public List<String> getInputSpecification() {
 		List<String> inputSpecification = new ArrayList<String>();
 		inputSpecification.add("The input should be a string of letters");
 		return inputSpecification;
 	}
 
 	@Override
-	protected boolean IsInt() {
+	protected boolean isInt() {
 		return false;
 	}
 
 	@Override
-	public Menu GetNextState(Object[] result) throws Exception {
+	public Menu getNextState(Object[] result) throws Exception {
 		return new ManageProjectMenu(this.username, this.project);
 	}
 
 	@Override
-	public Menu RewindState() {
+	public Menu rewindState() {
 		return new ManageProjectMenu(this.username, this.project);
 	}
 
 	@Override
-	public boolean NeedsExecution() {
+	public boolean needsExecution() {
 		return true;
 	}
 }

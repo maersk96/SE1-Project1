@@ -23,12 +23,12 @@ public class UserInterface {
 	}
 
 	
-	public void AppSession() throws Exception {
+	public void appSession() throws Exception {
 		
 		String input;
 		while (true)
 		{
-			this.printer.Print(this.State.GetMenuText());
+			this.printer.print(this.State.getMenuText());
 			input = this.scanner.GetUserInput();
 			
 			if (input.equals("exit")) {
@@ -41,19 +41,19 @@ public class UserInterface {
 				continue;
 			}
 				
-			if (!this.State.ValidateInput(input)) {
+			if (!this.State.validateInput(input)) {
 				PrintInputError();
 				continue;
 			}
 			
-			this.State.SetInput(input);
+			this.State.setInput(input);
 			
 			Object[] result = null;
-			if  (this.State.NeedsExecution()) {
-				String[] methodArguments = this.State.GetApplicationRequest();
-				result = this.inputInterpreter.CallMethod(methodArguments);
-				if (this.inputInterpreter.PrintFeedback()) {
-					this.printer.Print(this.inputInterpreter.GetFeedback());
+			if  (this.State.needsExecution()) {
+				String[] methodArguments = this.State.getApplicationRequest();
+				result = this.inputInterpreter.callMethod(methodArguments);
+				if (this.inputInterpreter.printFeedback()) {
+					this.printer.print(this.inputInterpreter.getFeedback());
 					this.scanner.WaitForUserConfirmation();					
 				}
 			}
@@ -63,18 +63,18 @@ public class UserInterface {
 	
 	
 	private void PrintInputError() {
-		List<String> errorMessage = this.State.GetInputSpecification();
-		this.printer.Print(errorMessage);
+		List<String> errorMessage = this.State.getInputSpecification();
+		this.printer.print(errorMessage);
 		this.scanner.WaitForUserConfirmation();
 	}
 	
 	
 	private void UpdateState(Object[] result) throws Exception {
-		if (this.inputInterpreter.HadError()) {
-			this.State = this.State.RewindState();
+		if (this.inputInterpreter.hadError()) {
+			this.State = this.State.rewindState();
 		}
 		else {
-			this.State = this.State.GetNextState(result);
+			this.State = this.State.getNextState(result);
 		}
 	}
 	

@@ -8,11 +8,11 @@ public abstract class Menu {
 	
 	
 	
-	public List<String> GetMenuText() {
+	public List<String> getMenuText() {
 		List<String> MenuText = new ArrayList<String>();
-		List<String> startText = GetStartText();
-		List<String> options = GetOptions();
-		List<String> endText = GetEndText();
+		List<String> startText = getStartText();
+		List<String> options = getOptions();
+		List<String> endText = getEndText();
 		
 		if (startText != null) {
 			for (String s : startText) {
@@ -35,17 +35,17 @@ public abstract class Menu {
 		return MenuText;
 	}
 	
-	protected abstract List<String> GetStartText();
-	protected abstract List<String> GetOptions();
-	protected abstract List<String> GetEndText();
-	protected abstract boolean HasOptions();
+	protected abstract List<String> getStartText();
+	protected abstract List<String> getOptions();
+	protected abstract List<String> getEndText();
+	protected abstract boolean hasOptions();
 
 
-	public String[] GetApplicationRequest() {
-		String[] input = GetMethodInput();
+	public String[] getApplicationRequest() {
+		String[] input = getMethodInput();
 		int inputLength = input.length;
 		String[] ApplicationRequest = new String[inputLength+1];
-		ApplicationRequest[0] = GetMethodName();
+		ApplicationRequest[0] = getMethodName();
 		
 		for (int i=0; i<inputLength; i++) {
 			ApplicationRequest[i+1] = input[i];
@@ -54,16 +54,16 @@ public abstract class Menu {
 	}
 
 
-	protected abstract String[] GetMethodInput();
-	protected abstract void SetInput(String input);
-	protected abstract String GetMethodName();
+	protected abstract String[] getMethodInput();
+	protected abstract void setInput(String input);
+	protected abstract String getMethodName();
 	
 	
-	public abstract List<String> GetInputSpecification();
+	public abstract List<String> getInputSpecification();
 	
 	
-	public boolean ValidateInput(String input) {
-		boolean isInt = IsInt();
+	public boolean validateInput(String input) {
+		boolean isInt = isInt();
 	
 		if (isInt) {
 			int i;
@@ -73,19 +73,19 @@ public abstract class Menu {
 			return false;
 			}
 
-			if (HasOptions())
-					if (i<1 || i> GetOptions().size())
+			if (hasOptions())
+					if (i<1 || i> getOptions().size())
 						return false;
 		}
 		
 		return true;
 	}
 	
-	protected abstract boolean IsInt();
+	protected abstract boolean isInt();
 	
 	
-	public abstract Menu GetNextState(Object[] result) throws Exception;
-	public abstract Menu RewindState();
+	public abstract Menu getNextState(Object[] result) throws Exception;
+	public abstract Menu rewindState();
 	
-	public abstract boolean NeedsExecution();
+	public abstract boolean needsExecution();
 }

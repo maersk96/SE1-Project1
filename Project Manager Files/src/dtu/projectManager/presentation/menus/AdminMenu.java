@@ -15,7 +15,7 @@ public class AdminMenu extends Menu {
 	}
 	
 	@Override
-	protected List<String> GetStartText() {
+	protected List<String> getStartText() {
 		List<String> startText = new ArrayList<String>();
 		
 		startText.add("Welcome, "+this.username);
@@ -25,7 +25,7 @@ public class AdminMenu extends Menu {
 	}
 
 	@Override
-	protected List<String> GetOptions() {
+	protected List<String> getOptions() {
 		List<String> options = new ArrayList<String>();
 		
 		options.add("Create a new employee");
@@ -35,7 +35,7 @@ public class AdminMenu extends Menu {
 	}
 
 	@Override
-	protected List<String> GetEndText() {
+	protected List<String> getEndText() {
 		List<String> endText = new ArrayList<String>();
 		endText.add("");
 		endText.add("Enter the number for the action you want to do.");
@@ -45,23 +45,23 @@ public class AdminMenu extends Menu {
 	}
 
 	@Override
-	protected boolean HasOptions() {
+	protected boolean hasOptions() {
 		return true;
 	}
 
 	@Override
-	protected String[] GetMethodInput() {
+	protected String[] getMethodInput() {
 		String[] emptyInput = new String[0];
 		return emptyInput;
 	}
 	
 	@Override
-	protected void SetInput(String choice) {
+	protected void setInput(String choice) {
 		this.choice = Integer.parseInt(choice);
 	}
 
 	@Override
-	protected String GetMethodName() {
+	protected String getMethodName() {
 		if (this.choice == 3)
 			return "list all projects";
 		if (this.choice == 2)
@@ -72,19 +72,19 @@ public class AdminMenu extends Menu {
 	
 
 	@Override
-	public List<String> GetInputSpecification() {
+	public List<String> getInputSpecification() {
 		List<String> inputSpecification = new ArrayList<String>();
-		inputSpecification.add("The input should be a number between 1 and "+GetOptions().size());
+		inputSpecification.add("The input should be a number between 1 and "+getOptions().size());
 		return inputSpecification;
 	}
 
 	@Override
-	protected boolean IsInt() {
+	protected boolean isInt() {
 		return true;
 	}
 
 	@Override
-	public Menu GetNextState(Object[] result) throws Exception {
+	public Menu getNextState(Object[] result) throws Exception {
 		
 		
 		if (this.choice == 1)
@@ -106,12 +106,12 @@ public class AdminMenu extends Menu {
 	}
 
 	@Override
-	public Menu RewindState() {
+	public Menu rewindState() {
 		return this;
 	}
 
 	@Override
-	public boolean NeedsExecution() {
+	public boolean needsExecution() {
 		if (this.choice == 2 || this.choice == 3)
 			return true;
 		else

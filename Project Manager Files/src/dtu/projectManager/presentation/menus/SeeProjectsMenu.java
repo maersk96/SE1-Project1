@@ -15,73 +15,73 @@ public class SeeProjectsMenu extends Menu {
 	}
 	
 	@Override
-	protected List<String> GetStartText() {
+	protected List<String> getStartText() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	protected List<String> GetOptions() {
+	protected List<String> getOptions() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	protected List<String> GetEndText() {
+	protected List<String> getEndText() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	protected boolean HasOptions() {
+	protected boolean hasOptions() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	protected String[] GetMethodInput() {
+	protected String[] getMethodInput() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	protected void SetInput(String input) {
+	protected void setInput(String input) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	protected String GetMethodName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<String> GetInputSpecification() {
+	protected String getMethodName() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	protected boolean IsInt() {
+	public List<String> getInputSpecification() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected boolean isInt() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public Menu GetNextState(Object[] result) throws Exception {
+	public Menu getNextState(Object[] result) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Menu RewindState() {
+	public Menu rewindState() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean NeedsExecution() {
+	public boolean needsExecution() {
 		// TODO Auto-generated method stub
 		return false;
 	}
