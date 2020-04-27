@@ -713,7 +713,17 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the error message \"Project Leader login required\" is given",
+  "name": "the activity is not assigned to the employee with initials \"HBO\"",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theActivityIsNotAssignedTheEmployeeWithInitials(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the error message \"Project leader og assigned employee login required\" is given",
   "keyword": "And "
 });
 formatter.match({
@@ -810,6 +820,216 @@ formatter.result({
 formatter.step({
   "name": "the error message \"Activity already has this employee assigned\" is given",
   "keyword": "Then "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theErrorMessageIsGiven(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Assign help to activity that you are assigned to, when logged in as employee",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "there is a project in the Project Manager",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.thereIsAProjectInTheManager()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is an activity on the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theProjectHasAnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee with initials \"HBO\" is registered",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeWithInitialsIsRegistered(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee with initials \"ABC\" is registered",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeWithInitialsIsRegistered(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee with initials \"BOB\" is registered",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeWithInitialsIsRegistered(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee with initials \"ABC\" is Project Leader for the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.givenTheEmployeeWithInitialsIsProjectLeader(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee with initials \"HBO\" is assigned to the activity by the project leader \"ABC\"",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.employeeWithInitialsIsAssignedActivity(java.lang.String,java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user logs in with initials \"HBO\"",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserLogsInWithInitials(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user assigns the employee with initials \"BOB\" to the activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserAssignsEmployeeToTheActivity(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee with the initials \"BOB\" is assigned to the activity",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theEmployeeWithInitialsIsAssignedToTheActivity(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the activity is assigned to the employee with initials \"BOB\"",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theActivityIsAssignedToTheEmployeeWithInitials(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Assign help to activity that you are not assigned to, when logged in as employee",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "there is a project in the Project Manager",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.thereIsAProjectInTheManager()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is an activity on the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theProjectHasAnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee with initials \"HBO\" is registered",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeWithInitialsIsRegistered(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee with initials \"BOB\" is registered",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeWithInitialsIsRegistered(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user logs in with initials \"HBO\"",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserLogsInWithInitials(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user assigns the employee with initials \"BOB\" to the activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserAssignsEmployeeToTheActivity(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee with the initials \"BOB\" is not assigned to the activity",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theEmployeeWithInitialsIsNotAssignedToTheActivity(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the activity is not assigned to the employee with initials \"BOB\"",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theActivityIsNotAssignedTheEmployeeWithInitials(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the error message \"Project leader og assigned employee login required\" is given",
+  "keyword": "And "
 });
 formatter.match({
   "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theErrorMessageIsGiven(java.lang.String)"
@@ -1717,6 +1937,256 @@ formatter.step({
 });
 formatter.match({
   "location": "dtu.projectManager.acceptance_tests.ProjectSteps.activityHasRegisteredHoursWithEmployee(int,java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Multiple employees register hours to activity, and project leader requests total registered hours",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "there is a project in the Project Manager",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.thereIsAProjectInTheManager()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is an activity on the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theProjectHasAnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee with initials \"HBO\" is registered",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeWithInitialsIsRegistered(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee with initials \"ABC\" is registered",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeWithInitialsIsRegistered(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee with initials \"BOB\" is registered",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeWithInitialsIsRegistered(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee with initials \"ABC\" is Project Leader for the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.givenTheEmployeeWithInitialsIsProjectLeader(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee with initials \"HBO\" is assigned to the activity by the project leader \"ABC\"",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.employeeWithInitialsIsAssignedActivity(java.lang.String,java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee with initials \"BOB\" is assigned to the activity by the project leader \"ABC\"",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.employeeWithInitialsIsAssignedActivity(java.lang.String,java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user is already logged in with initials \"HBO\"",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserIsAlreadyLoggedInWithInitials(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the use has registered 2 hours to the activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.givenEmployeeIsNotProjectLeader(int)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user is already logged in with initials \"BOB\"",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserIsAlreadyLoggedInWithInitials(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the use has registered 7 hours to the activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.givenEmployeeIsNotProjectLeader(int)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user is already logged in with initials \"ABC\"",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserIsAlreadyLoggedInWithInitials(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user requests the total hours registered to the activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.userRequestsTotalRegisteredHoursFromActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the total hours registered to the activity should b 9",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theTotalHoursRegisteredToTheActivityShouldBe(int)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Employee requests total registered hours, unsuccessfully",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "there is a project in the Project Manager",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.thereIsAProjectInTheManager()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is an activity on the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theProjectHasAnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee with initials \"HBO\" is registered",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeWithInitialsIsRegistered(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee with initials \"ABC\" is registered",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeWithInitialsIsRegistered(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee with initials \"ABC\" is Project Leader for the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.givenTheEmployeeWithInitialsIsProjectLeader(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee with initials \"HBO\" is assigned to the activity by the project leader \"ABC\"",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.employeeWithInitialsIsAssignedActivity(java.lang.String,java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user is already logged in with initials \"HBO\"",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserIsAlreadyLoggedInWithInitials(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user requests the total hours registered to the activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.userRequestsTotalRegisteredHoursFromActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the error message \"Project Leader login required\" is given",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theErrorMessageIsGiven(java.lang.String)"
 });
 formatter.result({
   "status": "passed"
