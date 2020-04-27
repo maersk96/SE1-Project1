@@ -15,7 +15,7 @@ public class Employee {
 
     public Employee(String initials, String name) {
         this.initials = initials;
-        this.name = name == "" ? "Anonymous" : name;
+        this.name = name.equals("") ? "Anonymous" : name;
     }
 
     public void addAssignedActivity(Activity a) throws OperationNotAllowedException {
