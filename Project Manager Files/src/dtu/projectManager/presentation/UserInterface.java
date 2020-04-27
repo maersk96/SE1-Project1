@@ -71,6 +71,7 @@ public class UserInterface {
 	
 	private void UpdateState(Object[] result) throws Exception {
 		if (this.inputInterpreter.hadError()) {
+			this.inputInterpreter.resetErrorState();
 			this.State = this.State.rewindState();
 		}
 		else {

@@ -3,6 +3,7 @@ package dtu.projectManager.app;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ProjectManagerApp {
 
@@ -112,6 +113,18 @@ public class ProjectManagerApp {
 		return projects.size();
 	}
 	
+	public List<String> getProjects() throws OperationNotAllowedException {
+		if (!adminLoggedIn()) {
+			throw new OperationNotAllowedException("Administrator login required");
+		}
+		
+		List<String> allProjects = new ArrayList<String>();
+		for (Project p : this.projects) {
+			allProjects.add(p.getID());
+		}
+		return allProjects;
+	}
+	
 	public Project getProjectWithID(String projectID) {
 		return projects.stream()
 				.filter(project -> projectID.equals(project.getID()))
@@ -177,6 +190,8 @@ public class ProjectManagerApp {
 				.orElse(null);
 	}
 
+	
+	
 	public void registerHours(Activity activity, Employee currentUser, int hours) throws OperationNotAllowedException {
 		activity.registerHours(currentUser, hours);
 	}

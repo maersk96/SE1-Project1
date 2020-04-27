@@ -53,8 +53,15 @@ public class ManageProjectMenu extends Menu {
 
 	@Override
 	protected String[] getMethodInput() {
-		String[] emptyInput = new String[0];
-		return emptyInput;
+		String[] input;
+		if (this.choice == 3)
+		{
+			input = new String[1];
+			input[0] = this.project;
+		}
+		else
+			input = new String[0];
+		return input;
 	}
 
 	@Override
