@@ -3,6 +3,8 @@ package dtu.projectManager.presentation.menus;
 import java.util.ArrayList;
 import java.util.List;
 
+import dtu.projectManager.dtu.EmployeeInfo;
+import dtu.projectManager.dtu.ProjectInfo;
 import dtu.projectManager.presentation.Menu;
 
 public class AdminMenu extends Menu {
@@ -10,8 +12,8 @@ public class AdminMenu extends Menu {
 	private String username;
 	private int choice;
 	
-	public AdminMenu(String username) {
-		this.username = username;
+	public AdminMenu(EmployeeInfo user) {
+		this.username = user.getInitials();
 	}
 	
 	@Override
@@ -50,8 +52,8 @@ public class AdminMenu extends Menu {
 	}
 
 	@Override
-	protected String[] getMethodInput() {
-		String[] emptyInput = new String[0];
+	protected Object[] getMethodInput() {
+		Object[] emptyInput = new Object[0];
 		return emptyInput;
 	}
 	
@@ -88,20 +90,21 @@ public class AdminMenu extends Menu {
 		
 		
 		if (this.choice == 1)
-			return new CreateEmployeeMenu(this.username);
+			return new CreateEmployeeMenu(new EmployeeInfo(this.username));
 		if (this.choice == 2) {
-			String ProjectID = result[0].toString();
-			return new CreateProjectMenu(this.username, ProjectID);			
+			ProjectInfo project = (ProjectInfo) result[0];
+			EmployeeInfo employee = new EmployeeInfo(this.username);
+			return new CreateProjectMenu(employee,project);			
 		}
 		if (this.choice == 3) {
 			if (result.length == 0) {
 				return this;
 			}
-			String[] Projects = new String[result.length];
+			ProjectInfo[] Projects = new ProjectInfo[result.length];
 			for (int i=0; i<result.length; i++) {
-				Projects[i] = result[i].toString();
+				Projects[i] = (ProjectInfo)result[i];
 			}
-			return new SelectProjectMenu(this.username, Projects);
+			return new SelectProjectMenu(new EmployeeInfo(this.username), Projects);
 			
 		}
 		else

@@ -20,7 +20,7 @@ public class EmployeeInfo {
     
     
     public Employee asEmployee() {
-    	return new Employee(this.initials);
+    	return new Employee(this.initials,"");
     }
 
 

@@ -50,7 +50,7 @@ public class UserInterface {
 			
 			Object[] result = null;
 			if  (this.State.needsExecution()) {
-				String[] methodArguments = this.State.getApplicationRequest();
+				Object[] methodArguments = this.State.getApplicationRequest();
 				result = this.inputInterpreter.callMethod(methodArguments);
 				if (this.inputInterpreter.printFeedback()) {
 					this.printer.print(this.inputInterpreter.getFeedback());

@@ -7,6 +7,8 @@ import dtu.projectManager.app.Employee;
 import dtu.projectManager.app.OperationNotAllowedException;
 import dtu.projectManager.app.Project;
 import dtu.projectManager.app.ProjectManagerApp;
+import dtu.projectManager.dtu.EmployeeInfo;
+import dtu.projectManager.dtu.ProjectInfo;
 
 public class Interpreter {
 
@@ -24,27 +26,26 @@ public class Interpreter {
 	}
 
 
-	public Object[] callMethod(String[] methodArguments) {
+	public Object[] callMethod(Object[] methodArguments) {
 		this.feedback.clear();
 		this.hadError = false;
 		this.printFeedback = true;
 		Object[] result;
-		String methodName = methodArguments[0];
-		
-		String username, projectID,projectName,initials;
+		String methodName = methodArguments[0].toString();
 		List<String> projectList;
-		Employee employee;
-		Project project;
+		EmployeeInfo user,employee, leader;
+		ProjectInfo project;
+		String projectName;
 		
 		try {
 			switch (methodName) {
 			case "login":
-				username = methodArguments[1];
-				application.login(username);
-				result = new Object[1];
-				result[0] = this.application.adminLoggedIn();
-				this.printFeedback = false;
-				return result;
+			    user = (EmployeeInfo)methodArguments[1];
+			    application.login(user.getInitials());
+			    result = new Object[1];
+			    result[0] = this.application.adminLoggedIn();
+			    this.printFeedback = false;
+			    return result;
 				
 			case "list all projects":
 				projectList = this.application.getProjects();
@@ -59,30 +60,31 @@ public class Interpreter {
 				return result;
 				
 			case "create employee":
-				initials = methodArguments[1];
-				employee = new Employee(initials, "NAME");
-				result = new Object[0];
-				this.application.addEmployee(employee);
-				this.printFeedback = true;
-				this.feedback.add("An employee with initials "+initials+" has been created");
-				this.feedback.add("");
-				this.feedback.add("Press enter to continue");
-				return result;
+			    employee = (EmployeeInfo)methodArguments[1];
+			    result = new Object[0];
+			    this.application.addEmployee(employee.asEmployee());
+			    this.printFeedback = true;
+			    this.feedback.add("An employee with initials "+employee.getInitials()+" has been created");
+			    this.feedback.add("");
+			    this.feedback.add("Press enter to continue");
+			    return result;
 				
 			case "create project":
-				result = new Object[1];
-				project = new Project("");
-				result[0] = this.application.addProject(project);
-				this.printFeedback = false;
-				return result;
+			    result = new Object[1];
+			    Project newProject = new Project("");
+			    ProjectInfo newProjectInfo = new ProjectInfo("");
+			    newProjectInfo.setID(this.application.addProject(newProject));
+			    result[0] = newProjectInfo;
+			    this.printFeedback = false;
+			    return result;
 			
 			case "assign project leader":
-				projectID = methodArguments[1];
-				initials = methodArguments[2];
+				project = (ProjectInfo)methodArguments[1];
+				leader = (EmployeeInfo)methodArguments[2];
 				result = new Object[0];
-				this.application.assignEmployeeProjectLeader(initials, projectID);
-				this.feedback.add("The employee with initials "+initials+" has been assigned");
-				this.feedback.add("as project leader for the project with id "+projectID);
+				this.application.assignEmployeeProjectLeader(leader.getInitials(), project.getID());
+				this.feedback.add("The employee with initials "+leader.getInitials()+" has been assigned");
+				this.feedback.add("as project leader for the project "+project.getName()+": "+project.getName());
 				this.feedback.add("");
 				this.feedback.add("Press enter to continue");
 				this.printFeedback = true;
@@ -90,10 +92,10 @@ public class Interpreter {
 								
 			case "set project name":
 				result = new Object[0];
-				projectID = methodArguments[1];
-				projectName = methodArguments[2];
-				this.application.renameProject(projectID,projectName);
-				this.feedback.add("Project "+projectID+" has been assigned the name");
+				project = (ProjectInfo)methodArguments[1];
+				projectName = methodArguments[2].toString();
+				this.application.renameProject(project.getID(),projectName);
+				this.feedback.add("Project "+project.getID()+" has been assigned the name");
 				this.feedback.add(projectName+".");
 				this.feedback.add("");
 				this.feedback.add("Press enter to continue");
@@ -101,9 +103,9 @@ public class Interpreter {
 				
 			case "delete project":
 				result = new Object[0];
-				projectID = methodArguments[1];
-				this.application.deleteProject(projectID);
-				this.feedback.add("Project "+projectID+" has been deleted");
+				project = (ProjectInfo)methodArguments[1];
+				this.application.deleteProject(project.getID());
+				this.feedback.add("Project "+project.getID()+" has been deleted");
 				this.feedback.add("");
 				this.feedback.add("Press enter to continue");
 				return result;

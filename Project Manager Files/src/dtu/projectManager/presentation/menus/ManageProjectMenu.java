@@ -3,24 +3,30 @@ package dtu.projectManager.presentation.menus;
 import java.util.ArrayList;
 import java.util.List;
 
+import dtu.projectManager.dtu.EmployeeInfo;
+import dtu.projectManager.dtu.ProjectInfo;
 import dtu.projectManager.presentation.Menu;
 
 public class ManageProjectMenu extends Menu {
 
 	private String username;
-	private String project;
+	private String projectName;
+	private String projectID;
 	private int choice;
+
 	
-	public ManageProjectMenu(String username, String project) {
-		this.username = username;
-		this.project = project;
+	public ManageProjectMenu(EmployeeInfo user, ProjectInfo project) {
+		this.username = user.getInitials();
+		this.projectName = project.getName();
+		this.projectID = project.getID();
 	}
 
 	@Override
 	protected List<String> getStartText() {
 		List<String> startText = new ArrayList<String>();
 		
-		startText.add("You have selected the project: "+this.project);
+		startText.add("You have selected the project: ");
+		startText.add(this.projectID+": "+this.projectName);
 		startText.add("These are your options");
 		startText.add("");
 		return startText;
@@ -52,15 +58,17 @@ public class ManageProjectMenu extends Menu {
 	}
 
 	@Override
-	protected String[] getMethodInput() {
-		String[] input;
+	protected Object[] getMethodInput() {
+		Object[] input;
 		if (this.choice == 3)
 		{
-			input = new String[1];
-			input[0] = this.project;
+			ProjectInfo project = new ProjectInfo(this.projectName);
+			project.setID(this.projectID);
+			input = new Object[1];
+			input[0] = project;
 		}
 		else
-			input = new String[0];
+			input = new Object[0];
 		return input;
 	}
 
@@ -91,12 +99,20 @@ public class ManageProjectMenu extends Menu {
 
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
-		if (this.choice == 1)
-			return new AssignLeaderMenu(this.username,this.project);
-		if (this.choice == 2)
-			return new RenameProjectMenu(this.username,this.project);
+		if (this.choice == 1) {
+			ProjectInfo project = new ProjectInfo(this.projectName);
+			project.setID(this.projectID);
+			EmployeeInfo user = new EmployeeInfo(this.username);
+			return new AssignLeaderMenu(user,project);
+		}
+		if (this.choice == 2) {
+			ProjectInfo project = new ProjectInfo(this.projectName);
+			project.setID(this.projectID);
+			EmployeeInfo user = new EmployeeInfo(this.username);
+			return new RenameProjectMenu(user,project);
+		}
 		if (this.choice == 3 || this.choice == 4)
-			return new AdminMenu(this.username);
+			return new AdminMenu(new EmployeeInfo(this.username));
 		else
 			throw new Exception("Choice was not valid");	}
 
