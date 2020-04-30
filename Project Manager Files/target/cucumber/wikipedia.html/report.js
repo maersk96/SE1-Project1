@@ -355,6 +355,47 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.uri("file:use_cases/detailed_use_cases/add_mock_data.feature");
+formatter.feature({
+  "name": "Add mock data",
+  "description": "  Description: Test data is added to the app.\n  Actors: UI",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "The UI adds test data for the user to see",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "mock data is generated",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.MockSteps.mockDataIsGenerated()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "some employees exist",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.MockSteps.someEmployeesExist()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "some projects exist",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.MockSteps.someProjectsExist()"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.uri("file:use_cases/detailed_use_cases/add_project.feature");
 formatter.feature({
   "name": "Create project",
