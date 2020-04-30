@@ -19,6 +19,13 @@ public class ProjectManagerApp {
 		year = Calendar.getInstance().get(Calendar.YEAR);
 	}
 
+	public void addMockData(int amount) throws OperationNotAllowedException {
+		login("ADMIN");
+		MockData mock = new MockData(this);
+		mock.generate(amount);
+		logout();
+	}
+
 	public void login(String initials) throws OperationNotAllowedException {
 		Employee newUser = getEmployeeWithInitials(initials);
 		if (newUser == null) {
@@ -124,6 +131,9 @@ public class ProjectManagerApp {
 		}
 		return allProjects;
 	}
+	public List<Project> getRealProjects() {
+		return projects;
+	}
 	
 	public Project getProjectWithID(String projectID) {
 		return projects.stream()
@@ -197,7 +207,7 @@ public class ProjectManagerApp {
 
 	public int totalRegisteredHoursToActivity(Project project, Activity activity) throws OperationNotAllowedException {
 		int hours = 0;
-		if (project.hasProjectLeader() && project.isProjectLeader(currentUser) && project.getActivities().contains(activity)) {
+		if (project.hasProjectLeader() && project.isProjectLeader(currentUser) && project.containsActivityWithID(activity.getID())) {
 			hours += activity.getTotalRegisteredHours();
 		} else {
 			throw new OperationNotAllowedException("Project Leader login required");
@@ -205,4 +215,7 @@ public class ProjectManagerApp {
 		return hours;
 	}
 
+	public List<Employee> getEmployees() {
+		return employees;
+	}
 }
