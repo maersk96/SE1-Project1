@@ -120,19 +120,13 @@ public class ProjectManagerApp {
 		return projects.size();
 	}
 	
-	public List<String> getProjects() throws OperationNotAllowedException {
-		if (!adminLoggedIn()) {
-			throw new OperationNotAllowedException("Administrator login required");
-		}
+	public List<Project> getProjects() {
 		
-		List<String> allProjects = new ArrayList<String>();
+		List<Project> allProjects = new ArrayList<Project>();
 		for (Project p : this.projects) {
-			allProjects.add(p.getID());
+			allProjects.add(p);
 		}
 		return allProjects;
-	}
-	public List<Project> getRealProjects() {
-		return projects;
 	}
 	
 	public Project getProjectWithID(String projectID) {

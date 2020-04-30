@@ -31,7 +31,7 @@ public class Interpreter {
 		this.printFeedback = true;
 		Object[] result;
 		String methodName = methodArguments[0].toString();
-		List<ProjectInfo> projectList;
+		List<Project> projectList;
 		EmployeeInfo user,employee, leader;
 		ProjectInfo project;
 		String projectName;
@@ -50,7 +50,12 @@ public class Interpreter {
 				
 			case "list all projects":
 				projectList = this.application.getProjects();
-				result = projectList.toArray(new Object[0]);
+				result = new Object[projectList.size()];
+				for (int i=0; i< result.length; i++) {
+					project = new ProjectInfo(projectList.get(i).getName());
+					project.setID(projectList.get(i).getID());
+					result[i] = project;
+				}
 				if (result.length == 0) {
 					this.printFeedback = true;
 					this.feedback.add("There are no existing projects to manage.");
