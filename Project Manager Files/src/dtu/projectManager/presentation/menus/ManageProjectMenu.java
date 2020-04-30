@@ -53,8 +53,15 @@ public class ManageProjectMenu extends Menu {
 
 	@Override
 	protected String[] getMethodInput() {
-		String[] emptyInput = new String[0];
-		return emptyInput;
+		String[] input;
+		if (this.choice == 3)
+		{
+			input = new String[1];
+			input[0] = this.project;
+		}
+		else
+			input = new String[0];
+		return input;
 	}
 
 	@Override
@@ -88,9 +95,7 @@ public class ManageProjectMenu extends Menu {
 			return new AssignLeaderMenu(this.username,this.project);
 		if (this.choice == 2)
 			return new RenameProjectMenu(this.username,this.project);
-		if (this.choice == 3)
-			return this;
-		if (this.choice == 4)
+		if (this.choice == 3 || this.choice == 4)
 			return new AdminMenu(this.username);
 		else
 			throw new Exception("Choice was not valid");	}

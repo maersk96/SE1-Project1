@@ -10,7 +10,13 @@ public class Employee {
 
     private int ACTIVE_ACTIVITIES_LIMIT = 20;
     private String initials;
+    private String name;
     private List<Activity> assignedActivities = new ArrayList<>();
+
+    public Employee(String initials, String name) {
+        this.initials = initials;
+        this.name = name.equals("") ? "Anonymous" : name;
+    }
 
     public void addAssignedActivity(Activity a) throws OperationNotAllowedException {
 
@@ -25,13 +31,11 @@ public class Employee {
         return assignedActivities.stream().anyMatch(m -> m.getID().contentEquals(activityID));
     }
 
-    public Employee(String initials) {
-        this.initials = initials;
-    }
 
     public String getInitials() {
         return initials;
     }
+    public String getName() { return name; }
 
     public List<Activity> getAssignedActivities() {
         return assignedActivities;

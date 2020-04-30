@@ -3,6 +3,7 @@ package dtu.projectManager.app;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ProjectManagerApp {
 
@@ -13,7 +14,7 @@ public class ProjectManagerApp {
 	private Employee currentUser = null;
 
 	public ProjectManagerApp () {
-		Employee admin = new Employee("ADMIN");
+		Employee admin = new Employee("ADMIN", "Administrator");
 		employees.add(admin);
 		year = Calendar.getInstance().get(Calendar.YEAR);
 	}
@@ -112,6 +113,18 @@ public class ProjectManagerApp {
 		return projects.size();
 	}
 	
+	public List<String> getProjects() throws OperationNotAllowedException {
+		if (!adminLoggedIn()) {
+			throw new OperationNotAllowedException("Administrator login required");
+		}
+		
+		List<String> allProjects = new ArrayList<String>();
+		for (Project p : this.projects) {
+			allProjects.add(p.getID());
+		}
+		return allProjects;
+	}
+	
 	public Project getProjectWithID(String projectID) {
 		return projects.stream()
 				.filter(project -> projectID.equals(project.getID()))
@@ -149,7 +162,7 @@ public class ProjectManagerApp {
 
 	public void assignEmployeeToActivity(String projectID, String employeeInitials, String activityID) throws OperationNotAllowedException {
 		Project p = getProjectWithID(projectID);
-		if ((p.hasProjectLeader() && p.isProjectLeader(currentUser)) || adminLoggedIn()) {
+		if ((p.hasProjectLeader() && p.isProjectLeader(currentUser)) || adminLoggedIn() || p.getActivityWithID(activityID).containsEmployeeWithInitials(currentUser.getInitials())) {
 			Employee e = getEmployeeWithInitials(employeeInitials);
 			Activity a = p.getActivityWithID(activityID);
 			if (!e.isAvailableForActivity(a)) {
@@ -158,7 +171,7 @@ public class ProjectManagerApp {
 			e.addAssignedActivity(a);
 			a.addAssignedEmployee(e);
 		} else {
-			throw new OperationNotAllowedException("Project Leader login required");
+			throw new OperationNotAllowedException("Project leader og assigned employee login required");
 		}
 	}
 	
@@ -173,10 +186,23 @@ public class ProjectManagerApp {
 	public List<Employee> getAvailableEmployees(int week) {
 		return (List<Employee>) employees.stream()
 				.filter(employee -> employee.isAvailableInWeek(week))
-				.findAny()
-				.orElse(null);
+				.collect(Collectors.toList());
 	}
 
-
 	
+	
+	public void registerHours(Activity activity, Employee currentUser, int hours) throws OperationNotAllowedException {
+		activity.registerHours(currentUser, hours);
+	}
+
+	public int totalRegisteredHoursToActivity(Project project, Activity activity) throws OperationNotAllowedException {
+		int hours = 0;
+		if (project.hasProjectLeader() && project.isProjectLeader(currentUser) && project.getActivities().contains(activity)) {
+			hours += activity.getTotalRegisteredHours();
+		} else {
+			throw new OperationNotAllowedException("Project Leader login required");
+		}
+		return hours;
+	}
+
 }

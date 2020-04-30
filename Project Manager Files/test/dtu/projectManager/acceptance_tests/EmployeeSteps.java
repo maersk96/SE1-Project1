@@ -33,7 +33,7 @@ public class EmployeeSteps {
 	@Given("the employee with initials {string} is registered")
 	public void theEmployeeWithInitialsIsRegistered(String initials) throws OperationNotAllowedException {
 		adminSession.start();
-		employee = new Employee(initials);
+		employee = new Employee(initials, "Name");
 		projectManagerApp.addEmployee(employee);
 		adminSession.end();
 	}
@@ -46,7 +46,7 @@ public class EmployeeSteps {
 
 	@When("the user adds an employee with initials {string}")
 	public void theUserAddsAnEmployeeWithInitials(String initials) throws OperationNotAllowedException {
-		Employee employee = new Employee(initials);
+		Employee employee = new Employee(initials, "Name");
 		try {
 			projectManagerApp.addEmployee(employee);
 		} catch (OperationNotAllowedException e) {

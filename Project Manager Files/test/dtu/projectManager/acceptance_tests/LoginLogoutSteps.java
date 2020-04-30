@@ -32,6 +32,13 @@ public class LoginLogoutSteps {
 		assertTrue(projectManagerApp.adminLoggedIn());
 	}
 
+	@Given("the user is already logged in with initials {string}")
+	public void theUserIsAlreadyLoggedInWithInitials(String initials) throws OperationNotAllowedException {
+		projectManagerApp.logout();
+		projectManagerApp.login(initials);
+		assertEquals(projectManagerApp.getCurrentUser().getInitials(), initials);
+	}
+
 	@Then("the user is now logged in as admin")
 	public void theUserIsLoggedInAsAdmin() throws Exception {
 		assertTrue(projectManagerApp.adminLoggedIn());

@@ -1,11 +1,9 @@
 package dtu.projectManager.acceptance_tests;
 
 import dtu.projectManager.app.*;
-import io.cucumber.java.an.E;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.en_old.Ac;
 
 import static org.junit.Assert.*;
 
@@ -148,6 +146,11 @@ public class ProjectSteps {
 		Activity activity = projectManagerApp.getProjectWithID(projectId).getActivityWithID(activityId);
 		assertTrue(activity.containsEmployeeWithInitials(employeeInitials));
 	}
+	@Then("the employee with the initials {string} is not assigned to the activity")
+	public void theEmployeeWithInitialsIsNotAssignedToTheActivity(String employeeInitials) {
+		Activity activity = projectManagerApp.getProjectWithID(projectId).getActivityWithID(activityId);
+		assertFalse(activity.containsEmployeeWithInitials(employeeInitials));
+	}
 	@Then("the activity is assigned to the employee with initials {string}")
 	public void theActivityIsAssignedToTheEmployeeWithInitials(String employeeInitials) {
 		Employee employee = projectManagerApp.getEmployeeWithInitials(employeeInitials);
@@ -177,6 +180,13 @@ public class ProjectSteps {
 	@Given("there are no projects in the Project Manager")
 	public void thereAreNoProjectsInTheManager() throws Exception {
 		assertEquals(0, projectManagerApp.amountOfProjects());
+	}
+
+	@Given("the employee with initials {string} is assigned to the activity by the project leader {string}")
+	public void employeeWithInitialsIsAssignedActivity(String employeeInitials, String projectLeaderInitials) throws Exception {
+		projectManagerApp.login(projectLeaderInitials);
+		projectManagerApp.assignEmployeeToActivity(projectId, employeeInitials, activityId);
+		projectManagerApp.logout();
 	}
 
 	@When("the user adds a project")
@@ -245,11 +255,11 @@ public class ProjectSteps {
 	public void givenEmployeeIsNotProjectLeader(String eInit, String projectID) throws Exception {
 		Project p = projectManagerApp.getProjectWithID(projectID);
 		if(p.getProjectLeader()!=null) {
-		if(p.getProjectLeader().getInitials()==eInit) {
-			adminSession.start();
-			projectManagerApp.assignEmployeeProjectLeader("Unassigned",projectID);
-			adminSession.end();
-		}
+			if(p.getProjectLeader().getInitials()==eInit) {
+				adminSession.start();
+				projectManagerApp.assignEmployeeProjectLeader("Unassigned",projectID);
+				adminSession.end();
+			}
 		}
 	}
 	
@@ -272,8 +282,46 @@ public class ProjectSteps {
 		assertTrue(activity.getBudgetHours()+0.001>=0.0&&activity.getBudgetHours()-0.001<=0.0);
 	}
 
+	@When("the user registers {int} hours to the activity")
+	public void userRegistersHoursToActivity(int hours) throws Exception {
+		try {
+			projectManagerApp.registerHours(activity, projectManagerApp.getCurrentUser(), hours);
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+	}
 
+	@Then("the activity has {int} hours registered with the employee with initials {string}")
+	public void activityHasRegisteredHoursWithEmployee(int hours, String employeeInitials) throws Exception {
+		assertTrue(activity.containsEmployeeWithRegisteredHours(projectManagerApp.getEmployeeWithInitials(employeeInitials), hours));
+	}
 
+	@Given("the use has registered {int} hours to the activity")
+	public void givenEmployeeIsNotProjectLeader(int hours) throws Exception {
+		try {
+			projectManagerApp.registerHours(activity, projectManagerApp.getCurrentUser(), hours);
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+	}
 
+	@Then("the activity is not assigned to the employee with initials {string}")
+	public void theActivityIsNotAssignedTheEmployeeWithInitials(String employeeInitials) {
+		assertFalse(projectManagerApp.getEmployeeWithInitials(employeeInitials).containsActivityWithID(activityId));
+	}
+
+	@When("the user requests the total hours registered to the activity")
+	public void userRequestsTotalRegisteredHoursFromActivity() throws Exception {
+		try {
+			projectManagerApp.totalRegisteredHoursToActivity(project, activity);
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+	}
+
+	@Then("the total hours registered to the activity should b {int}")
+	public void theTotalHoursRegisteredToTheActivityShouldBe(int hours) throws OperationNotAllowedException {
+		assertEquals(projectManagerApp.totalRegisteredHoursToActivity(project, activity), hours);
+	}
 
 }
