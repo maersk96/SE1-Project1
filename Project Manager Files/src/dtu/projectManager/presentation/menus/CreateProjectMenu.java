@@ -3,6 +3,8 @@ package dtu.projectManager.presentation.menus;
 import java.util.ArrayList;
 import java.util.List;
 
+import dtu.projectManager.dtu.EmployeeInfo;
+import dtu.projectManager.dtu.ProjectInfo;
 import dtu.projectManager.presentation.Menu;
 
 public class CreateProjectMenu extends Menu {
@@ -11,9 +13,9 @@ public class CreateProjectMenu extends Menu {
 	private String projectID;
 	private String projectname;
 	
-	public CreateProjectMenu(String username, String ProjectID) {
-		this.username = username;
-		this.projectID = ProjectID;
+	public CreateProjectMenu(EmployeeInfo user, ProjectInfo project) {
+		this.username = user.getInitials();
+		this.projectID = project.getID();
 
 	}
 	
@@ -43,9 +45,11 @@ public class CreateProjectMenu extends Menu {
 	}
 
 	@Override
-	protected String[] getMethodInput() {
-		String[] MethodInput = new String[2];
-		MethodInput[0] = this.projectID;
+	protected Object[] getMethodInput() {
+		Object[] MethodInput = new Object[2];
+		ProjectInfo project = new ProjectInfo("");
+		project.setID(this.projectID);
+		MethodInput[0] = project;
 		MethodInput[1] = this.projectname;
 		return MethodInput;
 	}
@@ -76,7 +80,7 @@ public class CreateProjectMenu extends Menu {
 
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
-		return new AdminMenu(this.username);
+		return new AdminMenu(new EmployeeInfo(this.username));
 	}
 
 	@Override

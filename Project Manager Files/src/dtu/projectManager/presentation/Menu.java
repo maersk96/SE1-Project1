@@ -41,10 +41,10 @@ public abstract class Menu {
 	protected abstract boolean hasOptions();
 
 
-	public String[] getApplicationRequest() {
-		String[] input = getMethodInput();
+	public Object[] getApplicationRequest() {
+		Object[] input = getMethodInput();
 		int inputLength = input.length;
-		String[] ApplicationRequest = new String[inputLength+1];
+		Object[] ApplicationRequest = new Object[inputLength+1];
 		ApplicationRequest[0] = getMethodName();
 		
 		for (int i=0; i<inputLength; i++) {
@@ -54,7 +54,7 @@ public abstract class Menu {
 	}
 
 
-	protected abstract String[] getMethodInput();
+	protected abstract Object[] getMethodInput();
 	protected abstract void setInput(String input);
 	protected abstract String getMethodName();
 	

@@ -51,7 +51,7 @@ public class ManageActivityMenu extends Menu {
 	}
 
 	@Override
-	protected String[] getMethodInput() {
+	protected Object[] getMethodInput() {
 		String[] emptyInput = new String[0];
 		return emptyInput;
 	}

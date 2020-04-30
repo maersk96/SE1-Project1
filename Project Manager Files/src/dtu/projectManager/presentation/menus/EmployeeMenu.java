@@ -50,7 +50,7 @@ public class EmployeeMenu extends Menu {
 	}
 
 	@Override
-	protected String[] getMethodInput() {
+	protected Object[] getMethodInput() {
 		String[] methodInput = new String[1];
 		methodInput[0] = this.username;
 		return methodInput;

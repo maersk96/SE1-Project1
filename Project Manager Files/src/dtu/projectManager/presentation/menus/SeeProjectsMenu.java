@@ -39,7 +39,7 @@ public class SeeProjectsMenu extends Menu {
 	}
 
 	@Override
-	protected String[] getMethodInput() {
+	protected Object[] getMethodInput() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -3,27 +3,32 @@ package dtu.projectManager.presentation.menus;
 import java.util.ArrayList;
 import java.util.List;
 
+import dtu.projectManager.dtu.EmployeeInfo;
+import dtu.projectManager.dtu.ProjectInfo;
 import dtu.projectManager.presentation.Menu;
 
 public class AssignLeaderMenu extends Menu {
 	
 	
 	private String username;
-	private String project;
+	private String projectName;
+	private String projectID;	
 	private String leaderID;
 
 	
-	public AssignLeaderMenu(String username, String project) {
-		this.username = username;
-		this.project = project;
+	public AssignLeaderMenu(EmployeeInfo user, ProjectInfo project) {
+		this.username = user.getInitials();
+		this.projectName = project.getName();
+		this.projectID = project.getID();
 	}
-	
+
 	@Override
 	protected List<String> getStartText() {
 		List<String> startText = new ArrayList<String>();
 		
 		startText.add("Enter the initials of the employee");
-		startText.add("who should lead the project "+this.project);
+		startText.add("who should lead the project");
+		startText.add(this.projectID+": "+this.projectName);
 		startText.add("");
 		return startText;
 	}
@@ -44,10 +49,12 @@ public class AssignLeaderMenu extends Menu {
 	}
 
 	@Override
-	protected String[] getMethodInput() {
-		String[] input = new String[2];
-		input[0] = this.project;
-		input[1] = this.leaderID;
+	protected Object[] getMethodInput() {
+		Object[] input = new Object[2];
+		ProjectInfo project = new ProjectInfo(this.projectName);
+		project.setID(this.projectID);
+		input[0] = project;
+		input[1] = new EmployeeInfo(this.leaderID);
 		return input;
 	}
 
@@ -75,12 +82,16 @@ public class AssignLeaderMenu extends Menu {
 
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
-		return new ManageProjectMenu(this.username, this.project);
+		ProjectInfo project = new ProjectInfo(this.projectName);
+		project.setID(this.projectID);
+		return new ManageProjectMenu(new EmployeeInfo(this.username),project);
 	}
 
 	@Override
 	public Menu rewindState() {
-		return new ManageProjectMenu(this.username, this.project);
+		ProjectInfo project = new ProjectInfo(this.projectName);
+		project.setID(this.projectID);
+		return new ManageProjectMenu(new EmployeeInfo(this.username),project);
 	}
 
 	@Override

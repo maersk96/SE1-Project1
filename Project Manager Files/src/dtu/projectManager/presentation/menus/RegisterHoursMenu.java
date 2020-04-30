@@ -63,7 +63,7 @@ public class RegisterHoursMenu extends Menu {
 	}
 
 	@Override
-	protected String[] getMethodInput() {		
+	protected Object[] getMethodInput() {		
 	String[] input = new String[3];
 	input[0] = this.username;
 	input[1] = this.activity;

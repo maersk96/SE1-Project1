@@ -3,20 +3,26 @@ package dtu.projectManager.presentation.menus;
 import java.util.ArrayList;
 import java.util.List;
 
+import dtu.projectManager.dtu.EmployeeInfo;
+import dtu.projectManager.dtu.ProjectInfo;
 import dtu.projectManager.presentation.Menu;
 
 public class SelectProjectMenu extends Menu {
 
 	private String username;
 	private int choice;
-	private String[] projects;
+	private String[] projectNames;
+	private String[] projectIDs;
 	
 	
-	public SelectProjectMenu(String username, Object[] projects) {
-		this.projects = new String[projects.length];
-		for (int i=0; i<projects.length; i++)
-			this.projects[i]= projects[i].toString();
-		this.username = username;
+	public SelectProjectMenu(EmployeeInfo user, ProjectInfo[] projects) {
+		this.projectNames = new String[projects.length];
+		this.projectIDs = new String[projects.length];
+		for (int i=0; i<projects.length; i++) {
+			this.projectNames[i]= projects[i].getName();
+			this.projectIDs[i]= projects[i].getID();			
+		}
+		this.username = user.getInitials();
 	}
 	
 	
@@ -33,8 +39,8 @@ public class SelectProjectMenu extends Menu {
 	protected List<String> getOptions() {
 		List<String> options = new ArrayList<String>();
 		
-		for (int i=0; i<this.projects.length; i++) {
-			options.add(this.projects[i]);
+		for (int i=0; i<this.projectNames.length; i++) {
+			options.add(this.projectIDs[i]+": "+this.projectNames[i]);
 		}
 		return options;
 	}
@@ -53,8 +59,8 @@ public class SelectProjectMenu extends Menu {
 	}
 
 	@Override
-	protected String[] getMethodInput() {
-		String[] emptyInput = new String[0];
+	protected Object[] getMethodInput() {
+		Object[] emptyInput = new Object[0];
 		return emptyInput;
 	}
 	
@@ -83,7 +89,9 @@ public class SelectProjectMenu extends Menu {
 
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
-		return new ManageProjectMenu(this.username,this.projects[this.choice-1]);
+		ProjectInfo project = new ProjectInfo(this.projectNames[this.choice-1]);
+		project.setID(this.projectIDs[this.choice-1]);
+		return new ManageProjectMenu(new EmployeeInfo(this.username),project);
 	}
 
 	@Override

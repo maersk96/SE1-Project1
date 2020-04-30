@@ -3,6 +3,7 @@ package dtu.projectManager.presentation.menus;
 import java.util.ArrayList;
 import java.util.List;
 
+import dtu.projectManager.dtu.EmployeeInfo;
 import dtu.projectManager.presentation.Menu;
 
 public class LoginMenu extends Menu {
@@ -37,9 +38,9 @@ public class LoginMenu extends Menu {
 	}
 
 	@Override
-	protected String[] getMethodInput() {
-		String[] input = new String[1];
-		input[0] = this.username;
+	protected Object[] getMethodInput() {
+		Object[] input = new Object[1];
+		input[0] = new EmployeeInfo(this.username);
 		return input;
 	}
 	
@@ -71,9 +72,9 @@ public class LoginMenu extends Menu {
 	public Menu getNextState(Object[] input) throws Exception {
 		boolean isAdmin = Boolean.valueOf(input[0].toString());
 		if (isAdmin)
-			return new AdminMenu(this.username);
+			return new AdminMenu(new EmployeeInfo(this.username));
 		else
-			return new EmployeeMenu(this.username);		
+			return null;//return new EmployeeMenu(new EmployeeInfo(this.username));		
 	}
 
 	@Override
