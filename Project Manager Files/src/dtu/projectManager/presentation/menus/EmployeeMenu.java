@@ -3,23 +3,26 @@ package dtu.projectManager.presentation.menus;
 import java.util.ArrayList;
 import java.util.List;
 
+import dtu.projectManager.dto.ActivityInfo;
+import dtu.projectManager.dto.EmployeeInfo;
+import dtu.projectManager.dto.ProjectInfo;
 import dtu.projectManager.presentation.Menu;
 
 public class EmployeeMenu extends Menu {
 
-	private String username;
+	private EmployeeInfo user;
 	private int choice;
 	
 	
-	public EmployeeMenu(String username) {
-		this.username = username;
+	public EmployeeMenu(EmployeeInfo user) {
+		this.user = user;
 	}
 	
 	@Override
 	protected List<String> getStartText() {
 		List<String> startText = new ArrayList<String>();
 		
-		startText.add("Welcome, "+this.username);
+		startText.add("Welcome, "+this.user.getName());
 		startText.add("These are your options:");
 		startText.add("");
 		return startText;
@@ -51,8 +54,8 @@ public class EmployeeMenu extends Menu {
 
 	@Override
 	protected Object[] getMethodInput() {
-		String[] methodInput = new String[1];
-		methodInput[0] = this.username;
+		Object[] methodInput = new Object[1];
+		methodInput[0] = this.user.copy();
 		return methodInput;
 	}
 	
@@ -64,7 +67,7 @@ public class EmployeeMenu extends Menu {
 	@Override
 	protected String getMethodName() {
 		if (this.choice == 1)
-			return "list all activities";
+			return "list all employee activities";
 		if (this.choice == 2)
 			return "find projects where employee is leader";
 		else
@@ -88,10 +91,22 @@ public class EmployeeMenu extends Menu {
 	public Menu getNextState(Object[] result) throws Exception {
 		
 		
-		if (this.choice == 1)
-			return new SelectActivityMenu(this.username, result);
+		if (this.choice == 1) {
+			ActivityInfo[] activities = new ActivityInfo[result.length];
+			for (int i=0; i<result.length; i++) {
+				activities[i] = (ActivityInfo) result[i];
+			}
+			return new SelectActivityMenu(this.user,activities);
+		}
 		if (this.choice == 2) {
-			return new SeeProjectsMenu(this.username);			
+			if (result.length == 0) {
+				return this;
+			}
+			ProjectInfo[] Projects = new ProjectInfo[result.length];
+			for (int i=0; i<result.length; i++) {
+				Projects[i] = (ProjectInfo)result[i];
+			}
+			return new SelectLeaderProjectMenu(user, Projects);
 		}
 		else
 			throw new Exception("Choice was not valid");

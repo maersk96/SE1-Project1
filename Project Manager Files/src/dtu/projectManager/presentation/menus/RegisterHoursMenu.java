@@ -3,16 +3,18 @@ package dtu.projectManager.presentation.menus;
 import java.util.ArrayList;
 import java.util.List;
 
+import dtu.projectManager.dto.ActivityInfo;
+import dtu.projectManager.dto.EmployeeInfo;
 import dtu.projectManager.presentation.Menu;
 
 public class RegisterHoursMenu extends Menu {
 
-	private String username;
-	private String activity;
+	private EmployeeInfo user;
+	private ActivityInfo activity;
 	private double hours;
 	
-	public RegisterHoursMenu(String username, String activity) {
-		this.username = username;
+	public RegisterHoursMenu(EmployeeInfo user, ActivityInfo activity) {
+		this.user = user;
 		this.activity = activity;
 	}
 	
@@ -40,7 +42,10 @@ public class RegisterHoursMenu extends Menu {
 	protected List<String> getStartText() {
 		List<String> startText = new ArrayList<String>();
 		
-		startText.add("Activity: "+this.activity);
+		startText.add("Activity:");
+		startText.add(this.activity.getID()+": "+this.activity.getName());
+		startText.add("going from week "+this.activity.getStartWeek()+" to week "+this.activity.getEndWeek()+".");
+		startText.add("");
 		startText.add("How many hours did you work on this project?");
 		startText.add("(use dot for decimals)");
 		startText.add("");
@@ -64,9 +69,9 @@ public class RegisterHoursMenu extends Menu {
 
 	@Override
 	protected Object[] getMethodInput() {		
-	String[] input = new String[3];
-	input[0] = this.username;
-	input[1] = this.activity;
+	Object[] input = new Object[3];
+	input[0] = this.user.copy();
+	input[1] = this.activity.copy();
 	input[2] = Double.toString(this.hours);
 	return input;
 
@@ -97,12 +102,12 @@ public class RegisterHoursMenu extends Menu {
 
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
-		return new ManageActivityMenu(this.username,this.activity);
+		return new ManageActivityMenu(this.user,this.activity);
 	}
 
 	@Override
 	public Menu rewindState() {
-		return new ManageActivityMenu(this.username,this.activity);
+		return new ManageActivityMenu(this.user,this.activity);
 	}
 
 	@Override

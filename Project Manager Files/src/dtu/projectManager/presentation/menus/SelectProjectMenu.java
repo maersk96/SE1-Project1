@@ -3,26 +3,20 @@ package dtu.projectManager.presentation.menus;
 import java.util.ArrayList;
 import java.util.List;
 
-import dtu.projectManager.dtu.EmployeeInfo;
-import dtu.projectManager.dtu.ProjectInfo;
+import dtu.projectManager.dto.EmployeeInfo;
+import dtu.projectManager.dto.ProjectInfo;
 import dtu.projectManager.presentation.Menu;
 
 public class SelectProjectMenu extends Menu {
 
-	private String username;
+	private EmployeeInfo user;
 	private int choice;
-	private String[] projectNames;
-	private String[] projectIDs;
+	private ProjectInfo[] projects;
 	
 	
 	public SelectProjectMenu(EmployeeInfo user, ProjectInfo[] projects) {
-		this.projectNames = new String[projects.length];
-		this.projectIDs = new String[projects.length];
-		for (int i=0; i<projects.length; i++) {
-			this.projectNames[i]= projects[i].getName();
-			this.projectIDs[i]= projects[i].getID();			
-		}
-		this.username = user.getInitials();
+		this.projects = projects;
+		this.user = user;
 	}
 	
 	
@@ -39,8 +33,8 @@ public class SelectProjectMenu extends Menu {
 	protected List<String> getOptions() {
 		List<String> options = new ArrayList<String>();
 		
-		for (int i=0; i<this.projectNames.length; i++) {
-			options.add(this.projectIDs[i]+": "+this.projectNames[i]);
+		for (int i=0; i<this.projects.length; i++) {
+			options.add(this.projects[i].getID()+": "+this.projects[i].getName());
 		}
 		return options;
 	}
@@ -89,9 +83,7 @@ public class SelectProjectMenu extends Menu {
 
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
-		ProjectInfo project = new ProjectInfo(this.projectNames[this.choice-1]);
-		project.setID(this.projectIDs[this.choice-1]);
-		return new ManageProjectMenu(new EmployeeInfo(this.username),project);
+		return new ManageProjectMenu(this.user,this.projects[this.choice-1]);
 	}
 
 	@Override

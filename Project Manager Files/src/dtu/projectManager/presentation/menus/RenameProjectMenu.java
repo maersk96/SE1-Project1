@@ -3,24 +3,22 @@ package dtu.projectManager.presentation.menus;
 import java.util.ArrayList;
 import java.util.List;
 
-import dtu.projectManager.dtu.EmployeeInfo;
-import dtu.projectManager.dtu.ProjectInfo;
+import dtu.projectManager.dto.EmployeeInfo;
+import dtu.projectManager.dto.ProjectInfo;
 import dtu.projectManager.presentation.Menu;
 
 public class RenameProjectMenu extends Menu {
 
 	
 	
-	private String username;
-	private String projectID;
-	private String projectName;
+	private EmployeeInfo user;
+	private ProjectInfo project;
 	private String newName;
 
 	
 	public RenameProjectMenu(EmployeeInfo user, ProjectInfo project) {
-		this.username = user.getInitials();
-		this.projectName = project.getName();
-		this.projectID = project.getID();
+		this.user = user;
+		this.project = project;
 	}
 
 	@Override
@@ -28,7 +26,7 @@ public class RenameProjectMenu extends Menu {
 		List<String> startText = new ArrayList<String>();
 		
 		startText.add("Enter the new name for the project:");
-		startText.add(this.projectID+": "+this.projectName);
+		startText.add(this.project.getID()+": "+this.project.getName());
 		startText.add("");
 		return startText;
 	}
@@ -51,9 +49,7 @@ public class RenameProjectMenu extends Menu {
 	@Override
 	protected Object[] getMethodInput() {
 		Object[] input = new Object[2];
-		ProjectInfo project = new ProjectInfo(this.projectName);
-		project.setID(this.projectID);
-		input[0] = project;
+		input[0] = this.project.copy();
 		input[1] = this.newName;
 		return input;
 	}
@@ -82,17 +78,13 @@ public class RenameProjectMenu extends Menu {
 
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
-		ProjectInfo project = new ProjectInfo(this.projectName);
-		project.setID(this.projectID);
-		return new ManageProjectMenu(new EmployeeInfo(this.username),project);
+		this.project.setName(this.newName);
+		return new ManageProjectMenu(this.user,this.project);
 	}
 
 	@Override
 	public Menu rewindState() {
-		ProjectInfo project = new ProjectInfo(this.projectName);
-		project.setID(this.projectID);
-		return new ManageProjectMenu(new EmployeeInfo(this.username),project);
-	}
+		return new ManageProjectMenu(this.user,this.project);	}
 
 	@Override
 	public boolean needsExecution() {

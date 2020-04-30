@@ -2,18 +2,20 @@ package dtu.projectManager.presentation.menus;
 
 import java.util.List;
 
+import dtu.projectManager.dto.EmployeeInfo;
+import dtu.projectManager.dto.ProjectInfo;
 import dtu.projectManager.presentation.Menu;
 
-public class SeeProjectsMenu extends Menu {
+public class ProjectProgressMenu extends Menu {
 
+	private EmployeeInfo user;
+	private ProjectInfo project;
 	
-	private String username;
 	
-	
-	public SeeProjectsMenu(String username) {
-		this.username = username;
+	public ProjectProgressMenu(EmployeeInfo user, ProjectInfo project) {
+		// TODO Auto-generated constructor stub
 	}
-	
+
 	@Override
 	protected List<String> getStartText() {
 		// TODO Auto-generated method stub

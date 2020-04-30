@@ -5,28 +5,54 @@ import java.util.List;
 
 import dtu.projectManager.dto.ActivityInfo;
 import dtu.projectManager.dto.EmployeeInfo;
+import dtu.projectManager.dto.ProjectInfo;
 import dtu.projectManager.presentation.Menu;
 
-public class AssistanceMenu extends Menu {
-	
-	private EmployeeInfo user;
-	private ActivityInfo activity;
-	private EmployeeInfo helper;
+public class BudgetHoursMenu extends Menu {
 
+	private EmployeeInfo user;
+	private ProjectInfo project;
+	private ActivityInfo activity;
+	private double budgetedHours;
 	
-	public AssistanceMenu(EmployeeInfo user, ActivityInfo activity) {
+	public BudgetHoursMenu(EmployeeInfo user, ProjectInfo project, ActivityInfo activity, double budgetedHours) {
 		this.user = user;
+		this.project = project;
 		this.activity = activity;
+		this.budgetedHours = budgetedHours;
 	}
+
+	// Special check for double
+	@Override
+	public boolean validateInput(String input) {
+
+		double x;
+		try {
+		x = Double.parseDouble(input);
+		} catch (NumberFormatException e) {
+		return false;
+		}
+		
+		if (x<0)
+			return false;
+		
+		return true;
+	}
+
 	@Override
 	protected List<String> getStartText() {
-
 		List<String> startText = new ArrayList<String>();
+
+		startText.add("Project:");
+		startText.add(this.project.getID()+": "+this.project.getName());
+		startText.add("");
 		startText.add("Activity:");
 		startText.add(this.activity.getID()+": "+this.activity.getName());
 		startText.add("going from week "+this.activity.getStartWeek()+" to week "+this.activity.getEndWeek()+".");
 		startText.add("");
-		startText.add("Please enter the initials of the employee assisting you");
+		startText.add("Current budgeted hours: "+this.budgetedHours);
+		startText.add("Enter the new name for the activity:");
+		startText.add(this.project.getID()+": "+this.project.getName());
 		startText.add("");
 		return startText;
 	}
@@ -49,27 +75,26 @@ public class AssistanceMenu extends Menu {
 	@Override
 	protected Object[] getMethodInput() {
 		Object[] input = new Object[3];
-		input[0] = this.user;
-		input[1] = this.activity;
-		input[2] = this.helper;
+		input[0] = this.project.copy();
+		input[1] = this.activity.copy();
+		input[2] = this.budgetedHours;
 		return input;
 	}
 
 	@Override
-	protected void setInput(String helperID) {
-		this.helper =  new EmployeeInfo(helperID);
+	protected void setInput(String input) {
+		this.budgetedHours = Double.parseDouble(input);
 	}
 
 	@Override
 	protected String getMethodName() {
-		return "ask for assistance";
+		return "budget hours";
 	}
 
 	@Override
 	public List<String> getInputSpecification() {
 		List<String> inputSpecification = new ArrayList<String>();
-		inputSpecification.add("The input should be the initials of the employee");
-		inputSpecification.add("that is helping you.");
+		inputSpecification.add("The input should be a string of letters");
 		return inputSpecification;
 	}
 
@@ -80,17 +105,16 @@ public class AssistanceMenu extends Menu {
 
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
-		return new ManageActivityMenu(this.user,this.activity);
+		return new ManageProjectActivityMenu(this.user,this.project,this.activity);
 	}
 
 	@Override
 	public Menu rewindState() {
-		return new ManageActivityMenu(this.user,this.activity);
+		return new ManageProjectActivityMenu(this.user,this.project,this.activity);
 	}
 
 	@Override
 	public boolean needsExecution() {
 		return true;
 	}
-
 }

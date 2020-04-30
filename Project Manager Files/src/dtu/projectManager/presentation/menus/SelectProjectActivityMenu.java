@@ -5,28 +5,28 @@ import java.util.List;
 
 import dtu.projectManager.dto.ActivityInfo;
 import dtu.projectManager.dto.EmployeeInfo;
+import dtu.projectManager.dto.ProjectInfo;
 import dtu.projectManager.presentation.Menu;
 
-public class ManageActivityMenu extends Menu {
+public class SelectProjectActivityMenu extends Menu {
 
 	private EmployeeInfo user;
-	private ActivityInfo activity;
+	private ProjectInfo project;
+	private ActivityInfo[] activities;
 	private int choice;
 	
-	public ManageActivityMenu(EmployeeInfo user, ActivityInfo activity) {
+	public SelectProjectActivityMenu(EmployeeInfo user, ProjectInfo project, ActivityInfo[] activities) {
 		this.user = user;
-		this.activity = activity;
+		this.project = project;
+		this.activities = activities;
 	}
-	
+
 	@Override
 	protected List<String> getStartText() {
 		List<String> startText = new ArrayList<String>();
 		
-		startText.add("You have chosen activity");
-		startText.add(this.activity.getID()+": "+this.activity.getName());
-		startText.add("going from week "+this.activity.getStartWeek()+" to week "+this.activity.getEndWeek()+".");
-		startText.add("");
-		startText.add("These are your options");
+		startText.add("These are the activities in project");
+		startText.add(this.project.getID()+": "+this.project.getName());
 		startText.add("");
 		return startText;
 	}
@@ -35,10 +35,9 @@ public class ManageActivityMenu extends Menu {
 	protected List<String> getOptions() {
 		List<String> options = new ArrayList<String>();
 		
-		options.add("Assign hours");
-		options.add("Ask for assistance");
-		options.add("Return to main menu");
-
+		for (int i=0; i<this.activities.length; i++) {
+			options.add(this.activities[i].getID()+": "+this.activities[i].getName());
+		}
 		return options;
 	}
 
@@ -46,7 +45,7 @@ public class ManageActivityMenu extends Menu {
 	protected List<String> getEndText() {
 		List<String> endText = new ArrayList<String>();
 		endText.add("");
-		endText.add("Enter the number for what you want to do.");
+		endText.add("Enter the number for the activity you want to manage.");
 		return endText;
 	}
 
@@ -57,10 +56,10 @@ public class ManageActivityMenu extends Menu {
 
 	@Override
 	protected Object[] getMethodInput() {
-		Object[] emptyInput = new Object[0];
+		String[] emptyInput = new String[0];
 		return emptyInput;
 	}
-
+	
 	@Override
 	protected void setInput(String choice) {
 		this.choice = Integer.parseInt(choice);
@@ -68,11 +67,9 @@ public class ManageActivityMenu extends Menu {
 
 	@Override
 	protected String getMethodName() {
-		if (this.choice == 2)
-			return "list available employees";
-		else
-			return null;
+		return null;
 	}
+	
 
 	@Override
 	public List<String> getInputSpecification() {
@@ -88,15 +85,10 @@ public class ManageActivityMenu extends Menu {
 
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
-
-		if (this.choice == 1)
-			return new RegisterHoursMenu(this.user, this.activity);
-		if (this.choice == 2)
-			return new AssistanceMenu(this.user, this.activity);
-		if (this.choice == 3)
-			return new EmployeeMenu(this.user);
+		if (result.length == 0)
+			return rewindState();
 		else
-			throw new Exception("Choice was not valid");
+			return new ManageProjectActivityMenu(this.user,this.project,this.activities[this.choice-1]);
 	}
 
 	@Override
@@ -107,6 +99,5 @@ public class ManageActivityMenu extends Menu {
 	@Override
 	public boolean needsExecution() {
 		return false;
-	}
-
+		}
 }

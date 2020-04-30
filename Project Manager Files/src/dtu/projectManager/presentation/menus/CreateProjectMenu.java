@@ -3,19 +3,19 @@ package dtu.projectManager.presentation.menus;
 import java.util.ArrayList;
 import java.util.List;
 
-import dtu.projectManager.dtu.EmployeeInfo;
-import dtu.projectManager.dtu.ProjectInfo;
+import dtu.projectManager.dto.EmployeeInfo;
+import dtu.projectManager.dto.ProjectInfo;
 import dtu.projectManager.presentation.Menu;
 
 public class CreateProjectMenu extends Menu {
 
-	private String username;
-	private String projectID;
-	private String projectname;
+	private EmployeeInfo user;
+	private ProjectInfo project;
+	private String projectName;
 	
 	public CreateProjectMenu(EmployeeInfo user, ProjectInfo project) {
-		this.username = user.getInitials();
-		this.projectID = project.getID();
+		this.user = user;
+		this.project = project;
 
 	}
 	
@@ -23,7 +23,7 @@ public class CreateProjectMenu extends Menu {
 	protected List<String> getStartText() {
 		List<String> startText = new ArrayList<String>();
 		
-		startText.add("A new project with ID "+this.projectID+" has been created.");
+		startText.add("A new project with ID "+this.project.getID()+" has been created.");
 		startText.add("Please enter the name to be assigned to the new project.");
 		startText.add("");
 		return startText;
@@ -47,16 +47,14 @@ public class CreateProjectMenu extends Menu {
 	@Override
 	protected Object[] getMethodInput() {
 		Object[] MethodInput = new Object[2];
-		ProjectInfo project = new ProjectInfo("");
-		project.setID(this.projectID);
-		MethodInput[0] = project;
-		MethodInput[1] = this.projectname;
+		MethodInput[0] = this.project.copy();
+		MethodInput[1] = this.projectName;
 		return MethodInput;
 	}
 	
 	@Override
 	protected void setInput(String name) {
-		this.projectname = name;
+		this.projectName = name;
 	}
 
 	@Override
@@ -80,7 +78,7 @@ public class CreateProjectMenu extends Menu {
 
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
-		return new AdminMenu(new EmployeeInfo(this.username));
+		return new AdminMenu(this.user);
 	}
 
 	@Override

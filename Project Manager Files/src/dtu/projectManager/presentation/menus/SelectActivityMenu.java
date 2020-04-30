@@ -3,20 +3,19 @@ package dtu.projectManager.presentation.menus;
 import java.util.ArrayList;
 import java.util.List;
 
+import dtu.projectManager.dto.ActivityInfo;
+import dtu.projectManager.dto.EmployeeInfo;
 import dtu.projectManager.presentation.Menu;
 
 public class SelectActivityMenu extends Menu {
 
-	private String username;
+	private EmployeeInfo user;
 	private int choice;
-	private String[] activities;
+	private ActivityInfo[] activities;
 	
-	public SelectActivityMenu(String username, Object[] activities) {
-		this.username = username;
-		this.activities = new String[activities.length];
-		for (int i=0; i<activities.length; i++)
-			this.activities[i]= activities[i].toString();
-
+	public SelectActivityMenu(EmployeeInfo user, ActivityInfo[] activities) {
+		this.user = user;
+		this.activities = activities;
 	}
 	
 	@Override
@@ -33,7 +32,7 @@ public class SelectActivityMenu extends Menu {
 		List<String> options = new ArrayList<String>();
 		
 		for (int i=0; i<this.activities.length; i++) {
-			options.add(this.activities[i]);
+			options.add(this.activities[i].getID()+": "+this.activities[i].getName());
 		}
 		return options;
 	}
@@ -82,7 +81,10 @@ public class SelectActivityMenu extends Menu {
 
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
-		return new ManageActivityMenu(this.username,this.activities[this.choice-1]);
+		if (result.length == 0)
+			return rewindState();
+		else
+			return new ManageActivityMenu(this.user,this.activities[this.choice-1]);
 	}
 
 	@Override

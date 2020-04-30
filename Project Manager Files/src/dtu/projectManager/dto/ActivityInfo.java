@@ -1,4 +1,4 @@
-package dtu.projectManager.dtu;
+package dtu.projectManager.dto;
 
 import dtu.projectManager.app.Activity;
 
@@ -57,6 +57,14 @@ public class ActivityInfo {
 		this.budgetHours = bHours;
 	}
 
+	public ActivityInfo copy() {
+		ActivityInfo copy = new ActivityInfo(this.name, this.startWeek, this.endWeek);
+		copy.setID(this.ID);
+		copy.setName(this.name);
+		copy.setBudgetHours(this.budgetHours);
+		return copy;
+	}
+	
 	public Activity asActivity() {
 		return new Activity(this.name, this.startWeek, this.endWeek-this.startWeek+1);
 	}

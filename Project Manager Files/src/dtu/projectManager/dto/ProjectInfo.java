@@ -1,4 +1,4 @@
-package dtu.projectManager.dtu;
+package dtu.projectManager.dto;
 
 import dtu.projectManager.app.Project;
 
@@ -35,6 +35,13 @@ public class ProjectInfo {
 
 	public void setProjectLeader(EmployeeInfo projectLeader) {
 		this.projectLeader = projectLeader;
+	}
+	
+	public ProjectInfo copy() {
+		ProjectInfo copy = new ProjectInfo(this.name);
+		copy.setID(this.ID);
+		copy.setProjectLeader(this.projectLeader);
+		return copy;
 	}
 	
 	public Project asProject() {

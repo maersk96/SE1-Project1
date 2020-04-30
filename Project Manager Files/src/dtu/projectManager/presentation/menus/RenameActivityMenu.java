@@ -5,108 +5,99 @@ import java.util.List;
 
 import dtu.projectManager.dto.ActivityInfo;
 import dtu.projectManager.dto.EmployeeInfo;
+import dtu.projectManager.dto.ProjectInfo;
 import dtu.projectManager.presentation.Menu;
 
-public class ManageActivityMenu extends Menu {
+public class RenameActivityMenu extends Menu {
 
 	private EmployeeInfo user;
+	private ProjectInfo project;
 	private ActivityInfo activity;
-	private int choice;
+	private String newName;
 	
-	public ManageActivityMenu(EmployeeInfo user, ActivityInfo activity) {
+	public RenameActivityMenu(EmployeeInfo user, ProjectInfo project, ActivityInfo activity) {
 		this.user = user;
+		this.project = project;
 		this.activity = activity;
 	}
-	
+
 	@Override
 	protected List<String> getStartText() {
 		List<String> startText = new ArrayList<String>();
 		
-		startText.add("You have chosen activity");
+		
+		startText.add("Project:");
+		startText.add(this.project.getID()+": "+this.project.getName());
+		startText.add("");
+		startText.add("Activity:");
 		startText.add(this.activity.getID()+": "+this.activity.getName());
 		startText.add("going from week "+this.activity.getStartWeek()+" to week "+this.activity.getEndWeek()+".");
 		startText.add("");
-		startText.add("These are your options");
+		startText.add("Enter the new name for the activity:");
+		startText.add(this.project.getID()+": "+this.project.getName());
 		startText.add("");
 		return startText;
 	}
 
 	@Override
 	protected List<String> getOptions() {
-		List<String> options = new ArrayList<String>();
-		
-		options.add("Assign hours");
-		options.add("Ask for assistance");
-		options.add("Return to main menu");
-
-		return options;
+		return null;
 	}
 
 	@Override
 	protected List<String> getEndText() {
-		List<String> endText = new ArrayList<String>();
-		endText.add("");
-		endText.add("Enter the number for what you want to do.");
-		return endText;
+		return null;
 	}
 
 	@Override
 	protected boolean hasOptions() {
-		return true;
+		return false;
 	}
 
 	@Override
 	protected Object[] getMethodInput() {
-		Object[] emptyInput = new Object[0];
-		return emptyInput;
+		Object[] input = new Object[3];
+		input[0] = this.project.copy();
+		input[1] = this.activity.copy();
+		input[2] = this.newName;
+		return input;
 	}
 
 	@Override
-	protected void setInput(String choice) {
-		this.choice = Integer.parseInt(choice);
+	protected void setInput(String input) {
+		this.newName = input;
 	}
 
 	@Override
 	protected String getMethodName() {
-		if (this.choice == 2)
-			return "list available employees";
-		else
-			return null;
+		return "set activity name";
 	}
 
 	@Override
 	public List<String> getInputSpecification() {
 		List<String> inputSpecification = new ArrayList<String>();
-		inputSpecification.add("The input should be a number between 1 and "+getOptions().size());
+		inputSpecification.add("The input should be a string of letters");
 		return inputSpecification;
 	}
 
 	@Override
 	protected boolean isInt() {
-		return true;
+		return false;
 	}
 
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
-
-		if (this.choice == 1)
-			return new RegisterHoursMenu(this.user, this.activity);
-		if (this.choice == 2)
-			return new AssistanceMenu(this.user, this.activity);
-		if (this.choice == 3)
-			return new EmployeeMenu(this.user);
-		else
-			throw new Exception("Choice was not valid");
+		this.activity.setName(this.newName);
+		return new ManageProjectActivityMenu(this.user,this.project,this.activity);
 	}
 
 	@Override
 	public Menu rewindState() {
-		return this;
+		return new ManageProjectActivityMenu(this.user,this.project,this.activity);
 	}
 
 	@Override
 	public boolean needsExecution() {
-		return false;
+		return true;
 	}
-
 }

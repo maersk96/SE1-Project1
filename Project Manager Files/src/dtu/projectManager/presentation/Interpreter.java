@@ -3,12 +3,11 @@ package dtu.projectManager.presentation;
 import java.util.ArrayList;
 import java.util.List;
 
-import dtu.projectManager.app.Employee;
 import dtu.projectManager.app.OperationNotAllowedException;
 import dtu.projectManager.app.Project;
 import dtu.projectManager.app.ProjectManagerApp;
-import dtu.projectManager.dtu.EmployeeInfo;
-import dtu.projectManager.dtu.ProjectInfo;
+import dtu.projectManager.dto.EmployeeInfo;
+import dtu.projectManager.dto.ProjectInfo;
 
 public class Interpreter {
 
@@ -32,7 +31,7 @@ public class Interpreter {
 		this.printFeedback = true;
 		Object[] result;
 		String methodName = methodArguments[0].toString();
-		List<String> projectList;
+		List<ProjectInfo> projectList;
 		EmployeeInfo user,employee, leader;
 		ProjectInfo project;
 		String projectName;
@@ -42,8 +41,10 @@ public class Interpreter {
 			case "login":
 			    user = (EmployeeInfo)methodArguments[1];
 			    application.login(user.getInitials());
-			    result = new Object[1];
+			    result = new Object[2];
 			    result[0] = this.application.adminLoggedIn();
+			    user.setName(this.application.getEmployeeWithInitials(user.getInitials()).getName());
+			    result[1] = user;
 			    this.printFeedback = false;
 			    return result;
 				
@@ -53,7 +54,7 @@ public class Interpreter {
 				if (result.length == 0) {
 					this.printFeedback = true;
 					this.feedback.add("There are no existing projects to manage.");
-					this.feedback.add("Click enter to contonue.");
+					this.feedback.add("Click enter to continue.");
 				}
 				else
 					this.printFeedback = false;
@@ -84,7 +85,7 @@ public class Interpreter {
 				result = new Object[0];
 				this.application.assignEmployeeProjectLeader(leader.getInitials(), project.getID());
 				this.feedback.add("The employee with initials "+leader.getInitials()+" has been assigned");
-				this.feedback.add("as project leader for the project "+project.getName()+": "+project.getName());
+				this.feedback.add("as project leader for the project "+project.getID()+": "+project.getName());
 				this.feedback.add("");
 				this.feedback.add("Press enter to continue");
 				this.printFeedback = true;
@@ -105,23 +106,63 @@ public class Interpreter {
 				result = new Object[0];
 				project = (ProjectInfo)methodArguments[1];
 				this.application.deleteProject(project.getID());
-				this.feedback.add("Project "+project.getID()+" has been deleted");
+				this.feedback.add("Project "+project.getID()+": "+project.getName()+" has been deleted");
 				this.feedback.add("");
 				this.feedback.add("Press enter to continue");
 				return result;
 				
 				
-//			case "list all activities":
+//			case "list all employee activities":
 				
 				
 //			case "find projects where employee is leader":
+//				projectList = this.application.getProjects();
+//				result = projectList.toArray(new Object[0]);
+//				if (result.length == 0) {
+//					this.printFeedback = true;
+//					this.feedback.add("There are no existing projects to manage.");
+//					this.feedback.add("Click enter to continue.");
+//				}
+//				else
+//					this.printFeedback = false;
+//				return result;
+
 				
 			
+//			case "list available employees":
+				
+				
 //			case "ask for assistance":
 			
 				
 //			case "register hours":
 				
+				
+//			case "list all project activities":
+
+				
+//			case "see project progress":
+				
+				
+//			case "create activity":
+				
+				
+//			case "show budgeted hours":
+
+				
+//			case "list employees on activity":
+
+				
+//			case "delete activity":
+				
+				
+//			case "set activity name":
+				
+				
+//			case "budget hours":
+				
+				
+//			case "assign employee to activity":
 				
 			default: 
 				throw new OperationNotAllowedException("Not implemented yet");

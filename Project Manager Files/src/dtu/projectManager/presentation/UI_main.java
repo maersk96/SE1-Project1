@@ -15,7 +15,6 @@ public class UI_main {
 		try {
 			UI.appSession();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
