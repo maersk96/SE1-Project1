@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import dtu.projectManager.dto.ActivityInfo;
+
 public class Activity {
 	private String ID = "";
 	private String name;
@@ -96,5 +98,10 @@ public class Activity {
 		}
 		return sum;
 	}
-
+	
+	public ActivityInfo asActivityInfo() {
+		ActivityInfo activity = new ActivityInfo(this.name, this.startWeek, this.endWeek);
+		activity.setBudgetHours(this.budgetHours);
+		return activity;
+	}
 }

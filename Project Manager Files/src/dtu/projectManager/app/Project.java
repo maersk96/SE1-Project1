@@ -3,6 +3,8 @@ package dtu.projectManager.app;
 import java.util.ArrayList;
 import java.util.List;
 
+import dtu.projectManager.dto.ProjectInfo;
+
 public class Project {
 
     private String ID;
@@ -81,5 +83,12 @@ public class Project {
 
     public boolean containsActivityWithID(String activityID) {
         return getActivityWithID(activityID) != null;
+    }
+    
+    public ProjectInfo asProjectInfo() {
+    	ProjectInfo project = new ProjectInfo(this.name);
+    	project.setID(this.ID);
+    	project.setProjectLeader(this.projectLeader.asEmployeeInfo());
+    	return project;
     }
 }

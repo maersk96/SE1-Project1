@@ -37,6 +37,6 @@ public class MockSteps {
 
 	@And("some projects exist")
 	public void someProjectsExist() {
-		assertFalse(projectManagerApp.getRealProjects().isEmpty());
+		assertFalse(projectManagerApp.getProjects().isEmpty());
 	}
 }
