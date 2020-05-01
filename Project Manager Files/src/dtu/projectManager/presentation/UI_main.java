@@ -12,6 +12,19 @@ public class UI_main {
 		ProjectManagerApp App = new ProjectManagerApp();
 		UserInterface UI = new UserInterface(sc,App);
 		
+		
+		System.out.println("Add mock data? (type \"yes\")");
+		String input = sc.nextLine();
+		if (input.equals("yes"))
+		{
+			try {
+				System.out.println("Adding data to app...");
+				App.addMockData(5);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 		try {
 			UI.appSession();
 		} catch (Exception e) {

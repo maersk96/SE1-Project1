@@ -11,7 +11,7 @@ public class Activity {
 	private String name;
 	private int startWeek;
 	private int endWeek;
-	private HashMap<Employee, Integer> employeesAndRegisteredHours = new HashMap<Employee, Integer>();
+	private HashMap<Employee, Double> employeesAndRegisteredHours = new HashMap<Employee, Double>();
 	private double budgetHours=0;
 
 	public Activity(String name, int startWeek, int weeks) {
@@ -24,9 +24,9 @@ public class Activity {
 		if (containsEmployeeWithInitials(e.getInitials())) {
 			throw new OperationNotAllowedException("Employee is already assigned this activity");
 		}
-		employeesAndRegisteredHours.put(e,0);
+		employeesAndRegisteredHours.put(e,0.0);
 	}
-
+	
 	public boolean containsEmployeeWithInitials(String initials) {
 		return getAssignedEmployees().stream().anyMatch(m -> m.getInitials().contentEquals(initials));
 	}
@@ -79,21 +79,21 @@ public class Activity {
 		this.budgetHours = bHours;
 	}
 
-	public void registerHours(Employee e, int hours) throws OperationNotAllowedException {
+	public void registerHours(Employee e, double hours) throws OperationNotAllowedException {
 		if (!containsEmployeeWithInitials(e.getInitials())) {
 			throw new OperationNotAllowedException("Employee is not assigned this activity");
 		}
-		int newHours = employeesAndRegisteredHours.get(e) + hours;
+		double newHours = employeesAndRegisteredHours.get(e) + hours;
 		employeesAndRegisteredHours.replace(e,newHours);
 	}
 
-	public boolean containsEmployeeWithRegisteredHours(Employee e, int hours) {
+	public boolean containsEmployeeWithRegisteredHours(Employee e, double hours) {
 		return !(!containsEmployeeWithInitials(e.getInitials()) | employeesAndRegisteredHours.get(e) != hours);
 	}
 
 	public int getTotalRegisteredHours() {
 		int sum = 0;
-		for (int hours : employeesAndRegisteredHours.values()) {
+		for (double hours : employeesAndRegisteredHours.values()) {
 			sum += hours;
 		}
 		return sum;

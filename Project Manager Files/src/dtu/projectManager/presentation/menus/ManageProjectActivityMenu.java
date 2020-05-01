@@ -63,8 +63,15 @@ public class ManageProjectActivityMenu extends Menu {
 
 	@Override
 	protected Object[] getMethodInput() {
-		Object[] methodInput = new Object[1];
-		methodInput[0] = this.user.copy();
+		Object[] methodInput;
+		if (this.choice == 3 || this.choice == 4) {
+			methodInput = new Object[2];
+			methodInput[0] = this.activity.copy();
+			methodInput[1] = this.project.copy();
+		}
+		else {
+			methodInput = new Object[0];
+		}
 		return methodInput;
 	}
 	
@@ -75,8 +82,6 @@ public class ManageProjectActivityMenu extends Menu {
 
 	@Override
 	protected String getMethodName() {
-		if (this.choice == 2)
-			return "show budgeted hours";
 		if (this.choice == 3)
 			return "list employees on activity";
 		if (this.choice == 4)
@@ -106,8 +111,7 @@ public class ManageProjectActivityMenu extends Menu {
 			return new RenameActivityMenu(this.user,this.project,this.activity);
 		}
 		if (this.choice == 2) {
-			double budgetedHours = (double) result[0];
-			return new BudgetHoursMenu(this.user,this.project,this.activity, budgetedHours);
+			return new BudgetHoursMenu(this.user,this.project,this.activity);
 		}
 		if (this.choice == 3) {
 			EmployeeInfo[] employees = new EmployeeInfo[result.length];
@@ -130,7 +134,7 @@ public class ManageProjectActivityMenu extends Menu {
 
 	@Override
 	public boolean needsExecution() {
-		if (this.choice == 2 || this.choice == 3 || this.choice == 4) {
+		if (this.choice == 3 || this.choice == 4) {
 			return true;
 		}
 		else {

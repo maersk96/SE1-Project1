@@ -90,6 +90,9 @@ public class EmployeeMenu extends Menu {
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
 		
+		if (result.length == 0) {
+			return rewindState();
+		}
 		
 		if (this.choice == 1) {
 			ActivityInfo[] activities = new ActivityInfo[result.length];
@@ -99,9 +102,6 @@ public class EmployeeMenu extends Menu {
 			return new SelectActivityMenu(this.user,activities);
 		}
 		if (this.choice == 2) {
-			if (result.length == 0) {
-				return this;
-			}
 			ProjectInfo[] Projects = new ProjectInfo[result.length];
 			for (int i=0; i<result.length; i++) {
 				Projects[i] = (ProjectInfo)result[i];

@@ -88,7 +88,8 @@ public class Project {
     public ProjectInfo asProjectInfo() {
     	ProjectInfo project = new ProjectInfo(this.name);
     	project.setID(this.ID);
-    	project.setProjectLeader(this.projectLeader.asEmployeeInfo());
+    	if (this.hasProjectLeader())
+    		project.setProjectLeader(this.projectLeader.asEmployeeInfo());
     	return project;
     }
 }

@@ -57,8 +57,8 @@ public class RenameActivityMenu extends Menu {
 	@Override
 	protected Object[] getMethodInput() {
 		Object[] input = new Object[3];
-		input[0] = this.project.copy();
-		input[1] = this.activity.copy();
+		input[0] = this.activity.copy();
+		input[1] = this.project.copy();
 		input[2] = this.newName;
 		return input;
 	}

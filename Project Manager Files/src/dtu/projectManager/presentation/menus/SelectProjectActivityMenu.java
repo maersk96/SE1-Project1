@@ -85,9 +85,6 @@ public class SelectProjectActivityMenu extends Menu {
 
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
-		if (result.length == 0)
-			return rewindState();
-		else
 			return new ManageProjectActivityMenu(this.user,this.project,this.activities[this.choice-1]);
 	}
 

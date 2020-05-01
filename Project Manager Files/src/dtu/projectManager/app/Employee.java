@@ -42,6 +42,14 @@ public class Employee {
     public List<Activity> getAssignedActivities() {
         return assignedActivities;
     }
+    
+	public Activity getActivityWithID(String activityID) {
+        return assignedActivities.stream()
+                .filter(activity -> activityID.equals(activity.getID()))
+                .findFirst()
+                .orElse(null);
+    }
+
 
     public boolean isAvailable() {
         return assignedActivities.size() < 20;

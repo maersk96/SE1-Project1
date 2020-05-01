@@ -70,9 +70,9 @@ public class RegisterHoursMenu extends Menu {
 	@Override
 	protected Object[] getMethodInput() {		
 	Object[] input = new Object[3];
-	input[0] = this.user.copy();
-	input[1] = this.activity.copy();
-	input[2] = Double.toString(this.hours);
+	input[0] = this.activity.copy();
+	input[1] = this.user.copy();
+	input[2] = this.hours;
 	return input;
 
 	}
@@ -84,7 +84,7 @@ public class RegisterHoursMenu extends Menu {
 
 	@Override
 	protected String getMethodName() {
-		return "Register hours";
+		return "register hours";
 	}
 
 	@Override

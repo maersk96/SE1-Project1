@@ -84,10 +84,7 @@ public class SelectLeaderProjectMenu extends Menu {
 
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
-		if (result.length == 0)
-			return rewindState();
-		else
-			return new ManageLeaderProjectMenu(this.user,this.projects[this.choice-1]);
+		return new ManageLeaderProjectMenu(this.user,this.projects[this.choice-1]);
 	}
 
 	@Override

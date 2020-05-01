@@ -33,6 +33,7 @@ public class AdminMenu extends Menu {
 		options.add("Create a new employee");
 		options.add("Create a new project");
 		options.add("Manage an existing project");
+		options.add("See all employees");
 		return options;
 	}
 
@@ -64,6 +65,8 @@ public class AdminMenu extends Menu {
 
 	@Override
 	protected String getMethodName() {
+		if (this.choice == 4)
+			return "list all employees";
 		if (this.choice == 3)
 			return "list all projects";
 		if (this.choice == 2)
@@ -106,6 +109,8 @@ public class AdminMenu extends Menu {
 			return new SelectProjectMenu(user, Projects);
 			
 		}
+		if (this.choice == 4)
+			return new AdminMenu(this.user);
 		else
 			throw new Exception("Choice was not valid");
 	}
@@ -117,7 +122,7 @@ public class AdminMenu extends Menu {
 
 	@Override
 	public boolean needsExecution() {
-		if (this.choice == 2 || this.choice == 3)
+		if (this.choice == 2 || this.choice == 3 || this.choice == 4)
 			return true;
 		else
 			return false;

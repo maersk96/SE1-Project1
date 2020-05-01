@@ -15,11 +15,10 @@ public class BudgetHoursMenu extends Menu {
 	private ActivityInfo activity;
 	private double budgetedHours;
 	
-	public BudgetHoursMenu(EmployeeInfo user, ProjectInfo project, ActivityInfo activity, double budgetedHours) {
+	public BudgetHoursMenu(EmployeeInfo user, ProjectInfo project, ActivityInfo activity) {
 		this.user = user;
 		this.project = project;
 		this.activity = activity;
-		this.budgetedHours = budgetedHours;
 	}
 
 	// Special check for double
@@ -50,7 +49,7 @@ public class BudgetHoursMenu extends Menu {
 		startText.add(this.activity.getID()+": "+this.activity.getName());
 		startText.add("going from week "+this.activity.getStartWeek()+" to week "+this.activity.getEndWeek()+".");
 		startText.add("");
-		startText.add("Current budgeted hours: "+this.budgetedHours);
+		startText.add("Current budgeted hours: "+this.activity.getBudgetHours());
 		startText.add("Enter the new name for the activity:");
 		startText.add(this.project.getID()+": "+this.project.getName());
 		startText.add("");
@@ -75,8 +74,8 @@ public class BudgetHoursMenu extends Menu {
 	@Override
 	protected Object[] getMethodInput() {
 		Object[] input = new Object[3];
-		input[0] = this.project.copy();
-		input[1] = this.activity.copy();
+		input[0] = this.activity.copy();
+		input[1] = this.user.copy();
 		input[2] = this.budgetedHours;
 		return input;
 	}

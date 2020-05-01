@@ -266,7 +266,7 @@ public class ProjectSteps {
 	@When("the budget {double} hours to the activity")
 	public void budgetHoursToActivity(double bHours) throws Exception {
 		try {
-			projectManagerApp.budgetHoursInActivity(project, activity, bHours);
+			projectManagerApp.budgetHours(activity.getID(), project.getID(), bHours);
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		}
@@ -282,24 +282,24 @@ public class ProjectSteps {
 		assertTrue(activity.getBudgetHours()+0.001>=0.0&&activity.getBudgetHours()-0.001<=0.0);
 	}
 
-	@When("the user registers {int} hours to the activity")
-	public void userRegistersHoursToActivity(int hours) throws Exception {
+	@When("the user registers {double} hours to the activity")
+	public void userRegistersHoursToActivity(double hours) throws Exception {
 		try {
-			projectManagerApp.registerHours(activity, projectManagerApp.getCurrentUser(), hours);
+			projectManagerApp.registerHours(activity.getID(), projectManagerApp.getCurrentUser().getInitials(), hours);
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		}
 	}
 
-	@Then("the activity has {int} hours registered with the employee with initials {string}")
-	public void activityHasRegisteredHoursWithEmployee(int hours, String employeeInitials) throws Exception {
+	@Then("the activity has {double} hours registered with the employee with initials {string}")
+	public void activityHasRegisteredHoursWithEmployee(double hours, String employeeInitials) throws Exception {
 		assertTrue(activity.containsEmployeeWithRegisteredHours(projectManagerApp.getEmployeeWithInitials(employeeInitials), hours));
 	}
 
-	@Given("the use has registered {int} hours to the activity")
-	public void givenEmployeeIsNotProjectLeader(int hours) throws Exception {
+	@Given("the use has registered {double} hours to the activity")
+	public void givenEmployeeIsNotProjectLeader(double hours) throws Exception {
 		try {
-			projectManagerApp.registerHours(activity, projectManagerApp.getCurrentUser(), hours);
+			projectManagerApp.registerHours(activity.getID(), projectManagerApp.getCurrentUser().getInitials(), hours);
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		}

@@ -91,6 +91,7 @@ public class ProjectManagerApp {
 		}
 		
 		projects.removeIf(project -> projectID.equals(project.getID()));
+		// delete all activities?
 			
 		
 	}
@@ -129,6 +130,15 @@ public class ProjectManagerApp {
 		return allProjects;
 	}
 	
+	public List<Activity> getProjectActivities(String projectID) throws OperationNotAllowedException{
+		Project p = getProjectWithID(projectID);
+		if (p == null) {
+			throw new OperationNotAllowedException("Project does not exist");
+		}
+		
+		return p.getActivities();
+	}
+	
 	public Project getProjectWithID(String projectID) {
 		return projects.stream()
 				.filter(project -> projectID.equals(project.getID()))
@@ -155,6 +165,7 @@ public class ProjectManagerApp {
 		p.setProjectLeader(e);
 	}
 	
+	
 	public String addActivityToProject(String projectID, Activity activity) throws OperationNotAllowedException {
 		Project p = getProjectWithID(projectID);
 		if ((p.hasProjectLeader() && p.isProjectLeader(currentUser)) || adminLoggedIn()) {
@@ -162,6 +173,41 @@ public class ProjectManagerApp {
 		} else {
 			throw new OperationNotAllowedException("Project Leader login required");
 		}
+	}
+	
+	public void renameActivity(String projectID, String activityID, String newName) throws OperationNotAllowedException {
+		Project p = getProjectWithID(projectID);
+		if (p == null) {
+			throw new OperationNotAllowedException("Project does not exist");
+		}
+
+		Activity a = p.getActivityWithID(activityID);		
+		if (a == null) {
+			throw new OperationNotAllowedException("The activity does not exist in this project");
+		}
+
+		if ((p.hasProjectLeader() && p.isProjectLeader(currentUser)) || adminLoggedIn()) {
+			a.setName(newName);
+		} else {
+			throw new OperationNotAllowedException("Project Leader login required");
+		}
+	}
+	
+	public void deleteActivity(String projectID, String activityID)throws OperationNotAllowedException {
+
+		Project p = getProjectWithID(projectID);
+		if (p == null) {
+			throw new OperationNotAllowedException("Project does not exist");
+		}
+
+		Activity a = p.getActivityWithID(activityID);		
+		if (a == null) {
+			throw new OperationNotAllowedException("Employee is not assigned this activity");
+		}
+		
+		// delete from all employee lists?
+		
+		
 	}
 
 	public void assignEmployeeToActivity(String projectID, String employeeInitials, String activityID) throws OperationNotAllowedException {
@@ -179,13 +225,47 @@ public class ProjectManagerApp {
 		}
 	}
 	
-	public void budgetHoursInActivity(Project project, Activity activity, double bHours) throws OperationNotAllowedException {
-		if (project.hasProjectLeader() && project.isProjectLeader(currentUser) && project.getActivities().contains(activity)) {
-			activity.setBudgetHours(bHours);
-		} else {
-			throw new OperationNotAllowedException("Project Leader login required");
+	
+	public void askForAssistance(String employeeInitials, String activityID) throws OperationNotAllowedException {
+		Activity a = this.currentUser.getActivityWithID(activityID);		
+		if (a == null) {
+			throw new OperationNotAllowedException("You are not assigned this activity");
 		}
+
+		Employee e = getEmployeeWithInitials(employeeInitials);
+		if (e == null) {
+			throw new OperationNotAllowedException("Employee does not exist");
+		}
+		if (!e.isAvailableForActivity(a)) {
+			throw new OperationNotAllowedException("The employee is not available in this period");
+		}
+		e.addAssignedActivity(a);
+		a.addAssignedEmployee(e);
 	}
+	
+	
+	public List<Employee> getEmployeesAssignedToActivity(String projectID, String activityID) throws OperationNotAllowedException{
+		Project p = getProjectWithID(projectID);
+		if (p == null) {
+			throw new OperationNotAllowedException("Project does not exist");
+		}
+
+		Activity a = p.getActivityWithID(activityID);		
+		if (a == null) {
+			throw new OperationNotAllowedException("Activity does not exist");
+		}
+		
+		return a.getAssignedEmployees();
+	}
+	
+	
+//	public void budgetHoursInActivity(Project project, Activity activity, double bHours) throws OperationNotAllowedException {
+//		if (project.hasProjectLeader() && project.isProjectLeader(currentUser) && project.getActivities().contains(activity)) {
+//			activity.setBudgetHours(bHours);
+//		} else {
+//			throw new OperationNotAllowedException("Project Leader login required");
+//		}
+//	}
 
 	public List<Employee> getAvailableEmployees(int week) {
 		return (List<Employee>) employees.stream()
@@ -195,8 +275,22 @@ public class ProjectManagerApp {
 
 	
 	
-	public void registerHours(Activity activity, Employee currentUser, int hours) throws OperationNotAllowedException {
-		activity.registerHours(currentUser, hours);
+	public void registerHours(String activityID, String employeeInitials, double hours) throws OperationNotAllowedException {
+		if (!employeeInitials.equals(this.currentUser.getInitials())){
+			throw new OperationNotAllowedException("You can only assign hours to yourself");
+		}
+		
+		Employee e = getEmployeeWithInitials(employeeInitials);
+		if (e == null) {
+			throw new OperationNotAllowedException("Employee does not exist");
+		}
+		
+		Activity a = e.getActivityWithID(activityID);		
+		if (a == null) {
+			throw new OperationNotAllowedException("Employee is not assigned this activity");
+		}
+
+		a.registerHours(e, hours);
 	}
 
 	public int totalRegisteredHoursToActivity(Project project, Activity activity) throws OperationNotAllowedException {
@@ -209,7 +303,54 @@ public class ProjectManagerApp {
 		return hours;
 	}
 
+	public void budgetHours(String activityID, String projectID, double hours) throws OperationNotAllowedException {
+		
+		Project p = getProjectWithID(projectID);
+		if (p == null) {
+			throw new OperationNotAllowedException("Project does not exist");
+		}
+		
+		if (!p.isProjectLeader(currentUser)) {
+			throw new OperationNotAllowedException("You are not the leader of this project");
+		}
+		
+		
+		Activity a = p.getActivityWithID(activityID);		
+		if (a == null) {
+			throw new OperationNotAllowedException("Activity does not exist");
+		}
+
+		a.setBudgetHours(hours);;
+	}
+
 	public List<Employee> getEmployees() {
 		return employees;
 	}
+	
+	
+	public List<Activity> getEmployeeActivities(String initials){
+		Employee employee = getEmployeeWithInitials(initials);
+		return employee.getAssignedActivities();
+	}
+
+	public List<Project> getProjectsLeadByEmployee(String employeeInitials) throws OperationNotAllowedException {
+		
+		Employee e = getEmployeeWithInitials(employeeInitials);
+		if (e == null) {
+			throw new OperationNotAllowedException("Employee does not exist");
+		}
+
+		if (!this.currentUser.getInitials().equals(employeeInitials) && !adminLoggedIn()) {
+			throw new OperationNotAllowedException("You can only see projects that you are leading");
+		}
+		
+		
+		List<Project> leadingProjects = getProjects().stream()
+		.filter(project -> project.isProjectLeader(e))
+		.collect(Collectors.toList());
+
+		return leadingProjects;
+	}
+	
+	
 }
