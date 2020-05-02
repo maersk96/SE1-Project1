@@ -193,7 +193,7 @@ public class Interpreter {
 				activity = (ActivityInfo) methodArguments[1];
 				employee = (EmployeeInfo) methodArguments[2];
 				hours = (double) methodArguments[3];
-				this.application.registerHours(activity.getID(), employee.getInitials(), hours);
+				this.application.registerHoursToActivity(activity.getID(), employee.getInitials(), hours);
 				
 				this.feedback.add("You have registered "+hours+" hours to activity");
 				this.feedback.add(activity.getID()+": "+activity.getName());

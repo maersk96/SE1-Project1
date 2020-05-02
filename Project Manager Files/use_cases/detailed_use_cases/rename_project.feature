@@ -10,8 +10,7 @@ Scenario: Rename a project successfully when logged in as admin
 
 Scenario: Rename a project when not admin
 	Given there is a project in the Project Manager
-	And the employee with initials "HBO" is registered
-	And the user logs in with initials "HBO"
+	And the user is logged in as a registered employee
 	When the user renames the project
 	Then the projects name is unchanged
 	And the error message "Administrator login required" is given

@@ -30,6 +30,24 @@ public class EmployeeSteps {
 		assertTrue(projectManagerApp.containsEmployeeWithInitials(initials));
 	}
 
+	@Given("the registered employee with initials {string} is logged in")
+	public void theRegisteredEmployeeWithInitialsIsLoggedIn(String initials) throws OperationNotAllowedException {
+		adminSession.start();
+		employee = new Employee(initials, "Name");
+		projectManagerApp.addEmployee(employee);
+		projectManagerApp.login(initials);
+		adminSession.end();
+	}
+	@Given("the user is logged in as a registered employee")
+	public void theUserIsARegisteredEmployee() throws OperationNotAllowedException {
+		adminSession.start();
+		String initials = "SAMPLE";
+		employee = new Employee(initials, "John");
+		projectManagerApp.addEmployee(employee);
+		projectManagerApp.login(initials);
+		adminSession.end();
+	}
+
 	@Given("the employee with initials {string} is registered")
 	public void theEmployeeWithInitialsIsRegistered(String initials) throws OperationNotAllowedException {
 		adminSession.start();

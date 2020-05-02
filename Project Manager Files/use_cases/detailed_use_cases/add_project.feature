@@ -10,8 +10,7 @@ Scenario: Add a project successfully when logged in as admin
 
 Scenario: Add a project when not admin
 	Given there is a project named "Sample project"
-	And the employee with initials "HBO" is registered
-	And the user logs in with initials "HBO"
+	And the user is logged in as a registered employee
 	When the user adds the project to the Project Manager
 	Then the error message "Administrator login required" is given
 

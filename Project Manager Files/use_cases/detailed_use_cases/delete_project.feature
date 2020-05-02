@@ -10,8 +10,7 @@ Scenario: Delete a project successfully when logged in as admin
 
 Scenario: Delete a project when not admin
 	Given there is a project in the Project Manager
-	And the employee with initials "HBO" is registered
-	And the user logs in with initials "HBO"
+	And the user is logged in as a registered employee
 	When the user deletes the project
 	Then the project is still in the Project Manager
 	And the error message "Administrator login required" is given

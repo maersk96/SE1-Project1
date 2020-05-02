@@ -37,6 +37,9 @@ public class Employee {
     public String getInitials() {
         return initials;
     }
+    public boolean hasInitials(String initials) {
+        return this.initials.equals(initials);
+    }
     public String getName() { return name; }
 
     public List<Activity> getAssignedActivities() {
@@ -70,6 +73,10 @@ public class Employee {
 
     public boolean isAvailableForActivity(Activity activity) {
         return getActivitiesInWeekInterval(activity.getStartWeek(), activity.getEndWeek()).size() < ACTIVE_ACTIVITIES_LIMIT;
+    }
+
+    public boolean isProjectLeader(Project p) {
+        return p.getProjectLeader().getInitials().equals(this.initials);
     }
 
     public boolean isAvailableInWeek(int week) {

@@ -5,17 +5,14 @@ Feature: Add activity
   Scenario: Add an activity successfully when project leader
     Given there is a project in the Project Manager
     And there is an activity
-    And the employee with initials "ABC" is registered
-    And the employee with initials "ABC" is Project Leader for the project
-    And the user logs in with initials "ABC"
+    And the user is Project Leader for the project
     When the user adds the activity to the project
     Then the activity exists on the project
 
   Scenario: Add an activity when not project leader
     Given there is a project in the Project Manager
     And there is an activity
-    And the employee with initials "ABC" is registered
-    And the user logs in with initials "ABC"
+    And the user is logged in as a registered employee
     When the user adds the activity to the project
     Then the activity does not exist on the project
     And the error message "Project Leader login required" is given
