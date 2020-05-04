@@ -347,11 +347,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "some projects exist",
+  "name": "there are some projects in the Project Manager",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.MockSteps.someProjectsExist()"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.someProjectsExist()"
 });
 formatter.result({
   "status": "passed"
@@ -382,11 +382,21 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "no projects exist",
+  "name": "there are no projects in the Project Manager",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.MockSteps.noProjectsExist()"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.noProjectsExist()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the error message \"Administrator login required\" is given",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theErrorMessageIsGiven(java.lang.String)"
 });
 formatter.result({
   "status": "passed"
@@ -507,7 +517,7 @@ formatter.step({
   "keyword": "And "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.thereAreNoProjectsInTheManager()"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.noProjectsExist()"
 });
 formatter.result({
   "status": "passed"
@@ -1195,7 +1205,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "Assign an unexisting employee as project leader",
+  "name": "Assign an non-existing employee as project leader",
   "description": "",
   "keyword": "Scenario"
 });
@@ -2296,7 +2306,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the error message \"Employee with initials XXX does not exist\" is given",
+  "name": "the error message \"Employee does not exist\" is given",
   "keyword": "And "
 });
 formatter.match({

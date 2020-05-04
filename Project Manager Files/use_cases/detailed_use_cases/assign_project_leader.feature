@@ -26,7 +26,7 @@ Scenario: Assign a project leader to unexisting project
 	When the user assigns the employee with initials "ABC" as Project Leader of the project
 	Then the error message "Project does not exist" is given
 	
-Scenario: Assign an unexisting employee as project leader
+Scenario: Assign an non-existing employee as project leader
 	Given the user is logged in as admin
 	And there does not exist an employee with initials "ABC"
 	And there is a project in the Project Manager

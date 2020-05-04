@@ -51,7 +51,7 @@ public class MockData {
         for (int i=0; i < mockActivities.size(); i++) {
             ProjectActivity pa = mockActivities.get(i);
             String randomEmployee = mockEmployees.get(rand(0, mockEmployees.size()-1));
-            projectManagerApp.assignEmployeeToActivity(pa.pId, randomEmployee, pa.aId);
+            projectManagerApp.assignEmployeeToActivity(pa.pId, pa.aId, randomEmployee);
         }
     }
 
