@@ -98,7 +98,7 @@ public class ProjectManagerApp {
 
 	
 
-	public String generateProjectId() {
+	private String generateProjectId() {
 		return year + "-" + String.format("%0" + 4 + "d", projectNumber);
 	}
 
@@ -122,12 +122,7 @@ public class ProjectManagerApp {
 	}
 	
 	public List<Project> getProjects() {
-		// Hvorfor ikke bare "return projects" ?
-		List<Project> allProjects = new ArrayList<Project>();
-		for (Project p : this.projects) {
-			allProjects.add(p);
-		}
-		return allProjects;
+		return new ArrayList<Project>(this.projects);
 	}
 	
 	public List<Activity> getProjectActivities(String projectID) throws OperationNotAllowedException{
@@ -226,46 +221,15 @@ public class ProjectManagerApp {
 	}
 	
 	
-	public void askForAssistance(String employeeInitials, String activityID) throws OperationNotAllowedException {
-		Activity a = this.currentUser.getActivityWithID(activityID);		
-		if (a == null) {
-			throw new OperationNotAllowedException("You are not assigned this activity");
-		}
-
-		Employee e = getEmployeeWithInitials(employeeInitials);
-		if (e == null) {
-			throw new OperationNotAllowedException("Employee does not exist");
-		}
-		if (!e.isAvailableForActivity(a)) {
-			throw new OperationNotAllowedException("The employee is not available in this period");
-		}
-		e.addAssignedActivity(a);
-		a.addAssignedEmployee(e);
-	}
 	
 	
 	public List<Employee> getEmployeesAssignedToActivity(String projectID, String activityID) throws OperationNotAllowedException{
-		Project p = getProjectWithID(projectID);
-		if (p == null) {
-			throw new OperationNotAllowedException("Project does not exist");
-		}
 
-		Activity a = p.getActivityWithID(activityID);		
-		if (a == null) {
-			throw new OperationNotAllowedException("Activity does not exist");
-		}
-
+		Activity a = getActivity(projectID,activityID);
 		return a.getAssignedEmployees();
 	}
 	
 	
-//	public void budgetHoursInActivity(Project project, Activity activity, double bHours) throws OperationNotAllowedException {
-//		if (project.hasProjectLeader() && project.isProjectLeader(currentUser) && project.getActivities().contains(activity)) {
-//			activity.setBudgetHours(bHours);
-//		} else {
-//			throw new OperationNotAllowedException("Project Leader login required");
-//		}
-//	}
 
 	public List<Employee> getAvailableEmployees(int week) {
 		return (List<Employee>) employees.stream()
@@ -276,8 +240,9 @@ public class ProjectManagerApp {
 	
 	// Current  user registers hours to activity
 	public void registerHoursToActivity(String projectID, String activityID, double hours) throws OperationNotAllowedException {
-		Project p = getProjectWithID(projectID);
-		Activity a = p.getActivityWithID(activityID);
+		
+		Activity a = getActivity(projectID,activityID);
+		
 		if (!a.containsEmployeeWithInitials(currentUser.getInitials())) {
 			throw new OperationNotAllowedException("Employee is not assigned this activity");
 		}
