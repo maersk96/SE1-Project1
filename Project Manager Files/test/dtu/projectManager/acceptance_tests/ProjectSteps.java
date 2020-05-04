@@ -292,8 +292,8 @@ public class ProjectSteps {
 	@Given("the user is Project Leader for the project")
 	public void theUserIsProjectLeaderForTheProject() throws OperationNotAllowedException {
 		adminSession.start();
-		String initials = "ABC";
-		Employee e = new Employee(initials, "John");
+		String initials = "PLJ";
+		Employee e = new Employee(initials, "Project Leader John");
 		projectManagerApp.addEmployee(e);
 		projectManagerApp.assignEmployeeProjectLeader(projectId, initials);
 		adminSession.end();
