@@ -21,7 +21,7 @@ public class ProjectManagerApp {
 
 	// Adds sample data using MockData class
 	public void addMockData(int amount) throws OperationNotAllowedException {
-		adminRequired();
+		requiresAdmin();
 		MockData mock = new MockData(this);
 		mock.generate(amount);
 	}
@@ -41,15 +41,15 @@ public class ProjectManagerApp {
 	public Employee getCurrentUser() {
 		return currentUser;
 	}
-	// Runs in methods that require Admin access
-	public void adminRequired() throws OperationNotAllowedException{
+
+	// Require-functions run in methods that require specific access
+	public void requiresAdmin() throws OperationNotAllowedException{
 		if (!adminLoggedIn()) {
 			throw new OperationNotAllowedException("Administrator login required");
 		}
 	}
-	// Runs in methods that require Admin OR Project Leader access
-	public void projectLeaderRequired(String projectId) throws OperationNotAllowedException {
-		Project p = getProjectWithID(projectId);
+	public void requiresProjectLeader(String projectID) throws OperationNotAllowedException {
+		Project p = getProjectWithID(projectID);
 		if (p == null || !(adminLoggedIn() || p.isProjectLeader(currentUser)) ) {
 			throw new OperationNotAllowedException("Project Leader login required");
 		}
@@ -59,7 +59,7 @@ public class ProjectManagerApp {
 	// EMPLOYEE METHODS
 
 	public void addEmployee(Employee e) throws OperationNotAllowedException {
-		adminRequired();
+		requiresAdmin();
 		if (containsEmployeeWithInitials(e.getInitials())) {
 			throw new OperationNotAllowedException("Employee already exists");			
 		}
@@ -75,7 +75,7 @@ public class ProjectManagerApp {
 		return getEmployeeWithInitials(initials) != null;
 	}
 	public void assignProjectLeader(String projectID, String employeeInitials) throws OperationNotAllowedException {
-		adminRequired();
+		requiresAdmin();
 
 		Project p = getProject(projectID);
 		Employee e = getEmployee(employeeInitials);
@@ -89,7 +89,7 @@ public class ProjectManagerApp {
 		return year + "-" + String.format("%0" + 4 + "d", projectNumber);
 	}
 	public String addProject(Project project) throws OperationNotAllowedException {
-		adminRequired();
+		requiresAdmin();
 
 		String projectID = generateProjectID();
 		project.setID(projectID);
@@ -98,13 +98,13 @@ public class ProjectManagerApp {
 		return projectID;
 	}
 	public void renameProject(String projectID, String newName) throws OperationNotAllowedException {
-		adminRequired();
+		requiresAdmin();
 		
 		Project p = getProject(projectID);
 		p.setName(newName);
 	}
 	public void deleteProject(String projectID) throws OperationNotAllowedException {
-		adminRequired();
+		requiresAdmin();
 
 		Project p = getProject(projectID);
 		projects.removeIf(project -> projectID.equals(project.getID()));
@@ -132,14 +132,14 @@ public class ProjectManagerApp {
 	
 	
 	public String addActivityToProject(String projectID, Activity activity) throws OperationNotAllowedException {
-		projectLeaderRequired(projectID);
+		requiresProjectLeader(projectID);
 
 		Project p = getProject(projectID);
 		return p.addActivity(activity);
 	}
 	
 	public void renameActivity(String projectID, String activityID, String newName) throws OperationNotAllowedException {
-		projectLeaderRequired(projectID);
+		requiresProjectLeader(projectID);
 
 		Activity a = getActivity(projectID, activityID);
 		a.setName(newName);
@@ -188,14 +188,14 @@ public class ProjectManagerApp {
 	}
 
 	public double getTotalRegisteredHoursToActivity(String projectID, String activityID) throws OperationNotAllowedException {
-		projectLeaderRequired(projectID);
+		requiresProjectLeader(projectID);
 
 		Activity a = getActivity(projectID, activityID);
 		return a.getTotalRegisteredHours();
 	}
 
 	public void budgetHoursToActivity(String projectID, String activityID, double hours) throws OperationNotAllowedException {
-		projectLeaderRequired(projectID);
+		requiresProjectLeader(projectID);
 
 		Activity a = getActivity(projectID, activityID);
 		a.setBudgetHours(hours);

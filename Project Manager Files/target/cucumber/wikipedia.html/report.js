@@ -944,16 +944,6 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user is logged in as a registered employee",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theUserIsARegisteredEmployee()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
   "name": "the user logs in with initials \"HBO\"",
   "keyword": "And "
 });
