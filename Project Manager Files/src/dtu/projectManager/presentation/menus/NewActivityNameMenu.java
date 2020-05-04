@@ -80,7 +80,7 @@ public class NewActivityNameMenu extends Menu {
 
 	@Override
 	public Menu rewindState() {
-		return new ManageLeaderProjectMenu(this.user,this.project);
+		return new ProjectLeaderMenu(this.user,this.project);
 	}
 
 	@Override

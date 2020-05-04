@@ -354,16 +354,16 @@ public class ProjectSteps {
 	@When("the user requests the total hours registered to the activity")
 	public void userRequestsTotalRegisteredHoursFromActivity() throws Exception {
 		try {
-			projectManagerApp.totalRegisteredHoursToActivity(project, activity);
+			projectManagerApp.totalRegisteredHoursToActivity(project.getID(), activity.getID());
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		}
 	}
 
-	@Then("the total hours registered to the activity is {int}")
-	public void theTotalHoursRegisteredToTheActivityShouldBe(int hours) throws OperationNotAllowedException {
-		Activity a = projectManagerApp.getActivity(projectId, activityId);
-		assertEquals(a.getTotalRegisteredHours(), hours);
+	@Then("the total hours registered to the activity is {double}")
+	public void theTotalHoursRegisteredToTheActivityShouldBe(double hours) throws OperationNotAllowedException {
+		double epsilon = 0.1;
+		assertEquals(projectManagerApp.totalRegisteredHoursToActivity(project.getID(), activity.getID()), hours,epsilon);
 	}
 
 }

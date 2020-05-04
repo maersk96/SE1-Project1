@@ -121,7 +121,7 @@ public class ManageProjectActivityMenu extends Menu {
 			return new AssignEmployeeActivityMenu(this.user, this.project,this.activity, employees);
 		}
 		if (this.choice == 4 || this.choice == 5) {
-			return new ManageLeaderProjectMenu(this.user, this.project);
+			return new ProjectLeaderMenu(this.user, this.project);
 		}
 		else
 			throw new Exception("Choice was not valid");

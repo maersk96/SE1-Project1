@@ -254,7 +254,7 @@ public class ProjectManagerApp {
 		if (a == null) {
 			throw new OperationNotAllowedException("Activity does not exist");
 		}
-		
+
 		return a.getAssignedEmployees();
 	}
 	
@@ -284,13 +284,23 @@ public class ProjectManagerApp {
 		a.registerHours(currentUser, hours);
 	}
 
-	public int totalRegisteredHoursToActivity(Project project, Activity activity) throws OperationNotAllowedException {
-		int hours = 0;
-		if (project.isProjectLeader(currentUser) && project.containsActivityWithID(activity.getID())) {
-			hours += activity.getTotalRegisteredHours();
-		} else {
+	public double totalRegisteredHoursToActivity(String projectID, String activityID) throws OperationNotAllowedException {
+		Project p = getProjectWithID(projectID);
+		if (p == null) {
+			throw new OperationNotAllowedException("Project does not exist");
+		}
+		
+		if (!p.isProjectLeader(currentUser)) {
 			throw new OperationNotAllowedException("Project Leader login required");
 		}
+		
+		
+		Activity a = p.getActivityWithID(activityID);		
+		if (a == null) {
+			throw new OperationNotAllowedException("Activity does not exist");
+		}
+		
+		double hours = a.getTotalRegisteredHours();
 		return hours;
 	}
 

@@ -1,9 +1,7 @@
 package dtu.projectManager.app;
 
-import io.cucumber.java.en_old.Ac;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import dtu.projectManager.dto.EmployeeInfo;

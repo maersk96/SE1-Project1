@@ -8,13 +8,13 @@ import dtu.projectManager.dto.EmployeeInfo;
 import dtu.projectManager.dto.ProjectInfo;
 import dtu.projectManager.presentation.Menu;
 
-public class ManageLeaderProjectMenu extends Menu {
+public class ProjectLeaderMenu extends Menu {
 
 	private EmployeeInfo user;
 	private ProjectInfo project;
 	private int choice;
 	
-	public ManageLeaderProjectMenu(EmployeeInfo user, ProjectInfo project) {
+	public ProjectLeaderMenu(EmployeeInfo user, ProjectInfo project) {
 		this.user = user;
 		this.project = project;
 	}
@@ -96,7 +96,11 @@ public class ManageLeaderProjectMenu extends Menu {
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
 		if (this.choice == 1) {
-			return new ProjectProgressMenu(this.user,this.project);
+			ActivityInfo[] activities = new ActivityInfo[result.length];
+			for (int i=0; i<result.length; i++) {
+				activities[i] = (ActivityInfo) result[i];
+			}
+			return new ProjectProgressMenu(this.user,this.project,activities);
 		}
 		if (this.choice == 2) {
 			return new NewActivityNameMenu(this.user,this.project);
