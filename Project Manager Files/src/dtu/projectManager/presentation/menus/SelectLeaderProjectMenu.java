@@ -84,7 +84,7 @@ public class SelectLeaderProjectMenu extends Menu {
 
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
-		return new ManageLeaderProjectMenu(this.user,this.projects[this.choice-1]);
+		return new ProjectLeaderMenu(this.user,this.projects[this.choice-1]);
 	}
 
 	@Override

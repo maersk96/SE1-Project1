@@ -221,8 +221,20 @@ public class Interpreter {
 				return result;
 				
 				
-//			case "see project progress":
-				
+			case "see project progress":
+				project = (ProjectInfo) methodArguments[1];
+				activityList = this.application.getProjectActivities(project.getID());
+				result = new Object[activityList.size()];
+				for (int i=0; i< result.length; i++) {
+					activity = activityList.get(i).asActivityInfo();
+					activity.setTotalHours(application.totalRegisteredHoursToActivity(project.getID(),activity.getID()));
+					result[i] = activity;
+				}
+				if (result.length == 0) {
+					this.printFeedback = true;
+					this.feedback.add("There are no activities for this project.");
+					this.feedback.add("Click enter to go back.");
+				}
 				
 				
 			case "create activity":

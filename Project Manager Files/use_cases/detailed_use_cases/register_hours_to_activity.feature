@@ -52,7 +52,7 @@ Feature: Register hours to an activity
     And the use has registered 7 hours to the activity
     And the user is already logged in with initials "ABC"
     When the user requests the total hours registered to the activity
-    Then the total hours registered to the activity should b 9
+    Then the total hours registered to the activity should be 9
 
   Scenario: Employee requests total registered hours, unsuccessfully
     Given there is a project in the Project Manager

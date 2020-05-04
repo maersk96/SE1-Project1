@@ -9,6 +9,7 @@ public class ActivityInfo {
 	private int startWeek;
 	private int endWeek;
 	private double budgetHours=0;
+	private double totalHours=0;
 
 	
 	public ActivityInfo(String name, int startWeek, int endWeek) {
@@ -56,12 +57,21 @@ public class ActivityInfo {
 	public void setBudgetHours(double bHours) {
 		this.budgetHours = bHours;
 	}
+	
+	public double getTotalHours() {
+		return this.totalHours;
+	}
+	
+	public void setTotalHours(double tHours) {
+		this.totalHours = tHours;
+	}
 
 	public ActivityInfo copy() {
 		ActivityInfo copy = new ActivityInfo(this.name, this.startWeek, this.endWeek);
 		copy.setID(this.ID);
 		copy.setName(this.name);
 		copy.setBudgetHours(this.budgetHours);
+		copy.setTotalHours(this.totalHours);
 		return copy;
 	}
 	
