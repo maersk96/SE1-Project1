@@ -30,13 +30,12 @@ public class MockSteps {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		}
 	}
-	@Then("some employees exist")
-	public void someEmployeesExist() {
-		assertFalse(projectManagerApp.getEmployees().isEmpty());
-	}
-
-	@And("some projects exist")
+	@Then("some projects exist")
 	public void someProjectsExist() {
 		assertFalse(projectManagerApp.getProjects().isEmpty());
+	}
+	@Then("no projects exist")
+	public void noProjectsExist() {
+		assertTrue(projectManagerApp.getProjects().isEmpty());
 	}
 }

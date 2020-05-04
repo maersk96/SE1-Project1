@@ -30,6 +30,9 @@ public class Activity {
 	public boolean containsEmployeeWithInitials(String initials) {
 		return getAssignedEmployees().stream().anyMatch(m -> m.getInitials().contentEquals(initials));
 	}
+	public boolean containsEmployee(Employee e) {
+		return containsEmployeeWithInitials(e.getInitials());
+	}
 
 	public String getID() {
 		return ID;

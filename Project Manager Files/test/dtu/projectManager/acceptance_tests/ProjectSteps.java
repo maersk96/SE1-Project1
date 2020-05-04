@@ -331,8 +331,7 @@ public class ProjectSteps {
 
 	@Then("the activity has {double} hours registered with the employee with initials {string}")
 	public void activityHasRegisteredHoursWithEmployee(double hours, String employeeInitials) throws Exception {
-		Project p = projectManagerApp.getProjectWithID(projectId);
-		Activity a = p.getActivityWithID(activityId);
+		Activity a = projectManagerApp.getActivity(projectId, activityId);
 		Employee e = projectManagerApp.getEmployeeWithInitials(employeeInitials);
 		assertEquals(a.getEmployeesRegisteredHours(e), hours, 0.0);
 	}

@@ -179,7 +179,7 @@ public class Interpreter {
 				user = (EmployeeInfo) methodArguments[1];
 				activity = (ActivityInfo) methodArguments[2];
 				employee = (EmployeeInfo) methodArguments[3];
-				this.application.askForAssistance(employee.getInitials(), activity.getID());
+				// this.application.askForAssistance(employee.getInitials(), activity.getID());
 				this.feedback.add("Employee "+employee.getName()+"("+employee.getName()+") can now help with activity");
 				this.feedback.add(activity.getID()+": "+activity.getName());
 				this.feedback.add("");

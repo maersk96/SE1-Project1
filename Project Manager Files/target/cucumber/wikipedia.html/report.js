@@ -318,13 +318,23 @@ formatter.result({
 formatter.uri("file:use_cases/detailed_use_cases/add_mock_data.feature");
 formatter.feature({
   "name": "Add mock data",
-  "description": "  Description: Test data is added to the app.\n  Actors: UI",
+  "description": "  Description: Test data is added to the app.\n  Actors: Administrator",
   "keyword": "Feature"
 });
 formatter.scenario({
-  "name": "The UI adds test data for the user to see",
+  "name": "The administrator adds test data in the UI",
   "description": "",
   "keyword": "Scenario"
+});
+formatter.step({
+  "name": "the user is logged in as admin",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserIsAlreadyLoggedInAsAdmin()"
+});
+formatter.result({
+  "status": "passed"
 });
 formatter.step({
   "name": "mock data is generated",
@@ -337,21 +347,46 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "some employees exist",
+  "name": "some projects exist",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.MockSteps.someEmployeesExist()"
+  "location": "dtu.projectManager.acceptance_tests.MockSteps.someProjectsExist()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "A non-admin tries to add test data",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "the user is logged in as a registered employee",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theUserIsARegisteredEmployee()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "some projects exist",
-  "keyword": "And "
+  "name": "mock data is generated",
+  "keyword": "When "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.MockSteps.someProjectsExist()"
+  "location": "dtu.projectManager.acceptance_tests.MockSteps.mockDataIsGenerated()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "no projects exist",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.MockSteps.noProjectsExist()"
 });
 formatter.result({
   "status": "passed"
@@ -694,7 +729,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the error message \"Project leader og assigned employee login required\" is given",
+  "name": "the error message \"Project leader or assigned employee login required\" is given",
   "keyword": "And "
 });
 formatter.match({
@@ -949,7 +984,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the error message \"Project leader og assigned employee login required\" is given",
+  "name": "the error message \"Project leader or assigned employee login required\" is given",
   "keyword": "And "
 });
 formatter.match({
@@ -1638,7 +1673,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the error message \"Employee is not assigned this activity\" is given",
+  "name": "the error message \"You are not assigned to this activity\" is given",
   "keyword": "And "
 });
 formatter.match({
