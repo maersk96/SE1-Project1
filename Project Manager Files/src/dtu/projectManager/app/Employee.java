@@ -74,7 +74,7 @@ public class Employee {
     }
 
     public boolean isProjectLeader(Project p) {
-    	if (!p.hasProjectLeader())
+    	if (p == null || !p.hasProjectLeader())
     		return false;
     	else
     		return p.getProjectLeader().getInitials().equals(this.initials);
