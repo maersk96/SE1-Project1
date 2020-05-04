@@ -17,7 +17,7 @@ Feature: Register hours to an activity
     And the user logs in with initials "ABC"
     When the user registers 2 hours to the activity
     Then the activity has 0 hours registered with the employee with initials "HBO"
-    And the error message "You are not assigned to this activity" is given
+    And the error message "The employee is not assigned to this activity" is given
 
   Scenario: Register more hours to an activity
     Given there is a project in the Project Manager

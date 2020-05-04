@@ -78,15 +78,6 @@ public class ProjectSteps {
 	public void theProjectsNameIsUnchanged() {
 		assertEquals(projectManagerApp.getProjectWithID(this.project.getID()).getName(),this.oldProjectName);
 	}
-	
-	@When("the user deletes the project")
-	public void theUserDeletesTheProject() {
-		try {
-			projectManagerApp.deleteProject(this.project.getID());
-		} catch (OperationNotAllowedException e) {
-			errorMessageHolder.setErrorMessage(e.getMessage());
-		}
-	}
 
 
 
@@ -168,6 +159,16 @@ public class ProjectSteps {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		}
 	}
+	
+	@When("the user asks the employee with initials {string} for help with the activity")
+	public void theUserAsksTheEmployeeWithInitialsForHelpWithTheActivity(String employeeInitials) {
+		try {
+			projectManagerApp.askForAssistance(activityId, employeeInitials);
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+	}
+	
 	@Then("the employee with the initials {string} is assigned to the activity")
 	public void theEmployeeWithInitialsIsAssignedToTheActivity(String employeeInitials) {
 		Activity activity = projectManagerApp.getProjectWithID(projectId).getActivityWithID(activityId);
@@ -321,14 +322,14 @@ public class ProjectSteps {
 
 	@Then("the activity has no budget hours")
 	public void activityHasNoBudgetHours() throws Exception {
-		Activity a = projectManagerApp.getActivity(projectId, activityId);
+		Activity a = projectManagerApp.getActivityFromProject(projectId, activityId);
 		assertEquals(0, a.getBudgetHours(), 0.0);
 	}
 
 	@When("the user registers {double} (more )hours to the activity")
 	public void userRegistersHoursToActivity(double hours) throws Exception {
 		try {
-			projectManagerApp.registerHoursToActivity(projectId, activityId, hours);
+			projectManagerApp.registerHoursToActivity(activityId,projectManagerApp.getCurrentUser().getInitials(), hours);
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		}
@@ -336,19 +337,11 @@ public class ProjectSteps {
 
 	@Then("the activity has {double} hours registered with the employee with initials {string}")
 	public void activityHasRegisteredHoursWithEmployee(double hours, String employeeInitials) throws Exception {
-		Activity a = projectManagerApp.getActivity(projectId, activityId);
+		Activity a = projectManagerApp.getActivityFromProject(projectId, activityId);
 		Employee e = projectManagerApp.getEmployeeWithInitials(employeeInitials);
 		assertEquals(hours, a.getEmployeesRegisteredHours(e), 0.0);
 	}
 
-	@Given("the use has registered {double} hours to the activity")
-	public void givenEmployeeIsNotProjectLeader(double hours) throws Exception {
-		try {
-			projectManagerApp.registerHoursToActivity(activity.getID(), projectManagerApp.getCurrentUser().getInitials(), hours);
-		} catch (OperationNotAllowedException e) {
-			errorMessageHolder.setErrorMessage(e.getMessage());
-		}
-	}
 
 	@Then("the activity is not assigned to the employee with initials {string}")
 	public void theActivityIsNotAssignedTheEmployeeWithInitials(String employeeInitials) {

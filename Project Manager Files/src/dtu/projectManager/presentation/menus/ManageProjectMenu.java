@@ -37,7 +37,6 @@ public class ManageProjectMenu extends Menu {
 		
 		options.add("Assign project leader");
 		options.add("Rename project");
-		options.add("Delete project");
 		options.add("Return to main menu");
 		return options;
 	}
@@ -57,14 +56,7 @@ public class ManageProjectMenu extends Menu {
 
 	@Override
 	protected Object[] getMethodInput() {
-		Object[] input;
-		if (this.choice == 3)
-		{
-			input = new Object[1];
-			input[0] = this.project.copy();
-		}
-		else
-			input = new Object[0];
+			Object[] input = new Object[0];
 		return input;
 	}
 
@@ -75,10 +67,7 @@ public class ManageProjectMenu extends Menu {
 
 	@Override
 	protected String getMethodName() {
-		if (this.choice == 3)
-			return "delete project";
-		else
-			return null;
+		return null;
 	}
 
 	@Override
@@ -101,7 +90,7 @@ public class ManageProjectMenu extends Menu {
 		if (this.choice == 2) {
 			return new RenameProjectMenu(this.user,this.project);
 		}
-		if (this.choice == 3 || this.choice == 4)
+		if (this.choice == 3)
 			return new AdminMenu(this.user);
 		else
 			throw new Exception("Choice was not valid");	}
@@ -113,10 +102,7 @@ public class ManageProjectMenu extends Menu {
 
 	@Override
 	public boolean needsExecution() {
-		if (this.choice == 3)
-			return true;
-		else 
-			return false;
+		return false;
 	}
 
 }

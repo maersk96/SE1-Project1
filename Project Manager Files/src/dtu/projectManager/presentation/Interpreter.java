@@ -118,15 +118,6 @@ public class Interpreter {
 				this.feedback.add("Press enter to continue");
 				return result;
 				
-			case "delete project":
-				result = new Object[0];
-				project = (ProjectInfo)methodArguments[1];
-				this.application.deleteProject(project.getID());
-				this.feedback.add("Project "+project.getID()+": "+project.getName()+" has been deleted");
-				this.feedback.add("");
-				this.feedback.add("Press enter to continue");
-				return result;
-				
 			
 			case "list all employees":
 				employeeList = application.getEmployees();
@@ -274,18 +265,6 @@ public class Interpreter {
 				this.printFeedback = false;
 				return result;
 
-
-				
-			case "delete activity":
-				result = new Object[0];
-				activity = (ActivityInfo)methodArguments[1];
-				project = (ProjectInfo)methodArguments[2];	
-				this.application.deleteActivity(project.getID(),activity.getID());
-				this.feedback.add("Project "+project.getID()+": "+project.getName()+" has been deleted");
-				this.feedback.add("");
-				this.feedback.add("Press enter to continue");
-				return result;
-				
 				
 			case "set activity name":
 				activity = (ActivityInfo) methodArguments[1];

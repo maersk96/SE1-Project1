@@ -21,7 +21,7 @@ Feature: Assign employee to activity
     When the user assigns the employee with initials "HBO" to the activity
     Then the employee with the initials "HBO" is not assigned to the activity
     And the activity is not assigned to the employee with initials "HBO"
-    And the error message "Project leader or assigned employee login required" is given
+    And the error message "Project leader login required" is given
 
   Scenario: Assign employee to activity when already assigned to the activity
     Given there is a project in the Project Manager
@@ -37,7 +37,7 @@ Feature: Assign employee to activity
     And the employee with initials "BOB" is registered
     And the registered employee "HBO" is assigned to the activity
     And the user logs in with initials "HBO"
-    When the user assigns the employee with initials "BOB" to the activity
+    When the user asks the employee with initials "BOB" for help with the activity
     Then the employee with the initials "BOB" is assigned to the activity
     And the activity is assigned to the employee with initials "BOB"
 
@@ -47,7 +47,7 @@ Feature: Assign employee to activity
     And the employee with initials "HBO" is registered
     And the employee with initials "BOB" is registered
     And the user logs in with initials "HBO"
-    When the user assigns the employee with initials "BOB" to the activity
+    When the user asks the employee with initials "BOB" for help with the activity
     Then the employee with the initials "BOB" is not assigned to the activity
     And the activity is not assigned to the employee with initials "BOB"
-    And the error message "Project leader or assigned employee login required" is given
+    And the error message "The employee is not assigned to this activity" is given

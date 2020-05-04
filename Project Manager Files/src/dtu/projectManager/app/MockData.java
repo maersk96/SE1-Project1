@@ -58,8 +58,8 @@ public class MockData {
         // For testing purposes
         Employee e = new Employee("AAA", "Anton Stockmarr");
         projectManagerApp.addEmployee(e);
-        projectManagerApp.assignEmployeeProjectLeader(mockProjects.get(0),e.getInitials());
-        projectManagerApp.assignEmployeeToActivity(mockActivities.get(0).pId, e.getInitials(), mockActivities.get(0).aId);
+        projectManagerApp.assignProjectLeader(mockProjects.get(0),e.getInitials());
+        projectManagerApp.assignEmployeeToActivity(mockActivities.get(0).pId, mockActivities.get(0).aId, e.getInitials());
         
         
     }
@@ -79,14 +79,14 @@ public class MockData {
         Project p = new Project(name);
         String pId = projectManagerApp.addProject(p);
         String randomEmployee = mockEmployees.get(rand(0, mockEmployees.size()-1));
-        projectManagerApp.assignEmployeeProjectLeader(pId, randomEmployee);
+        projectManagerApp.assignProjectLeader(pId, randomEmployee);
         mockProjects.add(pId);
     }
     private void addMockActivity(String pId, String name) throws OperationNotAllowedException {
         Activity a = new Activity(name, rand(1,52), rand(1,6));
         String aId = projectManagerApp.addActivityToProject(pId, a);
         double hours = randDouble(0.0f,100.0f);
-        projectManagerApp.budgetHours(aId, pId, hours);
+        projectManagerApp.budgetHoursToActivity(pId,aId, hours);
         mockActivities.add(new ProjectActivity(pId, aId));
     }
 
