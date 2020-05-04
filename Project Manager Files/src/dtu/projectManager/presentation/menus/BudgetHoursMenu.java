@@ -50,8 +50,7 @@ public class BudgetHoursMenu extends Menu {
 		startText.add("going from week "+this.activity.getStartWeek()+" to week "+this.activity.getEndWeek()+".");
 		startText.add("");
 		startText.add("Current budgeted hours: "+this.activity.getBudgetHours());
-		startText.add("Enter the new name for the activity:");
-		startText.add(this.project.getID()+": "+this.project.getName());
+		startText.add("Enter the new number of budgeted hours (using \".\" for decimals)");
 		startText.add("");
 		return startText;
 	}

@@ -46,7 +46,7 @@ public class RegisterHoursMenu extends Menu {
 		startText.add(this.activity.getID()+": "+this.activity.getName());
 		startText.add("going from week "+this.activity.getStartWeek()+" to week "+this.activity.getEndWeek()+".");
 		startText.add("");
-		startText.add("How many hours did you work on this project?");
+		startText.add("How many hours did you work on this activity?");
 		startText.add("(use dot for decimals)");
 		startText.add("");
 		return startText;

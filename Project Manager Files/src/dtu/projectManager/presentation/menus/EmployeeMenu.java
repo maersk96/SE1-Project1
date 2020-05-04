@@ -102,6 +102,9 @@ public class EmployeeMenu extends Menu {
 			return new SelectActivityMenu(this.user,activities);
 		}
 		if (this.choice == 2) {
+			if (result.length == 0) {
+				return rewindState();
+			}
 			ProjectInfo[] Projects = new ProjectInfo[result.length];
 			for (int i=0; i<result.length; i++) {
 				Projects[i] = (ProjectInfo)result[i];

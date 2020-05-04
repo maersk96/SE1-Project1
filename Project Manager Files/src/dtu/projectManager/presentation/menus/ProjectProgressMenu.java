@@ -33,6 +33,9 @@ public class ProjectProgressMenu extends Menu {
 		for (String s : Progress) {
 			startText.add(s);
 		}
+		startText.add("");
+		startText.add("Press enter to go back");
+		
 		return startText;
 	}
 	
@@ -100,7 +103,10 @@ public class ProjectProgressMenu extends Menu {
 				line += " ";				
 			}
 		}
-		line+= "| "+tHours+"/"+bHours;
+		line+= "| "+tHours+"/"+bHours+" hours";
+		if (tHours>bHours+0.01) {
+			line += " *Budget Exceeded!";
+		}
 		return line;
 	}
 	
