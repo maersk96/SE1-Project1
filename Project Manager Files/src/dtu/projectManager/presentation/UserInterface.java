@@ -20,6 +20,7 @@ public class UserInterface {
 		this.printer = new UIPrinter();
 		this.inputInterpreter = new Interpreter(App);
 		this.State = new LoginMenu();
+		
 	}
 
 	

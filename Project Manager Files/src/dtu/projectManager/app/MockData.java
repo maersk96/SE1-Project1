@@ -85,8 +85,8 @@ public class MockData {
     private void addMockActivity(String pId, String name) throws OperationNotAllowedException {
         Activity a = new Activity(name, rand(1,52), rand(1,6));
         String aId = projectManagerApp.addActivityToProject(pId, a);
-//        double hours = randDouble(0.0f,100.0f);
-//        projectManagerApp.budgetHours(aId, pId, hours);
+        double hours = randDouble(0.0f,100.0f);
+        projectManagerApp.budgetHours(aId, pId, hours);
         mockActivities.add(new ProjectActivity(pId, aId));
     }
 

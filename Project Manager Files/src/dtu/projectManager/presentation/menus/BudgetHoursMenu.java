@@ -1,7 +1,10 @@
 package dtu.projectManager.presentation.menus;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import dtu.projectManager.dto.ActivityInfo;
 import dtu.projectManager.dto.EmployeeInfo;
@@ -14,11 +17,19 @@ public class BudgetHoursMenu extends Menu {
 	private ProjectInfo project;
 	private ActivityInfo activity;
 	private double budgetedHours;
+	private DecimalFormat df;
 	
 	public BudgetHoursMenu(EmployeeInfo user, ProjectInfo project, ActivityInfo activity) {
 		this.user = user;
 		this.project = project;
 		this.activity = activity;
+
+		DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols(Locale.getDefault());
+		otherSymbols.setDecimalSeparator('.');
+		this.df = new DecimalFormat("#.#", otherSymbols);
+	    this.df.setMinimumFractionDigits(0);
+	    this.df.setMaximumFractionDigits(1);
+
 	}
 
 	// Special check for double
@@ -40,6 +51,8 @@ public class BudgetHoursMenu extends Menu {
 
 	@Override
 	protected List<String> getStartText() {
+		
+		String bHours = this.df.format(this.activity.getBudgetHours());
 		List<String> startText = new ArrayList<String>();
 
 		startText.add("Project:");
@@ -49,7 +62,7 @@ public class BudgetHoursMenu extends Menu {
 		startText.add(this.activity.getID()+": "+this.activity.getName());
 		startText.add("going from week "+this.activity.getStartWeek()+" to week "+this.activity.getEndWeek()+".");
 		startText.add("");
-		startText.add("Current budgeted hours: "+this.activity.getBudgetHours());
+		startText.add("Current budgeted hours: "+bHours);
 		startText.add("Enter the new number of budgeted hours (using \".\" for decimals)");
 		startText.add("");
 		return startText;

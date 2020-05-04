@@ -1,7 +1,10 @@
 package dtu.projectManager.presentation.menus;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import dtu.projectManager.dto.ActivityInfo;
 import dtu.projectManager.dto.EmployeeInfo;
@@ -13,11 +16,19 @@ public class ProjectProgressMenu extends Menu {
 	private EmployeeInfo user;
 	private ProjectInfo project;
 	private ActivityInfo[] activities;
+	private DecimalFormat df;
 	
 	public ProjectProgressMenu(EmployeeInfo user, ProjectInfo project, ActivityInfo[] activities) {
 		this.user = user;
 		this.project = project;
 		this.activities = activities;
+		
+		DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols(Locale.getDefault());
+		otherSymbols.setDecimalSeparator('.');
+		this.df = new DecimalFormat("#.#", otherSymbols);
+	    this.df.setMinimumFractionDigits(0);
+	    this.df.setMaximumFractionDigits(1);
+
 	}
 
 	@Override
@@ -94,16 +105,21 @@ public class ProjectProgressMenu extends Menu {
 	private String addProgress(String line, double bHours, double tHours) {
 		line += "|";
 		int maxProgress=10;
-		int currentProgress = (int)(bHours/tHours*(double)maxProgress);
+		int currentProgress = (int)(tHours/bHours*(double)maxProgress);
 		for (int i=0; i<maxProgress; i++) {
-			if (i<= currentProgress) {
+			if (i< currentProgress) {
 				line += "-";
+			}
+			if (i== currentProgress && tHours > 0) {
+				line+="->";
 			}
 			else {
 				line += " ";				
 			}
 		}
-		line+= "| "+tHours+"/"+bHours+" hours";
+		
+		
+		line+= "| "+this.df.format(tHours)+"/"+this.df.format(bHours)+" hours";
 		if (tHours>bHours+0.01) {
 			line += " *Budget Exceeded!";
 		}

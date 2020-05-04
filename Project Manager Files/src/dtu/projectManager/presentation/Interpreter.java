@@ -1,7 +1,10 @@
 package dtu.projectManager.presentation;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import dtu.projectManager.app.Activity;
 import dtu.projectManager.app.Employee;
@@ -15,17 +18,21 @@ import dtu.projectManager.dto.ProjectInfo;
 public class Interpreter {
 
 	private ProjectManagerApp application;
-	private List<String> feedback;
-	private boolean hadError;
-	private boolean printFeedback;
+	private List<String> feedback = new ArrayList<String>();
+	private boolean hadError = false;
+	private boolean printFeedback = true;
 	private int week=0;
+	private DecimalFormat df;
+
 	
 	public Interpreter(ProjectManagerApp p) {
-		this.application = p;
-		this.hadError = false;
-		this.feedback = new ArrayList<String>();
-		this.printFeedback = true;
-		
+		this.application = p;	
+		DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols(Locale.getDefault());
+		otherSymbols.setDecimalSeparator('.');
+		this.df = new DecimalFormat("#.#", otherSymbols);
+	    this.df.setMinimumFractionDigits(0);
+	    this.df.setMaximumFractionDigits(1);
+
 	}
 
 
@@ -195,7 +202,7 @@ public class Interpreter {
 				hours = (double) methodArguments[3];
 				this.application.registerHoursToActivity(activity.getID(), employee.getInitials(), hours);
 				
-				this.feedback.add("You have registered "+hours+" hours to activity");
+				this.feedback.add("You have registered "+this.df.format(hours)+" hours to activity");
 				this.feedback.add(activity.getID()+": "+activity.getName());
 				this.feedback.add("");
 				this.feedback.add("Press enter to continue");
@@ -235,6 +242,10 @@ public class Interpreter {
 					this.feedback.add("There are no activities for this project.");
 					this.feedback.add("Click enter to go back.");
 				}
+				else {
+					this.printFeedback = false;
+				}
+				return result;
 				
 				
 			case "create activity":

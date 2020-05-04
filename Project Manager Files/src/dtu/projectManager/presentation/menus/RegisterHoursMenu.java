@@ -13,6 +13,7 @@ public class RegisterHoursMenu extends Menu {
 	private ActivityInfo activity;
 	private double hours;
 	
+	
 	public RegisterHoursMenu(EmployeeInfo user, ActivityInfo activity) {
 		this.user = user;
 		this.activity = activity;

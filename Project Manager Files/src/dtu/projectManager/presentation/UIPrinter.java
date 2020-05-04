@@ -1,5 +1,6 @@
 package dtu.projectManager.presentation;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class UIPrinter {
