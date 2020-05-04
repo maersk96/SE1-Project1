@@ -100,7 +100,7 @@ public class Interpreter {
 				project = (ProjectInfo)methodArguments[1];
 				leader = (EmployeeInfo)methodArguments[2];
 				result = new Object[0];
-				this.application.assignEmployeeProjectLeader(leader.getInitials(), project.getID());
+				this.application.assignProjectLeader(leader.getInitials(), project.getID());
 				this.feedback.add("The employee with initials "+leader.getInitials()+" has been assigned");
 				this.feedback.add("as project leader for the project "+project.getID()+": "+project.getName());
 				this.feedback.add("");
@@ -234,7 +234,7 @@ public class Interpreter {
 				result = new Object[activityList.size()];
 				for (int i=0; i< result.length; i++) {
 					activity = activityList.get(i).asActivityInfo();
-					activity.setTotalHours(application.totalRegisteredHoursToActivity(project.getID(),activity.getID()));
+					activity.setTotalHours(application.getTotalRegisteredHoursToActivity(project.getID(),activity.getID()));
 					result[i] = activity;
 				}
 				if (result.length == 0) {
@@ -306,7 +306,7 @@ public class Interpreter {
 				activity = (ActivityInfo) methodArguments[1];
 				project = (ProjectInfo) methodArguments[2];
 				hours = (double) methodArguments[3];
-				this.application.budgetHours(activity.getID(), project.getID(), hours);
+				this.application.budgetHoursToActivity(project.getID(), activity.getID(), hours);
 				
 				this.feedback.add("You have changed to budgeted hours for activity");
 				this.feedback.add(activity.getID()+": "+activity.getName());
@@ -321,7 +321,7 @@ public class Interpreter {
 				activity = (ActivityInfo) methodArguments[1];
 				project = (ProjectInfo) methodArguments[2];
 				employee = (EmployeeInfo) methodArguments[3];
-				this.application.assignEmployeeToActivity(project.getID(),employee.getInitials(),activity.getID());
+				this.application.assignEmployeeToActivity(project.getID(), activity.getID(), employee.getInitials());
 				
 				this.feedback.add("You have assigned employee "+employee.getInitials()+" to activity");
 				this.feedback.add(activity.getID()+": "+activity.getName());

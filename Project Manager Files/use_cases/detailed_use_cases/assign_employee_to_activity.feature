@@ -46,7 +46,6 @@ Feature: Assign employee to activity
     And there is an activity on the project
     And the employee with initials "HBO" is registered
     And the employee with initials "BOB" is registered
-    And the user is logged in as a registered employee
     And the user logs in with initials "HBO"
     When the user assigns the employee with initials "BOB" to the activity
     Then the employee with the initials "BOB" is not assigned to the activity

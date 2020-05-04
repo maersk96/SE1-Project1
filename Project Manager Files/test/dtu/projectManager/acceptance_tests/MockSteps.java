@@ -30,12 +30,4 @@ public class MockSteps {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		}
 	}
-	@Then("some projects exist")
-	public void someProjectsExist() {
-		assertFalse(projectManagerApp.getProjects().isEmpty());
-	}
-	@Then("no projects exist")
-	public void noProjectsExist() {
-		assertTrue(projectManagerApp.getProjects().isEmpty());
-	}
 }

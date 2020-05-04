@@ -51,11 +51,6 @@ public class Employee {
                 .orElse(null);
     }
 
-
-    public boolean isAvailable() {
-        return assignedActivities.size() < 20;
-    }
-
     public List<Activity> getActivitiesInWeekInterval(int weekFrom, int weekTo) {
         List<Activity> activities = new ArrayList<Activity>();
         for (Activity a : assignedActivities) {

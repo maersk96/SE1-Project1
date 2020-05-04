@@ -5,9 +5,10 @@ Feature: Add mock data
   Scenario: The administrator adds test data in the UI
     Given the user is logged in as admin
     When mock data is generated
-    Then some projects exist
+    Then there are some projects in the Project Manager
 
   Scenario: A non-admin tries to add test data
     Given the user is logged in as a registered employee
     When mock data is generated
-    Then no projects exist
+    Then there are no projects in the Project Manager
+    And the error message "Administrator login required" is given

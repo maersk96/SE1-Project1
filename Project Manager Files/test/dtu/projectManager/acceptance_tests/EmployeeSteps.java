@@ -86,7 +86,7 @@ public class EmployeeSteps {
 			Activity activity = new Activity("Sample activity " + i, week, 1);
 			String activityId = projectManagerApp.addActivityToProject(projectId, activity);
 			try {
-				projectManagerApp.assignEmployeeToActivity(projectId, employee.getInitials(), activityId);
+				projectManagerApp.assignEmployeeToActivity(projectId, activityId, employee.getInitials());
 			} catch (OperationNotAllowedException e) {
 				errorMessageHolder.setErrorMessage(e.getMessage());
 			}
