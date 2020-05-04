@@ -9,8 +9,7 @@ Scenario: Add an employee successfully when logged in as admin
 	Then there exists an employee with initials "ABC"
 
 Scenario: Add an employee when not admin
-	Given the employee with initials "HBO" is registered
-	And the user logs in with initials "HBO"
+	Given the user is logged in as a registered employee
 	When the user adds an employee with initials "ABC"
 	Then there does not exist an employee with initials "ABC" 
 	And the error message "Administrator login required" is given

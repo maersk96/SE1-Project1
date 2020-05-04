@@ -12,7 +12,7 @@ public class Activity {
 	private int startWeek;
 	private int endWeek;
 	private HashMap<Employee, Double> employeesAndRegisteredHours = new HashMap<Employee, Double>();
-	private double budgetHours=0;
+	private double budgetHours = 0.0;
 
 	public Activity(String name, int startWeek, int weeks) {
 		this.setStartWeek(startWeek);
@@ -80,15 +80,19 @@ public class Activity {
 	}
 
 	public void registerHours(Employee e, double hours) throws OperationNotAllowedException {
-		if (!containsEmployeeWithInitials(e.getInitials())) {
-			throw new OperationNotAllowedException("Employee is not assigned this activity");
-		}
 		double newHours = employeesAndRegisteredHours.get(e) + hours;
-		employeesAndRegisteredHours.replace(e,newHours);
+		employeesAndRegisteredHours.replace(e, newHours);
 	}
 
 	public boolean containsEmployeeWithRegisteredHours(Employee e, double hours) {
-		return !(!containsEmployeeWithInitials(e.getInitials()) | employeesAndRegisteredHours.get(e) != hours);
+		return (containsEmployeeWithInitials(e.getInitials()) && getEmployeesRegisteredHours(e) == hours);
+	}
+
+	public double getEmployeesRegisteredHours(Employee e) {
+		if (employeesAndRegisteredHours.get(e) != null) {
+			return employeesAndRegisteredHours.get(e);
+		}
+		return 0.0;
 	}
 
 	public int getTotalRegisteredHours() {
