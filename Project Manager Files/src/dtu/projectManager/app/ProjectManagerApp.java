@@ -289,12 +289,9 @@ public class ProjectManagerApp {
 		if (p == null) {
 			throw new OperationNotAllowedException("Project does not exist");
 		}
-		
-		if (!p.isProjectLeader(currentUser)) {
+		if (!(adminLoggedIn() || p.isProjectLeader(currentUser))) {
 			throw new OperationNotAllowedException("Project Leader login required");
 		}
-		
-		
 		Activity a = p.getActivityWithID(activityID);		
 		if (a == null) {
 			throw new OperationNotAllowedException("Activity does not exist");

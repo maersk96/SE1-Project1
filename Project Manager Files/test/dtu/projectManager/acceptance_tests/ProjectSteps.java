@@ -363,7 +363,9 @@ public class ProjectSteps {
 	@Then("the total hours registered to the activity is {double}")
 	public void theTotalHoursRegisteredToTheActivityShouldBe(double hours) throws OperationNotAllowedException {
 		double epsilon = 0.1;
+		adminSession.start();
 		assertEquals(projectManagerApp.totalRegisteredHoursToActivity(project.getID(), activity.getID()), hours,epsilon);
+		adminSession.end();
 	}
 
 }

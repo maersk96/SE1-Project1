@@ -1812,7 +1812,7 @@ formatter.step({
   "keyword": "Then "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theTotalHoursRegisteredToTheActivityShouldBe(int)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theTotalHoursRegisteredToTheActivityShouldBe(double)"
 });
 formatter.result({
   "status": "passed"
