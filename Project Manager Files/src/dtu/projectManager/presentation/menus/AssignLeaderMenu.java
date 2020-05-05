@@ -23,9 +23,19 @@ public class AssignLeaderMenu extends Menu {
 	@Override
 	protected List<String> getStartText() {
 		List<String> startText = new ArrayList<String>();
+		EmployeeInfo currentLeader = project.getProjectLeader();
+		if (currentLeader==null) {
+			startText.add("This project currently has no leader");			
+		}
+		else {
+			startText.add("The leader of this project is");
+			startText.add(currentLeader.getName()+" ("+currentLeader.getInitials()+")");
+		}
 		
+		startText.add("");
+			
 		startText.add("Enter the initials of the employee");
-		startText.add("who should lead the project");
+		startText.add("who should be the new leader of the project");
 		startText.add(this.project.getID()+": "+this.project.getName());
 		startText.add("");
 		return startText;

@@ -165,7 +165,7 @@ public class ProjectProgressMenu extends Menu {
 
 	@Override
 	protected boolean isInt() {
-		return true;
+		return false;
 	}
 
 	@Override

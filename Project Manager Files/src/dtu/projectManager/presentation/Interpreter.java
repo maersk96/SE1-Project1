@@ -48,7 +48,7 @@ public class Interpreter {
 		EmployeeInfo user,employee, leader;
 		ProjectInfo project;
 		ActivityInfo activity;
-		String projectName, activityName;
+		String projectName, activityName, employeeName;
 		double hours;
 		
 		try {
@@ -80,9 +80,16 @@ public class Interpreter {
 				
 			case "create employee":
 			    employee = (EmployeeInfo)methodArguments[1];
+			    employeeName = methodArguments[2].toString();
+			    if (employeeName.equals("")) {
+			    	employee.setName("Anonymous");			    	
+			    }
+			    else {
+			    	employee.setName(employeeName);			    	
+			    }
 			    result = new Object[0];
 			    this.application.addEmployee(employee.asEmployee());
-			    this.feedback.add("An employee with initials "+employee.getInitials()+" has been created");
+			    this.feedback.add("The employee "+employee.getName()+" ("+employee.getName()+") has been created");
 			    this.feedback.add("");
 			    this.feedback.add("Press enter to continue");
 			    return result;
@@ -100,7 +107,7 @@ public class Interpreter {
 				project = (ProjectInfo)methodArguments[1];
 				leader = (EmployeeInfo)methodArguments[2];
 				result = new Object[0];
-				this.application.assignProjectLeader(leader.getInitials(), project.getID());
+				this.application.assignProjectLeader(project.getID(),leader.getInitials());
 				this.feedback.add("The employee with initials "+leader.getInitials()+" has been assigned");
 				this.feedback.add("as project leader for the project "+project.getID()+": "+project.getName());
 				this.feedback.add("");

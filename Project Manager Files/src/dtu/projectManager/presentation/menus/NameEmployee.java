@@ -6,20 +6,22 @@ import java.util.List;
 import dtu.projectManager.dto.EmployeeInfo;
 import dtu.projectManager.presentation.Menu;
 
-public class CreateEmployeeMenu extends Menu {
-
+public class NameEmployee extends Menu {
 	private EmployeeInfo user;
 	private EmployeeInfo employee;
+	private String employeeName;
 	
-	public CreateEmployeeMenu(EmployeeInfo user) {
+	public NameEmployee(EmployeeInfo user, EmployeeInfo employee) {
 		this.user = user;
+		this.employee = employee;
 	}
-	
+
 	@Override
 	protected List<String> getStartText() {
 		List<String> startText = new ArrayList<String>();
 		
-		startText.add("Please enter the ID/initials of the new employee");
+		startText.add("Please enter the name of the new employee");
+		startText.add("If name is empty, the employee will be named \"Anonymous\"");
 		startText.add("");
 		return startText;
 	}
@@ -41,24 +43,27 @@ public class CreateEmployeeMenu extends Menu {
 
 	@Override
 	protected Object[] getMethodInput() {
-		return null;
+		Object[] MethodInput = new Object[2];
+		MethodInput[0] = this.employee.copy();
+		MethodInput[1] = this.employeeName;
+		return MethodInput;
 	}
 	
 	@Override
-	protected void setInput(String id) {
-		this.employee = new EmployeeInfo(id);
+	protected void setInput(String name) {
+		this.employeeName = name;
 	}
 
 	@Override
 	protected String getMethodName() {
-		return null;
+		return "create employee";
 	}
 	
 
 	@Override
 	public List<String> getInputSpecification() {
 		List<String> inputSpecification = new ArrayList<String>();
-		inputSpecification.add("The input should be a string of letters identifying the new employee");
+		inputSpecification.add("The input should be the new name of the employee");
 		return inputSpecification;
 	}
 
@@ -69,7 +74,7 @@ public class CreateEmployeeMenu extends Menu {
 
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
-		return new NameEmployee(this.user,this.employee);
+		return new AdminMenu(this.user);
 	}
 
 	@Override
@@ -79,7 +84,7 @@ public class CreateEmployeeMenu extends Menu {
 
 	@Override
 	public boolean needsExecution() {
-		return false;
+		return true;
 	}
 
 }
