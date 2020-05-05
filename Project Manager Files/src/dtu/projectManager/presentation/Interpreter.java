@@ -184,8 +184,9 @@ public class Interpreter {
 				user = (EmployeeInfo) methodArguments[1];
 				activity = (ActivityInfo) methodArguments[2];
 				employee = (EmployeeInfo) methodArguments[3];
-				// this.application.askForAssistance(employee.getInitials(), activity.getID());
-				this.feedback.add("Employee "+employee.getName()+"("+employee.getName()+") can now help with activity");
+				this.application.askForAssistance( activity.getID(), employee.getInitials());
+				employee = this.application.getEmployee(employee.getInitials()).asEmployeeInfo();
+				this.feedback.add(employee.getName()+"("+employee.getInitials()+") can now help with activity");
 				this.feedback.add(activity.getID()+": "+activity.getName());
 				this.feedback.add("");
 				this.feedback.add("Press enter to continue");
@@ -267,7 +268,7 @@ public class Interpreter {
 				employeeList = this.application.getEmployeesAssignedToActivity(project.getID(), activity.getID());
 				result = new Object[employeeList.size()];
 				for (int i=0; i<result.length; i++) {
-					result[0] = employeeList.get(i).asEmployeeInfo();
+					result[i] = employeeList.get(i).asEmployeeInfo();
 				}
 				this.printFeedback = false;
 				return result;
@@ -308,8 +309,8 @@ public class Interpreter {
 				project = (ProjectInfo) methodArguments[2];
 				employee = (EmployeeInfo) methodArguments[3];
 				this.application.assignEmployeeToActivity(project.getID(), activity.getID(), employee.getInitials());
-				
-				this.feedback.add("You have assigned employee "+employee.getInitials()+" to activity");
+				employee = this.application.getEmployee(employee.getInitials()).asEmployeeInfo();
+				this.feedback.add("You have assigned "+employee.getName()+" ("+employee.getInitials()+") to activity");
 				this.feedback.add(activity.getID()+": "+activity.getName());
 				this.feedback.add("");
 				this.feedback.add("Press enter to continue");

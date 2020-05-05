@@ -87,7 +87,7 @@ public class BudgetHoursMenu extends Menu {
 	protected Object[] getMethodInput() {
 		Object[] input = new Object[3];
 		input[0] = this.activity.copy();
-		input[1] = this.user.copy();
+		input[1] = this.project.copy();
 		input[2] = this.budgetedHours;
 		return input;
 	}
@@ -116,6 +116,7 @@ public class BudgetHoursMenu extends Menu {
 
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
+		this.activity.setBudgetHours(this.budgetedHours);;
 		return new ManageProjectActivityMenu(this.user,this.project,this.activity);
 	}
 

@@ -43,7 +43,6 @@ public class ManageProjectActivityMenu extends Menu {
 		options.add("Change activity name");
 		options.add("Budget hours");
 		options.add("Assign employee to activity");
-		options.add("Delete activity");
 		options.add("Return to main menu");
 		return options;
 	}
@@ -84,8 +83,6 @@ public class ManageProjectActivityMenu extends Menu {
 	protected String getMethodName() {
 		if (this.choice == 3)
 			return "list employees on activity";
-		if (this.choice == 4)
-			return "delete activity";
 		else
 			return null;
 	}
@@ -120,7 +117,7 @@ public class ManageProjectActivityMenu extends Menu {
 			}
 			return new AssignEmployeeActivityMenu(this.user, this.project,this.activity, employees);
 		}
-		if (this.choice == 4 || this.choice == 5) {
+		if (this.choice == 4) {
 			return new ProjectLeaderMenu(this.user, this.project);
 		}
 		else
@@ -134,7 +131,7 @@ public class ManageProjectActivityMenu extends Menu {
 
 	@Override
 	public boolean needsExecution() {
-		if (this.choice == 3 || this.choice == 4) {
+		if (this.choice == 3) {
 			return true;
 		}
 		else {

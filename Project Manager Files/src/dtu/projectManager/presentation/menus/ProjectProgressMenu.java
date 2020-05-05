@@ -110,16 +110,25 @@ public class ProjectProgressMenu extends Menu {
 			if (i< currentProgress) {
 				line += "-";
 			}
-			if (i== currentProgress && tHours > 0) {
-				line+="->";
+			if (i== currentProgress) {
+				if (tHours > 0) {
+					line+=">";					
+				}
+				else {
+					line+=" ";
+				}
 			}
-			else {
+			if (i > currentProgress) {
 				line += " ";				
 			}
 		}
 		
+		int length = line.length();
 		
-		line+= "| "+this.df.format(tHours)+"/"+this.df.format(bHours)+" hours";
+		line+= "| "+this.df.format(tHours)+"/"+this.df.format(bHours);
+		
+		line = addSpaces(line,length+13);
+		line +=" hours";
 		if (tHours>bHours+0.01) {
 			line += " *Budget Exceeded!";
 		}

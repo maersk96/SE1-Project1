@@ -98,8 +98,8 @@ public class Activity {
 		return 0.0;
 	}
 
-	public int getTotalRegisteredHours() {
-		int sum = 0;
+	public double getTotalRegisteredHours() {
+		double sum = 0;
 		for (double hours : employeesAndRegisteredHours.values()) {
 			sum += hours;
 		}

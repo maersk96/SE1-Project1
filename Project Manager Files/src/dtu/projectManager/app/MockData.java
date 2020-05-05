@@ -51,6 +51,7 @@ public class MockData {
             ProjectActivity pa = mockActivities.get(i);
             String randomEmployee = mockEmployees.get(rand(0, mockEmployees.size()-1));
             projectManagerApp.assignEmployeeToActivity(pa.pId, pa.aId, randomEmployee);
+            projectManagerApp.registerHoursToActivity(pa.aId, randomEmployee, randDouble(0.0f,100.0f));
         }
         
         
