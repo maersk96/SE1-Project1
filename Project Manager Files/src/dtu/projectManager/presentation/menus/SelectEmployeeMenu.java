@@ -5,26 +5,25 @@ import java.util.List;
 
 import dtu.projectManager.dto.ActivityInfo;
 import dtu.projectManager.dto.EmployeeInfo;
-import dtu.projectManager.dto.ProjectInfo;
 import dtu.projectManager.presentation.Menu;
 
-public class NewActivityDurationMenu extends Menu {
+public class SelectEmployeeMenu extends Menu {
 
-	private EmployeeInfo user;
-	private ProjectInfo project;
-	private ActivityInfo activity;
+	public EmployeeInfo user;
+	public EmployeeInfo employee;
 	
-	public NewActivityDurationMenu(EmployeeInfo user, ProjectInfo project, ActivityInfo activity) {
+	public SelectEmployeeMenu(EmployeeInfo user) {
 		this.user = user;
-		this.project = project;
-		this.activity = activity;
 	}
+
+	
 
 	@Override
 	protected List<String> getStartText() {
 		List<String> startText = new ArrayList<String>();
 		
-		startText.add("Please enter the duration of the new activity");
+		startText.add("Enter the initials of the employee who the hours");
+		startText.add("should be registered to.");
 		startText.add("");
 		return startText;
 	}
@@ -45,44 +44,52 @@ public class NewActivityDurationMenu extends Menu {
 	}
 
 	@Override
-	protected Object[] getMethodInput() {
-		Object[] methodInput = new Object[2];
-		methodInput[0] = this.activity;
-		methodInput[1] = this.project;
-		return methodInput;
+	protected Object[] getMethodInput() {		
+	Object[] input = new Object[1];
+	input[0] = this.employee.copy();
+	return input;
+
 	}
-	
+
 	@Override
-	protected void setInput(String duration) {
-		this.activity.setEndWeek(this.activity.getStartWeek() - 1 + Integer.parseInt(duration));
+	protected void setInput(String initials) {
+		this.employee = new EmployeeInfo(initials);
 	}
 
 	@Override
 	protected String getMethodName() {
-		return "create activity";
+		return "list all employee activities";
 	}
-	
 
 	@Override
 	public List<String> getInputSpecification() {
 		List<String> inputSpecification = new ArrayList<String>();
-		inputSpecification.add("The input should be an integer.");
+		inputSpecification.add("The input should be the initials of an employee");
 		return inputSpecification;
 	}
 
 	@Override
 	protected boolean isInt() {
-		return true;
+		return false;
 	}
 
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
-		return new ManageProjectActivityMenu(this.user,this.project, this.activity);
+		if (result.length == 0) {
+			return rewindState();
+		}
+		
+		ActivityInfo[] activities = new ActivityInfo[result.length];
+		for (int i=0; i<result.length; i++) {
+			activities[i] = (ActivityInfo) result[i];
+		}
+		return new AdminSelectActivityMenu(this.user,this.employee,activities);
 	}
+
 
 	@Override
 	public Menu rewindState() {
-		return new ProjectLeaderMenu(this.user,this.project);
+		return new AdminMenu(this.user);
 	}
 
 	@Override

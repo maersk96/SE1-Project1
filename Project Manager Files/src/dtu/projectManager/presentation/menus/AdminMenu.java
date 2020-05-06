@@ -34,6 +34,7 @@ public class AdminMenu extends Menu {
 		options.add("Create a new project");
 		options.add("Manage an existing project");
 		options.add("See all employees");
+		options.add("Register hours to an employee");
 		return options;
 	}
 
@@ -111,6 +112,9 @@ public class AdminMenu extends Menu {
 		}
 		if (this.choice == 4)
 			return new AdminMenu(this.user);
+		if (this.choice == 5) {
+			return new SelectEmployeeMenu(this.user);
+		}
 		else
 			throw new Exception("Choice was not valid");
 	}

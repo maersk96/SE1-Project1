@@ -43,7 +43,7 @@ public class ManageProjectActivityMenu extends Menu {
 		options.add("Change activity name");
 		options.add("Budget hours");
 		options.add("Assign employee to activity");
-		options.add("Return to main menu");
+		options.add("Return to project menu");
 		return options;
 	}
 

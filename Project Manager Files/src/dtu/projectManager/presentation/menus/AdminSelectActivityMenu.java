@@ -7,22 +7,25 @@ import dtu.projectManager.dto.ActivityInfo;
 import dtu.projectManager.dto.EmployeeInfo;
 import dtu.projectManager.presentation.Menu;
 
-public class SelectActivityMenu extends Menu {
+public class AdminSelectActivityMenu extends Menu {
 
 	private EmployeeInfo user;
+	private EmployeeInfo employee;
 	private int choice;
 	private ActivityInfo[] activities;
+
 	
-	public SelectActivityMenu(EmployeeInfo user, ActivityInfo[] activities) {
+	public AdminSelectActivityMenu(EmployeeInfo user, EmployeeInfo employee, ActivityInfo[] activities) {
 		this.user = user;
+		this.employee = employee;
 		this.activities = activities;
 	}
-	
 	@Override
 	protected List<String> getStartText() {
 		List<String> startText = new ArrayList<String>();
 		
-		startText.add("These are all your activities");
+		startText.add("These are all the activities that the employee "+this.employee.getInitials());
+		startText.add("is assigned to");
 		startText.add("");
 		return startText;
 	}
@@ -81,12 +84,12 @@ public class SelectActivityMenu extends Menu {
 
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
-		return new ManageActivityMenu(this.user,this.activities[this.choice-1]);
+		return new AdminRegisterHoursMenu(this.user,this.employee,this.activities[this.choice-1]);
 	}
 
 	@Override
 	public Menu rewindState() {
-		return new EmployeeMenu(this.user);
+		return this;
 	}
 
 	@Override
