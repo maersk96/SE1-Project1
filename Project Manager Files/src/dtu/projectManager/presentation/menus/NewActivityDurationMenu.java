@@ -82,9 +82,13 @@ public class NewActivityDurationMenu extends Menu {
 
 	@Override
 	public Menu rewindState() {
-		return new ProjectLeaderMenu(this.user,this.project);
+		if (this.user.getInitials().equals("ADMIN")) {
+			return new ManageProjectMenu(this.user,this.project);
+		}
+		else {
+			return new ProjectLeaderMenu(this.user,this.project);
+		}
 	}
-
 	@Override
 	public boolean needsExecution() {
 		return true;

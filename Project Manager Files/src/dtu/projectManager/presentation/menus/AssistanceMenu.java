@@ -12,11 +12,13 @@ public class AssistanceMenu extends Menu {
 	private EmployeeInfo user;
 	private ActivityInfo activity;
 	private EmployeeInfo helper;
+	private EmployeeInfo[] employees;
 
 	
-	public AssistanceMenu(EmployeeInfo user, ActivityInfo activity) {
+	public AssistanceMenu(EmployeeInfo user, ActivityInfo activity, EmployeeInfo[] employees) {
 		this.user = user;
 		this.activity = activity;
+		this.employees = employees;
 	}
 	@Override
 	protected List<String> getStartText() {
@@ -25,6 +27,11 @@ public class AssistanceMenu extends Menu {
 		startText.add("Activity:");
 		startText.add(this.activity.getID()+": "+this.activity.getName());
 		startText.add("going from week "+this.activity.getStartWeek()+" to week "+this.activity.getEndWeek()+".");
+		startText.add("");
+		startText.add("These are the available employees in that period:");
+		for (int i=0; i< this.employees.length; i++) {
+			startText.add(this.employees[i].getName()+" ("+this.employees[i].getInitials()+")");
+		}
 		startText.add("");
 		startText.add("Please enter the initials of the employee assisting you");
 		startText.add("");

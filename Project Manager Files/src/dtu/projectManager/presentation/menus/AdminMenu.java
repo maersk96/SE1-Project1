@@ -103,11 +103,11 @@ public class AdminMenu extends Menu {
 			if (result.length == 0) {
 				return rewindState();
 			}
-			ProjectInfo[] Projects = new ProjectInfo[result.length];
+			ProjectInfo[] projects = new ProjectInfo[result.length];
 			for (int i=0; i<result.length; i++) {
-				Projects[i] = (ProjectInfo)result[i];
+				projects[i] = (ProjectInfo)result[i];
 			}
-			return new SelectProjectMenu(user, Projects);
+			return new SelectProjectMenu(user, projects);
 			
 		}
 		if (this.choice == 4)

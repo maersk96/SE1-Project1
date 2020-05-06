@@ -38,7 +38,7 @@ public class AssignEmployeeActivityMenu extends Menu {
 		startText.add("These employees are currently assigned to this activity:");
 		
 		for (int i=0; i<this.assignedEmployees.length; i++) {
-			startText.add(assignedEmployees[i].getName());
+			startText.add(this.assignedEmployees[i].getName()+" ("+this.assignedEmployees[i].getInitials()+")");
 		}
 		
 		startText.add("");

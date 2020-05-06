@@ -174,7 +174,7 @@ public class Interpreter {
 				employeeList = this.application.getAvailableEmployees(week);
 				result = new Object[employeeList.size()];
 				for (int i=0; i<result.length; i++) {
-					result[0] = employeeList.get(i).asEmployeeInfo();
+					result[i] = employeeList.get(i).asEmployeeInfo();
 				}
 				this.printFeedback = false;
 				return result;

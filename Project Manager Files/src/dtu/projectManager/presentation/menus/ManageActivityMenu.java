@@ -5,6 +5,7 @@ import java.util.List;
 
 import dtu.projectManager.dto.ActivityInfo;
 import dtu.projectManager.dto.EmployeeInfo;
+import dtu.projectManager.dto.ProjectInfo;
 import dtu.projectManager.presentation.Menu;
 
 public class ManageActivityMenu extends Menu {
@@ -89,14 +90,23 @@ public class ManageActivityMenu extends Menu {
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
 
-		if (this.choice == 1)
-			return new RegisterHoursMenu(this.user, this.activity);
-		if (this.choice == 2)
-			return new AssistanceMenu(this.user, this.activity);
-		if (this.choice == 3)
-			return new EmployeeMenu(this.user);
-		else
+		if (this.choice == 1) {
+			return new RegisterHoursMenu(this.user, this.activity);			
+		}
+		if (this.choice == 2) {
+			EmployeeInfo[] employees = new EmployeeInfo[result.length];
+			for (int i=0; i<result.length; i++) {
+				employees[i] = (EmployeeInfo)result[i];
+			}
+			return new AssistanceMenu(this.user, this.activity,employees);			
+		}
+		if (this.choice == 3) {
+			return new EmployeeMenu(this.user);			
+		}
+		else {
 			throw new Exception("Choice was not valid");
+			
+		}
 	}
 
 	@Override
@@ -106,7 +116,10 @@ public class ManageActivityMenu extends Menu {
 
 	@Override
 	public boolean needsExecution() {
-		return false;
+		if (this.choice == 2)
+			return true;
+		else
+			return false;
 	}
 
 }
