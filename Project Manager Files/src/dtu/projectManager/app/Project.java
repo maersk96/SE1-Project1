@@ -85,11 +85,4 @@ public class Project {
         return getActivityWithID(activityID) != null;
     }
     
-    public ProjectInfo asProjectInfo() {
-    	ProjectInfo project = new ProjectInfo(this.name);
-    	project.setID(this.ID);
-    	if (this.hasProjectLeader())
-    		project.setProjectLeader(this.projectLeader.asEmployeeInfo());
-    	return project;
-    }
 }

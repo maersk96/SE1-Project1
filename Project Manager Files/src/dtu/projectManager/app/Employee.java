@@ -82,9 +82,4 @@ public class Employee {
         return getActivitiesInWeek(week).size() < ACTIVE_ACTIVITIES_LIMIT;
     }
 
-    public EmployeeInfo asEmployeeInfo() {
-    	EmployeeInfo employee = new EmployeeInfo(this.initials);
-    	employee.setName(this.name);
-    	return employee;
-    }
 }
