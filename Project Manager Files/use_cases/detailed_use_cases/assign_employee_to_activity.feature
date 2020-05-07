@@ -6,6 +6,7 @@ Feature: Assign employee to activity
     Given there is a project in the Project Manager
     And there is an activity on the project
     And the employee with initials "HBO" is registered
+    And the user is logged in as Project Leader for the project
     When the user assigns the employee with initials "HBO" to the activity
     Then the employee with the initials "HBO" is assigned to the activity
     And the activity is assigned to the employee with initials "HBO"
@@ -26,6 +27,7 @@ Feature: Assign employee to activity
     Given there is a project in the Project Manager
     And there is an activity on the project
     And the registered employee "HBO" is assigned to the activity
+    And the user is logged in as Project Leader for the project
     When the user assigns the employee with initials "HBO" to the activity
     Then the error message "Activity already has this employee assigned" is given
 
