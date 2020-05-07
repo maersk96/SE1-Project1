@@ -276,9 +276,15 @@ public class ProjectSteps {
 	public void activityHasRegisteredHoursWithEmployee(double hours, String employeeInitials) throws Exception {
 		Activity a = projectManagerApp.getActivityFromProject(projectId, activityId);
 		Employee e = projectManagerApp.getEmployeeWithInitials(employeeInitials);
-		assertEquals(hours, a.getEmployeesRegisteredHours(e), 0.0);
+		assertEquals(hours,projectManagerApp.getEmployeesRegisteredHoursToActivity(activityId, employeeInitials) , 0.0);
 	}
 
+	@Then("the activity still has {double} hours registered with the employee with initials {string}")
+	public void activityHasNoRegisteredHoursWithEmployee(double hours, String employeeInitials) throws Exception {
+		Activity a = projectManagerApp.getActivityFromProject(projectId, activityId);
+		Employee e = projectManagerApp.getEmployeeWithInitials(employeeInitials);
+		assertEquals(hours, a.getEmployeesRegisteredHours(e), 0.0);
+	}
 
 	@Then("the activity is not assigned to the employee with initials {string}")
 	public void theActivityIsNotAssignedTheEmployeeWithInitials(String employeeInitials) {
@@ -315,4 +321,19 @@ public class ProjectSteps {
 	public void theUserSeesList() throws OperationNotAllowedException {
 		assertTrue(projectManagerApp.getProjectsLeadByEmployee(projectManagerApp.getCurrentUser().getInitials()).contains(project));
 	}
+	
+	@When("the user renames the activity to {string}")
+	public void theUserRenamesActivity(String aName) {
+		try {
+			projectManagerApp.renameActivity(project.getID(),activity.getID(),aName);
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+	}
+	
+	@Then("the activity has the name {string}")
+	public void theActivityHasName(String aName) throws OperationNotAllowedException {
+		assertTrue(activity.getName().equals(aName));
+	}
+	
 }

@@ -1420,6 +1420,67 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.uri("file:use_cases/detailed_use_cases/last_coverage.feature");
+formatter.feature({
+  "name": "Get full code coverage",
+  "description": "",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "Budget hours to an activity successfully when project leader",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "there is a project in the Project Manager",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.thereIsAProjectInTheManager()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is an activity on the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theProjectHasAnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user is logged in as Project Leader for the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserIsProjectLeaderForTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user renames the activity to \"Doing code coverage\"",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserRenamesActivity(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the activity has the name \"Doing code coverage\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theActivityHasName(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.uri("file:use_cases/detailed_use_cases/register_hours_to_activity.feature");
 formatter.feature({
   "name": "Register hours to an activity",
@@ -1547,11 +1608,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the activity has 0 hours registered with the employee with initials \"HBO\"",
+  "name": "the activity still has 0 hours registered with the employee with initials \"HBO\"",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.activityHasRegisteredHoursWithEmployee(double,java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.activityHasNoRegisteredHoursWithEmployee(double,java.lang.String)"
 });
 formatter.result({
   "status": "passed"
