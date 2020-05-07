@@ -35,9 +35,9 @@ Scenario: Assign an non-existing employee as project leader
 	
 Scenario: See what projects you lead as employee
 	Given there is a project in the Project Manager
-  	And the user is logged in as Project Leader for the project
-  	When the user accesses his leader list
+	And the user is logged in as Project Leader for the project
+ 	When the user accesses his leader list
 	Then the user sees a list of projects that he leads
-	
-	
+
+		
 	

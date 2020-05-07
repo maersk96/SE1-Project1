@@ -31,7 +31,6 @@ public class Employee {
         return assignedActivities.stream().anyMatch(m -> m.getID().contentEquals(activityID));
     }
 
-
     public String getInitials() {
         return initials;
     }
