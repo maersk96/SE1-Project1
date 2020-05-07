@@ -119,8 +119,6 @@ public class ProjectManagerApp {
 	public boolean containsProjectWithID(String projectID) {
 		return getProjectWithID(projectID) != null;
 	}
-
-
 	
 	
 	public String addActivityToProject(String projectID, Activity activity) throws OperationNotAllowedException {
@@ -146,11 +144,10 @@ public class ProjectManagerApp {
 	}
 	
 	public void assignEmployeeToActivity(String projectID, String activityID, String employeeInitials) throws OperationNotAllowedException {
+		requiresProjectLeader(projectID);
+
 		Project p = getProject(projectID);
 		Activity a = getActivityFromProject(projectID, activityID);
-		if (!(adminLoggedIn() || p.isProjectLeader(currentUser))) {
-			throw new OperationNotAllowedException("Project leader login required");
-		}
 		Employee e = getEmployee(employeeInitials);
 		addEmployeeToActivity(e,a);
 	}

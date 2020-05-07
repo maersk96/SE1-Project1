@@ -739,7 +739,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the error message \"Project leader login required\" is given",
+  "name": "the error message \"Project Leader login required\" is given",
   "keyword": "And "
 });
 formatter.match({
