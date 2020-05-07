@@ -102,6 +102,5 @@ public class EmployeeSteps {
 		Employee e = projectManagerApp.getEmployeeWithInitials(employee.getInitials());
 		assertFalse(e.isAvailableInWeek(week));
 	}
-	
 
 }

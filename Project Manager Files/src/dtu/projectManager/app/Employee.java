@@ -63,8 +63,12 @@ public class Employee {
         return getActivitiesInWeekInterval(week, week);
     }
 
+    public boolean isAvailableInWeekInterval(int startWeek, int endWeek) {
+        return getActivitiesInWeekInterval(startWeek, endWeek).size() < ACTIVE_ACTIVITIES_LIMIT;
+    }
+
     public boolean isAvailableForActivity(Activity activity) {
-        return getActivitiesInWeekInterval(activity.getStartWeek(), activity.getEndWeek()).size() < ACTIVE_ACTIVITIES_LIMIT;
+        return isAvailableInWeekInterval(activity.getStartWeek(), activity.getEndWeek());
     }
 
     public boolean isProjectLeader(Project p) {

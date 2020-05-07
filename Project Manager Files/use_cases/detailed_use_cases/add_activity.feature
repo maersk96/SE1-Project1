@@ -5,7 +5,7 @@ Feature: Add activity
   Scenario: Add an activity successfully when project leader
     Given there is a project in the Project Manager
     And there is an activity
-    And the user is Project Leader for the project
+    And the user is logged in as Project Leader for the project
     When the user adds the activity to the project
     Then the activity exists on the project
 
