@@ -104,16 +104,18 @@ public class EmployeeSteps {
 	}
 	
 	@When("the user accesses his leader list")
-	public void theUserAccesseLeaderList() {
+	public void theUserAccessesLeaderList() {
+		Employee e = projectManagerApp.getCurrentUser();
 		try {
-			projectManagerApp.getProjectsLeadByEmployee(employee.getInitials());
-		} catch (OperationNotAllowedException e) {
-			errorMessageHolder.setErrorMessage(e.getMessage());
+			projectManagerApp.getProjectsLeadByEmployee(e.getInitials());
+		} catch (OperationNotAllowedException err) {
+			errorMessageHolder.setErrorMessage(err.getMessage());
 		}
 	}
 	
 	@Then("the user sees a list of projects that he leads")
 	public void theUserSeesList() throws OperationNotAllowedException {
-		assertFalse(null==projectManagerApp.getProjectsLeadByEmployee(employee.getInitials()));
+		Employee e = projectManagerApp.getCurrentUser();
+		assertNotNull(projectManagerApp.getProjectsLeadByEmployee(e.getInitials()));
 	}
 }

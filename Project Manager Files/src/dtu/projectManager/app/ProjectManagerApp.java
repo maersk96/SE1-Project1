@@ -208,7 +208,8 @@ public class ProjectManagerApp {
 
 	public List<Project> getProjectsLeadByEmployee(String initials) throws OperationNotAllowedException {
 		Employee e = getEmployee(initials);
-		if (currentUser.hasInitials(initials) && !adminLoggedIn()) {
+		System.out.println(initials + " : " + currentUser.getInitials());
+		if (!(currentUser.hasInitials(initials) || adminLoggedIn())) {
 			throw new OperationNotAllowedException("You can only see projects that you are leading");
 		}
 		return getProjects().stream()

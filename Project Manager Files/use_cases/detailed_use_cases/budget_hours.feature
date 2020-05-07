@@ -5,7 +5,7 @@ Feature: Budget hours to an activity
   Scenario: Budget hours to an activity successfully when project leader
     Given there is a project in the Project Manager
     And there is an activity on the project
-    And the user is Project Leader for the project
+    And the user is logged in as Project Leader for the project
     When the user budgets 10 hours to the activity
     Then the activity has a budget of 10 hours
 

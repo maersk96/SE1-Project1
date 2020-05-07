@@ -30,7 +30,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user is Project Leader for the project",
+  "name": "the user is logged in as Project Leader for the project",
   "keyword": "And "
 });
 formatter.match({
@@ -604,7 +604,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user is Project Leader for the project",
+  "name": "the user is logged in as Project Leader for the project",
   "keyword": "And "
 });
 formatter.match({
@@ -784,7 +784,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user is Project Leader for the project",
+  "name": "the user is logged in as Project Leader for the project",
   "keyword": "And "
 });
 formatter.match({
@@ -1265,17 +1265,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user is logged in as a registered employee",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theUserIsARegisteredEmployee()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the user is Project Leader for the project",
+  "name": "the user is logged in as Project Leader for the project",
   "keyword": "And "
 });
 formatter.match({
@@ -1289,7 +1279,7 @@ formatter.step({
   "keyword": "When "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theUserAccesseLeaderList()"
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theUserAccessesLeaderList()"
 });
 formatter.result({
   "status": "passed"
@@ -1336,7 +1326,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user is Project Leader for the project",
+  "name": "the user is logged in as Project Leader for the project",
   "keyword": "And "
 });
 formatter.match({

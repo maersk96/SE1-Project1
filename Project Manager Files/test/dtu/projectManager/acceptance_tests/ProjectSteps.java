@@ -232,7 +232,7 @@ public class ProjectSteps {
 	}
 	
 
-	@Given("the user is Project Leader for the project")
+	@Given("the user is logged in as Project Leader for the project")
 	public void theUserIsProjectLeaderForTheProject() throws OperationNotAllowedException {
 		adminSession.start();
 		String initials = "PLJ";
