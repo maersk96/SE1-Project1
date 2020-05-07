@@ -106,10 +106,4 @@ public class Activity {
 		return sum;
 	}
 	
-	public ActivityInfo asActivityInfo() {
-		ActivityInfo activity = new ActivityInfo(this.name, this.startWeek, this.endWeek);
-		activity.setBudgetHours(this.budgetHours);
-		activity.setID(this.ID);
-		return activity;
-	}
 }
