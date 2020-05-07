@@ -739,7 +739,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the error message \"Project leader or assigned employee login required\" is given",
+  "name": "the error message \"Project leader login required\" is given",
   "keyword": "And "
 });
 formatter.match({
@@ -869,11 +869,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user assigns the employee with initials \"BOB\" to the activity",
+  "name": "the user asks the employee with initials \"BOB\" for help with the activity",
   "keyword": "When "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserAssignsEmployeeToTheActivity(java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserAsksTheEmployeeWithInitialsForHelpWithTheActivity(java.lang.String)"
 });
 formatter.result({
   "status": "passed"
@@ -954,11 +954,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user assigns the employee with initials \"BOB\" to the activity",
+  "name": "the user asks the employee with initials \"BOB\" for help with the activity",
   "keyword": "When "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserAssignsEmployeeToTheActivity(java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserAsksTheEmployeeWithInitialsForHelpWithTheActivity(java.lang.String)"
 });
 formatter.result({
   "status": "passed"
@@ -984,7 +984,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the error message \"Project leader or assigned employee login required\" is given",
+  "name": "the error message \"The employee is not assigned to this activity\" is given",
   "keyword": "And "
 });
 formatter.match({
@@ -1375,167 +1375,6 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
-formatter.uri("file:use_cases/detailed_use_cases/delete_project.feature");
-formatter.feature({
-  "name": "Delete project",
-  "description": "\tDescription: A project is deleted by the Admin\n\tActors: Admin",
-  "keyword": "Feature"
-});
-formatter.scenario({
-  "name": "Delete a project successfully when logged in as admin",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "there is a project in the Project Manager",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.thereIsAProjectInTheManager()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the user is logged in as admin",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserIsAlreadyLoggedInAsAdmin()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the user deletes the project",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserDeletesTheProject()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the project is removed from the Project Manager",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theProjectDoesNotExistInTheProjectManager()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.scenario({
-  "name": "Delete a project when not admin",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "there is a project in the Project Manager",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.thereIsAProjectInTheManager()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the user is logged in as a registered employee",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theUserIsARegisteredEmployee()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the user deletes the project",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserDeletesTheProject()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the project is still in the Project Manager",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theProjectExistsInTheProjectManager()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the error message \"Administrator login required\" is given",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theErrorMessageIsGiven(java.lang.String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.scenario({
-  "name": "Delete a project that does not exist",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "the user is logged in as admin",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserIsAlreadyLoggedInAsAdmin()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "there is a project named \"Sample project\"",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.thereIsAProjectWithName(java.lang.String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the project does not exist in the Project Manager",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theProjectDoesNotExistInTheProjectManager()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the user deletes the project",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserDeletesTheProject()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the error message \"Project does not exist\" is given",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theErrorMessageIsGiven(java.lang.String)"
-});
-formatter.result({
-  "status": "passed"
-});
 formatter.uri("file:use_cases/detailed_use_cases/register_hours_to_activity.feature");
 formatter.feature({
   "name": "Register hours to an activity",
@@ -1673,7 +1512,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the error message \"You are not assigned to this activity\" is given",
+  "name": "the error message \"The employee is not assigned to this activity\" is given",
   "keyword": "And "
 });
 formatter.match({

@@ -124,14 +124,7 @@ public class ProjectSteps {
 		activityId = projectManagerApp.addActivityToProject(projectId, activity);
 		adminSession.end();
 	}
-	@Given("the registered employee {string} is Project Leader for the project")
-	public void theRegisteredEmployeeIsProjectLeaderForTheProject(String initials) throws OperationNotAllowedException {
-		adminSession.start();
-		Employee e = new Employee(initials, "John");
-		projectManagerApp.addEmployee(e);
-		projectManagerApp.assignProjectLeader(projectId, initials);
-		adminSession.end();
-	}
+
 	@Given("the registered employee {string} is assigned to the activity")
 	public void theRegisteredEmployeeIsAssignedToTheActivity(String initials) throws OperationNotAllowedException {
 		adminSession.start();
@@ -214,14 +207,6 @@ public class ProjectSteps {
 		assertTrue(projectManagerApp.getProjects().isEmpty());
 	}
 
-
-	@Given("the employee with initials {string} is assigned to the activity by the project leader {string}")
-	public void employeeWithInitialsIsAssignedActivity(String employeeInitials, String projectLeaderInitials) throws Exception {
-		projectManagerApp.login(projectLeaderInitials);
-		projectManagerApp.assignEmployeeToActivity(projectId, employeeInitials, activityId);
-		projectManagerApp.logout();
-	}
-
 	@When("the user adds a project")
 	public void theUserAddsAProject() {
 		Project project = new Project("Sample project");
@@ -246,55 +231,7 @@ public class ProjectSteps {
 		assertEquals(errorMessage, this.errorMessageHolder.getErrorMessage());
 	}
 	
-	
-	@Given("a project with the ID {string} exists")
-	public void aProjectWithIDGiven(String projectID) throws Exception {
-		adminSession.start();
-		Project project = new Project(projectID);
-		String pID = projectManagerApp.addProject(project);
-		Project p = projectManagerApp.getProjectWithID(pID);
-		p.setID(projectID);
-		System.out.println(projectManagerApp.getProjectWithID(pID));
-		adminSession.end();
-	}
-	
-	@When("the employee with initials {string} is assigned as project leader for the project with the ID {string}")
-	public void employeeAssignedProjectLeader(String eInit, String projectID) throws Exception {
-		try {
-			projectManagerApp.assignProjectLeader(projectID, eInit);
-		} catch (OperationNotAllowedException e) {
-			errorMessageHolder.setErrorMessage(e.getMessage());
-		}
-	}
-	
-	@Then("the project with the ID {string} has project leader with initials {string}")
-	public void employeeIsProjectLeader(String projectID, String eInit) throws Exception {
-		assertEquals(projectManagerApp.getEmployeeWithInitials(eInit), projectManagerApp.getProjectWithID(projectID).getProjectLeader());
-	}
-	
-	@Then("the project with the ID {string} does not have a project leader with initials {string}")
-	public void employeeIsNotProjectLeader(String projectID, String eInit) throws Exception {
-		assertNotEquals(projectManagerApp.getEmployeeWithInitials(eInit), projectManagerApp.getProjectWithID(projectID).getProjectLeader());
-	}
-	
-	@Given("the employee with initials {string} is project leader for the project with the ID {string}")
-	public void givenEmployeeIsProjectLeader(String eInit, String projectID) throws Exception {
-		projectManagerApp.login("ADMIN");
-		projectManagerApp.assignProjectLeader(projectID, eInit);
-		projectManagerApp.logout();
-	}
-	
-	@Given("the employee with initials {string} is not project leader for the project with the ID {string}")
-	public void givenEmployeeIsNotProjectLeader(String eInit, String projectID) throws Exception {
-		Project p = projectManagerApp.getProjectWithID(projectID);
-		if(p.getProjectLeader()!=null) {
-			if(p.getProjectLeader().getInitials()==eInit) {
-				adminSession.start();
-				projectManagerApp.assignProjectLeader(projectId, "Unassigned");
-				adminSession.end();
-			}
-		}
-	}
+
 	@Given("the user is Project Leader for the project")
 	public void theUserIsProjectLeaderForTheProject() throws OperationNotAllowedException {
 		adminSession.start();
