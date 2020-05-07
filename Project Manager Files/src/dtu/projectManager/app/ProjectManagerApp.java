@@ -173,13 +173,19 @@ public class ProjectManagerApp {
 	}
 
 	// a user registers hours to activity
-	public void registerHoursToActivity(String activityID,String employeeInitials,  double hours) throws OperationNotAllowedException {
+	public void registerHoursToActivity(String activityID, String employeeInitials,  double hours) throws OperationNotAllowedException {
 		Employee e = getEmployee(employeeInitials);
 		Activity a = getActivityFromEmployee(employeeInitials, activityID);
 		if (!employeeInitials.equals(currentUser.getInitials()) && !(adminLoggedIn())) {
 			throw new OperationNotAllowedException("employee is not assigned to this activity");
 		}
 		a.registerHours(e, hours);
+	}
+
+	public double getEmployeesRegisteredHoursToActivity(String activityID, String employeeInitials) throws OperationNotAllowedException {
+		Employee e = getEmployee(employeeInitials);
+		Activity a = getActivityFromEmployee(employeeInitials, activityID);
+		return a.getEmployeesRegisteredHours(e);
 	}
 
 	public double getTotalRegisteredHoursToActivity(String projectID, String activityID) throws OperationNotAllowedException {

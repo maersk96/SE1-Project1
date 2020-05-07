@@ -30,7 +30,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user is Project Leader for the project",
+  "name": "the user is logged in as Project Leader for the project",
   "keyword": "And "
 });
 formatter.match({
@@ -604,7 +604,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user is Project Leader for the project",
+  "name": "the user is logged in as Project Leader for the project",
   "keyword": "And "
 });
 formatter.match({
@@ -784,7 +784,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user is Project Leader for the project",
+  "name": "the user is logged in as Project Leader for the project",
   "keyword": "And "
 });
 formatter.match({
@@ -1265,7 +1265,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user is Project Leader for the project",
+  "name": "the user is logged in as Project Leader for the project",
   "keyword": "And "
 });
 formatter.match({
@@ -1326,7 +1326,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user is Project Leader for the project",
+  "name": "the user is logged in as Project Leader for the project",
   "keyword": "And "
 });
 formatter.match({
