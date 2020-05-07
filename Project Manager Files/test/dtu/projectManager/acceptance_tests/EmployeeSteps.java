@@ -102,4 +102,18 @@ public class EmployeeSteps {
 		Employee e = projectManagerApp.getEmployeeWithInitials(employee.getInitials());
 		assertFalse(e.isAvailableInWeek(week));
 	}
+	
+	@When("the user accesses his leader list")
+	public void theUserAccesseLeaderList() {
+		try {
+			projectManagerApp.getProjectsLeadByEmployee(employee.getInitials());
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+	}
+	
+	@Then("the user sees a list of projects that he leads")
+	public void theUserSeesList() throws OperationNotAllowedException {
+		assertFalse(null==projectManagerApp.getProjectsLeadByEmployee(employee.getInitials()));
+	}
 }
