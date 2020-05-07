@@ -302,4 +302,17 @@ public class ProjectSteps {
 		adminSession.end();
 	}
 
+	@When("the user accesses his leader list")
+	public void theUserAccesseLeaderList() {
+		try {
+			projectManagerApp.getProjectsLeadByEmployee(projectManagerApp.getCurrentUser().getInitials());
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+	}
+	
+	@Then("the user sees a list of projects that he leads")
+	public void theUserSeesList() throws OperationNotAllowedException {
+		assertTrue(projectManagerApp.getProjectsLeadByEmployee(projectManagerApp.getCurrentUser().getInitials()).contains(project));
+	}
 }
