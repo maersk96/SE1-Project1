@@ -56,10 +56,9 @@ public class AssistanceMenu extends Menu {
 
 	@Override
 	protected Object[] getMethodInput() {
-		Object[] input = new Object[3];
-		input[0] = this.user;
-		input[1] = this.activity;
-		input[2] = this.helper;
+		Object[] input = new Object[2];
+		input[0] = this.activity.copy();
+		input[1] = this.helper.copy();
 		return input;
 	}
 
