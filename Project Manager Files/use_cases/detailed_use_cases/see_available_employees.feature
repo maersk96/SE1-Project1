@@ -1,6 +1,6 @@
 Feature: See available employees
 	Description: See employees that do not exceed their active activities limit
-	Actors: Anyone
+	Actors: Any
 
 Scenario: An employee is available, then adds one more activity and becomes unavailable
 	Given an employee registered in the Project Manager

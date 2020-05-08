@@ -21,17 +21,11 @@ public class Activity {
 	}
 
 	public void addAssignedEmployee(Employee e) throws OperationNotAllowedException {
-		if (containsEmployeeWithInitials(e.getInitials())) {
-			throw new OperationNotAllowedException("Employee is already assigned this activity");
-		}
 		employeesAndRegisteredHours.put(e,0.0);
 	}
 	
 	public boolean containsEmployeeWithInitials(String initials) {
 		return getAssignedEmployees().stream().anyMatch(m -> m.getInitials().contentEquals(initials));
-	}
-	public boolean containsEmployee(Employee e) {
-		return containsEmployeeWithInitials(e.getInitials());
 	}
 
 	public String getID() {
@@ -85,10 +79,6 @@ public class Activity {
 	public void registerHours(Employee e, double hours) throws OperationNotAllowedException {
 		double newHours = employeesAndRegisteredHours.get(e) + hours;
 		employeesAndRegisteredHours.replace(e, newHours);
-	}
-
-	public boolean containsEmployeeWithRegisteredHours(Employee e, double hours) {
-		return (containsEmployeeWithInitials(e.getInitials()) && getEmployeesRegisteredHours(e) == hours);
 	}
 
 	public double getEmployeesRegisteredHours(Employee e) {

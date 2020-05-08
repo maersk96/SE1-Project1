@@ -1,13 +1,13 @@
 Feature: Add mock data
-  Description: Test data is added to the app.
-  Actors: Administrator
+  Description: Generated data is added to the Project Manager by the Admin
+  Actors: Admin
 
-  Scenario: The administrator adds test data in the UI
+  Scenario: The admin adds mock data
     Given the user is logged in as admin
     When mock data is generated
     Then there are some projects in the Project Manager
 
-  Scenario: A non-admin tries to add test data
+  Scenario: A non-admin employee adds mock data unsuccessfully
     Given the user is logged in as a registered employee
     When mock data is generated
     Then there are no projects in the Project Manager

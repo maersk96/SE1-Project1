@@ -6,6 +6,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class EmployeeSteps {
@@ -36,8 +38,8 @@ public class EmployeeSteps {
 		String initials = "SAMPLE";
 		employee = new Employee(initials, "John");
 		projectManagerApp.addEmployee(employee);
-		projectManagerApp.login(initials);
 		adminSession.end();
+		projectManagerApp.login(initials);
 	}
 
 	@Given("the employee with initials {string} is registered")
@@ -94,13 +96,17 @@ public class EmployeeSteps {
 
 	@Then("the employee is available in week {int}")
 	public void theEmployeeIsAvailable(int week) {
-		Employee e = projectManagerApp.getEmployeeWithInitials(employee.getInitials());
-		assertTrue(e.isAvailableInWeek(week));
+		List<Employee> employees = projectManagerApp.getAvailableEmployees(week);
+		assertTrue(employees.contains(employee));
 	}
 	@Then("the employee is unavailable in week {int}")
 	public void theEmployeeIsUnavailable(int week) {
-		Employee e = projectManagerApp.getEmployeeWithInitials(employee.getInitials());
-		assertFalse(e.isAvailableInWeek(week));
+		List<Employee> employees = projectManagerApp.getAvailableEmployees(week);
+		assertFalse(employees.contains(employee));
 	}
 
+	@And("the employee with initials {string} has a name")
+	public void theEmployeeHasAName(String initials) {
+		assertNotEquals("", projectManagerApp.getEmployeeWithInitials(initials).getName());
+	}
 }

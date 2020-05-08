@@ -66,7 +66,7 @@ public class ProjectManagerApp {
 		employees.add(e);
 	}
 	public Employee getEmployeeWithInitials(String initials) {
-		return employees.stream()
+		return getEmployees().stream()
 				.filter(employee -> initials.equals(employee.getInitials()))
 				.findFirst()
 				.orElse(null);
@@ -139,6 +139,9 @@ public class ProjectManagerApp {
 		if (!e.isAvailableForActivity(a)) {
 			throw new OperationNotAllowedException("The employee is not available in this period");
 		}
+		if (a.containsEmployeeWithInitials(e.getInitials()) || e.containsActivityWithID(a.getID())) {
+			throw new OperationNotAllowedException("Employee is already assigned this activity");
+		}
 		e.addAssignedActivity(a);
 		a.addAssignedEmployee(e);
 	}
@@ -173,9 +176,6 @@ public class ProjectManagerApp {
 	public void registerHoursToActivity(String activityID, String employeeInitials,  double hours) throws OperationNotAllowedException {
 		Employee e = getEmployee(employeeInitials);
 		Activity a = getActivityFromEmployee(employeeInitials, activityID);
-		if (!employeeInitials.equals(currentUser.getInitials()) && !(adminLoggedIn())) {
-			throw new OperationNotAllowedException("employee is not assigned to this activity");
-		}
 		a.registerHours(e, hours);
 	}
 
@@ -202,8 +202,7 @@ public class ProjectManagerApp {
 	public List<Employee> getEmployees() {
 		return employees;
 	}
-	
-	
+
 	public List<Activity> getEmployeeActivities(String initials) throws OperationNotAllowedException {
 		Employee employee = getEmployee(initials);
 		return employee.getAssignedActivities();

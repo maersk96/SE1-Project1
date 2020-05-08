@@ -5,6 +5,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class ProjectSteps {
@@ -31,14 +33,7 @@ public class ProjectSteps {
 	public void thereIsAProjectWithName(String name) throws Exception {
 		project = new Project(name);
 	}
-	@When("the user adds the project to the Project Manager")
-	public void theUserAddsTheProject() throws Exception {
-		try {
-			projectId = projectManagerApp.addProject(project);
-		} catch (OperationNotAllowedException e) {
-			errorMessageHolder.setErrorMessage(e.getMessage());
-		}
-	}
+
 	@Then("the project (exists)(is still) in the Project Manager")
 	public void theProjectExistsInTheProjectManager() throws Exception {
 		assertTrue(projectManagerApp.containsProjectWithID(projectId));
@@ -93,12 +88,6 @@ public class ProjectSteps {
 	public void theActivityEndsInWeek(int endWeek) throws Exception {
 		assertEquals(endWeek, activity.getEndWeek());
 	}
-	@Given("the employee with initials {string} is Project Leader for the project")
-	public void givenTheEmployeeWithInitialsIsProjectLeader(String initials) throws Exception {
-		adminSession.start();
-		projectManagerApp.assignProjectLeader(projectId, initials);
-		adminSession.end();
-	}
 
 	@When("the user adds the activity to the project")
 	public void theUserAddsTheActivityToTheProject() throws OperationNotAllowedException {
@@ -108,11 +97,12 @@ public class ProjectSteps {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		}
 	}
-	@Then("the activity exists on the project")
+	@Then("the activity exists on the project in the Project Manager")
 	public void theActivityExistsOnTheProject() throws Exception {
-		assertTrue(projectManagerApp.getProjectWithID(projectId).containsActivityWithID(activityId));
+		List<Activity> activities = projectManagerApp.getProjectActivities(projectId);
+		assertTrue(activities.contains(activity));
 	}
-	@Then("the activity does not exist on the project")
+	@Then("the activity does not exist on the project in the Project Manager")
 	public void theActivityDoesNotExistsOnTheProject() throws Exception {
 		Project project = projectManagerApp.getProjectWithID(projectId);
 		assertFalse(project.containsActivityWithID(activityId));
@@ -132,16 +122,6 @@ public class ProjectSteps {
 		projectManagerApp.addEmployee(e);
 		projectManagerApp.assignEmployeeToActivity(projectId, activityId, initials);
 		adminSession.end();
-	}
-	@Given("the registered employee {string} is not assigned to the activity")
-	public void theRegisteredEmployeeIsNotAssignedToTheActivity(String initials) throws OperationNotAllowedException {
-		adminSession.start();
-		Employee e = new Employee(initials, "Michael");
-		projectManagerApp.addEmployee(e);
-		adminSession.end();
-		Project p = projectManagerApp.getProjectWithID(projectId);
-		Activity a = p.getActivityWithID(activityId);
-		assertFalse(a.containsEmployeeWithInitials(initials));
 	}
 
 	@When("the user assigns the employee with initials {string} to the activity")
@@ -163,21 +143,22 @@ public class ProjectSteps {
 	}
 	
 	@Then("the employee with the initials {string} is assigned to the activity")
-	public void theEmployeeWithInitialsIsAssignedToTheActivity(String employeeInitials) {
-		Activity activity = projectManagerApp.getProjectWithID(projectId).getActivityWithID(activityId);
-		assertTrue(activity.containsEmployeeWithInitials(employeeInitials));
+	public void theEmployeeWithInitialsIsAssignedToTheActivity(String employeeInitials) throws OperationNotAllowedException {
+		List<Employee> employees = projectManagerApp.getEmployeesAssignedToActivity(projectId, activityId);
+		Employee employee = projectManagerApp.getEmployeeWithInitials(employeeInitials);
+		assertTrue(employees.contains(employee));
 	}
 	@Then("the employee with the initials {string} is not assigned to the activity")
-	public void theEmployeeWithInitialsIsNotAssignedToTheActivity(String employeeInitials) {
-		Activity activity = projectManagerApp.getProjectWithID(projectId).getActivityWithID(activityId);
-		assertFalse(activity.containsEmployeeWithInitials(employeeInitials));
+	public void theEmployeeWithInitialsIsNotAssignedToTheActivity(String employeeInitials) throws OperationNotAllowedException {
+		List<Activity> activities = projectManagerApp.getEmployeeActivities(employeeInitials);
+		assertFalse(activities.contains(activity));
 	}
 	@Then("the activity is assigned to the employee with initials {string}")
 	public void theActivityIsAssignedToTheEmployeeWithInitials(String employeeInitials) {
 		Employee employee = projectManagerApp.getEmployeeWithInitials(employeeInitials);
 		employee.containsActivityWithID(activityId);
 	}
-	@When("the user assigns the employee with initials {string} as Project Leader of the project")
+	@When("the user assigns the employee with initials {string} as Project Leader for the project")
 	public void theUserAssignsEmployeeWithInitialsAsProjectLeader(String employeeInitials) throws OperationNotAllowedException {
 		try {
 			projectManagerApp.assignProjectLeader(projectId, employeeInitials);
@@ -207,7 +188,7 @@ public class ProjectSteps {
 		assertTrue(projectManagerApp.getProjects().isEmpty());
 	}
 
-	@When("the user adds a project")
+	@When("the user adds (a)(another) project")
 	public void theUserAddsAProject() {
 		Project project = new Project("Sample project");
 		try {
@@ -215,10 +196,6 @@ public class ProjectSteps {
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		}
-	}
-	@When("the user adds another project")
-	public void theUserAddsAnotherProject() {
-		theUserAddsAProject();
 	}
 
 	@Then("a project with the ID {string} exists in the Project Manager")
@@ -232,7 +209,7 @@ public class ProjectSteps {
 	}
 	
 
-	@Given("the user is logged in as Project Leader for the project")
+	@Given("the user is (now )logged in as Project Leader for the project")
 	public void theUserIsProjectLeaderForTheProject() throws OperationNotAllowedException {
 		adminSession.start();
 		String initials = "PLJ";
@@ -257,7 +234,7 @@ public class ProjectSteps {
 		assertEquals(hours, activity.getBudgetHours(), 0.0);
 	}
 
-	@Then("the activity has no budget hours")
+	@Then("the activity has no budgeted hours")
 	public void activityHasNoBudgetHours() throws Exception {
 		Activity a = projectManagerApp.getActivityFromProject(projectId, activityId);
 		assertEquals(0, a.getBudgetHours(), 0.0);
@@ -272,17 +249,21 @@ public class ProjectSteps {
 		}
 	}
 
-	@Then("the activity has {double} hours registered with the employee with initials {string}")
-	public void activityHasRegisteredHoursWithEmployee(double hours, String employeeInitials) throws Exception {
-		Activity a = projectManagerApp.getActivityFromProject(projectId, activityId);
-		Employee e = projectManagerApp.getEmployeeWithInitials(employeeInitials);
-		assertEquals(hours,projectManagerApp.getEmployeesRegisteredHoursToActivity(activityId, employeeInitials) , 0.0);
+	@Given("the user is logged in as a registered employee assigned to the activity")
+	public void userIsLoggedInAsRegisteredEmployeeAssignedToTheActivity() throws Exception {
+		adminSession.start();
+		String initials = "ASS";
+		Employee e = new Employee(initials, "Assigned Employee");
+		projectManagerApp.addEmployee(e);
+		projectManagerApp.assignEmployeeToActivity(projectId, activityId, initials);
+		adminSession.end();
+		projectManagerApp.login(initials);
 	}
 
-	@Then("the activity still has {double} hours registered with the employee with initials {string}")
-	public void activityHasNoRegisteredHoursWithEmployee(double hours, String employeeInitials) throws Exception {
+	@Then("the user has {double} hours registered to the activity")
+	public void activityHasNoRegisteredHoursWithEmployee(double hours) throws Exception {
 		Activity a = projectManagerApp.getActivityFromProject(projectId, activityId);
-		Employee e = projectManagerApp.getEmployeeWithInitials(employeeInitials);
+		Employee e = projectManagerApp.getCurrentUser();
 		assertEquals(hours, a.getEmployeesRegisteredHours(e), 0.0);
 	}
 
@@ -294,11 +275,17 @@ public class ProjectSteps {
 	@When("the user requests the total hours registered to the activity")
 	public void userRequestsTotalRegisteredHoursFromActivity() throws Exception {
 		try {
-			projectManagerApp.getTotalRegisteredHoursToActivity(project.getID(), activity.getID());
+			projectManagerApp.getTotalRegisteredHoursToActivity(project.getID(), activityId);
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		}
 	}
+	@When("the user requests his own total hours registered to the activity")
+	public void userRequestsOwnTotalRegisteredHoursFromActivity() throws OperationNotAllowedException {
+		projectManagerApp.getEmployeesRegisteredHoursToActivity(activityId, projectManagerApp.getCurrentUser().getInitials());
+	}
+
+
 
 	@Then("the total hours registered to the activity is {double}")
 	public void theTotalHoursRegisteredToTheActivityShouldBe(double hours) throws OperationNotAllowedException {
@@ -308,32 +295,45 @@ public class ProjectSteps {
 		adminSession.end();
 	}
 
-	@When("the user accesses his leader list")
-	public void theUserAccesseLeaderList() {
+
+	@When("the user requests a list of projects lead by employee with initials {string}")
+	public void theUserRequestsASpecificLeaderList(String initials) {
 		try {
-			projectManagerApp.getProjectsLeadByEmployee(projectManagerApp.getCurrentUser().getInitials());
+			projectManagerApp.getProjectsLeadByEmployee(initials);
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		}
 	}
-	
-	@Then("the user sees a list of projects that he leads")
-	public void theUserSeesList() throws OperationNotAllowedException {
-		assertTrue(projectManagerApp.getProjectsLeadByEmployee(projectManagerApp.getCurrentUser().getInitials()).contains(project));
+	@When("the user requests a list of projects lead by himself")
+	public void theUserRequestsLeaderList() {
+		String initials = projectManagerApp.getCurrentUser().getInitials();
+		theUserRequestsASpecificLeaderList(initials);
+	}
+
+	@Then("the project is contained in the list")
+	public void theProjectIsInTheList() throws OperationNotAllowedException {
+		List<Project> leadingProjects = projectManagerApp.getProjectsLeadByEmployee(projectManagerApp.getCurrentUser().getInitials());
+		assertTrue(leadingProjects.contains(project));
 	}
 	
 	@When("the user renames the activity to {string}")
-	public void theUserRenamesActivity(String aName) {
+	public void theUserRenamesActivity(String name) {
 		try {
-			projectManagerApp.renameActivity(project.getID(),activity.getID(),aName);
+			projectManagerApp.renameActivity(projectId,activityId,name);
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		}
 	}
 	
 	@Then("the activity has the name {string}")
-	public void theActivityHasName(String aName) throws OperationNotAllowedException {
-		assertTrue(activity.getName().equals(aName));
+	public void theActivityHasTheName(String name) throws OperationNotAllowedException {
+		Activity a = projectManagerApp.getActivityFromProject(projectId,activityId);
+		assertEquals(a.getName(), name);
 	}
-	
+	@Then("the activity does not have the name {string}")
+	public void theActivityDoesNotHaveName(String name) throws OperationNotAllowedException {
+		Activity a = projectManagerApp.getActivityFromProject(projectId,activityId);
+		assertNotEquals(a.getName(), name);
+	}
+
 }

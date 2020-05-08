@@ -48,7 +48,7 @@ public class Project {
     }
 
 	public boolean isProjectLeader(Employee employee) {
-        if (projectLeader != null) {
+        if (hasProjectLeader()) {
             return employee.getInitials().equals(projectLeader.getInitials());
         }
         return false;
@@ -76,10 +76,6 @@ public class Project {
                 .findFirst()
                 .orElse(null);
     }
-
-	public void setActivities(List<Activity> activities) {
-		this.activities = activities;
-	}
 
     public boolean containsActivityWithID(String activityID) {
         return getActivityWithID(activityID) != null;

@@ -2,7 +2,7 @@ Feature: Rename project
 	Description: A project is renamed by the Admin
 	Actors: Admin
 
-Scenario: Rename a project successfully when logged in as admin
+Scenario: Rename a project successfully
 	Given there is a project in the Project Manager
 	And the user is logged in as admin
 	When the user renames the project

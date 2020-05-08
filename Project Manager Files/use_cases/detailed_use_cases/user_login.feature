@@ -1,8 +1,8 @@
 Feature: User Login
-	Description: A user (Employee or Admin-Employee) logs into the app
+	Description: A user (employee or Admin-employee) logs into the app
 	Actor: Employee
 
-Scenario: User logs in as administrator
+Scenario: User logs in as admin
 	When the user logs in with initials "ADMIN"
 	Then the user is now logged in as admin
 

@@ -1,11 +1,11 @@
 $(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("file:use_cases/detailed_use_cases/add_activity.feature");
 formatter.feature({
   "name": "Add activity",
-  "description": "  Description: An activity is added by the project leader.\n  Actors: Project leader",
+  "description": "  Description: An activity is added by the Project Leader\n  Actors: Project Leader",
   "keyword": "Feature"
 });
 formatter.scenario({
-  "name": "Add an activity successfully when project leader",
+  "name": "Add an activity successfully",
   "description": "",
   "keyword": "Scenario"
 });
@@ -50,7 +50,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the activity exists on the project",
+  "name": "the activity exists on the project in the Project Manager",
   "keyword": "Then "
 });
 formatter.match({
@@ -60,7 +60,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "Add an activity when not project leader",
+  "name": "Add an activity when not Project Leader",
   "description": "",
   "keyword": "Scenario"
 });
@@ -105,7 +105,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the activity does not exist on the project",
+  "name": "the activity does not exist on the project in the Project Manager",
   "keyword": "Then "
 });
 formatter.match({
@@ -125,7 +125,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "Creating activity with start time and duration",
+  "name": "Creating an activity with start week and duration",
   "description": "",
   "keyword": "Scenario"
 });
@@ -150,7 +150,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "Creating activity around New Year",
+  "name": "Creating an activity around New Year",
   "description": "",
   "keyword": "Scenario"
 });
@@ -181,7 +181,7 @@ formatter.feature({
   "keyword": "Feature"
 });
 formatter.scenario({
-  "name": "Add an employee successfully when logged in as admin",
+  "name": "Add an employee successfully",
   "description": "",
   "keyword": "Scenario"
 });
@@ -221,6 +221,16 @@ formatter.step({
 });
 formatter.match({
   "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.thereExistsAnEmployeeWithInitials(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee with initials \"ABC\" has a name",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeHasAName(java.lang.String)"
 });
 formatter.result({
   "status": "passed"
@@ -318,11 +328,11 @@ formatter.result({
 formatter.uri("file:use_cases/detailed_use_cases/add_mock_data.feature");
 formatter.feature({
   "name": "Add mock data",
-  "description": "  Description: Test data is added to the app.\n  Actors: Administrator",
+  "description": "  Description: Generated data is added to the Project Manager by the Admin\n  Actors: Admin",
   "keyword": "Feature"
 });
 formatter.scenario({
-  "name": "The administrator adds test data in the UI",
+  "name": "The admin adds mock data",
   "description": "",
   "keyword": "Scenario"
 });
@@ -357,7 +367,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "A non-admin tries to add test data",
+  "name": "A non-admin employee adds mock data unsuccessfully",
   "description": "",
   "keyword": "Scenario"
 });
@@ -408,23 +418,13 @@ formatter.feature({
   "keyword": "Feature"
 });
 formatter.scenario({
-  "name": "Add a project successfully when logged in as admin",
+  "name": "Add a project successfully",
   "description": "",
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "there is a project named \"Sample project\"",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.thereIsAProjectWithName(java.lang.String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
   "name": "the user is logged in as admin",
-  "keyword": "And "
+  "keyword": "Given "
 });
 formatter.match({
   "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserIsAlreadyLoggedInAsAdmin()"
@@ -433,11 +433,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user adds the project to the Project Manager",
+  "name": "the user adds a project",
   "keyword": "When "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserAddsTheProject()"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserAddsAProject()"
 });
 formatter.result({
   "status": "passed"
@@ -458,18 +458,8 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "there is a project named \"Sample project\"",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.thereIsAProjectWithName(java.lang.String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
   "name": "the user is logged in as a registered employee",
-  "keyword": "And "
+  "keyword": "Given "
 });
 formatter.match({
   "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theUserIsARegisteredEmployee()"
@@ -478,18 +468,28 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user adds the project to the Project Manager",
+  "name": "the user adds a project",
   "keyword": "When "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserAddsTheProject()"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserAddsAProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the project does not exist in the Project Manager",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theProjectDoesNotExistInTheProjectManager()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
   "name": "the error message \"Administrator login required\" is given",
-  "keyword": "Then "
+  "keyword": "And "
 });
 formatter.match({
   "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theErrorMessageIsGiven(java.lang.String)"
@@ -547,7 +547,7 @@ formatter.step({
   "keyword": "When "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserAddsAnotherProject()"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserAddsAProject()"
 });
 formatter.result({
   "status": "passed"
@@ -565,11 +565,11 @@ formatter.result({
 formatter.uri("file:use_cases/detailed_use_cases/assign_employee_to_activity.feature");
 formatter.feature({
   "name": "Assign employee to activity",
-  "description": "  Description: An employee is assigned to an activity\n  Actors: Project leader",
+  "description": "  Description: An employee is assigned to an activity by the Project Leader\n  Actors: Project Leader",
   "keyword": "Feature"
 });
 formatter.scenario({
-  "name": "Successfully assign an employee to an activity",
+  "name": "Assign an employee to an activity successfully",
   "description": "",
   "keyword": "Scenario"
 });
@@ -644,7 +644,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "Assign employee to activity when not logged in as project leader",
+  "name": "Assign employee to activity when not Project Leader",
   "description": "",
   "keyword": "Scenario"
 });
@@ -674,26 +674,6 @@ formatter.step({
 });
 formatter.match({
   "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeWithInitialsIsRegistered(java.lang.String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the employee with initials \"ABC\" is registered",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeWithInitialsIsRegistered(java.lang.String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the employee with initials \"ABC\" is Project Leader for the project",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.givenTheEmployeeWithInitialsIsProjectLeader(java.lang.String)"
 });
 formatter.result({
   "status": "passed"
@@ -749,7 +729,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "Assign employee to activity when already assigned to the activity",
+  "name": "Assign employee to activity who\u0027s already assigned to the activity",
   "description": "",
   "keyword": "Scenario"
 });
@@ -804,7 +784,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the error message \"Activity already has this employee assigned\" is given",
+  "name": "the error message \"Employee is already assigned this activity\" is given",
   "keyword": "Then "
 });
 formatter.match({
@@ -814,7 +794,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "Assign help to activity that you are assigned to, when logged in as employee",
+  "name": "Assigned employee asks for assistance with activity",
   "description": "",
   "keyword": "Scenario"
 });
@@ -839,7 +819,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the employee with initials \"BOB\" is registered",
+  "name": "the employee with initials \"ABC\" is registered",
   "keyword": "And "
 });
 formatter.match({
@@ -849,7 +829,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the registered employee \"HBO\" is assigned to the activity",
+  "name": "the registered employee \"XYZ\" is assigned to the activity",
   "keyword": "And "
 });
 formatter.match({
@@ -859,7 +839,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user logs in with initials \"HBO\"",
+  "name": "the user logs in with initials \"XYZ\"",
   "keyword": "And "
 });
 formatter.match({
@@ -869,7 +849,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user asks the employee with initials \"BOB\" for help with the activity",
+  "name": "the user asks the employee with initials \"ABC\" for help with the activity",
   "keyword": "When "
 });
 formatter.match({
@@ -879,7 +859,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the employee with the initials \"BOB\" is assigned to the activity",
+  "name": "the employee with the initials \"ABC\" is assigned to the activity",
   "keyword": "Then "
 });
 formatter.match({
@@ -889,7 +869,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the activity is assigned to the employee with initials \"BOB\"",
+  "name": "the activity is assigned to the employee with initials \"ABC\"",
   "keyword": "And "
 });
 formatter.match({
@@ -899,7 +879,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "Assign help to activity that you are not assigned to, when logged in as employee",
+  "name": "Non-assigned employee asks for assistance with an activity",
   "description": "",
   "keyword": "Scenario"
 });
@@ -924,7 +904,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the employee with initials \"HBO\" is registered",
+  "name": "the employee with initials \"ABC\" is registered",
   "keyword": "And "
 });
 formatter.match({
@@ -934,7 +914,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the employee with initials \"BOB\" is registered",
+  "name": "the employee with initials \"XYZ\" is registered",
   "keyword": "And "
 });
 formatter.match({
@@ -944,7 +924,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user logs in with initials \"HBO\"",
+  "name": "the user logs in with initials \"ABC\"",
   "keyword": "And "
 });
 formatter.match({
@@ -954,7 +934,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user asks the employee with initials \"BOB\" for help with the activity",
+  "name": "the user asks the employee with initials \"XYZ\" for help with the activity",
   "keyword": "When "
 });
 formatter.match({
@@ -964,7 +944,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the employee with the initials \"BOB\" is not assigned to the activity",
+  "name": "the employee with the initials \"XYZ\" is not assigned to the activity",
   "keyword": "Then "
 });
 formatter.match({
@@ -974,7 +954,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the activity is not assigned to the employee with initials \"BOB\"",
+  "name": "the activity is not assigned to the employee with initials \"XYZ\"",
   "keyword": "And "
 });
 formatter.match({
@@ -996,11 +976,11 @@ formatter.result({
 formatter.uri("file:use_cases/detailed_use_cases/assign_project_leader.feature");
 formatter.feature({
   "name": "Assign Project Leader",
-  "description": "\tDescription: A project leader is assigned by the Admin.\n\tActors: Admin",
+  "description": "\tDescription: A Project Leader is assigned to a project by the Admin.\n\tActors: Admin",
   "keyword": "Feature"
 });
 formatter.scenario({
-  "name": "Assign a project leader successfully when logged in as admin",
+  "name": "Assign a Project Leader successfully",
   "description": "",
   "keyword": "Scenario"
 });
@@ -1035,7 +1015,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user assigns the employee with initials \"ABC\" as Project Leader of the project",
+  "name": "the user assigns the employee with initials \"ABC\" as Project Leader for the project",
   "keyword": "When "
 });
 formatter.match({
@@ -1055,7 +1035,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "Assign a project leader when not admin",
+  "name": "Assign a Project Leader when not admin",
   "description": "",
   "keyword": "Scenario"
 });
@@ -1065,16 +1045,6 @@ formatter.step({
 });
 formatter.match({
   "location": "dtu.projectManager.acceptance_tests.ProjectSteps.thereIsAProjectInTheManager()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the employee with initials \"HBO\" is registered",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeWithInitialsIsRegistered(java.lang.String)"
 });
 formatter.result({
   "status": "passed"
@@ -1090,17 +1060,17 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user logs in with initials \"HBO\"",
+  "name": "the user is logged in as a registered employee",
   "keyword": "And "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserLogsInWithInitials(java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theUserIsARegisteredEmployee()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user assigns the employee with initials \"ABC\" as Project Leader of the project",
+  "name": "the user assigns the employee with initials \"ABC\" as Project Leader for the project",
   "keyword": "When "
 });
 formatter.match({
@@ -1130,7 +1100,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "Assign a project leader to unexisting project",
+  "name": "Assign a Project Leader to a non-existing project",
   "description": "",
   "keyword": "Scenario"
 });
@@ -1175,7 +1145,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user assigns the employee with initials \"ABC\" as Project Leader of the project",
+  "name": "the user assigns the employee with initials \"ABC\" as Project Leader for the project",
   "keyword": "When "
 });
 formatter.match({
@@ -1195,7 +1165,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "Assign an non-existing employee as project leader",
+  "name": "Assign a non-existing employee as Project Leader",
   "description": "",
   "keyword": "Scenario"
 });
@@ -1230,7 +1200,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user assigns the employee with initials \"ABC\" as Project Leader of the project",
+  "name": "the user assigns the employee with initials \"ABC\" as Project Leader for the project",
   "keyword": "When "
 });
 formatter.match({
@@ -1250,7 +1220,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "See what projects you lead as employee",
+  "name": "Employee requests the projects it is leading",
   "description": "",
   "keyword": "Scenario"
 });
@@ -1275,21 +1245,76 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user accesses his leader list",
+  "name": "the user requests a list of projects lead by himself",
   "keyword": "When "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserAccesseLeaderList()"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserRequestsLeaderList()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user sees a list of projects that he leads",
+  "name": "the project is contained in the list",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserSeesList()"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theProjectIsInTheList()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Employee requests the projects some other employee is leading",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "the employee with initials \"ABC\" is registered",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeWithInitialsIsRegistered(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee with initials \"XYZ\" is registered",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theEmployeeWithInitialsIsRegistered(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user logs in with initials \"ABC\"",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserLogsInWithInitials(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user requests a list of projects lead by employee with initials \"XYZ\"",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserRequestsASpecificLeaderList(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the error message \"You can only see projects that you are leading\" is given",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theErrorMessageIsGiven(java.lang.String)"
 });
 formatter.result({
   "status": "passed"
@@ -1297,11 +1322,11 @@ formatter.result({
 formatter.uri("file:use_cases/detailed_use_cases/budget_hours.feature");
 formatter.feature({
   "name": "Budget hours to an activity",
-  "description": "  Description: The project leader budget hours to the activity\n  Actors: Project leader",
+  "description": "  Description: A Project Leader budgets hours to an activity\n  Actors: Project Leader",
   "keyword": "Feature"
 });
 formatter.scenario({
-  "name": "Budget hours to an activity successfully when project leader",
+  "name": "Budget hours to an activity successfully",
   "description": "",
   "keyword": "Scenario"
 });
@@ -1356,7 +1381,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "Budget hours to an activity when not project leader",
+  "name": "Budget hours to an activity when not Project Leader",
   "description": "",
   "keyword": "Scenario"
 });
@@ -1401,7 +1426,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the activity has no budget hours",
+  "name": "the activity has no budgeted hours",
   "keyword": "Then "
 });
 formatter.match({
@@ -1420,67 +1445,6 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
-formatter.uri("file:use_cases/detailed_use_cases/last_coverage.feature");
-formatter.feature({
-  "name": "Get full code coverage",
-  "description": "",
-  "keyword": "Feature"
-});
-formatter.scenario({
-  "name": "Budget hours to an activity successfully when project leader",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "there is a project in the Project Manager",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.thereIsAProjectInTheManager()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "there is an activity on the project",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theProjectHasAnActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the user is logged in as Project Leader for the project",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserIsProjectLeaderForTheProject()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the user renames the activity to \"Doing code coverage\"",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserRenamesActivity(java.lang.String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the activity has the name \"Doing code coverage\"",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theActivityHasName(java.lang.String)"
-});
-formatter.result({
-  "status": "passed"
-});
 formatter.uri("file:use_cases/detailed_use_cases/register_hours_to_activity.feature");
 formatter.feature({
   "name": "Register hours to an activity",
@@ -1488,7 +1452,7 @@ formatter.feature({
   "keyword": "Feature"
 });
 formatter.scenario({
-  "name": "Successfully register hours to an activity",
+  "name": "Register hours to an activity successfully",
   "description": "",
   "keyword": "Scenario"
 });
@@ -1513,21 +1477,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the registered employee \"HBO\" is assigned to the activity",
+  "name": "the user is logged in as a registered employee assigned to the activity",
   "keyword": "And "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theRegisteredEmployeeIsAssignedToTheActivity(java.lang.String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the user logs in with initials \"HBO\"",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserLogsInWithInitials(java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.userIsLoggedInAsRegisteredEmployeeAssignedToTheActivity()"
 });
 formatter.result({
   "status": "passed"
@@ -1543,17 +1497,17 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the activity has 2 hours registered with the employee with initials \"HBO\"",
+  "name": "the user has 2 hours registered to the activity",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.activityHasRegisteredHoursWithEmployee(double,java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.activityHasNoRegisteredHoursWithEmployee(double)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "Try to register hours when not assigned to activity",
+  "name": "Register hours to an activity the employee is not assigned to",
   "description": "",
   "keyword": "Scenario"
 });
@@ -1578,21 +1532,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the registered employee \"ABC\" is not assigned to the activity",
+  "name": "the user is logged in as a registered employee",
   "keyword": "And "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theRegisteredEmployeeIsNotAssignedToTheActivity(java.lang.String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the user logs in with initials \"ABC\"",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserLogsInWithInitials(java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theUserIsARegisteredEmployee()"
 });
 formatter.result({
   "status": "passed"
@@ -1608,11 +1552,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the activity still has 0 hours registered with the employee with initials \"HBO\"",
+  "name": "the user has 0 hours registered to the activity",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.activityHasNoRegisteredHoursWithEmployee(double,java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.activityHasNoRegisteredHoursWithEmployee(double)"
 });
 formatter.result({
   "status": "passed"
@@ -1653,21 +1597,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the registered employee \"HBO\" is assigned to the activity",
+  "name": "the user is logged in as a registered employee assigned to the activity",
   "keyword": "And "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theRegisteredEmployeeIsAssignedToTheActivity(java.lang.String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the user logs in with initials \"HBO\"",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserLogsInWithInitials(java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.userIsLoggedInAsRegisteredEmployeeAssignedToTheActivity()"
 });
 formatter.result({
   "status": "passed"
@@ -1684,7 +1618,7 @@ formatter.result({
 });
 formatter.step({
   "name": "the user registers 3 more hours to the activity",
-  "keyword": "When "
+  "keyword": "And "
 });
 formatter.match({
   "location": "dtu.projectManager.acceptance_tests.ProjectSteps.userRegistersHoursToActivity(double)"
@@ -1693,17 +1627,27 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the activity has 5 hours registered with the employee with initials \"HBO\"",
+  "name": "the user requests his own total hours registered to the activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.userRequestsOwnTotalRegisteredHoursFromActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user has 5 hours registered to the activity",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.activityHasRegisteredHoursWithEmployee(double,java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.activityHasNoRegisteredHoursWithEmployee(double)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "Multiple employees register hours to activity",
+  "name": "Multiple employees register hours to activity and the Project Leader requests the total",
   "description": "",
   "keyword": "Scenario"
 });
@@ -1788,6 +1732,26 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
+  "name": "the user is now logged in as Project Leader for the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserIsProjectLeaderForTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user requests the total hours registered to the activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.userRequestsTotalRegisteredHoursFromActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
   "name": "the total hours registered to the activity is 9",
   "keyword": "Then "
 });
@@ -1798,7 +1762,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "An assigned employee requests total registered hours, unsuccessfully",
+  "name": "An assigned employee requests total registered hours unsuccessfully",
   "description": "",
   "keyword": "Scenario"
 });
@@ -1823,21 +1787,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the registered employee \"HBO\" is assigned to the activity",
+  "name": "the user is logged in as a registered employee assigned to the activity",
   "keyword": "And "
 });
 formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theRegisteredEmployeeIsAssignedToTheActivity(java.lang.String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the user logs in with initials \"HBO\"",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "dtu.projectManager.acceptance_tests.LoginLogoutSteps.theUserLogsInWithInitials(java.lang.String)"
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.userIsLoggedInAsRegisteredEmployeeAssignedToTheActivity()"
 });
 formatter.result({
   "status": "passed"
@@ -1862,6 +1816,177 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.uri("file:use_cases/detailed_use_cases/rename_activity.feature");
+formatter.feature({
+  "name": "Rename activity",
+  "description": "    Description: An activity is renamed by the Project Leader\n    Actors: Project Leader",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "Rename an activity successfully",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "there is a project in the Project Manager",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.thereIsAProjectInTheManager()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is an activity on the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theProjectHasAnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user is logged in as Project Leader for the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserIsProjectLeaderForTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user renames the activity to \"Get code coverage to 100%\"",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserRenamesActivity(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the activity has the name \"Get code coverage to 100%\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theActivityHasTheName(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Rename an activity when not Project Leader",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "there is a project in the Project Manager",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.thereIsAProjectInTheManager()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is an activity on the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theProjectHasAnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user is logged in as a registered employee",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.EmployeeSteps.theUserIsARegisteredEmployee()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user renames the activity to \"Get code coverage to 100%\"",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserRenamesActivity(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the activity does not have the name \"Get code coverage to 100%\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theActivityDoesNotHaveName(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the error message \"Project Leader login required\" is given",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theErrorMessageIsGiven(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Rename an activity that does not exist",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "there is a project in the Project Manager",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.thereIsAProjectInTheManager()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user is logged in as Project Leader for the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserIsProjectLeaderForTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user renames the activity to \"Get code coverage to 100%\"",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theUserRenamesActivity(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the error message \"Activity does not exist\" is given",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "dtu.projectManager.acceptance_tests.ProjectSteps.theErrorMessageIsGiven(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.uri("file:use_cases/detailed_use_cases/rename_project.feature");
 formatter.feature({
   "name": "Rename project",
@@ -1869,7 +1994,7 @@ formatter.feature({
   "keyword": "Feature"
 });
 formatter.scenario({
-  "name": "Rename a project successfully when logged in as admin",
+  "name": "Rename a project successfully",
   "description": "",
   "keyword": "Scenario"
 });
@@ -2026,7 +2151,7 @@ formatter.result({
 formatter.uri("file:use_cases/detailed_use_cases/see_available_employees.feature");
 formatter.feature({
   "name": "See available employees",
-  "description": "\tDescription: See employees that do not exceed their active activities limit\n\tActors: Anyone",
+  "description": "\tDescription: See employees that do not exceed their active activities limit\n\tActors: Any",
   "keyword": "Feature"
 });
 formatter.scenario({
@@ -2142,11 +2267,11 @@ formatter.result({
 formatter.uri("file:use_cases/detailed_use_cases/user_login.feature");
 formatter.feature({
   "name": "User Login",
-  "description": "\tDescription: A user (Employee or Admin-Employee) logs into the app\n\tActor: Employee",
+  "description": "\tDescription: A user (employee or Admin-employee) logs into the app\n\tActor: Employee",
   "keyword": "Feature"
 });
 formatter.scenario({
-  "name": "User logs in as administrator",
+  "name": "User logs in as admin",
   "description": "",
   "keyword": "Scenario"
 });

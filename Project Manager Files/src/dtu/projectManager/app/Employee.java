@@ -19,11 +19,6 @@ public class Employee {
     }
 
     public void addAssignedActivity(Activity a) throws OperationNotAllowedException {
-
-        if (containsActivityWithID(a.getID())) {
-            throw new OperationNotAllowedException("Activity already has this employee assigned");
-        }
-
         assignedActivities.add(a);
     }
 
@@ -42,7 +37,7 @@ public class Employee {
     public List<Activity> getAssignedActivities() {
         return assignedActivities;
     }
-    
+
 	public Activity getActivityWithID(String activityID) {
         return assignedActivities.stream()
                 .filter(activity -> activityID.equals(activity.getID()))
@@ -72,10 +67,7 @@ public class Employee {
     }
 
     public boolean isProjectLeader(Project p) {
-    	if (p == null || !p.hasProjectLeader())
-    		return false;
-    	else
-    		return p.getProjectLeader().getInitials().equals(this.initials);
+        return p.getProjectLeader().getInitials().equals(this.initials);
     }
 
     public boolean isAvailableInWeek(int week) {
