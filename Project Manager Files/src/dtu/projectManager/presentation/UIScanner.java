@@ -10,13 +10,13 @@ public class UIScanner {
 		this.InputScanner = sc;
 	}
 	
-	public String GetUserInput() {
+	public String getUserInput() {
 		String input = this.InputScanner.nextLine();
 		
 		return input;
 	}
 	
-	public void WaitForUserConfirmation() {
+	public void waitForUserConfirmation() {
 		this.InputScanner.nextLine();
 	}
 	

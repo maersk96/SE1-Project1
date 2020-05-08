@@ -63,7 +63,7 @@ public class BudgetHoursMenu extends Menu {
 		startText.add("going from week "+this.activity.getStartWeek()+" to week "+this.activity.getEndWeek()+".");
 		startText.add("");
 		startText.add("Current budgeted hours: "+bHours);
-		startText.add("Enter the new number of budgeted hours (using \".\" for decimals)");
+		startText.add("Enter the new number of budgeted hours (use \".\" for decimals)");
 		startText.add("");
 		return startText;
 	}
@@ -105,7 +105,8 @@ public class BudgetHoursMenu extends Menu {
 	@Override
 	public List<String> getInputSpecification() {
 		List<String> inputSpecification = new ArrayList<String>();
-		inputSpecification.add("The input should be a string of letters");
+		inputSpecification.add("The input should be a positive number.");
+		inputSpecification.add("(use \".\" for decimals)");
 		return inputSpecification;
 	}
 
@@ -117,12 +118,12 @@ public class BudgetHoursMenu extends Menu {
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
 		this.activity.setBudgetHours(this.budgetedHours);;
-		return new ManageProjectActivityMenu(this.user,this.project,this.activity);
+		return new ProjectLeaderActivityMenu(this.user,this.project,this.activity);
 	}
 
 	@Override
 	public Menu rewindState() {
-		return new ManageProjectActivityMenu(this.user,this.project,this.activity);
+		return new ProjectLeaderActivityMenu(this.user,this.project,this.activity);
 	}
 
 	@Override

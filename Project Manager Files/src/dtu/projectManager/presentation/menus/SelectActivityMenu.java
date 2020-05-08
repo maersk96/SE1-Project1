@@ -52,8 +52,10 @@ public class SelectActivityMenu extends Menu {
 
 	@Override
 	protected Object[] getMethodInput() {
-		String[] emptyInput = new String[0];
-		return emptyInput;
+		Object[] input = new Object[2];
+		input[0] = this.user.copy();
+		input[1] = this.activities[this.choice-1].copy();
+		return input;
 	}
 	
 	@Override
@@ -63,7 +65,7 @@ public class SelectActivityMenu extends Menu {
 
 	@Override
 	protected String getMethodName() {
-		return null;
+		return "see registered hours";
 	}
 	
 
@@ -81,7 +83,8 @@ public class SelectActivityMenu extends Menu {
 
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
-		return new ManageActivityMenu(this.user,this.activities[this.choice-1]);
+		double hours = (double)result[0];
+		return new ActivityMenu(this.user,this.activities[this.choice-1],hours);
 	}
 
 	@Override
@@ -91,7 +94,7 @@ public class SelectActivityMenu extends Menu {
 
 	@Override
 	public boolean needsExecution() {
-		return false;
+		return true;
 		}
 
 }

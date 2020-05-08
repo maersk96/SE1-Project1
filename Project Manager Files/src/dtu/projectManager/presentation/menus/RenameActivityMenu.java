@@ -88,12 +88,12 @@ public class RenameActivityMenu extends Menu {
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
 		this.activity.setName(this.newName);
-		return new ManageProjectActivityMenu(this.user,this.project,this.activity);
+		return new ProjectLeaderActivityMenu(this.user,this.project,this.activity);
 	}
 
 	@Override
 	public Menu rewindState() {
-		return new ManageProjectActivityMenu(this.user,this.project,this.activity);
+		return new ProjectLeaderActivityMenu(this.user,this.project,this.activity);
 	}
 
 	@Override

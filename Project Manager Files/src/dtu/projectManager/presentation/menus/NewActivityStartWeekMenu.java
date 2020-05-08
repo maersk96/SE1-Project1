@@ -20,6 +20,21 @@ public class NewActivityStartWeekMenu extends Menu {
 		this.activity = activity;
 	}
 
+	// Input between 0 and 52
+	@Override
+	public boolean validateInput(String input) {
+		int i;
+		try {
+			i = Integer.parseInt(input);
+			if (i<0 || i>52) {
+				return false;
+			}
+		} catch (NumberFormatException e) {
+			return false;
+		}
+		return true;
+	}
+
 	@Override
 	protected List<String> getStartText() {
 		List<String> startText = new ArrayList<String>();
@@ -81,7 +96,7 @@ public class NewActivityStartWeekMenu extends Menu {
 	@Override
 	public Menu rewindState() {
 		if (this.user.getInitials().equals("ADMIN")) {
-			return new ManageProjectMenu(this.user,this.project);
+			return new ProjectMenu(this.user,this.project);
 		}
 		else {
 			return new ProjectLeaderMenu(this.user,this.project);

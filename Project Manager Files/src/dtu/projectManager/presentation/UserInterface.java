@@ -30,7 +30,9 @@ public class UserInterface {
 		while (true)
 		{
 			this.printer.print(this.State.getMenuText());
-			input = this.scanner.GetUserInput();
+			
+			
+			input = getUserInput();
 			
 			if (input.equals("exit")) {
 				break;
@@ -38,39 +40,52 @@ public class UserInterface {
 			
 			if (input.equals("logout"))
 			{
-				ResetState();
+				resetState();
 				continue;
 			}
 				
-			if (!this.State.validateInput(input)) {
-				PrintInputError();
-				continue;
-			}
 			
 			this.State.setInput(input);
 			
 			Object[] result = null;
+			
 			if  (this.State.needsExecution()) {
 				Object[] methodArguments = this.State.getApplicationRequest();
 				result = this.inputInterpreter.callMethod(methodArguments);
 				if (this.inputInterpreter.printFeedback()) {
 					this.printer.print(this.inputInterpreter.getFeedback());
-					this.scanner.WaitForUserConfirmation();					
+					this.scanner.waitForUserConfirmation();					
 				}
 			}
-			UpdateState(result);
+			updateState(result);
 		}
 	}
 	
 	
-	private void PrintInputError() {
+	private String getUserInput() {
+		
+		String input = this.scanner.getUserInput();
+		
+		while (true) {
+			if (this.State.validateInput(input)) {
+				return input;
+			}
+			else {				
+				printInputError();
+				input = this.scanner.getUserInput();
+			}
+			
+		}
+	}
+
+
+	private void printInputError() {
 		List<String> errorMessage = this.State.getInputSpecification();
 		this.printer.print(errorMessage);
-		this.scanner.WaitForUserConfirmation();
 	}
 	
 	
-	private void UpdateState(Object[] result) throws Exception {
+	private void updateState(Object[] result) throws Exception {
 		if (this.inputInterpreter.hadError()) {
 			this.inputInterpreter.resetErrorState();
 			this.State = this.State.rewindState();
@@ -80,7 +95,7 @@ public class UserInterface {
 		}
 	}
 	
-	private void ResetState() {
+	private void resetState() {
 		this.State = new LoginMenu();
 	}
 	

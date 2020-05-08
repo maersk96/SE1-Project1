@@ -67,7 +67,7 @@ public class Interpreter {
 				projectList = this.application.getProjects();
 				result = new Object[projectList.size()];
 				for (int i=0; i< result.length; i++) {
-					result[i] = projectList.get(i).asProjectInfo();
+					result[i] = new ProjectInfo(projectList.get(i));
 				}
 				if (result.length == 0) {
 					this.printFeedback = true;
@@ -89,7 +89,7 @@ public class Interpreter {
 			    }
 			    result = new Object[0];
 			    this.application.addEmployee(employee.asEmployee());
-			    this.feedback.add("The employee "+employee.getName()+" ("+employee.getName()+") has been created");
+			    this.feedback.add("The employee "+employee.getName()+" ("+employee.getInitials()+") has been created");
 			    this.feedback.add("");
 			    this.feedback.add("Press enter to continue");
 			    return result;
@@ -131,7 +131,7 @@ public class Interpreter {
 				this.feedback.add("These are all the employees registered in the app:");
 				this.feedback.add("");
 				for (Employee e : employeeList) {
-					employee = e.asEmployeeInfo();
+					employee = new EmployeeInfo(e);
 					this.feedback.add(employee.getName()+" ("+employee.getInitials()+")");
 				}
 				this.feedback.add("");
@@ -147,9 +147,15 @@ public class Interpreter {
 				activityList = this.application.getEmployeeActivities(employee.getInitials());
 				result = new Object[activityList.size()];
 				for (int i=0; i<result.length; i++) {
-					result[i] = activityList.get(i).asActivityInfo();
+					result[i] = new ActivityInfo(activityList.get(i));
 				}
-				this.printFeedback = false;
+				if (result.length == 0) {
+					this.printFeedback = true;
+					this.feedback.add("The employee is currently not assigned to any activities.");
+					this.feedback.add("Click enter to go back.");
+				}
+				else
+					this.printFeedback = false;
 				return result;
 				
 			case "find projects where employee is leader":
@@ -157,7 +163,7 @@ public class Interpreter {
 				projectList = this.application.getProjectsLeadByEmployee(employee.getInitials());
 				result = new Object[projectList.size()];
 				for (int i=0; i< result.length; i++) {
-					result[i] = projectList.get(i).asProjectInfo();
+					result[i] = new ProjectInfo(projectList.get(i));
 				}
 				if (result.length == 0) {
 					this.printFeedback = true;
@@ -174,7 +180,7 @@ public class Interpreter {
 				employeeList = this.application.getAvailableEmployees(week);
 				result = new Object[employeeList.size()];
 				for (int i=0; i<result.length; i++) {
-					result[i] = employeeList.get(i).asEmployeeInfo();
+					result[i] = new EmployeeInfo(employeeList.get(i));
 				}
 				this.printFeedback = false;
 				return result;
@@ -185,14 +191,25 @@ public class Interpreter {
 				activity = (ActivityInfo) methodArguments[2];
 				employee = (EmployeeInfo) methodArguments[3];
 				this.application.askForAssistance( activity.getID(), employee.getInitials());
-				employee = this.application.getEmployee(employee.getInitials()).asEmployeeInfo();
-				this.feedback.add(employee.getName()+"("+employee.getInitials()+") can now help with activity");
+				employee = new EmployeeInfo(this.application.getEmployee(employee.getInitials()));
+				this.feedback.add(employee.getName()+" ("+employee.getInitials()+") can now help with activity");
 				this.feedback.add(activity.getID()+": "+activity.getName());
 				this.feedback.add("");
 				this.feedback.add("Press enter to continue");
 				result = new Object[0];
 				return result;
 
+				
+			case "see registered hours":
+				employee = (EmployeeInfo) methodArguments[1];
+				activity = (ActivityInfo) methodArguments[2];
+				hours = this.application.getEmployeesRegisteredHoursToActivity(activity.getID(), employee.getInitials());
+				this.printFeedback = false;
+				System.out.println(hours);
+				result = new Object[1];
+				result[0] = hours;
+				return result;
+			
 				
 				
 			case "register hours":
@@ -215,7 +232,7 @@ public class Interpreter {
 				activityList = this.application.getProjectActivities(project.getID());
 				result = new Object[activityList.size()];
 				for (int i=0; i< result.length; i++) {
-					result[i] = activityList.get(i).asActivityInfo();
+					result[i] = new ActivityInfo(activityList.get(i));
 				}
 				if (result.length == 0) {
 					this.printFeedback = true;
@@ -232,18 +249,11 @@ public class Interpreter {
 				activityList = this.application.getProjectActivities(project.getID());
 				result = new Object[activityList.size()];
 				for (int i=0; i< result.length; i++) {
-					activity = activityList.get(i).asActivityInfo();
+					activity = new ActivityInfo(activityList.get(i));
 					activity.setTotalHours(application.getTotalRegisteredHoursToActivity(project.getID(),activity.getID()));
 					result[i] = activity;
 				}
-				if (result.length == 0) {
-					this.printFeedback = true;
-					this.feedback.add("There are no activities for this project.");
-					this.feedback.add("Click enter to go back.");
-				}
-				else {
-					this.printFeedback = false;
-				}
+				this.printFeedback = false;
 				return result;
 				
 				
@@ -268,7 +278,7 @@ public class Interpreter {
 				employeeList = this.application.getEmployeesAssignedToActivity(project.getID(), activity.getID());
 				result = new Object[employeeList.size()];
 				for (int i=0; i<result.length; i++) {
-					result[i] = employeeList.get(i).asEmployeeInfo();
+					result[i] = new EmployeeInfo(employeeList.get(i));
 				}
 				this.printFeedback = false;
 				return result;
@@ -309,7 +319,7 @@ public class Interpreter {
 				project = (ProjectInfo) methodArguments[2];
 				employee = (EmployeeInfo) methodArguments[3];
 				this.application.assignEmployeeToActivity(project.getID(), activity.getID(), employee.getInitials());
-				employee = this.application.getEmployee(employee.getInitials()).asEmployeeInfo();
+				employee = new EmployeeInfo(this.application.getEmployee(employee.getInitials()));
 				this.feedback.add("You have assigned "+employee.getName()+" ("+employee.getInitials()+") to activity");
 				this.feedback.add(activity.getID()+": "+activity.getName());
 				this.feedback.add("");

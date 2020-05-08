@@ -11,6 +11,11 @@ public class EmployeeInfo {
 		this.name = "";
 	}
 	
+	public EmployeeInfo (Employee employee) {
+		this.initials = employee.getInitials();
+		this.name = employee.getName();
+	}
+	
     public String getInitials() {
         return this.initials;
     }

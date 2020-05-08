@@ -66,7 +66,7 @@ public class AssignLeaderMenu extends Menu {
 
 	@Override
 	protected void setInput(String id) {
-		this.leader = new EmployeeInfo(id);
+		this.leader = new EmployeeInfo(id.toUpperCase());
 	}
 
 	@Override
@@ -88,12 +88,12 @@ public class AssignLeaderMenu extends Menu {
 
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
-		return new ManageProjectMenu(this.user,this.project);
+		return new ProjectMenu(this.user,this.project);
 	}
 
 	@Override
 	public Menu rewindState() {
-		return new ManageProjectMenu(this.user,this.project);
+		return new ProjectMenu(this.user,this.project);
 	}
 
 	@Override

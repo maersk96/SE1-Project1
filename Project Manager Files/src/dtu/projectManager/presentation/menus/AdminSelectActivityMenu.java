@@ -55,8 +55,10 @@ public class AdminSelectActivityMenu extends Menu {
 
 	@Override
 	protected Object[] getMethodInput() {
-		String[] emptyInput = new String[0];
-		return emptyInput;
+		Object[] input = new Object[2];
+		input[0] = this.employee.copy();
+		input[1] = this.activities[this.choice-1].copy();
+		return input;
 	}
 	
 	@Override
@@ -66,7 +68,7 @@ public class AdminSelectActivityMenu extends Menu {
 
 	@Override
 	protected String getMethodName() {
-		return null;
+		return "see registered hours";
 	}
 	
 
@@ -84,7 +86,8 @@ public class AdminSelectActivityMenu extends Menu {
 
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
-		return new AdminRegisterHoursMenu(this.user,this.employee,this.activities[this.choice-1]);
+		double hours = (double) result[0];
+		return new AdminRegisterHoursMenu(this.user,this.employee,this.activities[this.choice-1],hours);
 	}
 
 	@Override
@@ -94,7 +97,7 @@ public class AdminSelectActivityMenu extends Menu {
 
 	@Override
 	public boolean needsExecution() {
-		return false;
+		return true;
 		}
 
 }

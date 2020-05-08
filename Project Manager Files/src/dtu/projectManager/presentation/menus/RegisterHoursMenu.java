@@ -1,7 +1,10 @@
 package dtu.projectManager.presentation.menus;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import dtu.projectManager.dto.ActivityInfo;
 import dtu.projectManager.dto.EmployeeInfo;
@@ -11,12 +14,22 @@ public class RegisterHoursMenu extends Menu {
 
 	private EmployeeInfo user;
 	private ActivityInfo activity;
-	private double hours;
+	private double newHours;
+	private double currentHours;
+	private DecimalFormat df;
+
 	
 	
-	public RegisterHoursMenu(EmployeeInfo user, ActivityInfo activity) {
+	public RegisterHoursMenu(EmployeeInfo user, ActivityInfo activity, double currentHours) {
 		this.user = user;
 		this.activity = activity;
+		this.currentHours = currentHours;
+		
+		DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols(Locale.getDefault());
+		otherSymbols.setDecimalSeparator('.');
+		this.df = new DecimalFormat("#.#", otherSymbols);
+	    this.df.setMinimumFractionDigits(0);
+	    this.df.setMaximumFractionDigits(1);
 	}
 	
 	
@@ -46,9 +59,10 @@ public class RegisterHoursMenu extends Menu {
 		startText.add("Activity:");
 		startText.add(this.activity.getID()+": "+this.activity.getName());
 		startText.add("going from week "+this.activity.getStartWeek()+" to week "+this.activity.getEndWeek()+".");
+		startText.add("Hours you have registered to this activity: "+this.df.format(this.currentHours));
 		startText.add("");
 		startText.add("How many hours did you work on this activity?");
-		startText.add("(use dot for decimals)");
+		startText.add("(use \".\" for decimals)");
 		startText.add("");
 		return startText;
 	}
@@ -73,14 +87,14 @@ public class RegisterHoursMenu extends Menu {
 	Object[] input = new Object[3];
 	input[0] = this.activity.copy();
 	input[1] = this.user.copy();
-	input[2] = this.hours;
+	input[2] = this.newHours;
 	return input;
 
 	}
 
 	@Override
 	protected void setInput(String hours) {
-		this.hours = Double.parseDouble(hours);
+		this.newHours = Double.parseDouble(hours);
 	}
 
 	@Override
@@ -92,7 +106,7 @@ public class RegisterHoursMenu extends Menu {
 	public List<String> getInputSpecification() {
 		List<String> inputSpecification = new ArrayList<String>();
 		inputSpecification.add("The input should be a positive number. If there is a fraction,");
-		inputSpecification.add("use a dot to seperate the decimals.");
+		inputSpecification.add("(use \".\" for decimals)");
 		return inputSpecification;
 	}
 
@@ -103,12 +117,13 @@ public class RegisterHoursMenu extends Menu {
 
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
-		return new ManageActivityMenu(this.user,this.activity);
+		this.currentHours+= this.newHours;
+		return new ActivityMenu(this.user,this.activity,this.currentHours);
 	}
 
 	@Override
 	public Menu rewindState() {
-		return new ManageActivityMenu(this.user,this.activity);
+		return new ActivityMenu(this.user,this.activity,this.currentHours);
 	}
 
 	@Override

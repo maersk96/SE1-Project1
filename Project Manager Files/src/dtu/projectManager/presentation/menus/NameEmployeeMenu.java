@@ -6,12 +6,12 @@ import java.util.List;
 import dtu.projectManager.dto.EmployeeInfo;
 import dtu.projectManager.presentation.Menu;
 
-public class NameEmployee extends Menu {
+public class NameEmployeeMenu extends Menu {
 	private EmployeeInfo user;
 	private EmployeeInfo employee;
 	private String employeeName;
 	
-	public NameEmployee(EmployeeInfo user, EmployeeInfo employee) {
+	public NameEmployeeMenu(EmployeeInfo user, EmployeeInfo employee) {
 		this.user = user;
 		this.employee = employee;
 	}

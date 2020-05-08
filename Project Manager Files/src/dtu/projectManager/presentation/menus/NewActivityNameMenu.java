@@ -81,7 +81,7 @@ public class NewActivityNameMenu extends Menu {
 	@Override
 	public Menu rewindState() {
 		if (this.user.getInitials().equals("ADMIN")) {
-			return new ManageProjectMenu(this.user,this.project);
+			return new ProjectMenu(this.user,this.project);
 		}
 		else {
 			return new ProjectLeaderMenu(this.user,this.project);			

@@ -53,7 +53,7 @@ public class SelectEmployeeMenu extends Menu {
 
 	@Override
 	protected void setInput(String initials) {
-		this.employee = new EmployeeInfo(initials);
+		this.employee = new EmployeeInfo(initials.toUpperCase());
 	}
 
 	@Override

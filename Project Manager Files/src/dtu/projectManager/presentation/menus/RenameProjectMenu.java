@@ -79,12 +79,12 @@ public class RenameProjectMenu extends Menu {
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
 		this.project.setName(this.newName);
-		return new ManageProjectMenu(this.user,this.project);
+		return new ProjectMenu(this.user,this.project);
 	}
 
 	@Override
 	public Menu rewindState() {
-		return new ManageProjectMenu(this.user,this.project);	}
+		return new ProjectMenu(this.user,this.project);	}
 
 	@Override
 	public boolean needsExecution() {

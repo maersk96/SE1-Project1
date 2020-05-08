@@ -18,7 +18,7 @@ public class LoginMenu extends Menu {
 		List<String> startText = new ArrayList<String>();
 		
 		startText.add("Welcome to the login menu");
-		startText.add("Please enter your username");
+		startText.add("Please enter your initials");
 		return startText;
 	}
 
@@ -46,7 +46,7 @@ public class LoginMenu extends Menu {
 	
 	@Override
 	protected void setInput(String username) {
-		this.user = new EmployeeInfo(username);
+		this.user = new EmployeeInfo(username.toUpperCase());
 	}
 
 	@Override
@@ -58,8 +58,7 @@ public class LoginMenu extends Menu {
 	@Override
 	public List<String> getInputSpecification() {
 		List<String> inputSpecification = new ArrayList<String>();
-		inputSpecification.add("The username should be a single string of letters,");
-		inputSpecification.add("for example your employee initials");
+		inputSpecification.add("Please enter your initials");
 		return inputSpecification;
 	}
 

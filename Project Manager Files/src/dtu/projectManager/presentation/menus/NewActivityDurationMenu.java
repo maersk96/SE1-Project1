@@ -20,6 +20,22 @@ public class NewActivityDurationMenu extends Menu {
 		this.activity = activity;
 	}
 
+	
+	// Input positive
+	@Override
+	public boolean validateInput(String input) {
+		int i;
+		try {
+			i = Integer.parseInt(input);
+			if (i<1) {
+				return false;
+			}
+		} catch (NumberFormatException e) {
+			return false;
+		}
+		return true;
+	}
+
 	@Override
 	protected List<String> getStartText() {
 		List<String> startText = new ArrayList<String>();
@@ -54,7 +70,8 @@ public class NewActivityDurationMenu extends Menu {
 	
 	@Override
 	protected void setInput(String duration) {
-		this.activity.setEndWeek(this.activity.getStartWeek() - 1 + Integer.parseInt(duration));
+		int endWeek = (this.activity.getStartWeek() - 1 + Integer.parseInt(duration)) % 52;
+		this.activity.setEndWeek(endWeek);
 	}
 
 	@Override
@@ -66,7 +83,8 @@ public class NewActivityDurationMenu extends Menu {
 	@Override
 	public List<String> getInputSpecification() {
 		List<String> inputSpecification = new ArrayList<String>();
-		inputSpecification.add("The input should be an integer.");
+		inputSpecification.add("The input should be a positive integer.");
+		inputSpecification.add("The duration cannot be 0.");
 		return inputSpecification;
 	}
 
@@ -77,13 +95,13 @@ public class NewActivityDurationMenu extends Menu {
 
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
-		return new ManageProjectActivityMenu(this.user,this.project, this.activity);
+		return new ProjectLeaderActivityMenu(this.user,this.project, this.activity);
 	}
 
 	@Override
 	public Menu rewindState() {
 		if (this.user.getInitials().equals("ADMIN")) {
-			return new ManageProjectMenu(this.user,this.project);
+			return new ProjectMenu(this.user,this.project);
 		}
 		else {
 			return new ProjectLeaderMenu(this.user,this.project);

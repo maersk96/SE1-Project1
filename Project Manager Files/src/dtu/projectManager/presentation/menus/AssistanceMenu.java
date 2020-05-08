@@ -13,12 +13,13 @@ public class AssistanceMenu extends Menu {
 	private ActivityInfo activity;
 	private EmployeeInfo helper;
 	private EmployeeInfo[] employees;
-
+	private double currentHours;
 	
-	public AssistanceMenu(EmployeeInfo user, ActivityInfo activity, EmployeeInfo[] employees) {
+	public AssistanceMenu(EmployeeInfo user, ActivityInfo activity, EmployeeInfo[] employees, double currentHours) {
 		this.user = user;
 		this.activity = activity;
 		this.employees = employees;
+		this.currentHours = currentHours;
 	}
 	@Override
 	protected List<String> getStartText() {
@@ -64,7 +65,7 @@ public class AssistanceMenu extends Menu {
 
 	@Override
 	protected void setInput(String helperID) {
-		this.helper =  new EmployeeInfo(helperID);
+		this.helper =  new EmployeeInfo(helperID.toUpperCase());
 	}
 
 	@Override
@@ -87,12 +88,12 @@ public class AssistanceMenu extends Menu {
 
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
-		return new ManageActivityMenu(this.user,this.activity);
+		return rewindState();
 	}
 
 	@Override
 	public Menu rewindState() {
-		return new ManageActivityMenu(this.user,this.activity);
+		return new ActivityMenu(this.user,this.activity, this.currentHours);
 	}
 
 	@Override

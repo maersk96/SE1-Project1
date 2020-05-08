@@ -35,7 +35,7 @@ public class ProjectLeaderMenu extends Menu {
 		
 		options.add("See progress");
 		options.add("Create activity");
-		options.add("Manage activities");
+		options.add("Manage activity");
 		options.add("Return to main menu");
 		return options;
 	}

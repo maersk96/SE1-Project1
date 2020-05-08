@@ -8,7 +8,7 @@ import dtu.projectManager.dto.EmployeeInfo;
 import dtu.projectManager.dto.ProjectInfo;
 import dtu.projectManager.presentation.Menu;
 
-public class AssignEmployeeActivityMenu extends Menu {
+public class AssignEmployeeMenu extends Menu {
 
 	private EmployeeInfo user;
 	private ProjectInfo project;
@@ -16,7 +16,7 @@ public class AssignEmployeeActivityMenu extends Menu {
 	private EmployeeInfo[] assignedEmployees;
 	private EmployeeInfo newEmployee;
 	
-	public AssignEmployeeActivityMenu(EmployeeInfo user, ProjectInfo project, ActivityInfo activity, EmployeeInfo[] assignedEmployees) {
+	public AssignEmployeeMenu(EmployeeInfo user, ProjectInfo project, ActivityInfo activity, EmployeeInfo[] assignedEmployees) {
 		this.user = user;
 		this.project = project;
 		this.activity = activity;
@@ -35,7 +35,7 @@ public class AssignEmployeeActivityMenu extends Menu {
 		startText.add(this.activity.getID()+": "+this.activity.getName());
 		startText.add("going from week "+this.activity.getStartWeek()+" to week "+this.activity.getEndWeek()+".");
 		startText.add("");
-		startText.add("These employees are currently assigned to this activity:");
+		startText.add("These are the employees that are available for this activity:");
 		
 		for (int i=0; i<this.assignedEmployees.length; i++) {
 			startText.add(this.assignedEmployees[i].getName()+" ("+this.assignedEmployees[i].getInitials()+")");
@@ -74,7 +74,7 @@ public class AssignEmployeeActivityMenu extends Menu {
 
 	@Override
 	protected void setInput(String initials) {
-		this.newEmployee = new EmployeeInfo(initials);
+		this.newEmployee = new EmployeeInfo(initials.toUpperCase());
 	}
 
 	@Override
@@ -96,12 +96,12 @@ public class AssignEmployeeActivityMenu extends Menu {
 
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
-		return new ManageProjectActivityMenu(this.user,this.project,this.activity);
+		return new ProjectLeaderActivityMenu(this.user,this.project,this.activity);
 	}
 
 	@Override
 	public Menu rewindState() {
-		return new ManageProjectActivityMenu(this.user,this.project,this.activity);
+		return new ProjectLeaderActivityMenu(this.user,this.project,this.activity);
 	}
 
 	@Override

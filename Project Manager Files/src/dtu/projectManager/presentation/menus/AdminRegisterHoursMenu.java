@@ -1,7 +1,10 @@
 package dtu.projectManager.presentation.menus;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import dtu.projectManager.dto.ActivityInfo;
 import dtu.projectManager.dto.EmployeeInfo;
@@ -12,12 +15,20 @@ public class AdminRegisterHoursMenu extends Menu {
 	private ActivityInfo activity;
 	private EmployeeInfo employee;
 	private double hours;
+	private double currentHours;
+	private DecimalFormat df;
 	
 	
-	public AdminRegisterHoursMenu(EmployeeInfo user, EmployeeInfo employee, ActivityInfo activity) {
+	public AdminRegisterHoursMenu(EmployeeInfo user, EmployeeInfo employee, ActivityInfo activity, double currentHours) {
 		this.user = user;
 		this.activity = activity;
 		this.employee = employee;
+		this.currentHours = currentHours;
+		DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols(Locale.getDefault());
+		otherSymbols.setDecimalSeparator('.');
+		this.df = new DecimalFormat("#.#", otherSymbols);
+	    this.df.setMinimumFractionDigits(0);
+	    this.df.setMaximumFractionDigits(1);
 	}
 	
 	
@@ -47,9 +58,10 @@ public class AdminRegisterHoursMenu extends Menu {
 		startText.add("Activity:");
 		startText.add(this.activity.getID()+": "+this.activity.getName());
 		startText.add("going from week "+this.activity.getStartWeek()+" to week "+this.activity.getEndWeek()+".");
+		startText.add(this.employee.getInitials()+" currently has "+this.df.format(this.currentHours)+" hours registered to this activity.");
 		startText.add("");
 		startText.add("How many hours did "+this.employee.getInitials()+" work on this activity?");
-		startText.add("(use dot for decimals)");
+		startText.add("(use \".\" for decimals)");
 		startText.add("");
 		return startText;
 	}
@@ -92,8 +104,8 @@ public class AdminRegisterHoursMenu extends Menu {
 	@Override
 	public List<String> getInputSpecification() {
 		List<String> inputSpecification = new ArrayList<String>();
-		inputSpecification.add("The input should be a positive number. If there is a fraction,");
-		inputSpecification.add("use a dot to seperate the decimals.");
+		inputSpecification.add("The input should be a positive number.");
+		inputSpecification.add("(use \".\" for decimals)");
 		return inputSpecification;
 	}
 

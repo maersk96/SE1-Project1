@@ -46,7 +46,7 @@ public class CreateEmployeeMenu extends Menu {
 	
 	@Override
 	protected void setInput(String id) {
-		this.employee = new EmployeeInfo(id);
+		this.employee = new EmployeeInfo(id.toUpperCase());
 	}
 
 	@Override
@@ -69,7 +69,7 @@ public class CreateEmployeeMenu extends Menu {
 
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
-		return new NameEmployee(this.user,this.employee);
+		return new NameEmployeeMenu(this.user,this.employee);
 	}
 
 	@Override

@@ -8,9 +8,18 @@ public class ProjectInfo {
     private String ID;
     private String name;
     private EmployeeInfo projectLeader;
-
+    
     public ProjectInfo (String name) {
     	this.name = name;
+    }
+    
+    public ProjectInfo(Project project) {
+    	this.ID = project.getID();
+    	this.name = project.getName();
+    	if (project.hasProjectLeader()) {
+    		EmployeeInfo leader = new EmployeeInfo(project.getProjectLeader());
+    		this.projectLeader = leader;
+    	}
     }
     
     public String getID() {

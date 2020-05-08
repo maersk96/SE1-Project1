@@ -52,8 +52,17 @@ public class ProjectProgressMenu extends Menu {
 	
 	
 	private List<String> visualizeActivityProgress(){
-		String activityLine;
+		
 		int lines = this.activities.length;
+		List<String> activityProgress = new ArrayList<String>();
+
+		if (lines == 0) {
+			activityProgress.add("There are no activities assigned to this project");
+			activityProgress.add("");
+			return activityProgress;
+		}
+		
+		String activityLine;
 		String[] activityNames = new String[lines];
 
 		for (int i=0; i<lines; i++) {
@@ -70,8 +79,7 @@ public class ProjectProgressMenu extends Menu {
 				maxLineLength = lineLengths[i];
  		}
 		
-		List<String> activityProgress = new ArrayList<String>();
-
+		
 		double bHours, tHours;
 		double bHoursSum=0;
 		double tHoursSum=0;
@@ -184,7 +192,10 @@ public class ProjectProgressMenu extends Menu {
 	
 	@Override
 	public Menu rewindState() {
-		return new ProjectLeaderMenu(this.user,this.project);
+		if (this.user.getInitials().equals("ADMIN"))
+			return new ProjectMenu(this.user,this.project);
+		else
+			return new ProjectLeaderMenu(this.user,this.project);
 	}
 
 	@Override

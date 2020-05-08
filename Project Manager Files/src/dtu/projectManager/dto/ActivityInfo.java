@@ -17,6 +17,15 @@ public class ActivityInfo {
 		this.endWeek = endWeek;
 		this.name = name;
 	}
+	
+	public ActivityInfo(Activity activity) {
+		this.name = activity.getName();
+		this.ID = activity.getID();
+		this.startWeek = activity.getStartWeek();
+		this.endWeek = activity.getEndWeek();
+		this.budgetHours = activity.getBudgetHours();
+		this.totalHours = activity.getTotalRegisteredHours();
+	}
 
 	public String getID() {
 		return ID;
