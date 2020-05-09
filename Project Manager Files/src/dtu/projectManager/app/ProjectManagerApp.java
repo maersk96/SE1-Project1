@@ -147,12 +147,10 @@ public class ProjectManagerApp {
 	}
 	
 	public void assignEmployeeToActivity(String projectID, String activityID, String employeeInitials) throws OperationNotAllowedException {
-		requiresProjectLeader(projectID);
-
-		Project p = getProject(projectID);
-		Activity a = getActivityFromProject(projectID, activityID);
-		Employee e = getEmployee(employeeInitials);
-		addEmployeeToActivity(e,a);
+		requiresProjectLeader(projectID);										// 1
+		Activity a = getActivityFromProject(projectID, activityID);				// 2
+		Employee e = getEmployee(employeeInitials);								// 3
+		addEmployeeToActivity(e,a);												// 4
 	}
 	
 	public void askForAssistance(String activityID,String employeeInitials) throws OperationNotAllowedException {
