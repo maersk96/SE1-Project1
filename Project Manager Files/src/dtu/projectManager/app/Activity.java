@@ -51,7 +51,7 @@ public class Activity {
 
 	public int adjustWeek(int week) {
 		if (week < 1) return 1;					// 1
-		if (week > 52) return week - 52;		// 2
+		if (week > 52) return week % 52;		// 2
 		return week;
 	}
 	public void setStartWeek(int startWeek) { this.startWeek = adjustWeek(startWeek); }
