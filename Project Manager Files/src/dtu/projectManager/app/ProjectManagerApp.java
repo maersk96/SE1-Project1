@@ -50,7 +50,7 @@ public class ProjectManagerApp {
 	}
 	public void requiresProjectLeader(String projectID) throws OperationNotAllowedException {
 		Project p = getProjectWithID(projectID);
-		if (p == null || !(adminLoggedIn() || p.isProjectLeader(currentUser)) ) {
+		if (p == null /* 1 */ || !(adminLoggedIn() /* 2 */ || p.isProjectLeader(currentUser) /* 3 */) ) {
 			throw new OperationNotAllowedException("Project Leader login required");
 		}
 	}
@@ -207,8 +207,8 @@ public class ProjectManagerApp {
 	}
 
 	public List<Project> getProjectsLeadByEmployee(String initials) throws OperationNotAllowedException {
-		Employee e = getEmployee(initials);
-		if (!(currentUser.hasInitials(initials) || adminLoggedIn())) {
+		Employee e = getEmployee(initials);					// 1
+		if (!(currentUser.hasInitials(initials) /* 2 */ || adminLoggedIn() /* 3 */ )) {
 			throw new OperationNotAllowedException("You can only see projects that you are leading");
 		}
 		return getProjects().stream()
