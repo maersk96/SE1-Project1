@@ -1,3 +1,6 @@
+# Work distribution:
+# Mikkel s164199
+
 Feature: Budget hours to an activity
   Description: A Project Leader budgets hours to an activity
   Actors: Project Leader

@@ -1,3 +1,6 @@
+# Work distribution:
+# Mikkel s164199
+
 Feature: Assign Project Leader
 	Description: A Project Leader is assigned to a project by the Admin.
 	Actors: Admin

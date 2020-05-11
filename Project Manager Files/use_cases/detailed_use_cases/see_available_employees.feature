@@ -1,3 +1,6 @@
+# Work distribution:
+# Jonas s183635
+
 Feature: See available employees
 	Description: See employees that do not exceed their active activities limit
 	Actors: Any

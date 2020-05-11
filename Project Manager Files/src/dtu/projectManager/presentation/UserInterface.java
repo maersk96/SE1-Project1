@@ -6,6 +6,9 @@ import java.util.Scanner;
 import dtu.projectManager.app.ProjectManagerApp;
 import dtu.projectManager.presentation.menus.LoginMenu;
 
+// Work distribution for all of UI:
+// Anton s164170
+
 public class UserInterface {
 
 	private Menu State;

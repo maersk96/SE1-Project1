@@ -1,3 +1,6 @@
+# Work distribution:
+# Jonas s183635
+
 Feature: Add mock data
   Description: Generated data is added to the Project Manager by the Admin
   Actors: Admin

@@ -1,3 +1,6 @@
+# Work distribution:
+# Lukas s183663
+
 Feature: Register hours to an activity
   Description: An employee registers their hours to an activity
   Actors: Employee

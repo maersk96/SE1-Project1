@@ -16,6 +16,9 @@ import dtu.projectManager.dto.ActivityInfo;
 import dtu.projectManager.dto.EmployeeInfo;
 import dtu.projectManager.dto.ProjectInfo;
 
+// Work distribution for all of UI:
+// Anton s164170
+
 public class Interpreter {
 
 	private ProjectManagerApp application;

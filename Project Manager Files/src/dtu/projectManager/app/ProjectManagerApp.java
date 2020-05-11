@@ -8,6 +8,9 @@ import java.util.stream.Collectors;
 
 // Main application class
 
+// Work distribution:
+// Mainly Jonas, Mikkel and Lukas have contributed to this class and its methods. It would be incorrect to put individual names on any method, as they have all been developed, or reviewed and edited by everyone, also Anton
+
 public class ProjectManagerApp {
 
 	private List<Project> projects = new ArrayList<>();

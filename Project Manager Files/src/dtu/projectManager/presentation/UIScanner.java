@@ -2,6 +2,9 @@ package dtu.projectManager.presentation;
 
 import java.util.Scanner;
 
+// Work distribution for all of UI:
+// Anton s164170
+
 public class UIScanner {
 
 	private Scanner InputScanner;

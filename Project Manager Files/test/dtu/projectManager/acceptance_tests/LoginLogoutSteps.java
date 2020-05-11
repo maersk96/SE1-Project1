@@ -10,6 +10,10 @@ import static org.junit.Assert.*;
 
 // Steps for handling testing of logging in and out
 
+// Work distribution:
+// Mainly Jonas, Mikkel and Lukas have contributed to this class and its methods. It would be incorrect to put individual names on any method, as they have all been developed, or reviewed and edited by everyone, also Anton
+// For a more accurate representation of who did what, see each feature file, and which steps it references
+
 public class LoginLogoutSteps {
 
 	private ProjectManagerApp projectManagerApp;

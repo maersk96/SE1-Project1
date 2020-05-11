@@ -2,6 +2,9 @@ package dtu.projectManager.dto;
 
 import dtu.projectManager.app.Employee;
 
+// Work distribution for all of UI:
+// Anton s164170
+
 public class EmployeeInfo {
 
 	private String initials;

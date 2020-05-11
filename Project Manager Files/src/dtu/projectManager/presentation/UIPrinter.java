@@ -2,6 +2,9 @@ package dtu.projectManager.presentation;
 
 import java.util.List;
 
+// Work distribution for all of UI:
+// Anton s164170
+
 public class UIPrinter {
 
 	public UIPrinter() {

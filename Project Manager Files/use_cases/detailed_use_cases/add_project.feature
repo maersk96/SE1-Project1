@@ -1,3 +1,6 @@
+# Work distribution:
+# Jonas s183635
+
 Feature: Create project
 	Description: A project is created by the Admin
 	Actors: Admin

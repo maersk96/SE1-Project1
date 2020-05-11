@@ -1,3 +1,6 @@
+# Work distribution:
+# Anton s164170
+
 Feature: Rename project
 	Description: A project is renamed by the Admin
 	Actors: Admin

@@ -1,3 +1,6 @@
+# Work distribution:
+# Mikkel s164199
+
 Feature: Add activity
   Description: An activity is added by the Project Leader
   Actors: Project Leader

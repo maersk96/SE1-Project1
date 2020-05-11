@@ -5,6 +5,9 @@ import java.util.List;
 
 // Project class: stores information about the project, and handles most of the functionality revolving around projects
 
+// Work distribution:
+// Mainly Jonas, Mikkel and Lukas have contributed to this class and its methods. It would be incorrect to put individual names on any method, as they have all been developed, or reviewed and edited by everyone, also Anton
+
 public class Project {
 
     private String ID;

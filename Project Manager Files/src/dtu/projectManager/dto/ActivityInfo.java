@@ -2,6 +2,9 @@ package dtu.projectManager.dto;
 
 import dtu.projectManager.app.Activity;
 
+// Work distribution for all of UI:
+// Anton s164170
+
 public class ActivityInfo {
 	
 	private String ID = "";

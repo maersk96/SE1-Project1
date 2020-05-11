@@ -5,6 +5,9 @@ import io.cucumber.java.en.When;
 
 // Steps for handling testing of mock data
 
+// Work distribution:
+// Jonas s183635 for all methods
+
 public class MockSteps {
 
 	private ProjectManagerApp projectManagerApp;

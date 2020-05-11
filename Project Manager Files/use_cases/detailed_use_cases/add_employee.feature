@@ -1,3 +1,6 @@
+# Work distribution:
+# Anton s164170
+
 Feature: Create employee
 	Description: An employee is created by the Admin
 	Actors: Admin

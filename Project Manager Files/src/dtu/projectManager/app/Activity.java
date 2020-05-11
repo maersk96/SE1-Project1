@@ -6,6 +6,9 @@ import java.util.List;
 
 // Activity class: stores information about the activity, and handles most of the functionality revolving around activities
 
+// Work distribution:
+// Mainly Jonas, Mikkel and Lukas have contributed to this class and its methods. It would be incorrect to put individual names on any method, as they have all been developed, or reviewed and edited by everyone, also Anton
+
 public class Activity {
 
 	private String ID = "";

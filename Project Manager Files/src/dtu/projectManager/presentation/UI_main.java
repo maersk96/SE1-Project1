@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 import dtu.projectManager.app.ProjectManagerApp;
 
+// Work distribution for all of UI:
+// Anton s164170
+
 public class UI_main {
 
 	public static void main(String[] args) {

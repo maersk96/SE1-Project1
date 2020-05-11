@@ -5,6 +5,9 @@ import java.util.Random;
 
 // MockData class: creates mock data for manual testing
 
+// Work distribution:
+// Jonas s183635 for all methods
+
 public class MockData {
 
     // Helper class to store an activity ID with its project ID

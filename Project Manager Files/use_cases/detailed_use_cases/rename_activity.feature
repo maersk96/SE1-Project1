@@ -1,3 +1,6 @@
+# Work distribution:
+# Mikkel s164199
+
 Feature: Rename activity
     Description: An activity is renamed by the Project Leader
     Actors: Project Leader

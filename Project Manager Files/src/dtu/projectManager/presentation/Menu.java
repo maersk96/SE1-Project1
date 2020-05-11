@@ -3,6 +3,9 @@ package dtu.projectManager.presentation;
 import java.util.ArrayList;
 import java.util.List;
 
+// Work distribution for all of UI:
+// Anton s164170
+
 public abstract class Menu {
 	
 	

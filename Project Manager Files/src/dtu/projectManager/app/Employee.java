@@ -6,6 +6,9 @@ import java.util.List;
 
 // Employee class: stores information about the employee, and handles most of the functionality revolving around employees
 
+// Work distribution:
+// Mainly Jonas, Mikkel and Lukas have contributed to this class and its methods. It would be incorrect to put individual names on any method, as they have all been developed, or reviewed and edited by everyone, also Anton
+
 public class Employee {
 
     private int ACTIVE_ACTIVITIES_LIMIT = 20;

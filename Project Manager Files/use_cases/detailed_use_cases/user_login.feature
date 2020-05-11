@@ -1,3 +1,6 @@
+# Work distribution:
+# Jonas s183635
+
 Feature: User Login
 	Description: A user (employee or Admin-employee) logs into the app
 	Actor: Employee

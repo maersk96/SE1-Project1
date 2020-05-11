@@ -1,3 +1,6 @@
+# Work distribution:
+# Lukas s183663
+
 Feature: Assign employee to activity
   Description: An employee is assigned to an activity by the Project Leader
   Actors: Project Leader
