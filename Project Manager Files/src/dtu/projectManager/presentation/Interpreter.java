@@ -5,6 +5,7 @@ import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 import dtu.projectManager.app.Activity;
 import dtu.projectManager.app.Employee;
@@ -21,7 +22,6 @@ public class Interpreter {
 	private List<String> feedback = new ArrayList<String>();
 	private boolean hadError = false;
 	private boolean printFeedback = true;
-	private int week=0;
 	private DecimalFormat df;
 
 	
@@ -246,7 +246,11 @@ public class Interpreter {
 	}
 	
 	private Object[] listAvailableEmployees(Object[] methodArguments) throws OperationNotAllowedException {
-		List<Employee> employeeList = this.application.getAvailableEmployees(week);
+		ActivityInfo activity = (ActivityInfo)methodArguments[1];
+		List<Employee> employeeList = this.application.getEmployees();
+		employeeList = employeeList.stream()
+				.filter(e -> e.isAvailableForActivity(activity.asActivity()))
+				.collect(Collectors.toList());
 		Object[] result = new Object[employeeList.size()];
 		for (int i=0; i<result.length; i++) {
 			result[i] = new EmployeeInfo(employeeList.get(i));
