@@ -56,10 +56,13 @@ public class Employee {
                 activities.add(a);
             }
         }
-        return activities;
 
         // Post-conditions:
+        for (Activity a : activities) {
+            assert a.getStartWeek() <= weekTo && a.getEndWeek() >= weekFrom;
+        }
 
+        return activities;
     }
 
 

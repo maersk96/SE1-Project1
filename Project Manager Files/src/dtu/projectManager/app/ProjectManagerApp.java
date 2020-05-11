@@ -57,10 +57,17 @@ public class ProjectManagerApp {
 	}
 
 	public void requiresProjectLeader(String projectID) throws OperationNotAllowedException {
+
+		// Pre-conditions:
+		assert true;
+
 		Project p = getProjectWithID(projectID);
 		if (p == null /* 1 */ || !(adminLoggedIn() /* 2 */ || p.isProjectLeader(currentUser) /* 3 */) ) {
 			throw new OperationNotAllowedException("Project Leader login required");
 		}
+
+		// Post-conditions:
+		assert adminLoggedIn() == true || getProject(projectID).isProjectLeader(currentUser) == true;
 	}
 
     //
@@ -233,10 +240,20 @@ public class ProjectManagerApp {
 	}
 
 	public List<Project> getProjectsLeadByEmployee(String initials) throws OperationNotAllowedException {
+
+		// Pre-conditions:
+		assert true;
+
 		Employee e = getEmployee(initials);					// 1
 		if (!(currentUser.hasInitials(initials) /* 2 */ || adminLoggedIn() /* 3 */ )) {
 			throw new OperationNotAllowedException("You can only see projects that you are leading");
 		}
+
+		// Post-conditions:
+		for (Project p : getProjects().stream().filter(e::isProjectLeader).collect(Collectors.toList())) {
+			assert p.isProjectLeader(e);
+		}
+
 		return getProjects().stream()
 		.filter(e::isProjectLeader)
 		.collect(Collectors.toList());

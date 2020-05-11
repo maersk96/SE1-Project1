@@ -3,26 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="c54818f2-4fca-46b6-b404-fee38d02f80e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/app/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/app/Activity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/app/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/app/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/app/MockData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/app/MockData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/app/OperationNotAllowedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/app/OperationNotAllowedException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/app/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/app/Project.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/app/ProjectManagerApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/app/ProjectManagerApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/dto/EmployeeInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/dto/EmployeeInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/dto/ProjectInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/dto/ProjectInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/presentation/UIPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/presentation/UIPrinter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/presentation/UI_main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/presentation/UI_main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/presentation/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/presentation/UserInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dtu/projectManager/app/OperationNotAllowedException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dtu/projectManager/app/OperationNotAllowedException.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/dtu/projectManager/app/ProjectManagerApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dtu/projectManager/app/ProjectManagerApp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cucumber/wikipedia.html/report.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/cucumber/wikipedia.html/report.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/dtu/projectManager/acceptance_tests/LoginLogoutSteps.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/dtu/projectManager/acceptance_tests/LoginLogoutSteps.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/AdminSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/AdminSession.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/EmployeeSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/EmployeeSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/ErrorMessageHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/ErrorMessageHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/LoginLogoutSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/LoginLogoutSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/MockSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/MockSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/ProjectSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/ProjectSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/dtu/projectManager/acceptance_tests/ErrorMessageHolder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/dtu/projectManager/acceptance_tests/ErrorMessageHolder.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +149,7 @@
       <workItem from="1588850967591" duration="9934000" />
       <workItem from="1588928354359" duration="2536000" />
       <workItem from="1588934465976" duration="175000" />
-      <workItem from="1589177070312" duration="7040000" />
+      <workItem from="1589177070312" duration="8961000" />
     </task>
     <task id="LOCAL-00001" summary="added 3 classes">
       <created>1585913047457</created>
@@ -236,7 +221,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587992176482</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Final adjustments, and assert statements">
+      <created>1589184220334</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1589184220334</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -249,7 +241,8 @@
     <MESSAGE value="added project constructor" />
     <MESSAGE value="added register activities and fixed assign activities" />
     <MESSAGE value="added assign help to activity and get total registered hours from activity" />
-    <option name="LAST_COMMIT_MESSAGE" value="added assign help to activity and get total registered hours from activity" />
+    <MESSAGE value="Final adjustments, and assert statements" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final adjustments, and assert statements" />
   </component>
   <component name="WindowStateProjectService">
     <state x="877" y="208" key="#AcceptanceTest" timestamp="1588665805969">
@@ -280,36 +273,36 @@
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
     <state x="1010" y="288" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585911096396" />
-    <state x="801" y="135" key="CommitChangelistDialog2" timestamp="1587992175823">
+    <state x="801" y="135" key="CommitChangelistDialog2" timestamp="1589184219511">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state x="801" y="135" key="CommitChangelistDialog2/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1587992175823" />
+    <state x="801" y="135" key="CommitChangelistDialog2/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1589184219511" />
     <state x="916" y="383" key="FileChooserDialogImpl" timestamp="1589183357580">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
     <state x="916" y="383" key="FileChooserDialogImpl/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1589183357580" />
-    <state width="2517" height="80" key="GridCell.Tab.0.bottom" timestamp="1589184183401">
+    <state width="2517" height="299" key="GridCell.Tab.0.bottom" timestamp="1589188409691">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state width="2517" height="80" key="GridCell.Tab.0.bottom/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1589184183401" />
+    <state width="2517" height="299" key="GridCell.Tab.0.bottom/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1589188409691" />
     <state width="2517" height="359" key="GridCell.Tab.0.bottom/0.0.2560.1080/2560.75.1920.1080@2560.75.1920.1080" timestamp="1588864169202" />
     <state width="1398" height="209" key="GridCell.Tab.0.bottom/0.23.1440.813@0.23.1440.813" timestamp="1586016907207" />
-    <state width="2517" height="80" key="GridCell.Tab.0.center" timestamp="1589184183401">
+    <state width="2517" height="299" key="GridCell.Tab.0.center" timestamp="1589188409691">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state width="2517" height="80" key="GridCell.Tab.0.center/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1589184183401" />
+    <state width="2517" height="299" key="GridCell.Tab.0.center/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1589188409691" />
     <state width="2517" height="359" key="GridCell.Tab.0.center/0.0.2560.1080/2560.75.1920.1080@2560.75.1920.1080" timestamp="1588864169202" />
     <state width="1398" height="209" key="GridCell.Tab.0.center/0.23.1440.813@0.23.1440.813" timestamp="1586016907205" />
-    <state width="2517" height="80" key="GridCell.Tab.0.left" timestamp="1589184183400">
+    <state width="2517" height="299" key="GridCell.Tab.0.left" timestamp="1589188409691">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state width="2517" height="80" key="GridCell.Tab.0.left/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1589184183400" />
+    <state width="2517" height="299" key="GridCell.Tab.0.left/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1589188409691" />
     <state width="2517" height="359" key="GridCell.Tab.0.left/0.0.2560.1080/2560.75.1920.1080@2560.75.1920.1080" timestamp="1588864169202" />
     <state width="1398" height="209" key="GridCell.Tab.0.left/0.23.1440.813@0.23.1440.813" timestamp="1586016907205" />
-    <state width="2517" height="80" key="GridCell.Tab.0.right" timestamp="1589184183401">
+    <state width="2517" height="299" key="GridCell.Tab.0.right" timestamp="1589188409691">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state width="2517" height="80" key="GridCell.Tab.0.right/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1589184183401" />
+    <state width="2517" height="299" key="GridCell.Tab.0.right/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1589188409691" />
     <state width="2517" height="359" key="GridCell.Tab.0.right/0.0.2560.1080/2560.75.1920.1080@2560.75.1920.1080" timestamp="1588864169202" />
     <state width="1398" height="209" key="GridCell.Tab.0.right/0.23.1440.813@0.23.1440.813" timestamp="1586016907206" />
     <state width="2517" height="363" key="GridCell.Tab.1.bottom" timestamp="1589181028575">
@@ -337,10 +330,10 @@
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
     <state x="380" y="183" key="SettingsEditor/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1589177543812" />
-    <state x="872" y="274" key="Vcs.Push.Dialog.v2" timestamp="1587992179903">
+    <state x="872" y="274" key="Vcs.Push.Dialog.v2" timestamp="1589184222472">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state x="872" y="274" key="Vcs.Push.Dialog.v2/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1587992179903" />
+    <state x="872" y="274" key="Vcs.Push.Dialog.v2/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1589184222472" />
     <state x="1089" y="458" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589180016572">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
