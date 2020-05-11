@@ -284,7 +284,6 @@ public class Interpreter {
 		ActivityInfo activity = (ActivityInfo) methodArguments[2];
 		double hours = this.application.getEmployeesRegisteredHoursToActivity(activity.getID(), employee.getInitials());
 		this.printFeedback = false;
-		System.out.println(hours);
 		Object[] result = new Object[1];
 		result[0] = hours;
 		return result;
