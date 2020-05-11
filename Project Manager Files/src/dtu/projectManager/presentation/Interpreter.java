@@ -178,13 +178,17 @@ public class Interpreter {
 	private Object[] assignProjectLeader(Object[] methodArguments) throws OperationNotAllowedException {
 		ProjectInfo project = (ProjectInfo)methodArguments[1];
 		EmployeeInfo leader = (EmployeeInfo)methodArguments[2];
-		Object[] result = new Object[0];
+		Object[] result = new Object[1];
 		this.application.assignProjectLeader(project.getID(),leader.getInitials());
+		leader = new EmployeeInfo(this.application.getEmployee(leader.getInitials()));
+		project.setProjectLeader(leader);
+		result[0]=project;
 		this.feedback.add("The employee with initials "+leader.getInitials()+" has been assigned");
 		this.feedback.add("as project leader for the project "+project.getID()+": "+project.getName());
 		this.feedback.add("");
 		this.feedback.add("Press enter to continue");
 		return result;
+		
 	}
 	
 	private Object[] setProjectName(Object[] methodArguments) throws OperationNotAllowedException {

@@ -66,6 +66,9 @@ public class UserInterface {
 		
 		String input = this.scanner.getUserInput();
 		
+		if (input.equals("logout") || input.equals("exit"))
+			return input;
+		
 		while (true) {
 			if (this.State.validateInput(input)) {
 				return input;

@@ -88,6 +88,7 @@ public class AssignLeaderMenu extends Menu {
 
 	@Override
 	public Menu getNextState(Object[] result) throws Exception {
+		this.project = (ProjectInfo)result[0];
 		return new ProjectMenu(this.user,this.project);
 	}
 
