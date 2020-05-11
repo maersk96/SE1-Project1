@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-
+// MockData class: creates mock data for manual testing
 
 public class MockData {
 
@@ -29,14 +29,17 @@ public class MockData {
     }
 
     public void generate(int amount) throws OperationNotAllowedException {
+
     	// Add some mock employees
         for (int i=0; i <= amount; i++) {
             addMockEmployee(generateName());
         }
+
         // Add some mock projects
         for (int i=0; i <= amount * 3 / 5; i++) {
             addMockProject("Sample project " + i);
         }
+
         // Add some activities to projects
         for (int i=0; i < mockProjects.size(); i++) {
             String pId = mockProjects.get(i);
@@ -46,6 +49,7 @@ public class MockData {
                 addMockActivity(pId, "Sample activity " + j);
             }
         }
+
         // Assign employees to activities
         for (int i=0; i < mockActivities.size(); i++) {
             ProjectActivity pa = mockActivities.get(i);
@@ -53,16 +57,12 @@ public class MockData {
             projectManagerApp.assignEmployeeToActivity(pa.pId, pa.aId, randomEmployee);
             projectManagerApp.registerHoursToActivity(pa.aId, randomEmployee, randDouble(0.0f,100.0f));
         }
-        
-        
-        
+
         // For testing purposes
         Employee e = new Employee("AAA", "Anton Stockmarr");
         projectManagerApp.addEmployee(e);
         projectManagerApp.assignProjectLeader(mockProjects.get(0),e.getInitials());
         projectManagerApp.assignEmployeeToActivity(mockActivities.get(0).pId, mockActivities.get(0).aId, e.getInitials());
-        
-        
     }
 
     private void addMockEmployee(String name) throws OperationNotAllowedException {
@@ -76,6 +76,7 @@ public class MockData {
             mockEmployees.add(initials);
         }
     }
+
     private void addMockProject(String name) throws OperationNotAllowedException {
         Project p = new Project(name);
         String pId = projectManagerApp.addProject(p);
@@ -83,6 +84,7 @@ public class MockData {
         projectManagerApp.assignProjectLeader(pId, randomEmployee);
         mockProjects.add(pId);
     }
+
     private void addMockActivity(String pId, String name) throws OperationNotAllowedException {
         Activity a = new Activity(name, rand(1,52), rand(1,6));
         String aId = projectManagerApp.addActivityToProject(pId, a);

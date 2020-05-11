@@ -4,6 +4,8 @@ import dtu.projectManager.app.Employee;
 import dtu.projectManager.app.OperationNotAllowedException;
 import dtu.projectManager.app.ProjectManagerApp;
 
+// Starts an admin session, that makes it easier to test in the other step files
+
 public class AdminSession {
 
 	private ProjectManagerApp projectManagerApp;
@@ -17,6 +19,7 @@ public class AdminSession {
 		previousUser = projectManagerApp.getCurrentUser();
 		projectManagerApp.login("ADMIN");
 	}
+
 	public void end() throws OperationNotAllowedException {
 		projectManagerApp.logout();
 		if (previousUser != null) {

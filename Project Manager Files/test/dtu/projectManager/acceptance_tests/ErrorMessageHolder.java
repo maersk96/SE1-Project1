@@ -1,6 +1,7 @@
 package dtu.projectManager.acceptance_tests;
 
 public class ErrorMessageHolder {
+
 	private String errorMessage = "";
 
 	public String getErrorMessage() {

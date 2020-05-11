@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import dtu.projectManager.dto.ActivityInfo;
+// Activity class: stores information about the activity, and handles most of the functionality revolving around activities
 
 public class Activity {
+
 	private String ID = "";
 	private String name;
 	private int startWeek;
@@ -53,10 +54,13 @@ public class Activity {
 		if (week < 1) return 1;
 		return ((week - 1) % 52) + 1;
 	}
+
 	public void setStartWeek(int startWeek) { this.startWeek = adjustWeek(startWeek); }
+
 	public void setEndWeek(int endWeek) {
 		this.endWeek = adjustWeek(endWeek);
 	}
+
 	public void setDuration(int weeks) { setEndWeek(this.startWeek + weeks - 1); }
 
 	public int getEndWeek() {

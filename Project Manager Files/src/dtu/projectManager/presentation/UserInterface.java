@@ -1,12 +1,10 @@
 package dtu.projectManager.presentation;
 
-
 import java.util.List;
 import java.util.Scanner;
 
 import dtu.projectManager.app.ProjectManagerApp;
 import dtu.projectManager.presentation.menus.LoginMenu;
-
 
 public class UserInterface {
 
@@ -23,7 +21,6 @@ public class UserInterface {
 		
 	}
 
-	
 	public void appSession() throws Exception {
 		
 		String input;

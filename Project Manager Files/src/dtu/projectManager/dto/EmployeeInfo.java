@@ -3,6 +3,7 @@ package dtu.projectManager.dto;
 import dtu.projectManager.app.Employee;
 
 public class EmployeeInfo {
+
 	private String initials;
 	private String name;
 	
@@ -42,7 +43,5 @@ public class EmployeeInfo {
     public Employee asEmployee() {
     	return new Employee(this.initials,this.name);
     }
-
-
 }
 

@@ -3,7 +3,7 @@ package dtu.projectManager.app;
 import java.util.ArrayList;
 import java.util.List;
 
-import dtu.projectManager.dto.ProjectInfo;
+// Project class: stores information about the project, and handles most of the functionality revolving around projects
 
 public class Project {
 
@@ -80,5 +80,4 @@ public class Project {
     public boolean containsActivityWithID(String activityID) {
         return getActivityWithID(activityID) != null;
     }
-    
 }

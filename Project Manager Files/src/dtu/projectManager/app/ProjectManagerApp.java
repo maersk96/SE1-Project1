@@ -2,8 +2,11 @@ package dtu.projectManager.app;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+
+// Main application class
 
 public class ProjectManagerApp {
 
@@ -26,18 +29,22 @@ public class ProjectManagerApp {
 		mock.generate(amount);
 	}
 
-
+	//
 	// AUTHENTICATION METHODS
+    //
 
 	public void login(String initials) throws OperationNotAllowedException {
 		currentUser = getEmployee(initials);
 	}
+
 	public void logout() {
 		currentUser = null;
 	}
+
 	public boolean adminLoggedIn() {
 		return currentUser != null && currentUser.getInitials().equals("ADMIN");
 	}
+
 	public Employee getCurrentUser() {
 		return currentUser;
 	}
@@ -48,6 +55,7 @@ public class ProjectManagerApp {
 			throw new OperationNotAllowedException("Administrator login required");
 		}
 	}
+
 	public void requiresProjectLeader(String projectID) throws OperationNotAllowedException {
 		Project p = getProjectWithID(projectID);
 		if (p == null /* 1 */ || !(adminLoggedIn() /* 2 */ || p.isProjectLeader(currentUser) /* 3 */) ) {
@@ -55,8 +63,9 @@ public class ProjectManagerApp {
 		}
 	}
 
-
+    //
 	// EMPLOYEE METHODS
+    //
 
 	public void addEmployee(Employee e) throws OperationNotAllowedException {
 		requiresAdmin();
@@ -65,15 +74,18 @@ public class ProjectManagerApp {
 		}
 		employees.add(e);
 	}
+
 	public Employee getEmployeeWithInitials(String initials) {
 		return getEmployees().stream()
 				.filter(employee -> initials.equals(employee.getInitials()))
 				.findFirst()
 				.orElse(null);
 	}
+
 	public boolean containsEmployeeWithInitials(String initials) {
 		return getEmployeeWithInitials(initials) != null;
 	}
+
 	public void assignProjectLeader(String projectID, String employeeInitials) throws OperationNotAllowedException {
 		requiresAdmin();
 
@@ -82,12 +94,14 @@ public class ProjectManagerApp {
 		p.setProjectLeader(e);
 	}
 
-
+    //
 	// PROJECT METHODS
+    //
 
 	private String generateProjectID() {
 		return year + "-" + String.format("%0" + 4 + "d", projectNumber);
 	}
+
 	public String addProject(Project project) throws OperationNotAllowedException {
 		requiresAdmin();
 
@@ -97,29 +111,33 @@ public class ProjectManagerApp {
 		projectNumber++;
 		return projectID;
 	}
+
 	public void renameProject(String projectID, String newName) throws OperationNotAllowedException {
 		requiresAdmin();
 		
 		Project p = getProject(projectID);
 		p.setName(newName);
 	}
+
 	public List<Project> getProjects() {
 		return new ArrayList<Project>(this.projects);
 	}
+
 	public List<Activity> getProjectActivities(String projectID) throws OperationNotAllowedException{
 		Project p = getProject(projectID);
 		return p.getActivities();
 	}
+
 	public Project getProjectWithID(String projectID) {
 		return projects.stream()
 				.filter(project -> projectID.equals(project.getID()))
 				.findFirst()
 				.orElse(null);
 	}
+
 	public boolean containsProjectWithID(String projectID) {
 		return getProjectWithID(projectID) != null;
 	}
-	
 	
 	public String addActivityToProject(String projectID, Activity activity) throws OperationNotAllowedException {
 		requiresProjectLeader(projectID);
@@ -147,10 +165,18 @@ public class ProjectManagerApp {
 	}
 	
 	public void assignEmployeeToActivity(String projectID, String activityID, String employeeInitials) throws OperationNotAllowedException {
+
+		// Pre-conditions:
+		assert true;
+
 		requiresProjectLeader(projectID);										// 1
 		Activity a = getActivityFromProject(projectID, activityID);				// 2
 		Employee e = getEmployee(employeeInitials);								// 3
 		addEmployeeToActivity(e,a);												// 4
+
+		// Post-conditions:
+		assert a.containsEmployeeWithInitials(employeeInitials) == true && a.getEmployeesRegisteredHours(getEmployee(employeeInitials)) == 0;
+		assert e.containsActivityWithID(activityID) == true && Collections.frequency(e.getAssignedActivities(), getActivityFromEmployee(employeeInitials, activityID)) == 1;
 	}
 	
 	public void askForAssistance(String activityID,String employeeInitials) throws OperationNotAllowedException {
@@ -249,5 +275,4 @@ public class ProjectManagerApp {
 		}
 		return a;
 	}
-
 }

@@ -4,7 +4,6 @@ import java.util.List;
 
 public class UIPrinter {
 
-	
 	public UIPrinter() {
 		
 	}
@@ -40,7 +39,6 @@ public class UIPrinter {
 		}
 		
 		printBoxLine(l_max);
-				
 
 	}
 	

@@ -3,7 +3,6 @@ package dtu.projectManager.dto;
 import dtu.projectManager.app.Project;
 
 public class ProjectInfo {
-
 	
     private String ID;
     private String name;
@@ -56,5 +55,4 @@ public class ProjectInfo {
 	public Project asProject() {
 		return new Project(this.name);
 	}
-
 }

@@ -3,8 +3,26 @@
   <component name="ChangeListManager">
     <list default="true" id="c54818f2-4fca-46b6-b404-fee38d02f80e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/app/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/app/Activity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/app/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/app/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/app/MockData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/app/MockData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/app/OperationNotAllowedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/app/OperationNotAllowedException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/app/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/app/Project.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/app/ProjectManagerApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/app/ProjectManagerApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/dto/EmployeeInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/dto/EmployeeInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/dto/ProjectInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/dto/ProjectInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/presentation/UIPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/presentation/UIPrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/presentation/UI_main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/presentation/UI_main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtu/projectManager/presentation/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtu/projectManager/presentation/UserInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dtu/projectManager/app/ProjectManagerApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dtu/projectManager/app/ProjectManagerApp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/cucumber/wikipedia.html/report.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/cucumber/wikipedia.html/report.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/dtu/projectManager/acceptance_tests/LoginLogoutSteps.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/dtu/projectManager/acceptance_tests/LoginLogoutSteps.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/AdminSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/AdminSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/EmployeeSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/EmployeeSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/ErrorMessageHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/ErrorMessageHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/LoginLogoutSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/LoginLogoutSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/MockSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/MockSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/ProjectSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dtu/projectManager/acceptance_tests/ProjectSteps.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,7 +30,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageViewManager">
-    <option name="myElementSize" value="293" />
+    <option name="myFlattenPackages" value="true" />
+    <option name="myElementSize" value="489" />
+  </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OPEN_IN_BROWSER" value="true" />
+    <option name="OUTPUT_DIRECTORY" value="C:\Users\Lukas Andreasen\Desktop" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -36,10 +59,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/use_cases/detailed_use_cases" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -80,19 +104,34 @@
     </configuration>
     <configuration name="AcceptanceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project Manager" />
-      <extension name="coverage">
+      <extension name="coverage" track_test_folders="true">
         <pattern>
           <option name="PATTERN" value="dtu.projectManager.acceptance_tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+        <pattern>
+          <option name="PATTERN" value="dtu.projectManager.app.*" />
+          <option name="ENABLED" value="false" />
+        </pattern>
+        <pattern>
+          <option name="PATTERN" value="dtu.projectManager.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="dtu.projectManager.acceptance_tests" />
       <option name="MAIN_CLASS_NAME" value="dtu.projectManager.acceptance_tests.AcceptanceTest" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
+      <option name="PARAMETERS" value="" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.UI_main" />
+      <item itemvalue="Cucumber java.Feature: add_project" />
+      <item itemvalue="JUnit.AcceptanceTest" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.AcceptanceTest" />
@@ -117,7 +156,15 @@
       <workItem from="1586013386507" duration="3430000" />
       <workItem from="1587909698748" duration="5767000" />
       <workItem from="1587987140435" duration="710000" />
-      <workItem from="1587988961486" duration="3206000" />
+      <workItem from="1587988961486" duration="3229000" />
+      <workItem from="1587993714478" duration="43000" />
+      <workItem from="1588590401713" duration="581000" />
+      <workItem from="1588591228782" duration="1351000" />
+      <workItem from="1588665716827" duration="3967000" />
+      <workItem from="1588850967591" duration="9934000" />
+      <workItem from="1588928354359" duration="2536000" />
+      <workItem from="1588934465976" duration="175000" />
+      <workItem from="1589177070312" duration="7040000" />
     </task>
     <task id="LOCAL-00001" summary="added 3 classes">
       <created>1585913047457</created>
@@ -182,7 +229,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587992044633</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="added assign help to activity and get total registered hours from activity">
+      <created>1587992176482</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1587992176482</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,14 +252,26 @@
     <option name="LAST_COMMIT_MESSAGE" value="added assign help to activity and get total registered hours from activity" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="877" y="208" key="#AcceptanceTest" timestamp="1585923059199">
+    <state x="877" y="208" key="#AcceptanceTest" timestamp="1588665805969">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state x="877" y="208" key="#AcceptanceTest/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585923059199" />
+    <state x="877" y="208" key="#AcceptanceTest/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1588665805969" />
+    <state x="937" y="158" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589183751821">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state x="937" y="158" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1589183751821" />
     <state x="100" y="123" width="1240" height="613" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1586015685803">
       <screen x="0" y="23" width="1440" height="813" />
     </state>
     <state x="100" y="123" width="1240" height="613" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.23.1440.813@0.23.1440.813" timestamp="1586015685803" />
+    <state x="1009" y="317" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1589183747437">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state x="1009" y="317" key="#com.intellij.ide.util.PackageChooserDialog/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1589183747437" />
+    <state x="1009" y="325" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1588665785160">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state x="1009" y="325" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1588665785160" />
     <state x="940" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1585911209647">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
@@ -214,62 +280,86 @@
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
     <state x="1010" y="288" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585911096396" />
-    <state x="801" y="135" key="CommitChangelistDialog2" timestamp="1587992043934">
+    <state x="801" y="135" key="CommitChangelistDialog2" timestamp="1587992175823">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state x="801" y="135" key="CommitChangelistDialog2/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1587992043934" />
-    <state x="916" y="383" key="FileChooserDialogImpl" timestamp="1585913728379">
+    <state x="801" y="135" key="CommitChangelistDialog2/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1587992175823" />
+    <state x="916" y="383" key="FileChooserDialogImpl" timestamp="1589183357580">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state x="916" y="383" key="FileChooserDialogImpl/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585913728379" />
-    <state width="2517" height="295" key="GridCell.Tab.0.bottom" timestamp="1587992090846">
+    <state x="916" y="383" key="FileChooserDialogImpl/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1589183357580" />
+    <state width="2517" height="80" key="GridCell.Tab.0.bottom" timestamp="1589184183401">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state width="2517" height="295" key="GridCell.Tab.0.bottom/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1587992090846" />
+    <state width="2517" height="80" key="GridCell.Tab.0.bottom/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1589184183401" />
+    <state width="2517" height="359" key="GridCell.Tab.0.bottom/0.0.2560.1080/2560.75.1920.1080@2560.75.1920.1080" timestamp="1588864169202" />
     <state width="1398" height="209" key="GridCell.Tab.0.bottom/0.23.1440.813@0.23.1440.813" timestamp="1586016907207" />
-    <state width="2517" height="295" key="GridCell.Tab.0.center" timestamp="1587992090846">
+    <state width="2517" height="80" key="GridCell.Tab.0.center" timestamp="1589184183401">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state width="2517" height="295" key="GridCell.Tab.0.center/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1587992090846" />
+    <state width="2517" height="80" key="GridCell.Tab.0.center/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1589184183401" />
+    <state width="2517" height="359" key="GridCell.Tab.0.center/0.0.2560.1080/2560.75.1920.1080@2560.75.1920.1080" timestamp="1588864169202" />
     <state width="1398" height="209" key="GridCell.Tab.0.center/0.23.1440.813@0.23.1440.813" timestamp="1586016907205" />
-    <state width="2517" height="295" key="GridCell.Tab.0.left" timestamp="1587992090846">
+    <state width="2517" height="80" key="GridCell.Tab.0.left" timestamp="1589184183400">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state width="2517" height="295" key="GridCell.Tab.0.left/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1587992090846" />
+    <state width="2517" height="80" key="GridCell.Tab.0.left/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1589184183400" />
+    <state width="2517" height="359" key="GridCell.Tab.0.left/0.0.2560.1080/2560.75.1920.1080@2560.75.1920.1080" timestamp="1588864169202" />
     <state width="1398" height="209" key="GridCell.Tab.0.left/0.23.1440.813@0.23.1440.813" timestamp="1586016907205" />
-    <state width="2517" height="295" key="GridCell.Tab.0.right" timestamp="1587992090846">
+    <state width="2517" height="80" key="GridCell.Tab.0.right" timestamp="1589184183401">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state width="2517" height="295" key="GridCell.Tab.0.right/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1587992090846" />
+    <state width="2517" height="80" key="GridCell.Tab.0.right/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1589184183401" />
+    <state width="2517" height="359" key="GridCell.Tab.0.right/0.0.2560.1080/2560.75.1920.1080@2560.75.1920.1080" timestamp="1588864169202" />
     <state width="1398" height="209" key="GridCell.Tab.0.right/0.23.1440.813@0.23.1440.813" timestamp="1586016907206" />
-    <state x="992" y="257" key="MultipleFileMergeDialog" timestamp="1587988980463">
+    <state width="2517" height="363" key="GridCell.Tab.1.bottom" timestamp="1589181028575">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state x="992" y="257" key="MultipleFileMergeDialog/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1587988980463" />
-    <state x="760" y="115" key="SettingsEditor" timestamp="1585911054995">
+    <state width="2517" height="363" key="GridCell.Tab.1.bottom/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1589181028575" />
+    <state width="2517" height="363" key="GridCell.Tab.1.center" timestamp="1589181028575">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state x="760" y="115" key="SettingsEditor/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585911054995" />
-    <state x="872" y="274" key="Vcs.Push.Dialog.v2" timestamp="1587992047263">
+    <state width="2517" height="363" key="GridCell.Tab.1.center/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1589181028575" />
+    <state width="2517" height="363" key="GridCell.Tab.1.left" timestamp="1589181028575">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state x="872" y="274" key="Vcs.Push.Dialog.v2/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1587992047263" />
-    <state x="1089" y="458" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587988971317">
+    <state width="2517" height="363" key="GridCell.Tab.1.left/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1589181028575" />
+    <state width="2517" height="363" key="GridCell.Tab.1.right" timestamp="1589181028575">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state x="1089" y="458" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1587988971317" />
-    <state x="662" y="161" key="new project wizard" timestamp="1585994676686">
+    <state width="2517" height="363" key="GridCell.Tab.1.right/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1589181028575" />
+    <state x="992" y="257" key="MultipleFileMergeDialog" timestamp="1589180023451">
       <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state x="992" y="257" key="MultipleFileMergeDialog/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1589180023451" />
+    <state x="3304" y="332" key="MultipleFileMergeDialog/0.0.2560.1080/2560.75.1920.1080@2560.75.1920.1080" timestamp="1588928375683" />
+    <state x="380" y="183" key="SettingsEditor" timestamp="1589177543812">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state x="380" y="183" key="SettingsEditor/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1589177543812" />
+    <state x="872" y="274" key="Vcs.Push.Dialog.v2" timestamp="1587992179903">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state x="872" y="274" key="Vcs.Push.Dialog.v2/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1587992179903" />
+    <state x="1089" y="458" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589180016572">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state x="1089" y="458" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1589180016572" />
+    <state x="3377" y="533" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1080/2560.75.1920.1080@2560.75.1920.1080" timestamp="1588928409217" />
+    <state x="3057" y="236" key="new project wizard" timestamp="1588929000078">
+      <screen x="2560" y="75" width="1920" height="1080" />
     </state>
     <state x="662" y="161" key="new project wizard/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585994676686" />
+    <state x="3057" y="236" key="new project wizard/0.0.2560.1080/2560.75.1920.1080@2560.75.1920.1080" timestamp="1588929000078" />
     <state x="936" y="250" key="run.anything.popup" timestamp="1585912507525">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
     <state x="936" y="250" key="run.anything.popup/0.0.2560.1080/2560.75.1920.1080@0.0.2560.1080" timestamp="1585912507525" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Project_Manager$AcceptanceTest.ic" NAME="AcceptanceTest Coverage Results" MODIFIED="1585992909836" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Project_Manager$AcceptanceTest.ic" NAME="AcceptanceTest Coverage Results" MODIFIED="1589183753710" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>dtu.projectManager.acceptance_tests.*</FILTER>
+      <FILTER>dtu.projectManager.*</FILTER>
     </SUITE>
   </component>
 </project>

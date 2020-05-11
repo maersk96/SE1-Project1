@@ -5,10 +5,10 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
 import java.util.List;
-
 import static org.junit.Assert.*;
+
+// Steps for handling testing of employee functionality
 
 public class EmployeeSteps {
 
@@ -17,7 +17,6 @@ public class EmployeeSteps {
 	private AdminSession adminSession;
 
 	Employee employee;
-	String projectId;
 
 	public EmployeeSteps(ProjectManagerApp projectManagerApp,
 						 ErrorMessageHolder errorMessageHolder,
@@ -71,6 +70,7 @@ public class EmployeeSteps {
 	public void anEmployeeRegisteredInTheProjectManager() throws OperationNotAllowedException {
 		theEmployeeWithInitialsIsRegistered("XYZ");
 	}
+
 	@Given("the employee is assigned to {int} (more )activit(y )(ies )in week {int}")
 	public void theEmployeeIsAssignedToActivities(int activities, int week) throws OperationNotAllowedException {
 		adminSession.start();
@@ -87,6 +87,7 @@ public class EmployeeSteps {
 		}
 		adminSession.end();
 	}
+
 	@Then("the employee is (still)(now) assigned to {int} activities in week {int}")
 	public void theEmployeeIsNowAssignedToActivities(int activities, int week) {
 		Employee e = projectManagerApp.getEmployeeWithInitials(employee.getInitials());

@@ -6,15 +6,14 @@ import dtu.projectManager.app.ProjectManagerApp;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
 import static org.junit.Assert.*;
+
+// Steps for handling testing of logging in and out
 
 public class LoginLogoutSteps {
 
 	private ProjectManagerApp projectManagerApp;
-
 	private ErrorMessageHolder errorMessage;
-	private Employee user;
 
 	public LoginLogoutSteps(ProjectManagerApp projectManagerApp, ErrorMessageHolder errorMessage) {
 		this.projectManagerApp = projectManagerApp;
@@ -61,5 +60,4 @@ public class LoginLogoutSteps {
 	public void theUserIsNotLoggedIn() {
 		assertNull(projectManagerApp.getCurrentUser());
 	}
-
 }

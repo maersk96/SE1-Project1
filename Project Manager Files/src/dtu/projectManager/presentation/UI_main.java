@@ -11,7 +11,6 @@ public class UI_main {
 		Scanner sc = new Scanner(System.in);
 		ProjectManagerApp App = new ProjectManagerApp();
 		UserInterface UI = new UserInterface(sc,App);
-		
 
 
 		while (true) {

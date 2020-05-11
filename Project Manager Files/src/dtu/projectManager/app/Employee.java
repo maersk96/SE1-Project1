@@ -4,7 +4,7 @@ package dtu.projectManager.app;
 import java.util.ArrayList;
 import java.util.List;
 
-import dtu.projectManager.dto.EmployeeInfo;
+// Employee class: stores information about the employee, and handles most of the functionality revolving around employees
 
 public class Employee {
 
@@ -46,14 +46,23 @@ public class Employee {
     }
 
     public List<Activity> getActivitiesInWeekInterval(int weekFrom, int weekTo) {
+
+        // Pre-conditions:
+        assert weekFrom >= 0 && weekTo >= 0 /* &&  weekTo >= weekFrom */;
+
         List<Activity> activities = new ArrayList<Activity>();
-        for (Activity a : assignedActivities) {
-            if (weekTo >= a.getStartWeek() && weekFrom <= a.getEndWeek()) {
+        for (Activity a : assignedActivities) {                               // 1
+            if (weekTo >= a.getStartWeek() && weekFrom <= a.getEndWeek()) {   // 2
                 activities.add(a);
             }
         }
         return activities;
+
+        // Post-conditions:
+
     }
+
+
     public List<Activity> getActivitiesInWeek(int week) {
         return getActivitiesInWeekInterval(week, week);
     }
