@@ -63,10 +63,9 @@ public class ProjectLeaderActivityMenu extends Menu {
 	@Override
 	protected Object[] getMethodInput() {
 		Object[] methodInput;
-		if (this.choice == 3 || this.choice == 4) {
-			methodInput = new Object[2];
+		if (this.choice == 3) {
+			methodInput = new Object[1];
 			methodInput[0] = this.activity.copy();
-			methodInput[1] = this.project.copy();
 		}
 		else {
 			methodInput = new Object[0];

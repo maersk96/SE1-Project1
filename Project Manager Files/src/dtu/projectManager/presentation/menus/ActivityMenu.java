@@ -70,8 +70,15 @@ public class ActivityMenu extends Menu {
 
 	@Override
 	protected Object[] getMethodInput() {
-		Object[] emptyInput = new Object[0];
-		return emptyInput;
+		Object[] input;
+		if (this.choice == 2) {
+			input = new Object[1];
+			input[0] = this.activity.copy();
+		}
+		else {
+			input = new Object[0];
+		}
+		return input;
 	}
 
 	@Override
